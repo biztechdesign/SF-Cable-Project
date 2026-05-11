@@ -199,12 +199,9 @@
       background: var(--dark);
       padding: 0;
       position: sticky; top: 0; z-index: 1000;
-      transform: translateY(0);
-      transition: transform 0.3s ease, box-shadow var(--transition);
-      will-change: transform;
+      transition: box-shadow var(--transition);
     }
     .site-header.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,.4); }
-    .site-header.header-hidden { transform: translateY(-100%); }
     .header-mid {
       display: flex; align-items: center; gap: 32px;
       padding: 14px 0;
@@ -4957,27 +4954,11 @@
   <script>
     const header = document.getElementById('site-header');
     const backToTop = document.getElementById('back-to-top');
-    let lastScrollY = 0;
-    const SCROLL_DELTA = 5;   // min px change to trigger hide/show
-    const TOP_OFFSET  = 80;   // always show header within this distance from top
 
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       header.classList.toggle('scrolled', y > 10);
       backToTop.classList.toggle('visible', y > 400);
-
-      if (y < TOP_OFFSET) {
-        // Always visible near the top
-        header.classList.remove('header-hidden');
-      } else if (y > lastScrollY + SCROLL_DELTA) {
-        // Scrolling down — hide
-        header.classList.add('header-hidden');
-      } else if (y < lastScrollY - SCROLL_DELTA) {
-        // Scrolling up — show
-        header.classList.remove('header-hidden');
-      }
-
-      lastScrollY = y;
     }, { passive: true });
 
     backToTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
