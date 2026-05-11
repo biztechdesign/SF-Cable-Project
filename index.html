@@ -3173,14 +3173,25 @@
       transform: none;
     }
     .footer-trust-bar {
-      background: rgba(0, 38, 72, 0.08);
-      border-color: rgba(0, 38, 72, 0.12);
+      background: var(--sf-primary-dark);
+      border-color: rgba(255,255,255,.08);
     }
     .footer-trust-icon {
-      background: rgba(0, 38, 72, 0.08);
-      color: #002648;
+      background: rgba(0, 141, 255, 0.15);
+      color: var(--sf-primary-cta);
     }
-    .footer-trust-text strong { color: var(--sf-primary-dark); }
+    .footer-trust-text strong { color: #ffffff; }
+    .footer-trust-text span   { color: rgba(255,255,255,.65); }
+    .footer-trust-prev, .footer-trust-next {
+      background: rgba(255,255,255,.10) !important;
+      border-color: rgba(255,255,255,.18) !important;
+      color: #ffffff !important;
+    }
+    .footer-trust-prev:hover, .footer-trust-next:hover {
+      background: var(--sf-primary-cta) !important;
+      border-color: var(--sf-primary-cta) !important;
+      color: #ffffff !important;
+    }
     .footer-badges {
       border-top-color: rgba(255,255,255,.15);
       border-bottom-color: rgba(255,255,255,.15);
