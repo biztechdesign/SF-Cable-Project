@@ -195,10 +195,12 @@
     /* ============================================================
        ROW 2 — MIDDLE HEADER (Logo + Search + Account/Cart)
     ============================================================ */
+    .sticky-top-wrap {
+      position: sticky; top: 0; z-index: 1000;
+    }
     .site-header {
       background: var(--dark);
       padding: 0;
-      position: sticky; top: 0; z-index: 1000;
       transition: box-shadow var(--transition);
     }
     .site-header.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,.4); }
@@ -495,7 +497,7 @@
     }
     .mobile-header-btn:hover { color: var(--red); }
     .mobile-nav {
-      display: none; background: var(--dark); padding: 16px;
+      display: none; background: #0B1F3A; padding: 16px;
       max-height: 80vh; overflow-y: auto;
     }
     .mobile-nav.open { display: block; }
@@ -1960,7 +1962,7 @@
       display: grid; grid-template-columns: 2.6fr 1fr 1fr 1fr 1.2fr; gap: 24px;
       padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.15);
     }
-    .footer-brand img { height: 38px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-brand img { height: 28px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); opacity: .9; }
     .footer-brand-name {
       font-size: 22px; font-weight: 800; color: var(--white);
       margin-bottom: 18px; display: none;
@@ -2470,7 +2472,7 @@
       .usecase-card.sm     { min-height: 140px; }
       .usecase-body        { padding: 14px; }
       .usecase-card h3     { font-size: 16px; }
-      .deal-card           { min-height: 180px; padding: 22px 18px; }
+      .deal-card           { min-height: 180px; padding: 10px 8px; }
       .deal-card h3        { font-size: 20px; }
       .deal-card p         { font-size: 14px; margin-bottom: 14px; }
       .deal-floating-badge { width: 50px; height: 50px; top: 12px; right: 12px; }
@@ -2704,8 +2706,8 @@
         gap: 16px; padding: 10px 0; height: auto; min-height: 64px;
         position: static;
       }
-      .logo              { flex-shrink: 0; order: unset; }
-      .logo img          { height: 30px; }
+      .logo              { flex-shrink: 0; order: unset; width: 180px; max-width: 180px; }
+      .logo img          { max-width: 180px; width: 100%; height: auto; }
       .header-search-wrap {
         flex: 1 1 auto; order: unset; min-width: 0;
         position: static !important; transform: none !important;
@@ -2714,20 +2716,27 @@
       }
       .header-help       { flex-shrink: 0; margin-left: 0; position: static; order: unset; }
     }
-    /* ≥901px: desktop — absolute centered search */
+    /* ≥901px: desktop — flex row: logo (fixed) | search (flex-1) | help */
     @media (min-width: 901px) {
       .header-mid {
-        display: flex; align-items: center; position: relative; gap: 0;
+        display: flex; flex-wrap: nowrap;
+        align-items: center; gap: 28px;
       }
-      .logo              { flex-shrink: 0; position: relative; z-index: 2; }
+      .logo {
+        flex-shrink: 0;
+        width: 220px; max-width: 220px;
+        order: unset;
+      }
       .header-search-wrap {
-        position: absolute; left: 50%; transform: translateX(-50%);
-        width: clamp(320px, 55%, 700px); max-width: 700px; z-index: 1;
+        flex: 1 1 auto; min-width: 0;
+        position: static !important; transform: none !important;
+        left: auto !important; width: auto !important;
+        max-width: none; z-index: auto;
       }
-      .header-help       { margin-left: auto; flex-shrink: 0; position: relative; z-index: 2; }
+      .header-help { flex-shrink: 0; margin-left: 0; position: static; order: unset; }
     }
-    /* Logo: keep brand colors visible on white background */
-    .logo img { filter: none; height: 38px; }
+    /* Logo: natural aspect ratio, width-constrained, never stretched */
+    .logo img { filter: none; max-width: 220px; width: 100%; height: auto; display: block; }
     .logo-fallback span { color: var(--sf-primary-dark); }
     .logo-fallback span:first-child { color: var(--sf-primary-cta); }
     /* Search: brand-blue border on white row */
@@ -3406,40 +3415,77 @@
     .mob-nav-tab.active { color: #ffffff; border-bottom-color: var(--sf-primary-cta); }
     .mob-nav-panel { padding-top: 4px; }
 
-    /* Category accordion */
-    .mob-cat-item { border-bottom: 1px solid rgba(255,255,255,.08); }
+    /* Category accordion — top-level */
+    .mob-cat-item { border-bottom: 1px solid rgba(255,255,255,.12); }
     .mob-cat-item:last-child { border-bottom: none; }
     .mob-cat-trigger {
       display: flex; align-items: center; justify-content: space-between;
-      width: 100%; padding: 14px 0; color: #e5e7eb;
-      font-size: 15px; font-weight: 700; background: none; border: none;
+      width: 100%; padding: 15px 0; color: #ffffff;
+      font-size: 16px; font-weight: 700; background: none; border: none;
       cursor: pointer; font-family: var(--font); text-align: left;
     }
-    .mob-cat-trigger:hover { color: #ffffff; }
-    .mob-cat-chevron { transition: transform 0.2s ease; flex-shrink: 0; }
-    .mob-cat-chevron svg.lucide { width: 16px; height: 16px; }
-    .mob-cat-item.open .mob-cat-chevron svg.lucide { transform: rotate(180deg); }
-    .mob-cat-panel { display: none; padding-bottom: 10px; }
+    .mob-cat-trigger:hover { color: rgba(255,255,255,.82); }
+    .mob-cat-chevron { transition: transform 0.25s ease; flex-shrink: 0; color: #ffffff; }
+    .mob-cat-chevron svg.lucide { width: 18px; height: 18px; }
+    .mob-cat-item.open .mob-cat-chevron svg.lucide { transform: rotate(-90deg); }
+    .mob-cat-panel { display: none; padding-bottom: 12px; }
     .mob-cat-item.open .mob-cat-panel { display: block; }
+
+    /* "See All" action link */
     .mob-cat-seeall {
-      display: inline-flex; align-items: center; gap: 5px;
-      color: var(--sf-primary-cta); font-size: 13px; font-weight: 600;
-      padding: 2px 0 10px; text-decoration: none;
+      display: flex; align-items: center; gap: 5px;
+      color: #008dff; font-size: 14px; font-weight: 500;
+      padding: 0 0 14px; text-decoration: none;
     }
     .mob-cat-seeall svg.lucide { width: 13px; height: 13px; }
     .mob-cat-seeall:hover { opacity: 0.8; }
-    .mob-cat-links { display: flex; flex-direction: column; }
-    .mob-cat-group-head {
-      display: block; padding: 8px 0 3px 10px;
-      color: rgba(255,255,255,.38); font-size: 11px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.8px;
+
+    /* Sub-group structure (category groups within expanded panel) */
+    .mob-cat-groups { display: flex; flex-direction: column; }
+    .mob-sub-group + .mob-sub-group { border-top: 1px solid rgba(255,255,255,.10); margin-top: 6px; }
+    .mob-sub-head {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 0 8px;
     }
-    .mob-cat-links a {
-      display: block; padding: 7px 10px; color: rgba(255,255,255,.72);
+    .mob-sub-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; flex-shrink: 0; color: #008dff;
+    }
+    .mob-sub-icon svg.lucide { width: 20px; height: 20px; }
+    .mob-sub-label {
+      flex: 1; font-size: 16px; font-weight: 700; color: #ffffff;
+      font-family: var(--font); line-height: 1.25;
+    }
+    .mob-sub-chev { flex-shrink: 0; color: #ffffff; }
+    .mob-sub-chev svg.lucide { width: 16px; height: 16px; }
+
+    /* Bullet sub-links (inside a sub-group) */
+    .mob-sub-links { display: flex; flex-direction: column; padding-bottom: 6px; }
+    .mob-sub-links a {
+      display: block; padding: 6px 8px 6px 36px; color: #ffffff;
       font-size: 14px; font-weight: 400; text-decoration: none;
       border-radius: 4px; transition: color 0.15s, background 0.15s;
+      position: relative;
     }
-    .mob-cat-links a:hover { color: #ffffff; background: rgba(255,255,255,.06); }
+    .mob-sub-links a::before {
+      content: '•'; position: absolute; left: 18px;
+      color: rgba(255,255,255,.3); font-size: 14px; line-height: 1.45;
+    }
+    .mob-sub-links a:hover { color: rgba(255,255,255,.75); background: rgba(255,255,255,.06); }
+
+    /* Flat bullet links (categories with no group heads) */
+    .mob-flat-links { display: flex; flex-direction: column; }
+    .mob-flat-links a {
+      display: block; padding: 6px 8px 6px 18px; color: #ffffff;
+      font-size: 14px; font-weight: 400; text-decoration: none;
+      border-radius: 4px; transition: color 0.15s, background 0.15s;
+      position: relative;
+    }
+    .mob-flat-links a::before {
+      content: '•'; position: absolute; left: 2px;
+      color: rgba(255,255,255,.3); font-size: 14px; line-height: 1.45;
+    }
+    .mob-flat-links a:hover { color: rgba(255,255,255,.75); background: rgba(255,255,255,.06); }
 
     /* ≤768px: revised 3-row mobile header */
     @media (max-width: 768px) {
@@ -3463,9 +3509,15 @@
       .mobile-shop-bar       { display: block; }
     }
 
+    /* ≤768px: footer logo first step down */
+    @media (max-width: 768px) {
+      .footer-brand img      { height: 24px; }
+    }
+
     /* ≤480px: shrink logo */
     @media (max-width: 480px) {
-      .logo img              { height: 24px; }
+      .logo img              { height: 24px; width: auto; }
+      .footer-brand img      { height: 20px; }
       .mobile-contact-btn    { width: 32px; height: 32px; }
       .mobile-contact-btn svg.lucide { width: 18px; height: 18px; }
     }
@@ -3473,7 +3525,8 @@
     /* ≤360px: shrink logo further */
     @media (max-width: 360px) {
       .header-mid            { gap: 4px; }
-      .logo img              { height: 18px; }
+      .logo img              { height: 24px; width: auto; }
+      .footer-brand img      { height: 18px; }
       .mobile-contact-btns   { gap: 6px; }
     }
 
@@ -3481,11 +3534,12 @@
     @media (max-width: 320px) {
       .container             { padding: 0 6px; }
       .header-mid            { gap: 2px; }
-      .logo img              { height: 16px; }
+      .logo img              { height: 24px; width: auto; }
+      .footer-brand img      { height: 15px; }
     }
 
     /* ---------- 13. Mobile nav links / mobile background ---------- */
-    .mobile-nav { background: var(--sf-primary-dark); }
+    .mobile-nav { background: #0B1F3A; }
     .mobile-nav-link:hover { color: var(--sf-primary-cta); }
 
     /* ---------- 14. Focus rings use brand CTA ---------- */
@@ -3551,6 +3605,8 @@
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sticky-top-wrap">
 
   <!-- ============================================================
        ROW 1 — UTILITY BAR
@@ -4095,26 +4151,58 @@
         <!-- Accessories -->
         <div class="mob-cat-item">
           <button class="mob-cat-trigger" aria-expanded="false">
-            Accessories <span class="mob-cat-chevron"><i data-lucide="chevron-down"></i></span>
+            Accessories <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
           </button>
           <div class="mob-cat-panel">
             <a href="/accessories.html" class="mob-cat-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
-            <div class="mob-cat-links">
-              <span class="mob-cat-group-head">Cable Ties</span>
-              <a href="#">Plain Ties</a>
-              <a href="#">Releasable Cable Ties</a>
-              <a href="#">Hook and Loop Ties</a>
-              <span class="mob-cat-group-head">Power Supplies / Batteries</span>
-              <a href="#">AC/DC Adapters</a>
-              <a href="#">Car Charger</a>
-              <a href="#">USB / Mobile Chargers</a>
-              <span class="mob-cat-group-head">Security Camera</span>
-              <a href="#">CCTV Camera</a>
-              <a href="#">Camera Cables/Adapters</a>
-              <a href="#">Camera Mounts / Housing Brackets</a>
-              <span class="mob-cat-group-head">Home/Office Accessories</span>
-              <a href="#">KVM Switches</a>
-              <a href="#">Tools &amp; Testers</a>
+            <div class="mob-cat-groups">
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="scissors"></i></span>
+                  <span class="mob-sub-label">Cable Ties</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Plain Ties</a>
+                  <a href="#">Releasable Cable Ties</a>
+                  <a href="#">Hook and Loop Ties</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="battery-charging"></i></span>
+                  <span class="mob-sub-label">Power Supplies / Batteries</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">AC/DC Adapters</a>
+                  <a href="#">Car Charger</a>
+                  <a href="#">USB / Mobile Chargers</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="camera"></i></span>
+                  <span class="mob-sub-label">Security Camera</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">CCTV Camera</a>
+                  <a href="#">Camera Cables/Adapters</a>
+                  <a href="#">Camera Mounts / Housing Brackets</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="monitor"></i></span>
+                  <span class="mob-sub-label">Home/Office Accessories</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">KVM Switches</a>
+                  <a href="#">Tools &amp; Testers</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -4122,11 +4210,11 @@
         <!-- Adapters & Connectors -->
         <div class="mob-cat-item">
           <button class="mob-cat-trigger" aria-expanded="false">
-            Adapters &amp; Connectors <span class="mob-cat-chevron"><i data-lucide="chevron-down"></i></span>
+            Adapters &amp; Connectors <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
           </button>
           <div class="mob-cat-panel">
             <a href="/adapters-connectors.html" class="mob-cat-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a>
-            <div class="mob-cat-links">
+            <div class="mob-flat-links">
               <a href="#">BNC Connectors</a>
               <a href="#">DisplayPort and Mini DP Adapters</a>
               <a href="#">DVI/Displayport Adapters</a>
@@ -4142,11 +4230,11 @@
         <!-- Audio Video -->
         <div class="mob-cat-item">
           <button class="mob-cat-trigger" aria-expanded="false">
-            Audio Video <span class="mob-cat-chevron"><i data-lucide="chevron-down"></i></span>
+            Audio Video <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
           </button>
           <div class="mob-cat-panel">
             <a href="/audio-video.html" class="mob-cat-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a>
-            <div class="mob-cat-links">
+            <div class="mob-flat-links">
               <a href="#">XLR / XLR Cables</a>
               <a href="#">RCA Cables</a>
               <a href="#">Speaker Wires</a>
@@ -4161,23 +4249,47 @@
         <!-- Cables -->
         <div class="mob-cat-item">
           <button class="mob-cat-trigger" aria-expanded="false">
-            Cables <span class="mob-cat-chevron"><i data-lucide="chevron-down"></i></span>
+            Cables <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
           </button>
           <div class="mob-cat-panel">
             <a href="/cables.html" class="mob-cat-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
-            <div class="mob-cat-links">
-              <span class="mob-cat-group-head">Bulk Wire &amp; Cables</span>
-              <a href="#">RG59 / RG6 Coaxial Bulk Cable</a>
-              <a href="#">Speaker Bulk Wire</a>
-              <a href="#">THHN Building Wire</a>
-              <span class="mob-cat-group-head">HDMI</span>
-              <a href="#">HDMI Cables</a>
-              <a href="#">HDMI Adapters</a>
-              <a href="#">HDMI Extension Cables</a>
-              <span class="mob-cat-group-head">USB</span>
-              <a href="#">USB Cables</a>
-              <a href="#">USB Hubs</a>
-              <a href="#">USB Extenders</a>
+            <div class="mob-cat-groups">
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="link-2"></i></span>
+                  <span class="mob-sub-label">Bulk Wire &amp; Cables</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">RG59 / RG6 Coaxial Bulk Cable</a>
+                  <a href="#">Speaker Bulk Wire</a>
+                  <a href="#">THHN Building Wire</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="tv"></i></span>
+                  <span class="mob-sub-label">HDMI</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">HDMI Cables</a>
+                  <a href="#">HDMI Adapters</a>
+                  <a href="#">HDMI Extension Cables</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="hard-drive"></i></span>
+                  <span class="mob-sub-label">USB</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">USB Cables</a>
+                  <a href="#">USB Hubs</a>
+                  <a href="#">USB Extenders</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -4185,19 +4297,29 @@
         <!-- Network Cables & Fiber -->
         <div class="mob-cat-item">
           <button class="mob-cat-trigger" aria-expanded="false">
-            Network Cables &amp; Fiber <span class="mob-cat-chevron"><i data-lucide="chevron-down"></i></span>
+            Network Cables &amp; Fiber <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
           </button>
           <div class="mob-cat-panel">
             <a href="/network-cables.html" class="mob-cat-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a>
-            <div class="mob-cat-links">
+            <div class="mob-flat-links">
               <a href="#">Cat 5E Cables</a>
               <a href="#">Cat 6 Cables</a>
               <a href="#">Cat 6A Cables</a>
               <a href="#">Cat 8 Shielded Booted Cables</a>
-              <span class="mob-cat-group-head">Fiber Optic Products</span>
-              <a href="#">OM3 Multimode Duplex</a>
-              <a href="#">OM4 Multimode Duplex</a>
-              <a href="#">Singlemode</a>
+            </div>
+            <div class="mob-cat-groups" style="margin-top:6px;">
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="radio"></i></span>
+                  <span class="mob-sub-label">Fiber Optic Products</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">OM3 Multimode Duplex</a>
+                  <a href="#">OM4 Multimode Duplex</a>
+                  <a href="#">Singlemode</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -4205,21 +4327,39 @@
         <!-- Networking -->
         <div class="mob-cat-item">
           <button class="mob-cat-trigger" aria-expanded="false">
-            Networking <span class="mob-cat-chevron"><i data-lucide="chevron-down"></i></span>
+            Networking <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
           </button>
           <div class="mob-cat-panel">
             <a href="/networking.html" class="mob-cat-seeall">See All Networking <i data-lucide="arrow-right"></i></a>
-            <div class="mob-cat-links">
+            <div class="mob-flat-links">
               <a href="#">Patch Panels</a>
               <a href="#">Keystone Jacks (Cat3, Cat5E, Cat6, 6A)</a>
               <a href="#">Cable Management</a>
               <a href="#">Media Converter</a>
-              <span class="mob-cat-group-head">Networking Racks</span>
-              <a href="#">Floorstand Racks</a>
-              <a href="#">Wallmount Racks</a>
-              <span class="mob-cat-group-head">Telephone</span>
-              <a href="#">Modular Cords</a>
-              <a href="#">Telephone Headset</a>
+            </div>
+            <div class="mob-cat-groups" style="margin-top:6px;">
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="server"></i></span>
+                  <span class="mob-sub-label">Networking Racks</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Floorstand Racks</a>
+                  <a href="#">Wallmount Racks</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="phone"></i></span>
+                  <span class="mob-sub-label">Telephone</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Modular Cords</a>
+                  <a href="#">Telephone Headset</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -4227,22 +4367,48 @@
         <!-- Power Cords & Adapters -->
         <div class="mob-cat-item">
           <button class="mob-cat-trigger" aria-expanded="false">
-            Power Cords &amp; Adapters <span class="mob-cat-chevron"><i data-lucide="chevron-down"></i></span>
+            Power Cords &amp; Adapters <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
           </button>
           <div class="mob-cat-panel">
             <a href="/power-cords-adapters.html" class="mob-cat-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a>
-            <div class="mob-cat-links">
+            <div class="mob-flat-links">
               <a href="#">Extension Power Cords</a>
               <a href="#">Multi-Outlet Extension Cords</a>
-              <span class="mob-cat-group-head">NEMA Power Cords</span>
-              <a href="#">NEMA 5-15 to IEC 320 C13</a>
-              <a href="#">NEMA 5-20</a>
-              <span class="mob-cat-group-head">Power Strips</span>
-              <a href="#">Power Strip</a>
-              <a href="#">PDU</a>
-              <span class="mob-cat-group-head">IEC320 Power Cords</span>
-              <a href="#">C14 to C13</a>
-              <a href="#">C14 to C19</a>
+            </div>
+            <div class="mob-cat-groups" style="margin-top:6px;">
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="plug"></i></span>
+                  <span class="mob-sub-label">NEMA Power Cords</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">NEMA 5-15 to IEC 320 C13</a>
+                  <a href="#">NEMA 5-20</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="layers"></i></span>
+                  <span class="mob-sub-label">Power Strips</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Power Strip</a>
+                  <a href="#">PDU</a>
+                </div>
+              </div>
+              <div class="mob-sub-group">
+                <div class="mob-sub-head">
+                  <span class="mob-sub-icon"><i data-lucide="zap"></i></span>
+                  <span class="mob-sub-label">IEC320 Power Cords</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">C14 to C13</a>
+                  <a href="#">C14 to C19</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -4268,6 +4434,8 @@
     </div><!-- /mobile-nav -->
     </div>
   </header>
+
+  </div><!-- /sticky-top-wrap -->
 
   <main id="main-content">
 
