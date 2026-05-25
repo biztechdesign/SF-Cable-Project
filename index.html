@@ -1962,7 +1962,7 @@
       display: grid; grid-template-columns: 2.6fr 1fr 1fr 1fr 1.2fr; gap: 24px;
       padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.15);
     }
-    .footer-brand img { height: 20px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-brand img { height: 20px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); opacity: 1; }
     .footer-brand-name {
       font-size: 22px; font-weight: 800; color: var(--white);
       margin-bottom: 18px; display: none;
@@ -2787,7 +2787,7 @@
     .search-btn:hover { background: var(--sf-shop-category-hover); }
     @media (max-width: 576px) {
       .search-input { height: 40px !important; }
-      .search-btn   { height: 40px !important; }
+      .search-btn   { height: 40px !important; min-width: 72px !important; padding: 0 22px !important; }
     }
     /* Help link: dark text on white row */
     .header-help-wrap { position: relative; display: flex; align-items: center; }
@@ -2835,13 +2835,14 @@
     @media (max-width: 900px) {
       .header-mid { min-height: 72px; height: auto; padding: 12px 0; }
       /* Larger search tap target on mobile */
-      .search-btn { min-width: 52px; padding: 0 16px; }
+      .search-btn { min-width: 72px; padding: 0 22px; }
       /* Larger mobile contact buttons */
       .mobile-contact-btn { width: 40px; height: 40px; border-radius: 10px; }
       .mobile-contact-btn svg.lucide { width: 22px; height: 22px; }
       /* Ensure mobile header buttons have good tap area */
       .mobile-header-btn { width: 40px; height: 40px; }
-      .mobile-menu-toggle { width: 40px; height: 40px; }
+      .mobile-menu-toggle { width: 44px; height: 44px; }
+      .mobile-menu-toggle svg.lucide { width: 26px; height: 26px; stroke-width: 2.0; }
     }
 
     /* ---------- 3. Nav bar (56px, #002648, white text) ---------- */
@@ -3452,7 +3453,7 @@
       cursor: pointer; font-family: var(--font);
       min-height: 48px;
     }
-    .mobile-shop-trigger svg.lucide { width: 22px; height: 22px; color: #ffffff; }
+    .mobile-shop-trigger svg.lucide { width: 28px; height: 28px; color: #ffffff; stroke-width: 2.0; }
     .mobile-shop-trigger .icon-close { display: none; }
     .mobile-shop-trigger.is-open .icon-menu { display: none; }
     .mobile-shop-trigger.is-open .icon-close { display: inline-block; }
@@ -3797,7 +3798,6 @@
             <i data-lucide="x" class="icon-close"></i>
           </button>
           <div class="mobile-shop-icons">
-            <a href="/help" class="mobile-shop-icon-btn" aria-label="Help"><i data-lucide="help-circle"></i></a>
             <a href="/account" class="mobile-shop-icon-btn" aria-label="My Account"><i data-lucide="user"></i></a>
             <a href="/cart" class="mobile-shop-icon-btn" aria-label="Cart">
               <i data-lucide="shopping-cart"></i>
