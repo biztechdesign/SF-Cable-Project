@@ -2804,6 +2804,14 @@
     .mobile-menu-toggle:hover { color: var(--sf-primary-cta); }
     @media (max-width: 900px) {
       .header-mid { min-height: 72px; height: auto; padding: 12px 0; }
+      /* Larger search tap target on mobile */
+      .search-btn { min-width: 52px; padding: 0 16px; }
+      /* Larger mobile contact buttons */
+      .mobile-contact-btn { width: 40px; height: 40px; border-radius: 10px; }
+      .mobile-contact-btn svg.lucide { width: 22px; height: 22px; }
+      /* Ensure mobile header buttons have good tap area */
+      .mobile-header-btn { width: 40px; height: 40px; }
+      .mobile-menu-toggle { width: 40px; height: 40px; }
     }
 
     /* ---------- 3. Nav bar (56px, #002648, white text) ---------- */
@@ -2829,6 +2837,8 @@
     }
     .nav-action-label { color: rgba(255,255,255,.65); }
     .nav-action-value { color: #ffffff; }
+    .nav-action-link:hover .nav-action-label,
+    .nav-action-link:hover .nav-action-value { color: var(--sf-primary-cta); }
     .nav-cart-price { color: #008dff !important; }
     .nav-cart-count { background: #008dff !important; }
     .nav-actions-sep { background: rgba(255,255,255,.18); }
@@ -2851,6 +2861,7 @@
     }
     .all-cats-trigger:hover { background: var(--sf-shop-category-hover); }
     .all-cats-trigger .nav-caret { color: #ffffff; }
+    .all-cats-trigger svg.lucide { stroke-width: 2.5; }
 
     /* ---------- 5. Global button system (6px radius, unified hover) ---------- */
     .btn { border-radius: var(--sf-radius-button); transition: background-color var(--sf-transition), color var(--sf-transition), border-color var(--sf-transition), box-shadow var(--sf-transition); }
@@ -3136,9 +3147,11 @@
     /* ---------- 9. Color swatches on top-rated product cards ---------- */
     .product-swatches {
       display: flex; gap: 8px; align-items: center;
-      margin-top: 8px;
+      margin-top: 4px; margin-bottom: 4px;
       min-height: 22px;
+      order: 3;
     }
+    .product-price { order: 4; }
     .product-swatch {
       width: 20px; height: 20px; border-radius: 50%;
       border: 1.5px solid rgba(0, 38, 72, 0.25);
