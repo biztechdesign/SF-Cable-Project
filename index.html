@@ -2680,10 +2680,10 @@
     .top-bar-chat { background: rgba(255,255,255,.10); color: #ffffff; }
     .top-bar-chat:hover { background: rgba(255,255,255,.20); }
     /* Promo carousel — desktop */
-    .top-bar .container { justify-content: space-between; align-items: center; position: relative; }
+    .top-bar .container { justify-content: space-between; align-items: stretch; position: relative; }
     .top-bar-promo {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      gap: 6px; min-width: 0; overflow: hidden;
+      flex: 1; display: flex; align-items: stretch; justify-content: center;
+      gap: 0; min-width: 0; overflow: hidden;
     }
     .promo-track {
       display: flex; align-items: center; justify-content: center;
@@ -2699,12 +2699,13 @@
     .promo-slide svg.lucide { width: 14px; height: 14px; flex-shrink: 0; color: #ffffff; }
     .promo-arrow {
       background: none; border: none; cursor: pointer;
-      color: rgba(255,255,255,.7); padding: 2px 5px;
+      color: #008dff; padding: 0 14px;
       display: flex; align-items: center; flex-shrink: 0;
+      align-self: stretch;
       transition: color 0.15s; line-height: 1;
     }
-    .promo-arrow:hover { color: #ffffff; }
-    .promo-arrow svg.lucide { width: 14px; height: 14px; }
+    .promo-arrow:hover { color: #5cb8ff; }
+    .promo-arrow svg.lucide { width: 20px; height: 20px; }
     /* Promo carousel — mobile ≤768px */
     @media (max-width: 768px) {
       .top-bar { min-height: 38px; height: auto; }
