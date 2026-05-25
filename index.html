@@ -1962,7 +1962,7 @@
       display: grid; grid-template-columns: 2.6fr 1fr 1fr 1fr 1.2fr; gap: 24px;
       padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.15);
     }
-    .footer-brand img { height: 20px; width: auto; max-width: 120px; margin-bottom: 12px; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-brand img { height: 20px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); opacity: .9; }
     .footer-brand-name {
       font-size: 22px; font-weight: 800; color: var(--white);
       margin-bottom: 18px; display: none;
@@ -3555,13 +3555,13 @@
 
     /* ≤768px: footer logo first step down */
     @media (max-width: 768px) {
-      .footer-brand img      { height: 18px; max-width: 100px; }
+      .footer-brand img      { height: 18px; }
     }
 
     /* ≤480px: shrink logo */
     @media (max-width: 480px) {
       .logo img              { height: 24px; width: auto; }
-      .footer-brand img      { height: 16px; max-width: 90px; }
+      .footer-brand img      { height: 16px; }
       .mobile-contact-btn    { width: 32px; height: 32px; }
       .mobile-contact-btn svg.lucide { width: 18px; height: 18px; }
     }
@@ -3570,7 +3570,7 @@
     @media (max-width: 360px) {
       .header-mid            { gap: 4px; }
       .logo img              { height: 24px; width: auto; }
-      .footer-brand img      { height: 14px; max-width: 80px; }
+      .footer-brand img      { height: 14px; }
       .mobile-contact-btns   { gap: 6px; }
     }
 
@@ -3579,7 +3579,7 @@
       .container             { padding: 0 6px; }
       .header-mid            { gap: 2px; }
       .logo img              { height: 24px; width: auto; }
-      .footer-brand img      { height: 12px; max-width: 70px; }
+      .footer-brand img      { height: 12px; }
     }
 
     /* ---------- 13. Mobile nav links / mobile background ---------- */
