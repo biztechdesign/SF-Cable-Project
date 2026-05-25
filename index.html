@@ -3457,6 +3457,9 @@
     .mobile-shop-trigger .icon-close { display: none; }
     .mobile-shop-trigger.is-open .icon-menu { display: none; }
     .mobile-shop-trigger.is-open .icon-close { display: inline-block; }
+    .mobile-shop-label { font-size: 15px; font-weight: 700; color: #ffffff; letter-spacing: 0.2px; }
+    .mobile-shop-trigger.is-open .mobile-shop-label { display: none; }
+    .mobile-help-active { color: var(--sf-primary-cta) !important; }
     .mobile-shop-icons {
       display: flex; align-items: center; gap: 0;
     }
@@ -3618,6 +3621,28 @@
     .mobile-nav { background: #0B1F3A; }
     .mobile-nav-link:hover { color: var(--sf-primary-cta); }
 
+    /* Help panel header (title + close button) */
+    .mob-help-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 0 14px;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      margin-bottom: 4px;
+    }
+    .mob-help-title {
+      display: flex; align-items: center; gap: 8px;
+      color: #ffffff; font-size: 16px; font-weight: 700; letter-spacing: 0.2px;
+    }
+    .mob-help-title svg.lucide { width: 18px; height: 18px; color: var(--sf-primary-cta); flex-shrink: 0; }
+    .mob-help-close {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,.08); border: none;
+      color: rgba(255,255,255,.7); cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mob-help-close:hover { background: rgba(255,255,255,.18); color: #ffffff; }
+    .mob-help-close svg.lucide { width: 18px; height: 18px; }
+
     /* ---------- 14. Focus rings use brand CTA ---------- */
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
     [role="tab"]:focus-visible, [role="option"]:focus-visible {
@@ -3696,10 +3721,10 @@
           <i data-lucide="chevron-left"></i>
         </button>
         <div class="promo-track">
-          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;Memorial Day Sale &mdash; 10% Off Any Order with Code: <strong>MEMORIAL10</strong></span>
-          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping on orders over $75</span>
-          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on All Cables</span>
-          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping on Stock Items</span>
+          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;10% Off — Code: <strong>MEMORIAL10</strong></span>
+          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping over $75</span>
+          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on Cables</span>
+          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping Available</span>
         </div>
         <button class="promo-arrow promo-next" aria-label="Next promotion">
           <i data-lucide="chevron-right"></i>
@@ -3793,11 +3818,13 @@
     <div class="mobile-shop-bar" id="mobile-shop-bar">
       <div class="container">
         <div class="mobile-shop-bar-inner">
-          <button class="mobile-shop-trigger" id="mobile-shop-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <button class="mobile-shop-trigger" id="mobile-shop-toggle" aria-label="Toggle shop menu" aria-expanded="false">
             <i data-lucide="menu" class="icon-menu"></i>
             <i data-lucide="x" class="icon-close"></i>
+            <span class="mobile-shop-label">Shop</span>
           </button>
           <div class="mobile-shop-icons">
+            <button class="mobile-shop-icon-btn" id="mobile-help-toggle" aria-label="Help" aria-expanded="false"><i data-lucide="help-circle"></i></button>
             <a href="/account" class="mobile-shop-icon-btn" aria-label="My Account"><i data-lucide="user"></i></a>
             <a href="/cart" class="mobile-shop-icon-btn" aria-label="Cart">
               <i data-lucide="shopping-cart"></i>
@@ -4241,13 +4268,7 @@
     <!-- Mobile nav (two-tab: Shop / Account) -->
     <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
 
-      <!-- Tab bar -->
-      <div class="mob-nav-tabs">
-        <button class="mob-nav-tab active" data-tab="mob-tab-shop">Shop</button>
-        <button class="mob-nav-tab" data-tab="mob-tab-account">Help</button>
-      </div>
-
-      <!-- ===== SHOP TAB ===== -->
+      <!-- ===== SHOP PANEL ===== -->
       <div class="mob-nav-panel" id="mob-tab-shop">
 
         <!-- Accessories -->
@@ -4517,8 +4538,15 @@
 
       </div><!-- /mob-tab-shop -->
 
-      <!-- ===== HELP TAB ===== -->
+      <!-- ===== HELP PANEL ===== -->
       <div class="mob-nav-panel" id="mob-tab-account" style="display:none">
+        <!-- Panel header -->
+        <div class="mob-help-header">
+          <span class="mob-help-title"><i data-lucide="help-circle"></i> Help</span>
+          <button class="mob-help-close" id="mob-help-close" aria-label="Close Help menu">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
         <a href="/quick-order" class="mobile-nav-link">
           <i data-lucide="zap"></i> <span>Quick Order</span>
         </a>
@@ -5353,21 +5381,84 @@
     })();
 
     /* ---- Mobile nav toggle (hamburger open/close) ---- */
-    const mobileNav = document.getElementById('mobile-nav');
-    function bindMenuToggle(btn) {
-      if (!btn || !mobileNav) return;
-      btn.addEventListener('click', () => {
-        const isOpen = mobileNav.classList.toggle('open');
-        btn.setAttribute('aria-expanded', isOpen);
-        mobileNav.setAttribute('aria-hidden', !isOpen);
-        btn.classList.toggle('is-open', isOpen);
-        /* keep both toggles in sync */
-        [document.getElementById('mobile-menu-toggle'), document.getElementById('mobile-shop-toggle')]
-          .forEach(t => t && t !== btn && t.classList.toggle('is-open', isOpen));
-      });
-    }
-    bindMenuToggle(document.getElementById('mobile-menu-toggle'));
-    bindMenuToggle(document.getElementById('mobile-shop-toggle'));
+    (function () {
+      var mobileNav    = document.getElementById('mobile-nav');
+      var shopPanel    = document.getElementById('mob-tab-shop');
+      var helpPanel    = document.getElementById('mob-tab-account');
+      var shopToggle   = document.getElementById('mobile-shop-toggle');
+      var helpToggle   = document.getElementById('mobile-help-toggle');
+      var tabToggle    = document.getElementById('mobile-menu-toggle'); /* 769-900px header btn */
+
+      if (!mobileNav) return;
+
+      function showPanel(panel) {
+        if (shopPanel) shopPanel.style.display = 'none';
+        if (helpPanel) helpPanel.style.display = 'none';
+        if (panel)     panel.style.display      = 'block';
+      }
+
+      function openNav(panel) {
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        showPanel(panel);
+      }
+
+      function closeNav() {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        [shopToggle, tabToggle].forEach(function(t) {
+          if (t) { t.setAttribute('aria-expanded', 'false'); t.classList.remove('is-open'); }
+        });
+        if (helpToggle) { helpToggle.setAttribute('aria-expanded', 'false'); helpToggle.classList.remove('mobile-help-active'); }
+      }
+
+      function isNavOpen() { return mobileNav.classList.contains('open'); }
+
+      /* Hamburger / Shop toggle */
+      if (shopToggle) {
+        shopToggle.addEventListener('click', function () {
+          if (isNavOpen() && shopPanel && shopPanel.style.display !== 'none') {
+            closeNav(); /* already showing shop → close */
+          } else {
+            openNav(shopPanel);
+            shopToggle.setAttribute('aria-expanded', 'true');
+            shopToggle.classList.add('is-open');
+            if (tabToggle) { tabToggle.classList.add('is-open'); tabToggle.setAttribute('aria-expanded', 'true'); }
+            if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+      }
+
+      /* Help icon toggle */
+      if (helpToggle) {
+        helpToggle.addEventListener('click', function () {
+          if (isNavOpen() && helpPanel && helpPanel.style.display !== 'none') {
+            closeNav(); /* already showing help → close */
+          } else {
+            openNav(helpPanel);
+            helpToggle.setAttribute('aria-expanded', 'true');
+            helpToggle.classList.add('mobile-help-active');
+            if (shopToggle) { shopToggle.classList.remove('is-open'); shopToggle.setAttribute('aria-expanded', 'false'); }
+            if (tabToggle)  { tabToggle.classList.remove('is-open');  tabToggle.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+      }
+
+      /* Tablet header hamburger (769-900px) — always shows shop */
+      if (tabToggle) {
+        tabToggle.addEventListener('click', function () {
+          if (isNavOpen() && shopPanel && shopPanel.style.display !== 'none') {
+            closeNav();
+          } else {
+            openNav(shopPanel);
+            tabToggle.setAttribute('aria-expanded', 'true');
+            tabToggle.classList.add('is-open');
+            if (shopToggle) { shopToggle.classList.add('is-open'); shopToggle.setAttribute('aria-expanded', 'true'); }
+            if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+      }
+    })();
 
     /* ---- Desktop Help dropdown ---- */
     (function () {
@@ -5401,16 +5492,20 @@
       });
     })();
 
-    /* ---- Mobile nav: tab switching (Shop / Help) ---- */
-    document.querySelectorAll('.mob-nav-tab').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        document.querySelectorAll('.mob-nav-tab').forEach(function(t) { t.classList.remove('active'); });
-        document.querySelectorAll('.mob-nav-panel').forEach(function(p) { p.style.display = 'none'; });
-        tab.classList.add('active');
-        var panel = document.getElementById(tab.dataset.tab);
-        if (panel) panel.style.display = 'block';
+
+    /* ---- Help panel close button ---- */
+    (function () {
+      var closeBtn = document.getElementById('mob-help-close');
+      if (!closeBtn) return;
+      closeBtn.addEventListener('click', function () {
+        var nav = document.getElementById('mobile-nav');
+        var helpToggle = document.getElementById('mobile-help-toggle');
+        if (nav) { nav.classList.remove('open'); nav.setAttribute('aria-hidden', 'true'); }
+        if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded', 'false'); }
+        var shopToggle = document.getElementById('mobile-shop-toggle');
+        if (shopToggle) { shopToggle.classList.remove('is-open'); shopToggle.setAttribute('aria-expanded', 'false'); }
       });
-    });
+    })();
 
     /* ---- Mobile nav: category accordion ---- */
     document.querySelectorAll('.mob-cat-trigger').forEach(function(trigger) {
