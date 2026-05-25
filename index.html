@@ -5375,10 +5375,13 @@
       var dropdown = document.getElementById('helpMenuDropdown');
       if (!trigger || !dropdown) return;
 
-      function openHelp()  { dropdown.classList.add('open');    trigger.setAttribute('aria-expanded', 'true'); }
+      var hoverTimer;
+      function openHelp()  { clearTimeout(hoverTimer); dropdown.classList.add('open');    trigger.setAttribute('aria-expanded', 'true'); }
       function closeHelp() { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); }
+      function closeHelpDelayed() { hoverTimer = setTimeout(closeHelp, 150); }
       function toggleHelp(e) { e.stopPropagation(); dropdown.classList.contains('open') ? closeHelp() : openHelp(); }
 
+      /* Click & keyboard */
       trigger.addEventListener('click', toggleHelp);
       trigger.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleHelp(e); }
@@ -5387,8 +5390,14 @@
       dropdown.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') { closeHelp(); trigger.focus(); }
       });
+
+      /* Hover */
+      var wrap = document.getElementById('helpMenuWrap');
+      wrap.addEventListener('mouseenter', openHelp);
+      wrap.addEventListener('mouseleave', closeHelpDelayed);
+
       document.addEventListener('click', function(e) {
-        if (!document.getElementById('helpMenuWrap').contains(e.target)) closeHelp();
+        if (!wrap.contains(e.target)) closeHelp();
       });
     })();
 
