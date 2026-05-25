@@ -2679,10 +2679,38 @@
     .top-bar-separator { background: rgba(255,255,255,.28); }
     .top-bar-chat { background: rgba(255,255,255,.10); color: #ffffff; }
     .top-bar-chat:hover { background: rgba(255,255,255,.20); }
+    /* Promo carousel — desktop */
+    .top-bar .container { justify-content: space-between; align-items: center; position: relative; }
+    .top-bar-promo {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 6px; min-width: 0; overflow: hidden;
+    }
+    .promo-track {
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; min-width: 0;
+    }
+    .promo-slide {
+      display: none; align-items: center; gap: 5px;
+      color: #ffffff; font-size: 13px; font-weight: 500;
+      white-space: nowrap;
+    }
+    .promo-slide.active { display: inline-flex; }
+    .promo-slide strong { font-weight: 700; }
+    .promo-slide svg.lucide { width: 14px; height: 14px; flex-shrink: 0; color: #ffffff; }
+    .promo-arrow {
+      background: none; border: none; cursor: pointer;
+      color: rgba(255,255,255,.7); padding: 2px 5px;
+      display: flex; align-items: center; flex-shrink: 0;
+      transition: color 0.15s; line-height: 1;
+    }
+    .promo-arrow:hover { color: #ffffff; }
+    .promo-arrow svg.lucide { width: 14px; height: 14px; }
+    /* Promo carousel — mobile ≤768px */
     @media (max-width: 768px) {
       .top-bar { min-height: 38px; height: auto; }
       .top-bar .container { justify-content: center; }
-      .top-bar-left { justify-content: center; flex: 1; }
+      .top-bar-right { display: none; }
+      .top-bar-promo { justify-content: center; flex: unset; }
     }
 
     /* ---------- 2. Logo / search row (72px, white) ---------- */
@@ -3615,12 +3643,24 @@
   ============================================================ -->
   <div class="top-bar" role="complementary" aria-label="Trust and utility links">
     <div class="container">
-      <div class="top-bar-left">
-        <span class="top-bar-item">
-          <i data-lucide="truck"></i>
-          Free Shipping on orders over $75
-        </span>
+
+      <!-- Centered promo carousel -->
+      <div class="top-bar-promo">
+        <button class="promo-arrow promo-prev" aria-label="Previous promotion">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="promo-track">
+          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;Memorial Day Sale &mdash; 10% Off Any Order with Code: <strong>MEMORIAL10</strong></span>
+          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping on orders over $75</span>
+          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on All Cables</span>
+          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping on Stock Items</span>
+        </div>
+        <button class="promo-arrow promo-next" aria-label="Next promotion">
+          <i data-lucide="chevron-right"></i>
+        </button>
       </div>
+
+      <!-- Right: phone + chat -->
       <div class="top-bar-right">
         <span class="top-bar-item">
           <i data-lucide="phone"></i>
@@ -3631,6 +3671,7 @@
           <i data-lucide="message-circle"></i> Chat With Us
         </a>
       </div>
+
     </div>
   </div>
 
@@ -5648,6 +5689,26 @@
       clearTimeout(_eqTimer);
       _eqTimer = setTimeout(equalizeProductCardHeights, 150);
     });
+
+    /* Promo bar carousel */
+    (function () {
+      var slides = document.querySelectorAll('.promo-slide');
+      var current = 0;
+      var timer;
+      if (!slides.length) return;
+
+      function show(idx) {
+        slides[current].classList.remove('active');
+        current = (idx + slides.length) % slides.length;
+        slides[current].classList.add('active');
+      }
+      function startAuto() { timer = setInterval(function () { show(current + 1); }, 5000); }
+      function resetAuto() { clearInterval(timer); startAuto(); }
+
+      document.querySelector('.promo-prev').addEventListener('click', function () { show(current - 1); resetAuto(); });
+      document.querySelector('.promo-next').addEventListener('click', function () { show(current + 1); resetAuto(); });
+      startAuto();
+    })();
 
     /* Initialise all Lucide icons */
     lucide.createIcons({
