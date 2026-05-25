@@ -2745,7 +2745,7 @@
         left: auto !important; width: auto !important; max-width: none;
         margin: 0;
       }
-      .header-help       { flex-shrink: 0; margin-left: 0; position: static; order: unset; }
+      .header-help-wrap, .header-help { flex-shrink: 0; margin-left: 0; position: static; order: unset; }
     }
     /* ≥901px: desktop — 3-col grid: logo (left) | search (centre) | help (right) */
     @media (min-width: 901px) {
@@ -2763,6 +2763,7 @@
         position: static !important; transform: none !important;
         left: auto !important; z-index: auto;
       }
+      .header-help-wrap { justify-self: end; flex-shrink: 0; margin-left: 0; position: static; }
       .header-help { justify-self: end; flex-shrink: 0; margin-left: 0; position: static; }
     }
     /* Logo: natural aspect ratio, width-constrained, never stretched */
@@ -3564,6 +3565,7 @@
     @media (max-width: 768px) {
       /* Hide old icon row — replaced by contact-btns + mobile-shop-bar */
       .mobile-header-actions { display: none !important; }
+      .header-help-wrap,
       .header-help           { display: none !important; }
 
       /* Row 1: Logo (left) + contact buttons (right) */
