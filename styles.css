@@ -1138,6 +1138,14 @@
       transition: none;
     }
     #categoriesTrack2 .category-card:hover .cat-img-wrap img { transform: none; }
+    /* 1024px–1200px: 5 columns */
+    @media (max-width: 1200px) and (min-width: 1025px) {
+      #categoriesTrack2 { grid-template-columns: repeat(5, 1fr); }
+    }
+    /* 900px–1024px: 4 columns */
+    @media (max-width: 1024px) and (min-width: 901px) {
+      #categoriesTrack2 { grid-template-columns: repeat(4, 1fr); }
+    }
     /* ≤900px: 4 columns */
     @media (max-width: 900px) {
       #categoriesTrack2 { grid-template-columns: repeat(4, 1fr); gap: 12px; }
