@@ -63,6 +63,27 @@
       transition: color var(--transition);
     }
     .cat-desc-link:hover { color: var(--red-dark); text-decoration: underline; }
+
+    /* ── Page title — uses shared .listing-page-heading from styles.css ─ */
+
+    /* ── Remove image zoom on hover only — card effects preserved ── */
+    #categoriesTrack2 .cat-img-wrap img,
+    #categoriesTrack2 .category-card:hover .cat-img-wrap img {
+      object-fit: contain !important;
+      transform: none !important;
+      transition: none !important;
+      mix-blend-mode: normal !important;
+    }
+
+    /* ── Image container: transparent base, home-page-matching hover ── */
+    #categoriesTrack2 .cat-img-wrap {
+      background: transparent !important;
+    }
+    #categoriesTrack2 .category-card:hover .cat-img-wrap {
+      background: rgb(233, 238, 242) !important;
+    }
+
+    /* ── Category description text — uses shared .listing-desc from styles.css ── */
   </style>
 </head>
 <body>
@@ -870,7 +891,9 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
-        <li class="breadcrumb-item breadcrumb-current" aria-current="page">All Categories</li>
+        <li class="breadcrumb-item"><a href="/categories.html">All Categories</a></li>
+        <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+        <li class="breadcrumb-item breadcrumb-current" aria-current="page">Audio Video</li>
       </ol>
     </div>
   </nav>
@@ -880,63 +903,118 @@
     <!-- ============================================================
          CATEGORY LISTING
     ============================================================ -->
-    <section class="section" style="padding: 40px 0 24px;" aria-labelledby="categories-heading">
+    <section class="section--page-title" aria-labelledby="categories-heading">
       <div class="container">
         <div class="section-header">
           <div class="section-header-row">
-            <h1 class="section-title" id="categories-heading">All Categories</h1>
+            <h1 class="section-title listing-page-heading" id="categories-heading">Audio Video</h1>
           </div>
-          <p class="section-subtitle">Browse our complete selection of cables, adapters, and networking products.</p>
         </div>
         <div class="categories-track-wrap">
           <div class="categories-grid" id="categoriesTrack2">
-            <a href="/power-cords.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/power.png" alt="Power Cord" loading="lazy"></div>
-              <div class="cat-text"><h3>Power Cords</h3><span class="cat-count">180+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/1-4-in-to-1-4-in-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/14%20to%2014%20Cables.png" alt="1/4&quot; to 1/4&quot; Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>1/4" to 1/4" Cables</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/network-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/network.png" alt="Network Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>Network Cables</h3><span class="cat-count">300+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/1-4-in-plug-to-rca-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/14%20to%20RCA%20Cables.png" alt="1/4&quot; to RCA Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>1/4" to RCA Cables</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/adapters-connectors.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/connectors.png" alt="USB-C Adapter" loading="lazy"></div>
-              <div class="cat-text"><h3>Adapters &amp; Connectors</h3><span class="cat-count">400+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/2-5mm-3-5mm-stereo-audio-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/2.5mm3.5mm%20Cables.png" alt="2.5mm/3.5mm Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>2.5mm/3.5mm Cables</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/extension-cords.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Extension.png" alt="Extension Cord" loading="lazy"></div>
-              <div class="cat-text"><h3>Extension Cords</h3><span class="cat-count">55+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/ht-antennas.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Antennas.png" alt="Antennas" loading="lazy"></div>
+              <div class="cat-text"><h3>Antennas</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/hdmi-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/hdmi.png" alt="HDMI Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>HDMI Cables</h3><span class="cat-count">150+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/audio-splitter-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Audio%20Stereo%20Y%20Adapter%20Cable.png" alt="Audio Stereo Y Adapter Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>Audio Stereo Y Adapter Cable</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/usb-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/usb.png" alt="USB Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>USB Cables</h3><span class="cat-count">200+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/component-video-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Component%20Video%20Cables.png" alt="Component Video Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>Component Video Cables</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/fiber-optics.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Fibreoptic.png" alt="Fiber Optic Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>Fiber Optics</h3><span class="cat-count">120+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/component-optical-digital-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Digital%20Audio%20%20Video%20Cables.png" alt="Digital Audio / Video Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>Digital Audio / Video Cables</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/audio-video.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/audio.png" alt="Audio Video Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>Audio &amp; Video</h3><span class="cat-count">90+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/ethernet-extenders.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Ethernet%20Extenders.png" alt="Ethernet Extenders" loading="lazy"></div>
+              <div class="cat-text"><h3>Ethernet Extenders</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/accessories.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/accessories.png" alt="Cable Accessories" loading="lazy"></div>
-              <div class="cat-text"><h3>Accessories</h3><span class="cat-count">200+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/headset-microphone.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Microphone.png" alt="Microphone" loading="lazy"></div>
+              <div class="cat-text"><h3>Microphone</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/displayport-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/display.png" alt="DisplayPort Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>DisplayPort</h3><span class="cat-count">60+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/pattern-generator.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Pattern%20Generator.png" alt="Pattern Generator" loading="lazy"></div>
+              <div class="cat-text"><h3>Pattern Generator</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/coaxial-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/coaxial.png" alt="Coaxial Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>Coaxial Cables</h3><span class="cat-count">45+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/rca-3-5-mm-cable.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/RCA%20%203.5mm%20Cables.png" alt="RCA / 3.5mm Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>RCA / 3.5mm Cables</h3><span class="cat-count"></span></div>
             </a>
-            <a href="/serial-data-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/data.png" alt="Serial Data Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>Serial &amp; Data</h3><span class="cat-count">80+ Products</span></div>
+            <a href="https://www.sfcable.com/audio-video-accessories/rca-audio-video-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/RCA%20Cables.png" alt="RCA Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>RCA Cables</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/recessed-wall-plates.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Recessed%20Wall%20Plates.png" alt="Recessed Wall Plates" loading="lazy"></div>
+              <div class="cat-text"><h3>Recessed Wall Plates</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/rg59-coaxial-cable.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/RG59%20Coaxial%20Cables.png" alt="RG59 Coaxial Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>RG59 Coaxial Cables</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/rg6-coaxial-cable.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/RG6%20Coax%20Cables.png" alt="RG6 Coax Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>RG6 Coax Cables</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/svideo-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/S-Video%20Cables.png" alt="S-Video Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>S-Video Cables</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/speaker-wire-cable.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Speaker%20Wires.png" alt="Speaker Wires" loading="lazy"></div>
+              <div class="cat-text"><h3>Speaker Wires</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/audio-switch-splitter.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Switches%20%26%20Splitters.png" alt="Switches &amp; Splitters" loading="lazy"></div>
+              <div class="cat-text"><h3>Switches &amp; Splitters</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/tv-signal-splitter.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/TV%20Signal%20Splitter.png" alt="TV Signal Splitter" loading="lazy"></div>
+              <div class="cat-text"><h3>TV Signal Splitter</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/audio-wallplate.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Wall%20Plates.png" alt="Wall Plates" loading="lazy"></div>
+              <div class="cat-text"><h3>Wall Plates</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/wireless-presentation-systems.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/Wireless%20Presentation%20Systems.png" alt="Wireless Presentation Systems" loading="lazy"></div>
+              <div class="cat-text"><h3>Wireless Presentation Systems</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/xlr-to-1-4-stereo-cable.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%2014%20Stereo%20Cable.png" alt="XLR to 1/4&quot; Stereo Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>XLR to 1/4" Stereo Cable</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/xlr-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20%20XLR%20Cables.png" alt="XLR / XLR Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>XLR / XLR Cables</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/xlr-14inches-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%2014%20Cables.png" alt="XLR to 1/4&quot; Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>XLR to 1/4" Cables</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/xlr-stereo-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%203.5mm%20Cables.png" alt="XLR to 3.5mm Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>XLR to 3.5mm Cables</h3><span class="cat-count"></span></div>
+            </a>
+            <a href="https://www.sfcable.com/audio-video-accessories/xlr-rca-stereo-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%20RCA%20Cables.png" alt="XLR to RCA Cables" loading="lazy"></div>
+              <div class="cat-text"><h3>XLR to RCA Cables</h3><span class="cat-count"></span></div>
             </a>
           </div>
         </div>
@@ -946,10 +1024,16 @@
     <!-- ============================================================
          CATEGORY DESCRIPTION
     ============================================================ -->
-    <section class="section-sm" aria-label="About SF Cable categories">
+    <section class="section-sm listing-desc" aria-label="About SF Cable categories">
       <div class="container">
         <p class="section-subtitle">
-          SF Cable has supplied businesses, professionals, and residential customers with reliable cable solutions since 1996. Our catalog spans 12 primary categories and over 10,000 individual products — from everyday HDMI and USB cables to specialized fiber optic assemblies, bulk wiring, and industrial power cords. Every order over $75 ships free, and all cables are covered by our lifetime warranty. Need help finding the right product? <a href="/contact-us" class="cat-desc-link">Contact our team</a>.
+          Our range of audio/video equipment and cables includes everything from microphones, generators, antennas to speaker wires, extenders and wall plates and is one of the widest you will find on any online store.
+        </p>
+        <p class="section-subtitle">
+          You can choose the right audio/video cables based on the length and equipment to which it will be connected to. Apart from various cables we also have various audio video equipment and accessories like antennas, ethernet extenders, pattern generators, wall plates, wireless presentation systems, microphones, etc.
+        </p>
+        <p class="section-subtitle">
+          We specialize in providing high quality products at the lowest prices on the internet (upto 90% off retail price). We also provide lifetime technical support and lifetime warranty on cables.
         </p>
       </div>
     </section>
