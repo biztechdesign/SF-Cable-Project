@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse all cable categories at SF Cable — Power Cords, Network Cables, HDMI, USB, Fiber Optics, Adapters, Audio Video, and more. Over 10,000 products with free shipping over $75." />
+  <meta name="keywords" content="cable categories, HDMI cables, USB cables, network cables, fiber optics, power cords, adapters, connectors, SF Cable" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="All Categories – SF Cable | Cables, Adapters & Connectors" />
+  <meta property="og:description" content="Shop all 12 cable categories at SF Cable. Free shipping over $75. Lifetime warranty on all cables." />
+  <meta property="og:type" content="website" />
+  <title>All Categories — SF Cable | Cables, Adapters &amp; Connectors</title>
+  <link rel="canonical" href="https://www.sfcable.com/categories" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Shared site styles -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Page-specific styles (breadcrumb only — all tokens from shared design system) -->
+  <style>
+    /* ── Breadcrumb ─────────────────────────────────────────────── */
+    .breadcrumb-nav {
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+      padding: 10px 0;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2px;
+      list-style: none;
+    }
+    .breadcrumb-item a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .breadcrumb-item a:hover { color: var(--red); }
+    .breadcrumb-item.breadcrumb-current {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .breadcrumb-sep {
+      display: flex;
+      align-items: center;
+      color: var(--gray-500);
+      padding: 0 2px;
+    }
+    .breadcrumb-sep svg.lucide { width: 14px; height: 14px; }
+
+    /* ── Category description link ──────────────────────────────── */
+    .cat-desc-link {
+      color: var(--red);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .cat-desc-link:hover { color: var(--red-dark); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sticky-top-wrap">
+
+  <!-- ============================================================
+       ROW 1 — UTILITY BAR
+  ============================================================ -->
+  <div class="top-bar" role="complementary" aria-label="Trust and utility links">
+    <div class="container">
+
+      <!-- Centered promo carousel -->
+      <div class="top-bar-promo">
+        <button class="promo-arrow promo-prev" aria-label="Previous promotion">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="promo-track">
+          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;10% Off — Code: <strong>MEMORIAL10</strong></span>
+          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping over $75</span>
+          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on Cables</span>
+          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping Available</span>
+        </div>
+        <button class="promo-arrow promo-next" aria-label="Next promotion">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Right: phone + chat -->
+      <div class="top-bar-right">
+        <span class="top-bar-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:18882758755">1-888-275-8755</a>
+        </span>
+        <div class="top-bar-separator"></div>
+        <a href="/chat" class="top-bar-item" style="color:#ffffff; text-decoration:none;">
+          <i data-lucide="message-circle"></i> Chat With Us
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ROW 2 — MIDDLE HEADER (Logo + Search + Account/Cart)
+  ============================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <div class="header-mid">
+
+        <!-- Logo -->
+        <a href="/" class="logo" aria-label="SF Cable – Home">
+          <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="160" height="48" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="logo-fallback" style="display:none;"><span style="color:var(--red)">SF</span><span>Cable</span></div>
+        </a>
+
+        <!-- Search -->
+        <div class="header-search-wrap" id="search-wrap">
+          <form class="header-search" role="search" action="/search" method="get" autocomplete="off">
+            <input class="search-input" id="search-input" type="search" name="q" placeholder="Search by SKU, product type, connector, cable standard, or use case" aria-label="Search products" autocomplete="off" />
+            <button class="search-btn" type="submit" aria-label="Search"><i data-lucide="search"></i></button>
+          </form>
+          <div class="search-dropdown" id="search-dropdown" role="listbox"></div>
+        </div>
+
+        <!-- Help (desktop) — dropdown -->
+        <div class="header-help-wrap" id="helpMenuWrap">
+          <button class="header-help" id="helpMenuTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="helpMenuDropdown">
+            <i data-lucide="help-circle"></i> Help <i data-lucide="chevron-down" class="help-caret"></i>
+          </button>
+          <div class="header-help-dropdown" id="helpMenuDropdown" role="menu" aria-label="Help menu">
+            <a href="/get-quote" role="menuitem"><i data-lucide="file-text"></i> Get Quote</a>
+            <a href="/order-tracking" role="menuitem"><i data-lucide="package"></i> Order Tracking</a>
+            <a href="/change-cancel-order" role="menuitem"><i data-lucide="x-circle"></i> Change / Cancel Order</a>
+            <a href="/shipping-information" role="menuitem"><i data-lucide="truck"></i> Shipping Information</a>
+            <a href="/schools-government" role="menuitem"><i data-lucide="building-2"></i> Schools &amp; Government</a>
+            <a href="/payment-terms" role="menuitem"><i data-lucide="credit-card"></i> Payment Terms</a>
+            <a href="/returns-refunds" role="menuitem"><i data-lucide="rotate-ccw"></i> Returns / Refunds</a>
+            <a href="/warranty-claims" role="menuitem"><i data-lucide="shield-check"></i> Warranty / Claims</a>
+            <a href="/will-call" role="menuitem"><i data-lucide="map-pin"></i> Will Call</a>
+            <a href="/contact-us" role="menuitem"><i data-lucide="mail"></i> Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Mobile contact buttons (phone + chat) — row 1 right side, ≤768px only -->
+        <div class="mobile-contact-btns">
+          <a href="tel:+18005557226" class="mobile-contact-btn mobile-contact-phone" aria-label="Call us">
+            <i data-lucide="phone"></i>
+          </a>
+          <a href="/live-chat" class="mobile-contact-btn mobile-contact-chat" aria-label="Live chat">
+            <i data-lucide="message-circle"></i>
+          </a>
+        </div>
+
+        <!-- Mobile actions (visible on tablet 769–900px only) -->
+        <div class="mobile-header-actions">
+          <a href="/help" class="mobile-header-btn" aria-label="Help"><i data-lucide="help-circle"></i></a>
+          <a href="/account" class="mobile-header-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+          <a href="/cart" class="mobile-header-btn" aria-label="Cart">
+            <i data-lucide="shopping-cart"></i>
+            <span class="cart-count" aria-live="polite">0</span>
+          </a>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile shop bar — row 3, ≤768px only -->
+    <div class="mobile-shop-bar" id="mobile-shop-bar">
+      <div class="container">
+        <div class="mobile-shop-bar-inner">
+          <button class="mobile-shop-trigger" id="mobile-shop-toggle" aria-label="Toggle shop menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+            <span class="mobile-shop-label">Shop</span>
+          </button>
+          <div class="mobile-shop-icons">
+            <button class="mobile-shop-icon-btn" id="mobile-help-toggle" aria-label="Help" aria-expanded="false"><i data-lucide="help-circle"></i></button>
+            <a href="/account" class="mobile-shop-icon-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+            <a href="/cart" class="mobile-shop-icon-btn" aria-label="Cart">
+              <i data-lucide="shopping-cart"></i>
+              <span class="mobile-shop-cart-count" aria-live="polite">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         ROW 3 — BOTTOM NAV (Categories + Nav + Quick Order)
+    ============================================================ -->
+    <div class="nav-bar" id="nav-bar">
+      <div class="container">
+        <div class="nav-bar-inner">
+
+          <!-- All Categories trigger -->
+          <button class="all-cats-trigger" id="allCatsTrigger" aria-expanded="false" aria-controls="megaMenuWrap">
+            <i data-lucide="menu"></i> Shop by Category <i data-lucide="chevron-down" class="nav-caret"></i>
+          </button>
+
+          <!-- Nav right actions: Quick Order | My Account | Cart -->
+          <div class="nav-actions">
+            <a href="/quick-order" class="nav-action-link">
+              <i data-lucide="file-text"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Fast</span>
+                <span class="nav-action-value">Quick Order</span>
+              </span>
+            </a>
+            <a href="/account" class="nav-action-link">
+              <i data-lucide="user"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Sign In</span>
+                <span class="nav-action-value">My Account</span>
+              </span>
+            </a>
+            <div class="nav-actions-sep"></div>
+            <a href="/cart" class="nav-action-link nav-action-cart">
+              <span class="nav-action-icon-wrap">
+                <i data-lucide="shopping-cart"></i>
+                <span class="nav-cart-count" id="nav-cart-count" aria-live="polite">2</span>
+              </span>
+              <span class="nav-action-text">
+                <span class="nav-action-value nav-cart-price">$99.00</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Mega Menu -->
+          <div class="mega-menu-wrap" id="megaMenuWrap" aria-hidden="true">
+      <div class="mega-menu">
+        <!-- Left rail -->
+        <div class="mega-rail">
+          <button class="mega-rail-item active" data-panel="panel-accessories">Accessories <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-adapters">Adapters &amp; Connectors <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-audiovideo">Audio Video <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-cables">Cables <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-network">Network Cables &amp; Fiber Optics <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-networking">Networking <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-power">Power Cords &amp; Adapters <i data-lucide="chevron-right"></i></button>
+        </div>
+
+        <!-- Right panels -->
+        <div class="mega-panel active" id="panel-accessories">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Accessories</h3>
+            <a href="/accessories.html" class="mega-panel-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">Cables Ties</a>
+            <a href="#">Cables Tie Mount</a>
+            <a href="#">Grip-Clip Mounting Clips</a>
+            <a href="#">Nail-in Ties</a>
+            <a href="#">Plain Ties</a>
+            <a href="#">Releasable Cable Ties</a>
+            <a href="#">R-Type Cables Clamp</a>
+            <a href="#">Spiral Zip Wrap</a>
+            <a href="#">Hook and Loop Cables Sock</a>
+            <a href="#">Hook and Loop Ties</a>
+            <a href="#">Wall Mountable Ties</a>
+            <a href="#" class="mega-col-head">Power Supplies / Batteries</a>
+            <a href="#">AC/DC Adapters</a>
+            <a href="#">Car Charger</a>
+            <a href="#">Cell Battery</a>
+            <a href="#">Scooter Battery Chargers</a>
+            <a href="#">USB / Mobile Chargers</a>
+            <a href="#" class="mega-col-head">Security Camera</a>
+            <a href="#">Access control Reader / Cards &amp; Tags</a>
+            <a href="#">Accessories</a>
+            <a href="#">CCTV Camera</a>
+            <a href="#">Camera Cables/Adapters</a>
+            <a href="#">Camera Lens</a>
+            <a href="#">Camera Mounts / Housing Brackets</a>
+            <a href="#">Hidden/Covert Security Cameras</a>
+            <a href="#">Indoor Dome Camera</a>
+            <a href="#">IR Camera</a>
+            <a href="#">Magnet Contact Sensor</a>
+            <a href="#">Outdoor Dome Camera</a>
+            <a href="#">Passive Baluns</a>
+            <a href="#">PC Baluns</a>
+            <a href="#">Power Supply Wire</a>
+            <a href="#">PTZ Camera</a>
+            <a href="#" class="mega-col-head">Home/Office Accessories</a>
+            <a href="#">Flat TV Mounts</a>
+            <a href="#">Household Gadget</a>
+            <a href="#">Case Cooling Fans</a>
+            <a href="#">CPU Cooling Fans</a>
+            <a href="#">KVM Switches</a>
+            <a href="#">Manual KVM Switches</a>
+            <a href="#">I/O Peripherals</a>
+            <a href="#">VGA Splitters</a>
+            <a href="#">Tools &amp; Testers</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-adapters">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Adapters &amp; Connectors</h3>
+            <a href="/adapters-connectors.html" class="mega-panel-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">1/4" Plug/Jack</a>
+            <a href="#">1/4"/3.5mm/2.5mm/RCA Adapters</a>
+            <a href="#">3.5mm Plug/Jack</a>
+            <a href="#">Banana Plugs</a>
+            <a href="#">BNC Connectors</a>
+            <a href="#">Monitor &amp; Printer Adapters (Sun &amp; PC)</a>
+            <a href="#">D-Sub Connectors</a>
+            <a href="#">D-Sub Gender Changers</a>
+            <a href="#">D-Sub Hoods</a>
+            <a href="#">DisplayPort and Mini DP Adapters</a>
+            <a href="#">DVI/Displayport Adapters</a>
+            <a href="#">F Type Connectors</a>
+            <a href="#">F/RCA/BNC Adapters</a>
+            <a href="#">FireWire Gender Changers</a>
+            <a href="#">IDS Sockets</a>
+            <a href="#">Microphone XLR Adapter and Connectors</a>
+            <a href="#">Modular Adapters (DB9, DB25 to RJ11/12, RJ45)</a>
+            <a href="#">Neutrik Professional Connectors</a>
+            <a href="#">Null Modem Adapters (DB9, DB25)</a>
+            <a href="#">D-Sub Pin Headers</a>
+            <a href="#">Power Plug</a>
+            <a href="#">RCA Connectors/Adapters</a>
+            <a href="#">Serial Adapters (DB9, DB25)</a>
+            <a href="#">Speak-On Connector</a>
+            <a href="#">S-Video Adapters</a>
+            <a href="#">Toslink Adapters</a>
+            <a href="#">USB/PS2 Adapters (Keyboard/Mouse)</a>
+            <a href="#">Mini Tester Adapter</a>
+            <a href="#">USB Couplers / Adapters</a>
+            <a href="#">USB Keystone Jacks</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-audiovideo">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Audio Video</h3>
+            <a href="/audio-video.html" class="mega-panel-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">1/4" to 1/4" Cables</a>
+            <a href="#">1/4" to RCA Cables</a>
+            <a href="#">Antennas</a>
+            <a href="#">Component Video Cables</a>
+            <a href="#">2.5mm/3.5mm Cables</a>
+            <a href="#">Digital Audio / Video Cables</a>
+            <a href="#">Microphone</a>
+            <a href="#">RCA / 3.5mm Cables</a>
+            <a href="#">RCA Cables</a>
+            <a href="#">RG59 Coaxial Cables</a>
+            <a href="#">RG6 Coax Cables</a>
+            <a href="#">Speaker Wires</a>
+            <a href="#">S-Video Cables</a>
+            <a href="#">Switches &amp; Splitters</a>
+            <a href="#">Wall Plates</a>
+            <a href="#">TV Signal Splitter</a>
+            <a href="#">Recessed Wall Plates</a>
+            <a href="#">XLR / XLR Cables</a>
+            <a href="#">XLR to 1/4" Cables</a>
+            <a href="#">XLR to 3.5mm Cables</a>
+            <a href="#">XLR to RCA Cables</a>
+            <a href="#">Ethernet Extenders</a>
+            <a href="#">Wireless Presentation Systems</a>
+            <a href="#">Pattern Generator</a>
+            <a href="#">Audio Stereo Y Adapter Cable</a>
+            <a href="#">XLR to 1/4" Stereo Cable</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-cables">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Cables</h3>
+            <a href="/cables.html" class="mega-panel-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">Bulk Wire &amp; Cables</a>
+            <a href="#">Composite Wire / Combo Wire</a>
+            <a href="#">PC Cables</a>
+            <a href="#">RG11 / RJ11 / RJ12 / RJ45</a>
+            <a href="#">RG58 / RG59 / RG6 Coaxial Bulk Cable</a>
+            <a href="#">RG59/6 + Power Wire</a>
+            <a href="#">Security Camera Power Wire</a>
+            <a href="#">Security Sensor Wire</a>
+            <a href="#">Thermostat Cables</a>
+            <a href="#">THHN Building Wire</a>
+            <a href="#">Speaker Bulk Wire</a>
+            <a href="#">Power Control Cables</a>
+            <a href="#">Landscape Wire</a>
+            <a href="#">Fire Alarm Cable</a>
+            <a href="#">Irrigation Cables</a>
+            <a href="#" class="mega-col-head">HDMI</a>
+            <a href="#">HDMI / IR Extenders</a>
+            <a href="#">HDMI Adapters</a>
+            <a href="#">HDMI Converters</a>
+            <a href="#">HDMI DVI Cables / Adapters</a>
+            <a href="#">HDMI Extension Cables</a>
+            <a href="#">HDMI Cables</a>
+            <a href="#">Keystone Jack/Wallplate</a>
+            <a href="#">Micro HDMI (Type D) Cables</a>
+            <a href="#">Mini HDMI (Type C) Cables</a>
+            <a href="#">Panel Mount HDMI Cables</a>
+            <a href="#">Fiber Optic/Hybrid HDMI Cables (75Ft to 330Ft)</a>
+            <a href="#" class="mega-col-head">USB</a>
+            <a href="#">File Transfer</a>
+            <a href="#">USB Adapters</a>
+            <a href="#">Networking Adapters</a>
+            <a href="#">Printer Switches</a>
+            <a href="#">Serial/Parallel Adapters</a>
+            <a href="#">Sound Adapters</a>
+            <a href="#">USB Charging Station</a>
+            <a href="#">USB Extenders</a>
+            <a href="#">USB Hubs</a>
+            <a href="#">Video Adapters</a>
+            <a href="#">USB Cables</a>
+            <a href="#">Cables for Apple/MAC</a>
+            <a href="#">DB13W3 Sun</a>
+            <a href="#">DB25 Serial</a>
+            <a href="#">DB37 Serial</a>
+            <a href="#">DB9 Serial</a>
+            <a href="#">DB9/DB25 Modem</a>
+            <a href="#">DisplayPort</a>
+            <a href="#">DVI Cables / Adapters</a>
+            <a href="#">Firewire (IEEE1394)</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-network">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Network Cables &amp; Fiber Optics</h3>
+            <a href="/network-cables.html" class="mega-panel-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Cat 3 Bulk Wire</a>
+            <a href="#">Cat 7 Shielded Booted Cables</a>
+            <a href="#">Cat 5E Bulk Wire</a>
+            <a href="#">Cat 5E Cables</a>
+            <a href="#">Cat 6 Cables</a>
+            <a href="#">Cat 6/6A Bulk Wire</a>
+            <a href="#">Cat 6A Cables</a>
+            <a href="#">Cat 8 Shielded Booted Cables</a>
+            <a href="#" class="mega-col-head">Fiber Optic Products</a>
+            <a href="#">OM1 Multimode Duplex</a>
+            <a href="#">OM4 Multimode Duplex</a>
+            <a href="#">Singlemode</a>
+            <a href="#">OM3 Multimode Duplex</a>
+            <a href="#">Connectors SX DX MPO</a>
+            <a href="#">Singlemode Slim Cables</a>
+            <a href="#">Standard Adapters</a>
+            <a href="#">Single Pigtails</a>
+            <a href="#">Armored Singlemode</a>
+            <a href="#">OM2 Multimode Duplex</a>
+            <a href="#">12 Fiber Non-Jacketed Pigtails</a>
+            <a href="#">OM5 Multimode Duplex</a>
+            <a href="#">MPO Singlemode</a>
+            <a href="#">MPO Multimode OM3</a>
+            <a href="#">MPO Multimode OM4</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-networking">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Networking</h3>
+            <a href="/networking.html" class="mega-panel-seeall">See All Networking <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">10/100 Switch</a>
+            <a href="#">1G Unmanaged Switch</a>
+            <a href="#">Blank Patch Panels</a>
+            <a href="#">Cable Management</a>
+            <a href="#">Keystone Jacks (Cat3, Cat5E, Cat6, 6A)</a>
+            <a href="#">Cat 5E/6 Couplers</a>
+            <a href="#">RJ45 Plugs for Cat 5e, Cat 6, Cat 6A</a>
+            <a href="#">LED Patch Panels</a>
+            <a href="#">Media Converter</a>
+            <a href="#">Network Cards</a>
+            <a href="#">Patch Panels</a>
+            <a href="#">PoE</a>
+            <a href="#">Router</a>
+            <a href="#">Wall Plates</a>
+            <a href="#">WiFi Range Extender</a>
+            <a href="#">Wireless Antenna</a>
+            <a href="#" class="mega-col-head">Networking Racks</a>
+            <a href="#">Floorstand Racks</a>
+            <a href="#">Shelves</a>
+            <a href="#">Wallmount Racks</a>
+            <a href="#" class="mega-col-head">Telephone</a>
+            <a href="#">Coiled Handset Cords</a>
+            <a href="#">Modular Cords</a>
+            <a href="#">Modular Plug</a>
+            <a href="#">Telephone Headset</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-power">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Power Cords &amp; Adapters</h3>
+            <a href="/power-cords-adapters.html" class="mega-panel-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Power Plug Adapters</a>
+            <a href="#">Extension Power Cords</a>
+            <a href="#">Multi-Outlet Extension Cords</a>
+            <a href="#">Right Angle Power Cords</a>
+            <a href="#">International Cords</a>
+            <a href="#" class="mega-col-head">NEMA Power Cords</a>
+            <a href="#">NEMA 1-15</a>
+            <a href="#">NEMA 5-15 to IEC 320 C13</a>
+            <a href="#">NEMA 5-15 to IEC 320 C5</a>
+            <a href="#">NEMA 5-15P to NEMA 5-15R</a>
+            <a href="#">NEMA 5-20</a>
+            <a href="#">NEMA 6-20</a>
+            <a href="#">NEMA L5-20 Locking</a>
+            <a href="#">NEMA L6-20 Locking</a>
+            <a href="#" class="mega-col-head">Power Strips</a>
+            <a href="#">Power Strip</a>
+            <a href="#">Power Outlet Wall Tap</a>
+            <a href="#">PDU</a>
+            <a href="#" class="mega-col-head">IEC320 Power Cords</a>
+            <a href="#">C14 to C13</a>
+            <a href="#">C14 to C15</a>
+            <a href="#">C14 to C19</a>
+            <a href="#">C14 to NEMA 5-15</a>
+            <a href="#">C20 to C13</a>
+            <a href="#">C20 to C19</a>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+
+    <!-- Mobile nav (two-tab: Shop / Help) -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+
+      <!-- ===== SHOP PANEL ===== -->
+      <div class="mob-nav-panel" id="mob-tab-shop">
+
+        <!-- Accessories -->
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">
+            Accessories <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
+          </button>
+          <div class="mob-cat-panel">
+            <a href="/accessories.html" class="mob-cat-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
+            <div class="mob-cat-groups">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="scissors"></i></span>
+                  <span class="mob-sub-label">Cable Ties</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Plain Ties</a>
+                  <a href="#">Releasable Cable Ties</a>
+                  <a href="#">Hook and Loop Ties</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="battery-charging"></i></span>
+                  <span class="mob-sub-label">Power Supplies / Batteries</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">AC/DC Adapters</a>
+                  <a href="#">Car Charger</a>
+                  <a href="#">USB / Mobile Chargers</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="camera"></i></span>
+                  <span class="mob-sub-label">Security Camera</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">CCTV Camera</a>
+                  <a href="#">Camera Cables/Adapters</a>
+                  <a href="#">Camera Mounts / Housing Brackets</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="monitor"></i></span>
+                  <span class="mob-sub-label">Home/Office Accessories</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">KVM Switches</a>
+                  <a href="#">Tools &amp; Testers</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adapters & Connectors -->
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">
+            Adapters &amp; Connectors <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
+          </button>
+          <div class="mob-cat-panel">
+            <a href="/adapters-connectors.html" class="mob-cat-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links">
+              <a href="#">BNC Connectors</a>
+              <a href="#">DisplayPort and Mini DP Adapters</a>
+              <a href="#">DVI/Displayport Adapters</a>
+              <a href="#">F Type Connectors</a>
+              <a href="#">RCA Connectors/Adapters</a>
+              <a href="#">D-Sub Connectors</a>
+              <a href="#">USB Couplers / Adapters</a>
+              <a href="#">USB Keystone Jacks</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audio Video -->
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">
+            Audio Video <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
+          </button>
+          <div class="mob-cat-panel">
+            <a href="/audio-video.html" class="mob-cat-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links">
+              <a href="#">XLR / XLR Cables</a>
+              <a href="#">RCA Cables</a>
+              <a href="#">Speaker Wires</a>
+              <a href="#">Component Video Cables</a>
+              <a href="#">Switches &amp; Splitters</a>
+              <a href="#">Wall Plates</a>
+              <a href="#">Wireless Presentation Systems</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cables -->
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">
+            Cables <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
+          </button>
+          <div class="mob-cat-panel">
+            <a href="/cables.html" class="mob-cat-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
+            <div class="mob-cat-groups">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="link-2"></i></span>
+                  <span class="mob-sub-label">Bulk Wire &amp; Cables</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">RG59 / RG6 Coaxial Bulk Cable</a>
+                  <a href="#">Speaker Bulk Wire</a>
+                  <a href="#">THHN Building Wire</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="tv"></i></span>
+                  <span class="mob-sub-label">HDMI</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">HDMI Cables</a>
+                  <a href="#">HDMI Adapters</a>
+                  <a href="#">HDMI Extension Cables</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="hard-drive"></i></span>
+                  <span class="mob-sub-label">USB</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">USB Cables</a>
+                  <a href="#">USB Hubs</a>
+                  <a href="#">USB Extenders</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Network Cables & Fiber -->
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">
+            Network Cables &amp; Fiber <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
+          </button>
+          <div class="mob-cat-panel">
+            <a href="/network-cables.html" class="mob-cat-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links">
+              <a href="#">Cat 5E Cables</a>
+              <a href="#">Cat 6 Cables</a>
+              <a href="#">Cat 6A Cables</a>
+              <a href="#">Cat 8 Shielded Booted Cables</a>
+            </div>
+            <div class="mob-cat-groups" style="margin-top:6px;">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="radio"></i></span>
+                  <span class="mob-sub-label">Fiber Optic Products</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">OM3 Multimode Duplex</a>
+                  <a href="#">OM4 Multimode Duplex</a>
+                  <a href="#">Singlemode</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Networking -->
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">
+            Networking <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
+          </button>
+          <div class="mob-cat-panel">
+            <a href="/networking.html" class="mob-cat-seeall">See All Networking <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links">
+              <a href="#">Patch Panels</a>
+              <a href="#">Keystone Jacks (Cat3, Cat5E, Cat6, 6A)</a>
+              <a href="#">Cable Management</a>
+              <a href="#">Media Converter</a>
+            </div>
+            <div class="mob-cat-groups" style="margin-top:6px;">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="server"></i></span>
+                  <span class="mob-sub-label">Networking Racks</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Floorstand Racks</a>
+                  <a href="#">Wallmount Racks</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="phone"></i></span>
+                  <span class="mob-sub-label">Telephone</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Modular Cords</a>
+                  <a href="#">Telephone Headset</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Power Cords & Adapters -->
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">
+            Power Cords &amp; Adapters <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span>
+          </button>
+          <div class="mob-cat-panel">
+            <a href="/power-cords-adapters.html" class="mob-cat-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links">
+              <a href="#">Extension Power Cords</a>
+              <a href="#">Multi-Outlet Extension Cords</a>
+            </div>
+            <div class="mob-cat-groups" style="margin-top:6px;">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="plug"></i></span>
+                  <span class="mob-sub-label">NEMA Power Cords</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">NEMA 5-15 to IEC 320 C13</a>
+                  <a href="#">NEMA 5-20</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="layers"></i></span>
+                  <span class="mob-sub-label">Power Strips</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">Power Strip</a>
+                  <a href="#">PDU</a>
+                </div>
+              </div>
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
+                  <span class="mob-sub-icon"><i data-lucide="zap"></i></span>
+                  <span class="mob-sub-label">IEC320 Power Cords</span>
+                  <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
+                </div>
+                <div class="mob-sub-links">
+                  <a href="#">C14 to C13</a>
+                  <a href="#">C14 to C19</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /mob-tab-shop -->
+
+      <!-- ===== HELP PANEL ===== -->
+      <div class="mob-nav-panel" id="mob-tab-account" style="display:none">
+        <div class="mob-help-header">
+          <span class="mob-help-title"><i data-lucide="help-circle"></i> Help</span>
+          <button class="mob-help-close" id="mob-help-close" aria-label="Close Help menu">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <a href="/quick-order" class="mobile-nav-link">
+          <i data-lucide="zap"></i> <span>Quick Order</span>
+        </a>
+        <a href="/get-quote" class="mobile-nav-link">
+          <i data-lucide="file-text"></i> <span>Get Quote</span>
+        </a>
+        <a href="/order-tracking" class="mobile-nav-link">
+          <i data-lucide="package"></i> <span>Order Tracking</span>
+        </a>
+        <a href="/change-cancel-order" class="mobile-nav-link">
+          <i data-lucide="x-circle"></i> <span>Change / Cancel Order</span>
+        </a>
+        <a href="/shipping-information" class="mobile-nav-link">
+          <i data-lucide="truck"></i> <span>Shipping Information</span>
+        </a>
+        <a href="/schools-government" class="mobile-nav-link">
+          <i data-lucide="building-2"></i> <span>Schools &amp; Government</span>
+        </a>
+        <a href="/payment-terms" class="mobile-nav-link">
+          <i data-lucide="credit-card"></i> <span>Payment Terms</span>
+        </a>
+        <a href="/returns-refunds" class="mobile-nav-link">
+          <i data-lucide="rotate-ccw"></i> <span>Returns / Refunds</span>
+        </a>
+        <a href="/warranty-claims" class="mobile-nav-link">
+          <i data-lucide="shield-check"></i> <span>Warranty / Claims</span>
+        </a>
+        <a href="/will-call" class="mobile-nav-link">
+          <i data-lucide="map-pin"></i> <span>Will Call</span>
+        </a>
+        <a href="/contact-us" class="mobile-nav-link">
+          <i data-lucide="mail"></i> <span>Contact Us</span>
+        </a>
+      </div><!-- /mob-tab-help -->
+
+    </div><!-- /mobile-nav -->
+    </div>
+  </header>
+
+  </div><!-- /sticky-top-wrap -->
+
+  <!-- ============================================================
+       BREADCRUMB
+  ============================================================ -->
+  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+        <li class="breadcrumb-item breadcrumb-current" aria-current="page">All Categories</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         CATEGORY LISTING
+    ============================================================ -->
+    <section class="section" style="padding: 40px 0 24px;" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-row">
+            <h1 class="section-title" id="categories-heading">All Categories</h1>
+          </div>
+          <p class="section-subtitle">Browse our complete selection of cables, adapters, and networking products.</p>
+        </div>
+        <div class="categories-track-wrap">
+          <div class="categories-grid" id="categoriesTrack2">
+            <a href="/power-cords.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/power.png" alt="Power Cord" loading="lazy"></div>
+              <div class="cat-text"><h3>Power Cords</h3><span class="cat-count">180+ Products</span></div>
+            </a>
+            <a href="/network-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/network.png" alt="Network Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>Network Cables</h3><span class="cat-count">300+ Products</span></div>
+            </a>
+            <a href="/adapters-connectors.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/connectors.png" alt="USB-C Adapter" loading="lazy"></div>
+              <div class="cat-text"><h3>Adapters &amp; Connectors</h3><span class="cat-count">400+ Products</span></div>
+            </a>
+            <a href="/extension-cords.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Extension.png" alt="Extension Cord" loading="lazy"></div>
+              <div class="cat-text"><h3>Extension Cords</h3><span class="cat-count">55+ Products</span></div>
+            </a>
+            <a href="/hdmi-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/hdmi.png" alt="HDMI Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>HDMI Cables</h3><span class="cat-count">150+ Products</span></div>
+            </a>
+            <a href="/usb-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/usb.png" alt="USB Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>USB Cables</h3><span class="cat-count">200+ Products</span></div>
+            </a>
+            <a href="/fiber-optics.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/Fibreoptic.png" alt="Fiber Optic Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>Fiber Optics</h3><span class="cat-count">120+ Products</span></div>
+            </a>
+            <a href="/audio-video.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/audio.png" alt="Audio Video Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>Audio &amp; Video</h3><span class="cat-count">90+ Products</span></div>
+            </a>
+            <a href="/accessories.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/accessories.png" alt="Cable Accessories" loading="lazy"></div>
+              <div class="cat-text"><h3>Accessories</h3><span class="cat-count">200+ Products</span></div>
+            </a>
+            <a href="/displayport-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/display.png" alt="DisplayPort Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>DisplayPort</h3><span class="cat-count">60+ Products</span></div>
+            </a>
+            <a href="/coaxial-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/coaxial.png" alt="Coaxial Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>Coaxial Cables</h3><span class="cat-count">45+ Products</span></div>
+            </a>
+            <a href="/serial-data-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/data.png" alt="Serial Data Cable" loading="lazy"></div>
+              <div class="cat-text"><h3>Serial &amp; Data</h3><span class="cat-count">80+ Products</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORY DESCRIPTION
+    ============================================================ -->
+    <section class="section-sm" aria-label="About SF Cable categories">
+      <div class="container">
+        <p class="section-subtitle">
+          SF Cable has supplied businesses, professionals, and residential customers with reliable cable solutions since 1996. Our catalog spans 12 primary categories and over 10,000 individual products — from everyday HDMI and USB cables to specialized fiber optic assemblies, bulk wiring, and industrial power cords. Every order over $75 ships free, and all cables are covered by our lifetime warranty. Need help finding the right product? <a href="/contact-us" class="cat-desc-link">Contact our team</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" aria-label="SF Cable – Home">
+            <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="140" height="42" loading="lazy" onerror="this.style.display='none'" />
+          </a>
+          <p>Your trusted source for cables, connectors &amp; AV gear since 1996. Over 40,000 products in stock &amp; shipped fast.</p>
+          <form class="footer-brand-form newsletter-form" aria-label="Newsletter signup">
+            <div class="newsletter-inline">
+              <input class="newsletter-input" type="email" placeholder="Work email address" aria-label="Email address" required />
+              <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+            </div>
+            <p class="newsletter-note">No spam. <a href="/privacy-policy">Privacy Policy</a>.</p>
+          </form>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="X / Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.263 5.633 5.901-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col open">
+          <h4>Information<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/about">About SF Cable</a></li>
+            <li><a href="/shipping-information">Shipping Info</a></li>
+            <li><a href="/returns-refunds">Returns &amp; Refunds</a></li>
+            <li><a href="/warranty-claims">Warranty</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/order-tracking">Track My Order</a></li>
+            <li><a href="/quick-order">Quick Order</a></li>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/clearance">Clearance</a></li>
+            <li><a href="/rewards">SF Cable Rewards</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Shop<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/hdmi-cables.html">HDMI Cables</a></li>
+            <li><a href="/usb-cables.html">USB Cables</a></li>
+            <li><a href="/network-cables.html">Ethernet Cables</a></li>
+            <li><a href="/fiber-optics.html">Fiber Optics</a></li>
+            <li><a href="/power-cords.html">Power Cords</a></li>
+            <li><a href="/adapters-connectors.html">Adapters &amp; Connectors</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <div class="footer-contact">
+            <a href="tel:18882758755"><i data-lucide="phone"></i> 1-888-275-8755</a>
+            <a href="mailto:sales@sfcable.com"><i data-lucide="mail"></i> sales@sfcable.com</a>
+            <a href="/contact"><i data-lucide="map-pin"></i> Fremont, CA — Mon–Fri 8AM–5PM PST</a>
+            <a href="/chat"><i data-lucide="message-circle"></i> Live Chat</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="footer-badges">
+        <div class="footer-badge-group" aria-label="Accreditations and certifications">
+          <a href="#" class="footer-badge" aria-label="CMAS — California Multiple Award Schedule">
+            <img src="images/CMAS.png" alt="CMAS — California Multiple Award Schedule" />
+          </a>
+          <a href="#" class="footer-badge" aria-label="GSA Contract Holder">
+            <img src="images/GSA.jpg" alt="GSA Contract Holder" />
+          </a>
+          <a href="#" class="footer-badge" aria-label="BBB Accredited Business">
+            <img src="images/blue.png" alt="BBB Accredited Business" />
+          </a>
+        </div>
+        <a href="#" class="footer-reviews" aria-label="7,786 Certified Reviews, powered by YOTPO">
+          <img src="images/yotpo-badge.png" alt="7,786 Certified Reviews – Powered by YOTPO" class="footer-yotpo-img" />
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SF Cable, Inc. All rights reserved. Fremont, CA 94538</p>
+        <div class="footer-payments">
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Visa">
+              <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+              <text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Mastercard">
+              <rect width="50" height="32" rx="3.5" fill="#1a1a1a"/>
+              <circle cx="19" cy="16" r="10" fill="#EB001B"/>
+              <circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="American Express">
+              <rect width="50" height="32" rx="3.5" fill="#007BC1"/>
+              <text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Discover">
+              <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+              <circle cx="49" cy="16" r="13" fill="#F76F20"/>
+              <text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="PayPal">
+              <rect width="50" height="32" rx="3.5" fill="#003087"/>
+              <text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-trust-strip">
+      <p>SSL Secured Checkout · RoHS Compliant · TAA Compliant Products Available · GSA Schedule · <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-conditions">Terms</a></p>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top"><i data-lucide="chevron-up"></i></a>
+
+  <script>
+    /* ---- Scroll: header shadow + back-to-top visibility ---- */
+    const header = document.getElementById('site-header');
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      header.classList.toggle('scrolled', y > 10);
+      backToTop.classList.toggle('visible', y > 400);
+    }, { passive: true });
+
+    backToTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ---- Footer accordion (tablet/mobile ≤900px) ---- */
+    (function initFooterAccordion() {
+      const mqAll  = window.matchMedia('(max-width: 900px)');
+      const mq2col = window.matchMedia('(min-width: 481px) and (max-width: 900px)');
+      const cols   = Array.from(document.querySelectorAll('.footer-grid .footer-col'));
+
+      function setInitialState() {
+        cols.forEach((col, i) => {
+          if (!mqAll.matches) { col.classList.remove('open'); return; }
+          if (mq2col.matches) {
+            col.classList.toggle('open', i === 0 || i === 1);
+          } else {
+            col.classList.toggle('open', i === 0);
+          }
+        });
+      }
+
+      cols.forEach(col => {
+        const h = col.querySelector('h4');
+        if (!h) return;
+        h.addEventListener('click', () => {
+          if (!mqAll.matches) return;
+          col.classList.toggle('open');
+        });
+      });
+
+      setInitialState();
+      mqAll.addEventListener('change', setInitialState);
+      mq2col.addEventListener('change', setInitialState);
+    })();
+
+    /* ---- Mobile nav toggle (hamburger open/close) ---- */
+    (function () {
+      var mobileNav    = document.getElementById('mobile-nav');
+      var shopPanel    = document.getElementById('mob-tab-shop');
+      var helpPanel    = document.getElementById('mob-tab-account');
+      var shopToggle   = document.getElementById('mobile-shop-toggle');
+      var helpToggle   = document.getElementById('mobile-help-toggle');
+      var tabToggle    = document.getElementById('mobile-menu-toggle');
+
+      if (!mobileNav) return;
+
+      function showPanel(panel) {
+        if (shopPanel) shopPanel.style.display = 'none';
+        if (helpPanel) helpPanel.style.display = 'none';
+        if (panel)     panel.style.display      = 'block';
+      }
+
+      function openNav(panel) {
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        showPanel(panel);
+      }
+
+      function closeNav() {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        [shopToggle, tabToggle].forEach(function(t) {
+          if (t) { t.setAttribute('aria-expanded', 'false'); t.classList.remove('is-open'); }
+        });
+        if (helpToggle) { helpToggle.setAttribute('aria-expanded', 'false'); helpToggle.classList.remove('mobile-help-active'); }
+      }
+
+      function isNavOpen() { return mobileNav.classList.contains('open'); }
+
+      if (shopToggle) {
+        shopToggle.addEventListener('click', function () {
+          if (isNavOpen() && shopPanel && shopPanel.style.display !== 'none') {
+            closeNav();
+          } else {
+            openNav(shopPanel);
+            shopToggle.setAttribute('aria-expanded', 'true');
+            shopToggle.classList.add('is-open');
+            if (tabToggle)  { tabToggle.classList.add('is-open');  tabToggle.setAttribute('aria-expanded', 'true'); }
+            if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+      }
+
+      if (helpToggle) {
+        helpToggle.addEventListener('click', function () {
+          if (isNavOpen() && helpPanel && helpPanel.style.display !== 'none') {
+            closeNav();
+          } else {
+            openNav(helpPanel);
+            helpToggle.setAttribute('aria-expanded', 'true');
+            helpToggle.classList.add('mobile-help-active');
+            if (shopToggle) { shopToggle.classList.remove('is-open'); shopToggle.setAttribute('aria-expanded', 'false'); }
+            if (tabToggle)  { tabToggle.classList.remove('is-open');  tabToggle.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+      }
+
+      if (tabToggle) {
+        tabToggle.addEventListener('click', function () {
+          if (isNavOpen() && shopPanel && shopPanel.style.display !== 'none') {
+            closeNav();
+          } else {
+            openNav(shopPanel);
+            tabToggle.setAttribute('aria-expanded', 'true');
+            tabToggle.classList.add('is-open');
+            if (shopToggle) { shopToggle.classList.add('is-open'); shopToggle.setAttribute('aria-expanded', 'true'); }
+            if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+      }
+    })();
+
+    /* ---- Desktop Help dropdown ---- */
+    (function () {
+      var trigger  = document.getElementById('helpMenuTrigger');
+      var dropdown = document.getElementById('helpMenuDropdown');
+      if (!trigger || !dropdown) return;
+
+      var hoverTimer;
+      function openHelp()        { clearTimeout(hoverTimer); dropdown.classList.add('open');    trigger.setAttribute('aria-expanded', 'true'); }
+      function closeHelp()       { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); }
+      function closeHelpDelayed(){ hoverTimer = setTimeout(closeHelp, 150); }
+      function toggleHelp(e)     { e.stopPropagation(); dropdown.classList.contains('open') ? closeHelp() : openHelp(); }
+
+      trigger.addEventListener('click', toggleHelp);
+      trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleHelp(e); }
+        if (e.key === 'Escape') closeHelp();
+      });
+      dropdown.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { closeHelp(); trigger.focus(); }
+      });
+
+      var wrap = document.getElementById('helpMenuWrap');
+      wrap.addEventListener('mouseenter', openHelp);
+      wrap.addEventListener('mouseleave', closeHelpDelayed);
+      document.addEventListener('click', function(e) {
+        if (!wrap.contains(e.target)) closeHelp();
+      });
+    })();
+
+    /* ---- Help panel close button ---- */
+    (function () {
+      var closeBtn = document.getElementById('mob-help-close');
+      if (!closeBtn) return;
+      closeBtn.addEventListener('click', function () {
+        var nav        = document.getElementById('mobile-nav');
+        var helpToggle = document.getElementById('mobile-help-toggle');
+        var shopToggle = document.getElementById('mobile-shop-toggle');
+        if (nav)        { nav.classList.remove('open'); nav.setAttribute('aria-hidden', 'true'); }
+        if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded', 'false'); }
+        if (shopToggle) { shopToggle.classList.remove('is-open'); shopToggle.setAttribute('aria-expanded', 'false'); }
+      });
+    })();
+
+    /* ---- Mobile nav: category accordion ---- */
+    document.querySelectorAll('.mob-cat-trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var item   = trigger.closest('.mob-cat-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.mob-cat-item.open').forEach(function(i) {
+          i.classList.remove('open');
+          i.querySelector('.mob-cat-trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ---- Mobile nav: sub-group accordion (collapse/expand via CSS at ≤768px) ---- */
+    document.querySelectorAll('#mob-tab-shop .mob-sub-head').forEach(function(head) {
+      head.addEventListener('click', function() {
+        var group  = head.closest('.mob-sub-group');
+        var isOpen = group.classList.contains('is-open');
+        group.classList.toggle('is-open');
+        head.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      });
+      head.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); head.click(); }
+      });
+    });
+
+    /* ---- Mega menu – All Categories (hover + click) ---- */
+    (() => {
+      const trigger   = document.getElementById('allCatsTrigger');
+      const wrap      = document.getElementById('megaMenuWrap');
+      if (!trigger || !wrap) return;
+      const railItems = wrap.querySelectorAll('.mega-rail-item');
+      const panels    = wrap.querySelectorAll('.mega-panel');
+      let closeTimer  = null;
+      let hoverTimer  = null;
+
+      function openMenu()  { clearTimeout(closeTimer); wrap.classList.add('open');    trigger.classList.add('open');    trigger.setAttribute('aria-expanded','true');  wrap.setAttribute('aria-hidden','false'); }
+      function closeMenu() {                           wrap.classList.remove('open'); trigger.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); wrap.setAttribute('aria-hidden','true'); }
+      function scheduleClose() { clearTimeout(closeTimer); closeTimer = setTimeout(closeMenu, 200); }
+      function switchPanel(item) {
+        railItems.forEach(r => r.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        item.classList.add('active');
+        const panel = document.getElementById(item.dataset.panel);
+        if (panel) panel.classList.add('active');
+      }
+
+      trigger.addEventListener('mouseenter', openMenu);
+      trigger.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('mouseenter', () => { clearTimeout(closeTimer); });
+      wrap.addEventListener('mouseleave', scheduleClose);
+      trigger.addEventListener('click', e => { e.stopPropagation(); wrap.classList.contains('open') ? closeMenu() : openMenu(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && wrap.classList.contains('open')) closeMenu(); });
+      document.addEventListener('click', e => { if (wrap.classList.contains('open') && !wrap.contains(e.target) && !trigger.contains(e.target)) closeMenu(); });
+
+      railItems.forEach(item => {
+        item.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); hoverTimer = setTimeout(() => switchPanel(item), 60); });
+        item.addEventListener('click', () => { clearTimeout(hoverTimer); switchPanel(item); });
+      });
+      railItems.forEach((item, idx) => {
+        item.addEventListener('keydown', e => {
+          if (e.key === 'ArrowDown')  { e.preventDefault(); railItems[(idx + 1) % railItems.length].focus(); switchPanel(railItems[(idx + 1) % railItems.length]); }
+          if (e.key === 'ArrowUp')    { e.preventDefault(); railItems[(idx - 1 + railItems.length) % railItems.length].focus(); switchPanel(railItems[(idx - 1 + railItems.length) % railItems.length]); }
+          if (e.key === 'ArrowRight') { const panel = document.getElementById(item.dataset.panel); const firstLink = panel?.querySelector('a'); if (firstLink) firstLink.focus(); }
+          if (e.key === 'Escape') closeMenu();
+        });
+      });
+    })();
+
+    /* ---- Promo bar carousel ---- */
+    (function () {
+      var slides  = document.querySelectorAll('.promo-slide');
+      var current = 0;
+      var timer;
+      if (!slides.length) return;
+
+      function show(idx) {
+        slides[current].classList.remove('active');
+        current = (idx + slides.length) % slides.length;
+        slides[current].classList.add('active');
+      }
+      function startAuto() { timer = setInterval(function () { show(current + 1); }, 5000); }
+      function resetAuto() { clearInterval(timer); startAuto(); }
+
+      document.querySelector('.promo-prev').addEventListener('click', function () { show(current - 1); resetAuto(); });
+      document.querySelector('.promo-next').addEventListener('click', function () { show(current + 1); resetAuto(); });
+      startAuto();
+    })();
+
+    /* ---- Initialise all Lucide icons ---- */
+    lucide.createIcons({
+      attrs: { 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+    });
+  </script>
+
+</body>
+</html>
