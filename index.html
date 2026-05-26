@@ -2705,7 +2705,7 @@
       transition: color 0.15s; line-height: 1;
     }
     .promo-arrow:hover { color: #5cb8ff; }
-    .promo-arrow svg.lucide { width: 20px; height: 20px; }
+    .promo-arrow svg.lucide { width: 26px; height: 26px; stroke-width: 2.2; }
     /* Promo carousel — mobile ≤768px */
     @media (max-width: 768px) {
       .top-bar { min-height: 38px; height: auto; }
@@ -3565,6 +3565,15 @@
     }
     .mob-flat-links a:hover { color: rgba(255,255,255,.75); background: rgba(255,255,255,.06); }
 
+    /* ≤768px: sub-group collapsible accordion */
+    @media (max-width: 768px) {
+      .mob-sub-head { cursor: pointer; user-select: none; }
+      .mob-sub-chev svg.lucide { transition: transform 0.25s ease; transform: rotate(-90deg); }
+      .mob-sub-group.is-open .mob-sub-chev svg.lucide { transform: rotate(0deg); }
+      .mob-sub-group .mob-sub-links { display: none; }
+      .mob-sub-group.is-open .mob-sub-links { display: flex; }
+    }
+
     /* ≤768px: revised 3-row mobile header */
     @media (max-width: 768px) {
       /* Hide old icon row — replaced by contact-btns + mobile-shop-bar */
@@ -4279,8 +4288,8 @@
           <div class="mob-cat-panel">
             <a href="/accessories.html" class="mob-cat-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
             <div class="mob-cat-groups">
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="scissors"></i></span>
                   <span class="mob-sub-label">Cable Ties</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4291,8 +4300,8 @@
                   <a href="#">Hook and Loop Ties</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="battery-charging"></i></span>
                   <span class="mob-sub-label">Power Supplies / Batteries</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4303,8 +4312,8 @@
                   <a href="#">USB / Mobile Chargers</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="camera"></i></span>
                   <span class="mob-sub-label">Security Camera</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4315,8 +4324,8 @@
                   <a href="#">Camera Mounts / Housing Brackets</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="monitor"></i></span>
                   <span class="mob-sub-label">Home/Office Accessories</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4377,8 +4386,8 @@
           <div class="mob-cat-panel">
             <a href="/cables.html" class="mob-cat-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
             <div class="mob-cat-groups">
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="link-2"></i></span>
                   <span class="mob-sub-label">Bulk Wire &amp; Cables</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4389,8 +4398,8 @@
                   <a href="#">THHN Building Wire</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="tv"></i></span>
                   <span class="mob-sub-label">HDMI</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4401,8 +4410,8 @@
                   <a href="#">HDMI Extension Cables</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="hard-drive"></i></span>
                   <span class="mob-sub-label">USB</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4431,8 +4440,8 @@
               <a href="#">Cat 8 Shielded Booted Cables</a>
             </div>
             <div class="mob-cat-groups" style="margin-top:6px;">
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="radio"></i></span>
                   <span class="mob-sub-label">Fiber Optic Products</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4461,8 +4470,8 @@
               <a href="#">Media Converter</a>
             </div>
             <div class="mob-cat-groups" style="margin-top:6px;">
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="server"></i></span>
                   <span class="mob-sub-label">Networking Racks</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4472,8 +4481,8 @@
                   <a href="#">Wallmount Racks</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="phone"></i></span>
                   <span class="mob-sub-label">Telephone</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4499,8 +4508,8 @@
               <a href="#">Multi-Outlet Extension Cords</a>
             </div>
             <div class="mob-cat-groups" style="margin-top:6px;">
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="plug"></i></span>
                   <span class="mob-sub-label">NEMA Power Cords</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4510,8 +4519,8 @@
                   <a href="#">NEMA 5-20</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="layers"></i></span>
                   <span class="mob-sub-label">Power Strips</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -4521,8 +4530,8 @@
                   <a href="#">PDU</a>
                 </div>
               </div>
-              <div class="mob-sub-group">
-                <div class="mob-sub-head">
+              <div class="mob-sub-group is-open">
+                <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="zap"></i></span>
                   <span class="mob-sub-label">IEC320 Power Cords</span>
                   <span class="mob-sub-chev"><i data-lucide="chevron-down"></i></span>
@@ -5520,6 +5529,22 @@
         if (!isOpen) {
           item.classList.add('open');
           trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ---- Mobile nav: sub-group accordion (collapse/expand via CSS at ≤768px) ---- */
+    document.querySelectorAll('#mob-tab-shop .mob-sub-head').forEach(function(head) {
+      head.addEventListener('click', function() {
+        var group = head.closest('.mob-sub-group');
+        var isOpen = group.classList.contains('is-open');
+        group.classList.toggle('is-open');
+        head.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      });
+      head.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          head.click();
         }
       });
     });
