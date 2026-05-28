@@ -19,72 +19,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <!-- Shared site styles -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Page-specific styles (breadcrumb only — all tokens from shared design system) -->
-  <style>
-    /* ── Breadcrumb ─────────────────────────────────────────────── */
-    .breadcrumb-nav {
-      background: var(--gray-100);
-      border-bottom: 1px solid var(--gray-300);
-      padding: 10px 0;
-    }
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2px;
-      list-style: none;
-    }
-    .breadcrumb-item a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--gray-500);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    .breadcrumb-item a:hover { color: var(--red); }
-    .breadcrumb-item.breadcrumb-current {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--dark);
-    }
-    .breadcrumb-sep {
-      display: flex;
-      align-items: center;
-      color: var(--gray-500);
-      padding: 0 2px;
-    }
-    .breadcrumb-sep svg.lucide { width: 14px; height: 14px; }
 
-    /* ── Category description link ──────────────────────────────── */
-    .cat-desc-link {
-      color: var(--red);
-      font-weight: 600;
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    .cat-desc-link:hover { color: var(--red-dark); text-decoration: underline; }
-
-    /* ── Page title — uses shared .listing-page-heading from styles.css ─ */
-
-    /* ── Remove image zoom on hover only — card effects preserved ── */
-    #categoriesTrack2 .cat-img-wrap img,
-    #categoriesTrack2 .category-card:hover .cat-img-wrap img {
-      object-fit: contain !important;
-      transform: none !important;
-      transition: none !important;
-      mix-blend-mode: normal !important;
-    }
-
-    /* ── Image container: transparent base, home-page-matching hover ── */
-    #categoriesTrack2 .cat-img-wrap {
-      background: transparent !important;
-    }
-    #categoriesTrack2 .category-card:hover .cat-img-wrap {
-      background: rgb(233, 238, 242) !important;
-    }
-
-    /* ── Category description text — uses shared .listing-desc from styles.css ── */
-  </style>
 </head>
 <body>
 

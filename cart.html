@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your Shopping Cart at SF Cable — Review your items, update quantities, and proceed to checkout. Free shipping over $75. Lifetime warranty on all cables." />
+  <meta name="robots" content="noindex, follow" />
+  <title>Shopping Cart — SF Cable | Cables, Adapters &amp; Connectors</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Shared site styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       BREADCRUMB  (same as categories.html)
+    ═══════════════════════════════════════════════════════════ */
+    .breadcrumb-nav {
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+      padding: 10px 0;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2px;
+      list-style: none;
+    }
+    .breadcrumb-item a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .breadcrumb-item a:hover { color: var(--red); }
+    .breadcrumb-item.breadcrumb-current {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .breadcrumb-sep {
+      display: flex;
+      align-items: center;
+      color: var(--gray-500);
+      padding: 0 2px;
+    }
+    .breadcrumb-sep svg.lucide { width: 14px; height: 14px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PAGE TITLE SECTION
+    ═══════════════════════════════════════════════════════════ */
+    .cart-page-title {
+      padding: 20px 0 0;
+      margin-bottom: 0;
+    }
+    .cart-page-title .section-header { margin-bottom: 16px; }
+    .cart-item-count {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--gray-500);
+      margin-left: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CART LAYOUT
+    ═══════════════════════════════════════════════════════════ */
+    .cart-section { padding: 0 0 56px; }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      align-items: start;
+    }
+    /* Prevent grid items from inflating the 1fr column beyond available space */
+    .cart-main,
+    .cart-sidebar { min-width: 0; }
+
+    /* ── Reward points bar ── */
+    .cart-rewards-bar {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--blue-light);
+      border: 1px solid rgba(0, 141, 255, .22);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--dark);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+    .cart-rewards-bar svg.lucide {
+      width: 16px; height: 16px;
+      color: var(--red);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .cart-rewards-bar a {
+      color: var(--red);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color var(--transition);
+    }
+    .cart-rewards-bar a:hover { color: var(--red-dark); }
+
+    /* ── Cart table wrapper ── */
+    .cart-table-wrap {
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    /* ── Table header ── */
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cart-table thead th {
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+      padding: 11px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .cart-table thead th.th-price,
+    .cart-table thead th.th-qty,
+    .cart-table thead th.th-subtotal { text-align: center; }
+    .cart-table thead th.th-actions { text-align: center; width: 76px; }
+
+    /* ── Cart item rows ── */
+    .cart-table tbody tr.cart-item-row {
+      border-bottom: 1px solid var(--gray-300);
+      transition: background var(--transition);
+    }
+    .cart-table tbody tr.cart-item-row:last-child { border-bottom: none; }
+    .cart-table tbody tr.cart-item-row:hover { background: var(--gray-50); }
+    .cart-table tbody td { padding: 16px; vertical-align: middle; }
+
+    /* Item cell */
+    .cart-item-inner {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .cart-item-img-wrap {
+      width: 82px;
+      height: 82px;
+      flex-shrink: 0;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+    }
+    .cart-item-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .cart-item-meta { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      line-height: 1.4;
+      transition: color var(--transition);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .cart-item-name:hover { color: var(--red); }
+    .cart-item-variant {
+      font-size: 15px;
+      color: var(--gray-500);
+      margin-bottom: 3px;
+    }
+    .cart-item-sku {
+      font-size: 14px;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+
+    /* Price cell */
+    .td-price { text-align: center; white-space: nowrap; }
+    .cart-item-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    @media (max-width: 768px) { .cart-item-price { font-size: 16px; } }
+    @media (max-width: 480px) { .cart-item-price { font-size: 14px; } }
+    @media (max-width: 360px) { .cart-item-price { font-size: 14px; } }
+    @media (max-width: 320px) { .cart-item-price { font-size: 13px; } }
+
+    /* Qty cell */
+    .td-qty { text-align: center; }
+    .cart-qty-wrap { display: flex; justify-content: center; }
+    .cart-qty-wrap .qty-control {
+      width: 116px;
+      flex: none;
+    }
+    /* Strip the gray fill from qty +/- buttons in cart (matches clean PDP style) */
+    .cart-qty-wrap .qty-btn         { background: transparent; }
+    .cart-qty-wrap .qty-btn:hover   { background: transparent; }
+
+    /* Subtotal cell */
+    .td-subtotal { text-align: center; white-space: nowrap; }
+    .cart-item-subtotal {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    /* Actions cell */
+    .td-actions { text-align: center; }
+    .cart-actions-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .cart-action-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: none;
+      color: var(--dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: color var(--transition), background var(--transition);
+      font-family: var(--font);
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .cart-action-btn svg.lucide { width: 15px; height: 15px; }
+    .cart-action-btn:hover {
+      color: var(--dark);
+      background: var(--gray-100);
+      border-radius: var(--radius-sm);
+    }
+    .cart-remove-btn:hover {
+      color: var(--error);
+      background: rgba(239, 68, 68, .08);
+    }
+
+    /* ── Cart footer actions ── */
+    .cart-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cart-continue-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--red);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .cart-continue-link:hover { color: var(--red-dark); text-decoration: underline; }
+    .cart-continue-link svg.lucide { width: 15px; height: 15px; transition: transform var(--transition); }
+    .cart-continue-link:hover svg.lucide { transform: translateX(-3px); }
+    .cart-update-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: var(--control-h);
+      padding: 0 22px;
+      background: var(--white);
+      color: var(--sf-primary-dark);
+      border: 1.5px solid var(--sf-primary-dark);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .cart-update-btn svg.lucide { width: 15px; height: 15px; }
+    .cart-update-btn:hover {
+      border-color: var(--sf-primary-cta);
+      color: var(--sf-primary-cta);
+    }
+
+    /* ── Empty cart state ── */
+    .cart-empty-state {
+      text-align: center;
+      padding: 64px 24px;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      display: none;
+    }
+    .cart-empty-state.visible { display: block; }
+    .cart-empty-icon { color: var(--gray-300); margin-bottom: 18px; }
+    .cart-empty-icon svg.lucide { width: 60px; height: 60px; }
+    .cart-empty-state h2 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .cart-empty-state p { font-size: 15px; color: var(--gray-500); margin-bottom: 24px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       ORDER SUMMARY SIDEBAR
+    ═══════════════════════════════════════════════════════════ */
+    .cart-sidebar { position: sticky; top: 88px; }
+
+    .cart-summary {
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    /* Summary header */
+    .cart-summary-head {
+      padding: 15px 20px;
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .cart-summary-head h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 0;
+    }
+
+    /* Summary items list */
+    .cart-summary-items {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--gray-300);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-summary-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .cart-summary-item-img {
+      width: 44px; height: 44px;
+      flex-shrink: 0;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-300);
+      background: var(--gray-50);
+      object-fit: contain;
+      padding: 4px;
+    }
+    .cart-summary-item-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .cart-summary-item-info .product-name {
+      flex: 1;
+      min-width: 0;
+      font-size: 14px;
+      margin-bottom: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cart-summary-item-info .product-name a {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cart-summary-item-meta {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 4px;
+    }
+    .cart-summary-qty {
+      display: none;
+    }
+    .cart-summary-price {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+      flex-shrink: 0;
+    }
+
+    /* Shipping & Tax accordion */
+    .cart-shipping-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 20px;
+      width: 100%;
+      border: none;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-300);
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background var(--transition);
+      text-align: left;
+    }
+    .cart-shipping-toggle:hover { background: var(--gray-50); }
+    .cart-shipping-toggle-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--red);
+      flex: 1;
+    }
+    .cart-shipping-chevron {
+      flex-shrink: 0;
+      color: var(--gray-500);
+      transition: transform var(--transition);
+    }
+    .cart-shipping-chevron svg.lucide { width: 16px; height: 16px; }
+    .cart-shipping-toggle.open .cart-shipping-chevron { transform: rotate(180deg); }
+
+    .cart-shipping-body {
+      display: none;
+      padding: 14px 20px 16px;
+      border-bottom: 1px solid var(--gray-300);
+      background: var(--gray-50);
+    }
+    .cart-shipping-body.open { display: block; }
+    .cart-shipping-body p {
+      font-size: 13px;
+      color: var(--gray-500);
+      margin-bottom: 10px;
+    }
+    .cart-shipping-form { display: flex; flex-direction: column; gap: 8px; }
+    .cart-shipping-input,
+    .cart-shipping-select {
+      width: 100%;
+      height: var(--control-h);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      padding: 0 12px;
+      font-size: 15px;
+      color: var(--dark);
+      font-family: var(--font);
+      background: var(--white);
+      transition: border-color var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .cart-shipping-input:focus,
+    .cart-shipping-select:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+    .cart-shipping-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23002648' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 32px;
+    }
+    /* ── Shipping method options (shown after valid ZIP) ── */
+    .cart-ship-options {
+      display: none;
+      margin-top: 14px;
+      border-top: 1px solid var(--gray-300);
+      padding-top: 12px;
+    }
+    .cart-ship-options.visible { display: block; }
+    .cart-ship-carrier {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 8px;
+    }
+    .cart-ship-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--gray-300);
+      cursor: pointer;
+    }
+    .cart-ship-option:last-child { border-bottom: none; padding-bottom: 0; }
+    .cart-ship-option input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--red);
+      cursor: pointer;
+      flex-shrink: 0;
+      margin: 0;
+    }
+    .cart-ship-option-label {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+    .cart-ship-option-price {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+      flex-shrink: 0;
+    }
+
+    /* Summary rows */
+    .cart-summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--gray-300);
+      font-size: 17px;
+    }
+    .cart-summary-row:last-of-type { border-bottom: none; }
+    .cart-row-label { color: var(--gray-500); font-weight: 500; }
+    .cart-row-value { font-weight: 700; color: var(--dark); }
+
+    /* Grand total */
+    .cart-grand-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: var(--gray-100);
+      border-top: 2px solid var(--gray-300);
+    }
+    .cart-grand-label { font-size: 16px; font-weight: 800; color: var(--dark); }
+    .cart-grand-value { font-size: 22px; font-weight: 800; color: var(--dark); }
+
+    /* Checkout CTA — matches Browse Categories outline style from index.html */
+    .cart-checkout-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 50px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 17px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .cart-checkout-btn svg.lucide { width: 17px; height: 17px; }
+    .cart-checkout-btn:hover {
+      background: var(--red-dark);
+      color: var(--white);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0, 141, 255, .35);
+    }
+
+    /* Secure note below CTA */
+    .cart-secure-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-500);
+      padding: 10px 16px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .cart-secure-note svg.lucide { width: 12px; height: 12px; color: #15803d; }
+
+    /* Accepted payments */
+    .cart-payment-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding-bottom: 14px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       BEST SELLERS SECTION
+    ═══════════════════════════════════════════════════════════ */
+    .cart-bestsellers {
+      padding: 0 0 56px;
+      background: var(--white);
+    }
+
+    /* 6-column grid — mirrors #products-grid from index.html */
+    #bs-grid {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 1200px) { #bs-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 900px)  { #bs-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; } }
+    @media (max-width: 600px)  { #bs-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+    @media (max-width: 600px)  { #bs-grid .product-card:nth-child(n+3) { display: none; } }
+    @media (max-width: 480px)  { #bs-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+    /* Override product-img-wrap for best sellers (same as #products-grid) */
+    #bs-grid .product-img-wrap {
+      background: transparent;
+      padding: 0;
+      overflow: hidden;
+      height: 198px;
+    }
+    #bs-grid .product-img-wrap img {
+      width: 100%; height: 100%; max-width: none; max-height: none;
+      object-fit: cover; object-position: center center;
+      mix-blend-mode: multiply;
+      transform: none;
+    }
+    #bs-grid .product-card:hover .product-img-wrap img { transform: none; }
+    #bs-grid .product-card { min-width: 0; }
+    #bs-grid .product-info {
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      padding-bottom: 12px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+
+    /* 1024px — single column, order summary above cart items */
+    @media (max-width: 1024px) {
+      .cart-layout { grid-template-columns: 1fr; gap: 20px; }
+      .cart-sidebar { position: static; top: auto; order: -1; }
+    }
+
+    /* 768px — clean card: row 1 = image + title, row 2 = inline Price · Qty · Subtotal · actions */
+    @media (max-width: 768px) {
+      .cart-table thead { display: none; }
+      .cart-table,
+      .cart-table tbody { display: block; }
+
+      /* Card — flex-wrap container with internal padding, no inner dividers */
+      .cart-table tbody tr.cart-item-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 28px;
+        border: 1px solid var(--gray-300);
+        border-radius: var(--radius-sm);
+        margin-bottom: 12px;
+        padding: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .cart-table-wrap { border: none; background: transparent; overflow: visible; }
+      .cart-table, .cart-table tbody { width: 100%; }
+      .cart-table tbody tr.cart-item-row:hover { background: var(--gray-50); }
+
+      /* Reset td defaults */
+      .cart-table tbody td { padding: 0; }
+
+      /* Row 1: product image + title at full card width */
+      .td-item { flex: 0 0 100%; max-width: 100%; overflow: hidden; }
+      .cart-item-inner { max-width: 100%; }
+      .cart-item-meta  { min-width: 0; overflow: hidden; }
+
+      /* Row 2: Price / Qty / Subtotal / Actions — inline, wraps gracefully */
+      .td-price,
+      .td-qty,
+      .td-subtotal,
+      .td-actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+      /* Push actions to the far right of whichever line it lands on */
+      .td-actions { margin-left: auto; }
+
+      /* Inline labels: "Price:" "Qty:" "Subtotal:" */
+      .td-price[data-label]::before,
+      .td-qty[data-label]::before,
+      .td-subtotal[data-label]::before {
+        content: attr(data-label) ":";
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--gray-500);
+        white-space: nowrap;
+      }
+
+      .cart-qty-wrap { justify-content: flex-start; }
+      .cart-item-img-wrap { width: 70px; height: 70px; }
+      /* Truncate long product names to a single line with ellipsis */
+      .cart-item-name { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      /* Restore bottom border on last card (overrides base :last-child rule) */
+      .cart-table tbody tr.cart-item-row:last-child { border-bottom: 1px solid var(--gray-300); }
+    }
+
+    /* 640px — stack footer, tighten card gap */
+    @media (max-width: 640px) {
+      .cart-section { padding: 0 0 40px; }
+      .cart-footer-row { flex-direction: column; align-items: stretch; }
+      .cart-continue-link { justify-content: center; }
+      .cart-update-btn { width: 100%; justify-content: center; }
+      /* Reduce column gap so row-2 cells fit without horizontal overflow */
+      .cart-table tbody tr.cart-item-row { gap: 8px 12px; }
+    }
+
+    /* 480px — very compact */
+    @media (max-width: 480px) {
+      .cart-item-name { font-size: 16px; line-height: 1.35; }
+      .cart-bestsellers { padding: 0 0 40px; }
+      /* Stack each row-2 cell on its own full-width line */
+      .td-price,
+      .td-qty,
+      .td-subtotal,
+      .td-actions { flex: 0 0 100%; }
+      .td-actions { margin-left: 0; justify-content: flex-end; }
+    }
+
+    /* 420px */
+    @media (max-width: 420px) {
+      .cart-item-img-wrap { width: 58px; height: 58px; }
+      .cart-qty-wrap .qty-control { width: 100px; }
+      .cart-grand-value { font-size: 19px; }
+    }
+
+    /* 320px */
+    @media (max-width: 320px) {
+      .cart-item-inner { gap: 10px; }
+      .cart-item-img-wrap { width: 50px; height: 50px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOAST / NOTIFICATION
+    ═══════════════════════════════════════════════════════════ */
+    .cart-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform .3s ease, opacity .3s ease;
+      pointer-events: none;
+    }
+    .cart-toast.show { transform: translateY(0); opacity: 1; }
+    .cart-toast svg.lucide { width: 16px; height: 16px; color: #4ade80; }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ── STICKY HEADER WRAP ── -->
+  <div class="sticky-top-wrap">
+
+  <!-- ── UTILITY BAR (row 1) ── -->
+  <div class="top-bar" role="complementary" aria-label="Trust and utility links">
+    <div class="container">
+      <div class="top-bar-promo">
+        <button class="promo-arrow promo-prev" aria-label="Previous promotion"><i data-lucide="chevron-left"></i></button>
+        <div class="promo-track">
+          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;10% Off — Code: <strong>MEMORIAL10</strong></span>
+          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping over $75</span>
+          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on Cables</span>
+          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping Available</span>
+        </div>
+        <button class="promo-arrow promo-next" aria-label="Next promotion"><i data-lucide="chevron-right"></i></button>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item"><i data-lucide="phone"></i><a href="tel:18882758755">1-888-275-8755</a></span>
+        <div class="top-bar-separator"></div>
+        <a href="/chat" class="top-bar-item" style="color:#ffffff;text-decoration:none;"><i data-lucide="message-circle"></i> Chat With Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MIDDLE HEADER (row 2) ── -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <div class="header-mid">
+
+        <!-- Logo -->
+        <a href="/" class="logo" aria-label="SF Cable – Home">
+          <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="160" height="48" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="logo-fallback" style="display:none;"><span style="color:var(--red)">SF</span><span>Cable</span></div>
+        </a>
+
+        <!-- Search -->
+        <div class="header-search-wrap" id="search-wrap">
+          <form class="header-search" role="search" action="/search" method="get" autocomplete="off">
+            <input class="search-input" id="search-input" type="search" name="q" placeholder="Search by SKU, product type, connector, cable standard, or use case" aria-label="Search products" autocomplete="off" />
+            <button class="search-btn" type="submit" aria-label="Search"><i data-lucide="search"></i></button>
+          </form>
+          <div class="search-dropdown" id="search-dropdown" role="listbox"></div>
+        </div>
+
+        <!-- Help dropdown (desktop) -->
+        <div class="header-help-wrap" id="helpMenuWrap">
+          <button class="header-help" id="helpMenuTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="helpMenuDropdown">
+            <i data-lucide="help-circle"></i> Help <i data-lucide="chevron-down" class="help-caret"></i>
+          </button>
+          <div class="header-help-dropdown" id="helpMenuDropdown" role="menu" aria-label="Help menu">
+            <a href="/get-quote" role="menuitem"><i data-lucide="file-text"></i> Get Quote</a>
+            <a href="/order-tracking" role="menuitem"><i data-lucide="package"></i> Order Tracking</a>
+            <a href="/change-cancel-order" role="menuitem"><i data-lucide="x-circle"></i> Change / Cancel Order</a>
+            <a href="/shipping-information" role="menuitem"><i data-lucide="truck"></i> Shipping Information</a>
+            <a href="/schools-government" role="menuitem"><i data-lucide="building-2"></i> Schools &amp; Government</a>
+            <a href="/payment-terms" role="menuitem"><i data-lucide="credit-card"></i> Payment Terms</a>
+            <a href="/returns-refunds" role="menuitem"><i data-lucide="rotate-ccw"></i> Returns / Refunds</a>
+            <a href="/warranty-claims" role="menuitem"><i data-lucide="shield-check"></i> Warranty / Claims</a>
+            <a href="/will-call" role="menuitem"><i data-lucide="map-pin"></i> Will Call</a>
+            <a href="/contact-us" role="menuitem"><i data-lucide="mail"></i> Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Mobile contact buttons (≤768px) -->
+        <div class="mobile-contact-btns">
+          <a href="tel:+18882758755" class="mobile-contact-btn mobile-contact-phone" aria-label="Call us"><i data-lucide="phone"></i></a>
+          <a href="/live-chat" class="mobile-contact-btn mobile-contact-chat" aria-label="Live chat"><i data-lucide="message-circle"></i></a>
+        </div>
+
+        <!-- Mobile actions (769–900px) -->
+        <div class="mobile-header-actions">
+          <a href="/help" class="mobile-header-btn" aria-label="Help"><i data-lucide="help-circle"></i></a>
+          <a href="/account" class="mobile-header-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+          <a href="/cart" class="mobile-header-btn" aria-label="Cart">
+            <i data-lucide="shopping-cart"></i>
+            <span class="cart-count" aria-live="polite" id="header-cart-count">2</span>
+          </a>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile shop bar (≤768px) -->
+    <div class="mobile-shop-bar" id="mobile-shop-bar">
+      <div class="container">
+        <div class="mobile-shop-bar-inner">
+          <button class="mobile-shop-trigger" id="mobile-shop-toggle" aria-label="Toggle shop menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+            <span class="mobile-shop-label">Shop</span>
+          </button>
+          <div class="mobile-shop-icons">
+            <button class="mobile-shop-icon-btn" id="mobile-help-toggle" aria-label="Help" aria-expanded="false"><i data-lucide="help-circle"></i></button>
+            <a href="/account" class="mobile-shop-icon-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+            <a href="/cart" class="mobile-shop-icon-btn" aria-label="Cart">
+              <i data-lucide="shopping-cart"></i>
+              <span class="mobile-shop-cart-count" aria-live="polite" id="mobile-cart-count">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom nav (row 3) -->
+    <div class="nav-bar" id="nav-bar">
+      <div class="container">
+        <div class="nav-bar-inner">
+
+          <!-- All Categories trigger -->
+          <button class="all-cats-trigger" id="allCatsTrigger" aria-expanded="false" aria-controls="megaMenuWrap">
+            <i data-lucide="menu"></i> Shop by Category <i data-lucide="chevron-down" class="nav-caret"></i>
+          </button>
+
+          <!-- Nav right actions -->
+          <div class="nav-actions">
+            <a href="/quick-order" class="nav-action-link">
+              <i data-lucide="file-text"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Fast</span>
+                <span class="nav-action-value">Quick Order</span>
+              </span>
+            </a>
+            <a href="/account" class="nav-action-link">
+              <i data-lucide="user"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Sign In</span>
+                <span class="nav-action-value">My Account</span>
+              </span>
+            </a>
+            <div class="nav-actions-sep"></div>
+            <a href="/cart" class="nav-action-link nav-action-cart">
+              <span class="nav-action-icon-wrap">
+                <i data-lucide="shopping-cart"></i>
+                <span class="nav-cart-count" id="nav-cart-count" aria-live="polite">2</span>
+              </span>
+              <span class="nav-action-text">
+                <span class="nav-action-value nav-cart-price" id="nav-cart-price">$17.47</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Mega Menu (same markup as categories.html) -->
+          <div class="mega-menu-wrap" id="megaMenuWrap" aria-hidden="true">
+            <div class="mega-menu">
+              <div class="mega-rail">
+                <button class="mega-rail-item active" data-panel="panel-accessories">Accessories <i data-lucide="chevron-right"></i></button>
+                <button class="mega-rail-item" data-panel="panel-adapters">Adapters &amp; Connectors <i data-lucide="chevron-right"></i></button>
+                <button class="mega-rail-item" data-panel="panel-audiovideo">Audio Video <i data-lucide="chevron-right"></i></button>
+                <button class="mega-rail-item" data-panel="panel-cables">Cables <i data-lucide="chevron-right"></i></button>
+                <button class="mega-rail-item" data-panel="panel-network">Network Cables &amp; Fiber Optics <i data-lucide="chevron-right"></i></button>
+                <button class="mega-rail-item" data-panel="panel-networking">Networking <i data-lucide="chevron-right"></i></button>
+                <button class="mega-rail-item" data-panel="panel-power">Power Cords &amp; Adapters <i data-lucide="chevron-right"></i></button>
+              </div>
+              <div class="mega-panel active" id="panel-accessories">
+                <div class="mega-panel-header">
+                  <h3 class="mega-panel-title">Accessories</h3>
+                  <a href="/accessories.html" class="mega-panel-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
+                </div>
+                <div class="mega-col-flow">
+                  <a href="#" class="mega-col-head">Cables Ties</a>
+                  <a href="#">Plain Ties</a><a href="#">Releasable Cable Ties</a><a href="#">Hook and Loop Ties</a>
+                  <a href="#" class="mega-col-head">Power Supplies / Batteries</a>
+                  <a href="#">AC/DC Adapters</a><a href="#">Car Charger</a><a href="#">USB / Mobile Chargers</a>
+                  <a href="#" class="mega-col-head">Security Camera</a>
+                  <a href="#">CCTV Camera</a><a href="#">Camera Cables/Adapters</a>
+                  <a href="#" class="mega-col-head">Home/Office Accessories</a>
+                  <a href="#">KVM Switches</a><a href="#">Tools &amp; Testers</a>
+                </div>
+              </div>
+              <div class="mega-panel" id="panel-adapters">
+                <div class="mega-panel-header"><h3 class="mega-panel-title">Adapters &amp; Connectors</h3><a href="/adapters-connectors.html" class="mega-panel-seeall">See All <i data-lucide="arrow-right"></i></a></div>
+                <div class="mega-col-flow"><a href="#">BNC Connectors</a><a href="#">DisplayPort Adapters</a><a href="#">DVI/Displayport Adapters</a><a href="#">F Type Connectors</a><a href="#">USB Couplers / Adapters</a></div>
+              </div>
+              <div class="mega-panel" id="panel-audiovideo">
+                <div class="mega-panel-header"><h3 class="mega-panel-title">Audio Video</h3><a href="/audio-video.html" class="mega-panel-seeall">See All <i data-lucide="arrow-right"></i></a></div>
+                <div class="mega-col-flow"><a href="#">XLR / XLR Cables</a><a href="#">RCA Cables</a><a href="#">Speaker Wires</a><a href="#">HDMI Cables</a></div>
+              </div>
+              <div class="mega-panel" id="panel-cables">
+                <div class="mega-panel-header"><h3 class="mega-panel-title">Cables</h3><a href="/cables.html" class="mega-panel-seeall">See All <i data-lucide="arrow-right"></i></a></div>
+                <div class="mega-col-flow"><a href="#">HDMI Cables</a><a href="#">USB Cables</a><a href="#">DVI Cables / Adapters</a><a href="#">DisplayPort</a></div>
+              </div>
+              <div class="mega-panel" id="panel-network">
+                <div class="mega-panel-header"><h3 class="mega-panel-title">Network Cables &amp; Fiber Optics</h3><a href="/network-cables.html" class="mega-panel-seeall">See All <i data-lucide="arrow-right"></i></a></div>
+                <div class="mega-col-flow"><a href="#">Cat 5E Cables</a><a href="#">Cat 6 Cables</a><a href="#">Cat 6A Cables</a><a href="#">Cat 8 Shielded Booted Cables</a></div>
+              </div>
+              <div class="mega-panel" id="panel-networking">
+                <div class="mega-panel-header"><h3 class="mega-panel-title">Networking</h3><a href="/networking.html" class="mega-panel-seeall">See All <i data-lucide="arrow-right"></i></a></div>
+                <div class="mega-col-flow"><a href="#">Patch Panels</a><a href="#">Keystone Jacks</a><a href="#">Cable Management</a><a href="#">Media Converter</a></div>
+              </div>
+              <div class="mega-panel" id="panel-power">
+                <div class="mega-panel-header"><h3 class="mega-panel-title">Power Cords &amp; Adapters</h3><a href="/power-cords-adapters.html" class="mega-panel-seeall">See All <i data-lucide="arrow-right"></i></a></div>
+                <div class="mega-col-flow"><a href="#">Extension Power Cords</a><a href="#">NEMA 5-15 to IEC 320 C13</a><a href="#">Power Strip</a><a href="#">PDU</a></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mobile nav -->
+      <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <div class="mob-nav-panel" id="mob-tab-shop">
+          <div class="mob-cat-item">
+            <button class="mob-cat-trigger" aria-expanded="false">Network Cables &amp; Fiber <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+            <div class="mob-cat-panel">
+              <a href="/network-cables.html" class="mob-cat-seeall">See All Network Cables <i data-lucide="arrow-right"></i></a>
+              <div class="mob-flat-links">
+                <a href="#">Cat 5E Cables</a><a href="#">Cat 6 Cables</a><a href="#">Cat 6A Cables</a><a href="#">Cat 8 Cables</a>
+              </div>
+            </div>
+          </div>
+          <div class="mob-cat-item">
+            <button class="mob-cat-trigger" aria-expanded="false">Cables <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+            <div class="mob-cat-panel">
+              <a href="/cables.html" class="mob-cat-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
+              <div class="mob-flat-links"><a href="#">HDMI Cables</a><a href="#">USB Cables</a></div>
+            </div>
+          </div>
+          <div class="mob-cat-item">
+            <button class="mob-cat-trigger" aria-expanded="false">Power Cords <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+            <div class="mob-cat-panel">
+              <a href="/power-cords-adapters.html" class="mob-cat-seeall">See All Power Cords <i data-lucide="arrow-right"></i></a>
+              <div class="mob-flat-links"><a href="#">NEMA Power Cords</a><a href="#">Power Strips</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="mob-nav-panel" id="mob-tab-account" style="display:none">
+          <div class="mob-help-header">
+            <span class="mob-help-title"><i data-lucide="help-circle"></i> Help</span>
+            <button class="mob-help-close" id="mob-help-close" aria-label="Close Help menu"><i data-lucide="x"></i></button>
+          </div>
+          <a href="/order-tracking" class="mobile-nav-link"><i data-lucide="package"></i> <span>Order Tracking</span></a>
+          <a href="/contact-us" class="mobile-nav-link"><i data-lucide="mail"></i> <span>Contact Us</span></a>
+        </div>
+      </div>
+    </div>
+
+  </header>
+  </div><!-- /sticky-top-wrap -->
+
+  <!-- ── BREADCRUMB ── -->
+  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+        <li class="breadcrumb-item breadcrumb-current" aria-current="page">Shopping Cart</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- ── PAGE TITLE ── -->
+    <section class="cart-page-title section--page-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-row">
+            <h1 class="section-title listing-page-heading">
+              Shopping Cart
+              <span class="cart-item-count" id="cart-item-count">(2 items)</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         CART SECTION
+    ══════════════════════════════════════════════════════════ -->
+    <section class="cart-section" aria-label="Shopping cart">
+      <div class="container">
+        <div class="cart-layout">
+
+          <!-- ── LEFT: CART ITEMS ── -->
+          <div class="cart-main">
+
+            <!-- Reward points banner -->
+            <div class="cart-rewards-bar" role="note" aria-label="Reward points information">
+              <i data-lucide="gift"></i>
+              <span>
+                Check out now and earn <strong>8 Reward points</strong> for this order.
+                <a href="/rewards">Learn more</a>
+                &nbsp;— This applies only to registered users and may vary when a user is logged in.
+              </span>
+            </div>
+
+            <!-- Cart table -->
+            <div class="cart-table-wrap" id="cart-table-wrap">
+              <table class="cart-table" aria-label="Cart items">
+                <thead>
+                  <tr>
+                    <th class="th-item">Item</th>
+                    <th class="th-price">Price</th>
+                    <th class="th-qty">Qty</th>
+                    <th class="th-subtotal">Subtotal</th>
+                    <th class="th-actions"><span class="sr-only">Actions</span></th>
+                  </tr>
+                </thead>
+                <tbody id="cart-tbody">
+
+                  <!-- ITEM 1 -->
+                  <tr class="cart-item-row" data-item-id="cat5e-utp-10ft-blue">
+                    <td class="td-item">
+                      <div class="cart-item-inner">
+                        <div class="cart-item-img-wrap">
+                          <img src="images/4.jpg" alt="Cat5e UTP Ethernet Network Cable" loading="lazy" />
+                        </div>
+                        <div class="cart-item-meta">
+                          <a href="/cat5e-utp-ethernet-cable.html" class="cart-item-name">
+                            Cat5e UnShielded (UTP) Ethernet Network Cable
+                          </a>
+                          <div class="cart-item-variant">10 ft — Blue</div>
+                          <div class="cart-item-sku">SKU: NTS-14104</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-price" data-label="Price">
+                      <span class="cart-item-price">$4.99</span>
+                    </td>
+                    <td class="td-qty" data-label="Qty">
+                      <div class="cart-qty-wrap">
+                        <div class="qty-control" role="group" aria-label="Quantity">
+                          <button class="qty-btn qty-dec" aria-label="Decrease quantity" data-item="cat5e-utp-10ft-blue">−</button>
+                          <input class="qty-input" type="number" value="2" min="1" max="999"
+                                 aria-label="Quantity" data-item="cat5e-utp-10ft-blue"
+                                 data-price="4.99" />
+                          <button class="qty-btn qty-inc" aria-label="Increase quantity" data-item="cat5e-utp-10ft-blue">+</button>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-subtotal" data-label="Subtotal">
+                      <span class="cart-item-subtotal" id="subtotal-cat5e-utp-10ft-blue">$9.98</span>
+                    </td>
+                    <td class="td-actions">
+                      <div class="cart-actions-wrap">
+                        <button class="cart-action-btn" aria-label="Edit item" title="Edit">
+                          <i data-lucide="pencil"></i>
+                        </button>
+                        <button class="cart-action-btn cart-remove-btn" aria-label="Remove item"
+                                title="Remove" data-item="cat5e-utp-10ft-blue">
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- ITEM 2 -->
+                  <tr class="cart-item-row" data-item-id="hdmi-2-6ft-black">
+                    <td class="td-item">
+                      <div class="cart-item-inner">
+                        <div class="cart-item-img-wrap">
+                          <img src="images/2.jpg" alt="HDMI 2.0 High Speed Cable" loading="lazy" />
+                        </div>
+                        <div class="cart-item-meta">
+                          <a href="/hdmi-2-0-cable.html" class="cart-item-name">
+                            HDMI 2.0 High Speed Cable 4K@60Hz
+                          </a>
+                          <div class="cart-item-variant">6 ft — Black</div>
+                          <div class="cart-item-sku">SKU: HV2-20606</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-price" data-label="Price">
+                      <span class="cart-item-price">$5.59</span>
+                    </td>
+                    <td class="td-qty" data-label="Qty">
+                      <div class="cart-qty-wrap">
+                        <div class="qty-control" role="group" aria-label="Quantity">
+                          <button class="qty-btn qty-dec" aria-label="Decrease quantity" data-item="hdmi-2-6ft-black">−</button>
+                          <input class="qty-input" type="number" value="1" min="1" max="999"
+                                 aria-label="Quantity" data-item="hdmi-2-6ft-black"
+                                 data-price="5.59" />
+                          <button class="qty-btn qty-inc" aria-label="Increase quantity" data-item="hdmi-2-6ft-black">+</button>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-subtotal" data-label="Subtotal">
+                      <span class="cart-item-subtotal" id="subtotal-hdmi-2-6ft-black">$5.59</span>
+                    </td>
+                    <td class="td-actions">
+                      <div class="cart-actions-wrap">
+                        <button class="cart-action-btn" aria-label="Edit item" title="Edit">
+                          <i data-lucide="pencil"></i>
+                        </button>
+                        <button class="cart-action-btn cart-remove-btn" aria-label="Remove item"
+                                title="Remove" data-item="hdmi-2-6ft-black">
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- ITEM 3 -->
+                  <tr class="cart-item-row" data-item-id="cat6-patch-10ft-gray">
+                    <td class="td-item">
+                      <div class="cart-item-inner">
+                        <div class="cart-item-img-wrap">
+                          <img src="images/4.jpg" alt="Cat6 Ethernet Patch Cable" loading="lazy" />
+                        </div>
+                        <div class="cart-item-meta">
+                          <a href="/cat6-ethernet-cable.html" class="cart-item-name">
+                            Cat6 Ethernet Patch Cable, Snagless
+                          </a>
+                          <div class="cart-item-variant">10 ft — Gray</div>
+                          <div class="cart-item-sku">SKU: NTS-16010</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-price" data-label="Price">
+                      <span class="cart-item-price">$3.65</span>
+                    </td>
+                    <td class="td-qty" data-label="Qty">
+                      <div class="cart-qty-wrap">
+                        <div class="qty-control" role="group" aria-label="Quantity">
+                          <button class="qty-btn qty-dec" aria-label="Decrease quantity" data-item="cat6-patch-10ft-gray">−</button>
+                          <input class="qty-input" type="number" value="1" min="1" max="999"
+                                 aria-label="Quantity" data-item="cat6-patch-10ft-gray"
+                                 data-price="3.65" />
+                          <button class="qty-btn qty-inc" aria-label="Increase quantity" data-item="cat6-patch-10ft-gray">+</button>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-subtotal" data-label="Subtotal">
+                      <span class="cart-item-subtotal" id="subtotal-cat6-patch-10ft-gray">$3.65</span>
+                    </td>
+                    <td class="td-actions">
+                      <div class="cart-actions-wrap">
+                        <button class="cart-action-btn" aria-label="Edit item" title="Edit">
+                          <i data-lucide="pencil"></i>
+                        </button>
+                        <button class="cart-action-btn cart-remove-btn" aria-label="Remove item"
+                                title="Remove" data-item="cat6-patch-10ft-gray">
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div><!-- /cart-table-wrap -->
+
+            <!-- Empty state (hidden by default) -->
+            <div class="cart-empty-state" id="cart-empty-state" aria-hidden="true">
+              <div class="cart-empty-icon">
+                <i data-lucide="shopping-cart"></i>
+              </div>
+              <h2>Your cart is empty</h2>
+              <p>Looks like you haven't added anything yet.</p>
+              <a href="/categories.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+
+            <!-- Cart footer actions -->
+            <div class="cart-footer-row" id="cart-footer-row">
+              <a href="/categories.html" class="cart-continue-link">
+                <i data-lucide="arrow-left"></i> Continue Shopping
+              </a>
+              <button class="cart-update-btn" id="cart-update-btn" aria-label="Update cart">
+                <i data-lucide="refresh-cw"></i> Update Shopping Cart
+              </button>
+            </div>
+
+          </div><!-- /cart-main -->
+
+          <!-- ── RIGHT: ORDER SUMMARY ── -->
+          <aside class="cart-sidebar" aria-label="Order summary">
+            <div class="cart-summary">
+
+              <!-- Header -->
+              <div class="cart-summary-head">
+                <h2>Order Summary</h2>
+              </div>
+
+              <!-- Items list -->
+              <div class="cart-summary-items">
+
+                <div class="cart-summary-item">
+                  <img src="images/4.jpg" alt="Cat5e UTP Ethernet Network Cable" class="cart-summary-item-img" loading="lazy" />
+                  <div class="cart-summary-item-info">
+                    <h3 class="product-name"><a href="/cat5e-utp-ethernet-cable.html">Cat5e UnShielded (UTP) Ethernet Network Cable</a></h3>
+                    <div class="cart-summary-item-meta">
+                      <span class="cart-summary-qty">×2</span>
+                      <span class="cart-summary-price">$9.98</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cart-summary-item">
+                  <img src="images/2.jpg" alt="HDMI 2.0 High Speed Cable" class="cart-summary-item-img" loading="lazy" />
+                  <div class="cart-summary-item-info">
+                    <h3 class="product-name"><a href="/hdmi-2-0-cable.html">HDMI 2.0 High Speed Cable 4K@60Hz</a></h3>
+                    <div class="cart-summary-item-meta">
+                      <span class="cart-summary-qty">×1</span>
+                      <span class="cart-summary-price">$5.59</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cart-summary-item">
+                  <img src="images/4.jpg" alt="Cat6 Ethernet Patch Cable" class="cart-summary-item-img" loading="lazy" />
+                  <div class="cart-summary-item-info">
+                    <h3 class="product-name"><a href="/cat6-ethernet-cable.html">Cat6 Ethernet Patch Cable, Snagless</a></h3>
+                    <div class="cart-summary-item-meta">
+                      <span class="cart-summary-qty">×1</span>
+                      <span class="cart-summary-price">$3.65</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Shipping & Tax accordion -->
+              <button class="cart-shipping-toggle" id="shipping-toggle" aria-expanded="false" aria-controls="shipping-body">
+                <span class="cart-shipping-toggle-label">
+                  <i data-lucide="map-pin"></i>&nbsp; Click Here to Calculate Shipping and Tax
+                </span>
+                <span class="cart-shipping-chevron"><i data-lucide="chevron-down"></i></span>
+              </button>
+
+              <div class="cart-shipping-body" id="shipping-body" aria-hidden="true">
+                <p>Enter your destination to get a shipping estimate.</p>
+                <div class="cart-shipping-form">
+                  <input class="cart-shipping-input" type="text" placeholder="Country" value="United States" aria-label="Country" />
+                  <select class="cart-shipping-select" aria-label="State / Province">
+                    <option value="">State / Province</option>
+                    <option value="CA" selected>California</option>
+                    <option value="NY">New York</option>
+                    <option value="TX">Texas</option>
+                    <option value="FL">Florida</option>
+                    <option value="WA">Washington</option>
+                  </select>
+                  <input class="cart-shipping-input cart-shipping-zip" id="cart-zip"
+                         type="text" placeholder="ZIP / Postal Code" aria-label="ZIP / Postal Code"
+                         maxlength="10" inputmode="numeric" />
+                </div>
+                <!-- Shipping method options — shown once a valid ZIP is entered -->
+                <div class="cart-ship-options" id="cart-ship-options" aria-live="polite">
+                  <div class="cart-ship-carrier">United States Postal Service</div>
+                  <label class="cart-ship-option">
+                    <input class="cart-ship-radio" type="radio" name="shipping_method"
+                           value="usps_ground" data-price="5.95" />
+                    <span class="cart-ship-option-label">USPS Ground Advantage</span>
+                    <span class="cart-ship-option-price">$5.95</span>
+                  </label>
+                  <label class="cart-ship-option">
+                    <input class="cart-ship-radio" type="radio" name="shipping_method"
+                           value="usps_priority" data-price="10.95" />
+                    <span class="cart-ship-option-label">Priority Mail</span>
+                    <span class="cart-ship-option-price">$10.95</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Summary rows -->
+              <div class="cart-summary-rows">
+                <div class="cart-summary-row">
+                  <span class="cart-row-label">Subtotal</span>
+                  <span class="cart-row-value" id="summary-subtotal">$19.22</span>
+                </div>
+                <div class="cart-summary-row">
+                  <span class="cart-row-label">Shipping</span>
+                  <span class="cart-row-value" id="summary-shipping">—</span>
+                </div>
+                <div class="cart-summary-row">
+                  <span class="cart-row-label">Tax</span>
+                  <span class="cart-row-value" id="summary-tax">$0.00</span>
+                </div>
+              </div>
+
+              <!-- Grand total -->
+              <div class="cart-grand-total">
+                <span class="cart-grand-label">Grand Total</span>
+                <span class="cart-grand-value" id="summary-grand-total">$19.22</span>
+              </div>
+
+              <!-- Checkout CTA -->
+              <a href="/checkout" class="cart-checkout-btn" aria-label="Proceed to Checkout">
+                <i data-lucide="lock"></i> Proceed to Checkout
+              </a>
+
+              <!-- Secure note -->
+              <div class="cart-secure-note">
+                <i data-lucide="shield-check"></i>
+                Secure &amp; encrypted checkout
+              </div>
+
+              <!-- Accepted payments -->
+              <div class="cart-payment-icons" aria-label="Accepted payment methods">
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="44" height="28" role="img" aria-label="Visa"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text></svg>
+                </span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="44" height="28" role="img" aria-label="Mastercard"><rect width="50" height="32" rx="3.5" fill="#1a1a1a"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/></svg>
+                </span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="44" height="28" role="img" aria-label="American Express"><rect width="50" height="32" rx="3.5" fill="#007BC1"/><text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text></svg>
+                </span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="44" height="28" role="img" aria-label="PayPal"><rect width="50" height="32" rx="3.5" fill="#003087"/><text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text></svg>
+                </span>
+              </div>
+
+            </div><!-- /cart-summary -->
+          </aside>
+
+        </div><!-- /cart-layout -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         BEST SELLERS
+    ══════════════════════════════════════════════════════════ -->
+    <section class="cart-bestsellers" aria-labelledby="bestsellers-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-row">
+            <h2 class="section-title" id="bestsellers-heading">Best Sellers</h2>
+            <div class="section-nav-arrows" data-carousel="bestSellersTrack">
+              <button class="section-nav-btn section-nav-prev" aria-label="Previous products"><i data-lucide="chevron-left"></i></button>
+              <button class="section-nav-btn section-nav-next" aria-label="Next products"><i data-lucide="chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-carousel-track" id="bestSellersTrack">
+        <div class="products-grid" id="bs-grid">
+
+          <!-- Card 1 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-sale">SAVE 20%</span></div>
+              <div class="product-hover-bar">
+                <button class="product-action-btn" aria-label="Add to wishlist" data-tooltip="Wishlist"><i data-lucide="heart"></i></button>
+                <button class="product-action-btn" aria-label="Compare" data-tooltip="Compare"><i data-lucide="arrow-left-right"></i></button>
+                <button class="product-action-btn" aria-label="Quick view" data-tooltip="Quick View"><i data-lucide="eye"></i></button>
+              </div>
+              <img src="images/2.jpg" alt="HDMI 2.0 High Speed Cable" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><a href="/hdmi-2-0-cable.html">HDMI 2.0 High Speed Cable 4K@60Hz – 6 ft</a></h3>
+              <div class="product-rating">
+                <span class="stars" aria-label="5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                <span class="rating-count">(324)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$5.59</span><span class="price-old">$6.99</span><span class="price-save">Save 20%</span></div>
+              <div class="product-swatches" aria-label="Available colors"><span class="product-swatch s-black is-selected" title="Black"></span><span class="product-swatch s-white" title="White"></span></div>
+            </div>
+            <div class="product-footer">
+              <button class="fav-btn" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+              <button class="add-to-cart"><i data-lucide="shopping-cart"></i> Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <div class="product-hover-bar">
+                <button class="product-action-btn" aria-label="Add to wishlist" data-tooltip="Wishlist"><i data-lucide="heart"></i></button>
+                <button class="product-action-btn" aria-label="Compare" data-tooltip="Compare"><i data-lucide="arrow-left-right"></i></button>
+                <button class="product-action-btn" aria-label="Quick view" data-tooltip="Quick View"><i data-lucide="eye"></i></button>
+              </div>
+              <img src="images/3.jpg" alt="USB-C to USB-A Cable" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><a href="/usb-c-to-usb-a.html">USB-C to USB-A 3.0 Cable – 3 ft, 10Gbps</a></h3>
+              <div class="product-rating">
+                <span class="stars" aria-label="5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                <span class="rating-count">(218)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$5.49</span></div>
+              <div class="product-swatches" aria-label="Available colors"><span class="product-swatch s-white is-selected" title="White"></span><span class="product-swatch s-navy" title="Navy"></span></div>
+            </div>
+            <div class="product-footer">
+              <button class="fav-btn" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+              <button class="add-to-cart"><i data-lucide="shopping-cart"></i> Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-sale">SAVE 15%</span></div>
+              <div class="product-hover-bar">
+                <button class="product-action-btn" aria-label="Add to wishlist" data-tooltip="Wishlist"><i data-lucide="heart"></i></button>
+                <button class="product-action-btn" aria-label="Compare" data-tooltip="Compare"><i data-lucide="arrow-left-right"></i></button>
+                <button class="product-action-btn" aria-label="Quick view" data-tooltip="Quick View"><i data-lucide="eye"></i></button>
+              </div>
+              <img src="images/4.jpg" alt="Cat6 Ethernet Patch Cable" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><a href="/cat6-ethernet-cable.html">Cat6 Ethernet Patch Cable, Snagless – 10 ft</a></h3>
+              <div class="product-rating">
+                <span class="stars" aria-label="4.5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star-half"></i></span>
+                <span class="rating-count">(507)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$3.65</span><span class="price-old">$4.29</span><span class="price-save">Save 15%</span></div>
+              <div class="product-swatches" aria-label="Available colors"><span class="product-swatch s-black is-selected" title="Black"></span><span class="product-swatch s-blue" title="Blue"></span><span class="product-swatch s-navy" title="Navy"></span></div>
+            </div>
+            <div class="product-footer">
+              <button class="fav-btn" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+              <button class="add-to-cart"><i data-lucide="shopping-cart"></i> Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-new">New</span></div>
+              <div class="product-hover-bar">
+                <button class="product-action-btn" aria-label="Add to wishlist" data-tooltip="Wishlist"><i data-lucide="heart"></i></button>
+                <button class="product-action-btn" aria-label="Compare" data-tooltip="Compare"><i data-lucide="arrow-left-right"></i></button>
+                <button class="product-action-btn" aria-label="Quick view" data-tooltip="Quick View"><i data-lucide="eye"></i></button>
+              </div>
+              <img src="images/5.jpg" alt="IEC C13 to NEMA Power Cord" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><a href="/iec-power-cord.html">IEC C13 to NEMA 5-15P Power Cord – 6 ft, 10A</a></h3>
+              <div class="product-rating">
+                <span class="stars" aria-label="5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                <span class="rating-count">(189)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$7.49</span></div>
+              <div class="product-swatches" aria-label="Available colors"><span class="product-swatch s-black is-selected" title="Black"></span><span class="product-swatch s-gray" title="Gray"></span></div>
+            </div>
+            <div class="product-footer">
+              <button class="fav-btn" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+              <button class="add-to-cart"><i data-lucide="shopping-cart"></i> Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <div class="product-hover-bar">
+                <button class="product-action-btn" aria-label="Add to wishlist" data-tooltip="Wishlist"><i data-lucide="heart"></i></button>
+                <button class="product-action-btn" aria-label="Compare" data-tooltip="Compare"><i data-lucide="arrow-left-right"></i></button>
+                <button class="product-action-btn" aria-label="Quick view" data-tooltip="Quick View"><i data-lucide="eye"></i></button>
+              </div>
+              <img src="images/6.jpg" alt="DisplayPort 1.4 Cable" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><a href="/displayport-cable.html">DisplayPort 1.4 Cable 8K@30Hz – 6 ft</a></h3>
+              <div class="product-rating">
+                <span class="stars" aria-label="4.5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star-half"></i></span>
+                <span class="rating-count">(142)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$8.99</span></div>
+              <div class="product-swatches" aria-label="Available colors"><span class="product-swatch s-black is-selected" title="Black"></span></div>
+            </div>
+            <div class="product-footer">
+              <button class="fav-btn" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+              <button class="add-to-cart"><i data-lucide="shopping-cart"></i> Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-sale">SAVE 10%</span></div>
+              <div class="product-hover-bar">
+                <button class="product-action-btn" aria-label="Add to wishlist" data-tooltip="Wishlist"><i data-lucide="heart"></i></button>
+                <button class="product-action-btn" aria-label="Compare" data-tooltip="Compare"><i data-lucide="arrow-left-right"></i></button>
+                <button class="product-action-btn" aria-label="Quick view" data-tooltip="Quick View"><i data-lucide="eye"></i></button>
+              </div>
+              <img src="images/7.jpg" alt="LC to SC Fiber Optic Patch Cable" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><a href="/fiber-optic-patch.html">LC to SC Fiber Optic Patch Cable, Single Mode – 3m</a></h3>
+              <div class="product-rating">
+                <span class="stars" aria-label="5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                <span class="rating-count">(96)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$11.69</span><span class="price-old">$12.99</span><span class="price-save">Save 10%</span></div>
+              <div class="product-swatches" aria-label="Available colors"><span class="product-swatch s-yellow is-selected" title="Yellow"></span><span class="product-swatch s-blue" title="Blue"></span></div>
+            </div>
+            <div class="product-footer">
+              <button class="fav-btn" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+              <button class="add-to-cart"><i data-lucide="shopping-cart"></i> Add to Cart</button>
+            </div>
+          </article>
+
+        </div><!-- /bs-grid -->
+        </div><!-- /bestSellersTrack -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         USP / FOOTER TRUST BAR  (same as categories.html)
+    ══════════════════════════════════════════════════════════ -->
+    <section class="footer-trust-bar" aria-label="Trust and credentials">
+      <div class="container">
+        <div class="footer-trust-slider-wrap">
+          <button class="footer-trust-prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <div class="footer-trust-inner">
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="history"></i></div>
+              <div class="footer-trust-text"><strong>20+ Years of Industry</strong><span>Expertise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="award"></i></div>
+              <div class="footer-trust-text"><strong>Lifetime Warranty</strong><span>on Cables</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="package-open"></i></div>
+              <div class="footer-trust-text"><strong>No Minimum Order</strong><span>or Fees</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="truck"></i></div>
+              <div class="footer-trust-text"><strong>Same-Day Shipping</strong><span>on Stock Items</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="rotate-ccw"></i></div>
+              <div class="footer-trust-text"><strong>60-Day Money-Back</strong><span>Promise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="headphones"></i></div>
+              <div class="footer-trust-text"><strong>Free Lifetime</strong><span>Technical Support</span></div>
+            </div>
+          </div>
+          <button class="footer-trust-next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER  (same as categories.html)
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" aria-label="SF Cable – Home">
+            <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="140" height="42" loading="lazy" onerror="this.style.display='none'" />
+          </a>
+          <p>Your trusted source for cables, connectors &amp; AV gear since 1996. Over 40,000 products in stock &amp; shipped fast.</p>
+          <form class="footer-brand-form newsletter-form" aria-label="Newsletter signup">
+            <div class="newsletter-inline">
+              <input class="newsletter-input" type="email" placeholder="Work email address" aria-label="Email address" required />
+              <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+            </div>
+            <p class="newsletter-note">No spam. <a href="/privacy-policy">Privacy Policy</a>.</p>
+          </form>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="X / Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.263 5.633 5.901-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col open">
+          <h4>Information<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/about">About SF Cable</a></li>
+            <li><a href="/shipping-information">Shipping Info</a></li>
+            <li><a href="/returns-refunds">Returns &amp; Refunds</a></li>
+            <li><a href="/warranty-claims">Warranty</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/order-tracking">Track My Order</a></li>
+            <li><a href="/quick-order">Quick Order</a></li>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/clearance">Clearance</a></li>
+            <li><a href="/rewards">SF Cable Rewards</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Shop<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/hdmi-cables.html">HDMI Cables</a></li>
+            <li><a href="/usb-cables.html">USB Cables</a></li>
+            <li><a href="/network-cables.html">Ethernet Cables</a></li>
+            <li><a href="/fiber-optics.html">Fiber Optics</a></li>
+            <li><a href="/power-cords.html">Power Cords</a></li>
+            <li><a href="/adapters-connectors.html">Adapters &amp; Connectors</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <div class="footer-contact">
+            <a href="tel:18882758755"><i data-lucide="phone"></i> 1-888-275-8755</a>
+            <a href="mailto:sales@sfcable.com"><i data-lucide="mail"></i> sales@sfcable.com</a>
+            <a href="/contact"><i data-lucide="map-pin"></i> Fremont, CA — Mon–Fri 8AM–5PM PST</a>
+            <a href="/chat"><i data-lucide="message-circle"></i> Live Chat</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="footer-badges">
+        <div class="footer-badge-group" aria-label="Accreditations and certifications">
+          <a href="#" class="footer-badge" aria-label="CMAS"><img src="images/CMAS.png" alt="CMAS — California Multiple Award Schedule" /></a>
+          <a href="#" class="footer-badge" aria-label="GSA Contract Holder"><img src="images/GSA.jpg" alt="GSA Contract Holder" /></a>
+          <a href="#" class="footer-badge" aria-label="BBB Accredited Business"><img src="images/blue.png" alt="BBB Accredited Business" /></a>
+        </div>
+        <a href="#" class="footer-reviews" aria-label="7,786 Certified Reviews, powered by YOTPO">
+          <img src="images/yotpo-badge.png" alt="7,786 Certified Reviews – Powered by YOTPO" class="footer-yotpo-img" />
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SF Cable, Inc. All rights reserved. Fremont, CA 94538</p>
+        <div class="footer-payments">
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Visa"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Mastercard"><rect width="50" height="32" rx="3.5" fill="#1a1a1a"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="American Express"><rect width="50" height="32" rx="3.5" fill="#007BC1"/><text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Discover"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><circle cx="49" cy="16" r="13" fill="#F76F20"/><text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="PayPal"><rect width="50" height="32" rx="3.5" fill="#003087"/><text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text></svg></span>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-trust-strip">
+      <p>SSL Secured Checkout · RoHS Compliant · TAA Compliant Products Available · GSA Schedule · <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-conditions">Terms</a></p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top"><i data-lucide="chevron-up"></i></a>
+
+  <!-- Toast notification -->
+  <div class="cart-toast" id="cart-toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle"></i>
+    <span id="cart-toast-msg">Cart updated.</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════════════════ -->
+  <script>
+    /* ── Section carousel arrows ── */
+    (function () {
+      function updateArrows(arrowsEl, track) {
+        setTimeout(function () {
+          const atStart = track.scrollLeft <= 2;
+          const atEnd   = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+          const prev = arrowsEl.querySelector('.section-nav-prev');
+          const next = arrowsEl.querySelector('.section-nav-next');
+          if (prev) prev.disabled = atStart;
+          if (next) next.disabled = atEnd;
+        }, 350);
+      }
+      document.querySelectorAll('.section-nav-btn').forEach(function (btn) {
+        const arrowsEl = btn.closest('.section-nav-arrows');
+        const trackId  = arrowsEl ? arrowsEl.dataset.carousel : null;
+        const track    = trackId ? document.getElementById(trackId) : null;
+        if (!track) return;
+        updateArrows(arrowsEl, track);
+        track.addEventListener('scroll', function () { updateArrows(arrowsEl, track); }, { passive: true });
+        btn.addEventListener('click', function () {
+          const cardEl    = track.querySelector('.product-card');
+          const cardWidth = cardEl ? cardEl.offsetWidth + 16 : 236;
+          const amount    = cardWidth * 2;
+          track.scrollBy({ left: btn.classList.contains('section-nav-prev') ? -amount : amount, behavior: 'smooth' });
+        });
+      });
+    })();
+
+    /* ─── Lucide icons ─── */
+    lucide.createIcons({
+      attrs: { 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+    });
+
+    /* ─── Header scroll + back-to-top ─── */
+    const header   = document.getElementById('site-header');
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ─── Promo bar carousel ─── */
+    (function () {
+      const slides = document.querySelectorAll('.promo-slide');
+      let current = 0, timer;
+      if (!slides.length) return;
+      function show(idx) { slides[current].classList.remove('active'); current = (idx + slides.length) % slides.length; slides[current].classList.add('active'); }
+      function startAuto() { timer = setInterval(() => show(current + 1), 5000); }
+      function resetAuto() { clearInterval(timer); startAuto(); }
+      document.querySelector('.promo-prev').addEventListener('click', () => { show(current - 1); resetAuto(); });
+      document.querySelector('.promo-next').addEventListener('click', () => { show(current + 1); resetAuto(); });
+      startAuto();
+    })();
+
+    /* ─── Desktop Help dropdown ─── */
+    (function () {
+      const trigger  = document.getElementById('helpMenuTrigger');
+      const dropdown = document.getElementById('helpMenuDropdown');
+      const wrap     = document.getElementById('helpMenuWrap');
+      if (!trigger || !dropdown) return;
+      let hoverTimer;
+      const open  = () => { clearTimeout(hoverTimer); dropdown.classList.add('open');    trigger.setAttribute('aria-expanded', 'true'); };
+      const close = () => { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); };
+      const closeDelayed = () => { hoverTimer = setTimeout(close, 150); };
+      trigger.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.contains('open') ? close() : open(); });
+      wrap.addEventListener('mouseenter', open);
+      wrap.addEventListener('mouseleave', closeDelayed);
+      document.addEventListener('click', e => { if (!wrap.contains(e.target)) close(); });
+    })();
+
+    /* ─── Mega menu ─── */
+    (() => {
+      const trigger   = document.getElementById('allCatsTrigger');
+      const wrap      = document.getElementById('megaMenuWrap');
+      if (!trigger || !wrap) return;
+      const railItems = wrap.querySelectorAll('.mega-rail-item');
+      const panels    = wrap.querySelectorAll('.mega-panel');
+      let closeTimer, hoverTimer;
+      const openMenu  = () => { clearTimeout(closeTimer); wrap.classList.add('open');    trigger.classList.add('open');    trigger.setAttribute('aria-expanded','true');  wrap.setAttribute('aria-hidden','false'); };
+      const closeMenu = () => {                           wrap.classList.remove('open'); trigger.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); wrap.setAttribute('aria-hidden','true'); };
+      const scheduleClose = () => { clearTimeout(closeTimer); closeTimer = setTimeout(closeMenu, 200); };
+      function switchPanel(item) {
+        railItems.forEach(r => r.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        item.classList.add('active');
+        const panel = document.getElementById(item.dataset.panel);
+        if (panel) panel.classList.add('active');
+      }
+      trigger.addEventListener('mouseenter', openMenu);
+      trigger.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+      wrap.addEventListener('mouseleave', scheduleClose);
+      trigger.addEventListener('click', e => { e.stopPropagation(); wrap.classList.contains('open') ? closeMenu() : openMenu(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && wrap.classList.contains('open')) closeMenu(); });
+      document.addEventListener('click', e => { if (wrap.classList.contains('open') && !wrap.contains(e.target) && !trigger.contains(e.target)) closeMenu(); });
+      railItems.forEach(item => {
+        item.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); hoverTimer = setTimeout(() => switchPanel(item), 60); });
+        item.addEventListener('click', () => { clearTimeout(hoverTimer); switchPanel(item); });
+      });
+    })();
+
+    /* ─── Mobile nav ─── */
+    (function () {
+      const mobileNav  = document.getElementById('mobile-nav');
+      const shopPanel  = document.getElementById('mob-tab-shop');
+      const helpPanel  = document.getElementById('mob-tab-account');
+      const shopToggle = document.getElementById('mobile-shop-toggle');
+      const helpToggle = document.getElementById('mobile-help-toggle');
+      const tabToggle  = document.getElementById('mobile-menu-toggle');
+      if (!mobileNav) return;
+      function showPanel(p) { shopPanel.style.display = 'none'; helpPanel.style.display = 'none'; if (p) p.style.display = 'block'; }
+      function openNav(p)  { mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false'); showPanel(p); }
+      function closeNav()  { mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true'); [shopToggle, tabToggle].forEach(t => { if (t) { t.setAttribute('aria-expanded','false'); t.classList.remove('is-open'); }}); if (helpToggle) { helpToggle.setAttribute('aria-expanded','false'); helpToggle.classList.remove('mobile-help-active'); }}
+      const isOpen = () => mobileNav.classList.contains('open');
+      if (shopToggle) shopToggle.addEventListener('click', () => { isOpen() && shopPanel.style.display !== 'none' ? closeNav() : (openNav(shopPanel), shopToggle.setAttribute('aria-expanded','true'), shopToggle.classList.add('is-open'), tabToggle && (tabToggle.classList.add('is-open'), tabToggle.setAttribute('aria-expanded','true'))); });
+      if (helpToggle) helpToggle.addEventListener('click', () => { isOpen() && helpPanel.style.display !== 'none' ? closeNav() : (openNav(helpPanel), helpToggle.setAttribute('aria-expanded','true'), helpToggle.classList.add('mobile-help-active')); });
+      if (tabToggle)  tabToggle.addEventListener('click',  () => { isOpen() && shopPanel.style.display !== 'none' ? closeNav() : (openNav(shopPanel), tabToggle.setAttribute('aria-expanded','true'), tabToggle.classList.add('is-open'), shopToggle && (shopToggle.classList.add('is-open'), shopToggle.setAttribute('aria-expanded','true'))); });
+    })();
+
+    /* ─── Mobile nav: category accordion ─── */
+    document.querySelectorAll('.mob-cat-trigger').forEach(trigger => {
+      trigger.addEventListener('click', function () {
+        const item   = trigger.closest('.mob-cat-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.mob-cat-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.mob-cat-trigger').setAttribute('aria-expanded', 'false'); });
+        if (!isOpen) { item.classList.add('open'); trigger.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+
+    /* ─── Mobile help close ─── */
+    const mobHelpClose = document.getElementById('mob-help-close');
+    if (mobHelpClose) mobHelpClose.addEventListener('click', () => {
+      const nav = document.getElementById('mobile-nav');
+      if (nav) { nav.classList.remove('open'); nav.setAttribute('aria-hidden', 'true'); }
+    });
+
+    /* ─── Footer accordion ─── */
+    (function () {
+      const mqAll = window.matchMedia('(max-width: 900px)');
+      const cols  = Array.from(document.querySelectorAll('.footer-grid .footer-col'));
+      function setInitialState() { cols.forEach((col, i) => { if (!mqAll.matches) { col.classList.remove('open'); return; } col.classList.toggle('open', i === 0); }); }
+      cols.forEach(col => { const h = col.querySelector('h4'); if (h) h.addEventListener('click', () => { if (mqAll.matches) col.classList.toggle('open'); }); });
+      setInitialState();
+      mqAll.addEventListener('change', setInitialState);
+    })();
+
+    /* ════════════════════════════════════════════════════
+       CART LOGIC
+    ════════════════════════════════════════════════════ */
+
+    /* Selected shipping cost (updated by radio selection) */
+    var cartShipping = 0;
+
+    /* Toast helper */
+    function showToast(msg) {
+      const toast = document.getElementById('cart-toast');
+      const msgEl = document.getElementById('cart-toast-msg');
+      msgEl.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    /* Format price */
+    function fmt(n) { return '$' + n.toFixed(2); }
+
+    /* Recalculate all subtotals + totals from current DOM inputs */
+    function recalcCart() {
+      let subtotal = 0;
+      document.querySelectorAll('.qty-input').forEach(input => {
+        const qty   = Math.max(1, parseInt(input.value) || 1);
+        const price = parseFloat(input.dataset.price) || 0;
+        const id    = input.dataset.item;
+        const sub   = qty * price;
+        subtotal += sub;
+        const subEl = document.getElementById('subtotal-' + id);
+        if (subEl) subEl.textContent = fmt(sub);
+      });
+      // Update order summary
+      document.getElementById('summary-subtotal').textContent    = fmt(subtotal);
+      document.getElementById('summary-grand-total').textContent = fmt(subtotal + cartShipping);
+      // Update cart count badge in header
+      let totalQty = 0;
+      document.querySelectorAll('.qty-input').forEach(inp => { totalQty += Math.max(1, parseInt(inp.value) || 1); });
+      ['header-cart-count','mobile-cart-count','nav-cart-count'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = totalQty;
+      });
+      const priceEl = document.getElementById('nav-cart-price');
+      if (priceEl) priceEl.textContent = fmt(subtotal);
+      // Update item count heading
+      const rows    = document.querySelectorAll('.cart-item-row');
+      const countEl = document.getElementById('cart-item-count');
+      if (countEl) countEl.textContent = '(' + rows.length + ' item' + (rows.length !== 1 ? 's' : '') + ')';
+    }
+
+    /* Qty +/- buttons */
+    document.querySelectorAll('.qty-dec, .qty-inc').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const id    = this.dataset.item;
+        const input = document.querySelector(`.qty-input[data-item="${id}"]`);
+        if (!input) return;
+        let qty = parseInt(input.value) || 1;
+        if (this.classList.contains('qty-inc')) { qty = Math.min(999, qty + 1); }
+        else                                     { qty = Math.max(1,   qty - 1); }
+        input.value = qty;
+        recalcCart();
+      });
+    });
+
+    /* Qty direct input */
+    document.querySelectorAll('.qty-input').forEach(input => {
+      input.addEventListener('change', function () {
+        const qty = Math.max(1, Math.min(999, parseInt(this.value) || 1));
+        this.value = qty;
+        recalcCart();
+      });
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.target.blur(); recalcCart(); } });
+    });
+
+    /* Remove item */
+    document.querySelectorAll('.cart-remove-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const id  = this.dataset.item;
+        const row = document.querySelector(`.cart-item-row[data-item-id="${id}"]`);
+        if (!row) return;
+        row.style.transition = 'opacity .25s, transform .25s';
+        row.style.opacity    = '0';
+        row.style.transform  = 'translateX(12px)';
+        setTimeout(() => {
+          row.remove();
+          recalcCart();
+          // Show empty state if no items left
+          const remaining = document.querySelectorAll('.cart-item-row').length;
+          if (remaining === 0) {
+            document.getElementById('cart-table-wrap').style.display = 'none';
+            document.getElementById('cart-footer-row').style.display = 'none';
+            const empty = document.getElementById('cart-empty-state');
+            empty.classList.add('visible');
+            empty.setAttribute('aria-hidden', 'false');
+          }
+          showToast('Item removed from cart.');
+        }, 260);
+      });
+    });
+
+    /* Update cart button */
+    document.getElementById('cart-update-btn').addEventListener('click', function () {
+      recalcCart();
+      showToast('Cart updated successfully.');
+    });
+
+    /* Shipping accordion */
+    const shippingToggle = document.getElementById('shipping-toggle');
+    const shippingBody   = document.getElementById('shipping-body');
+    shippingToggle.addEventListener('click', function () {
+      const isOpen = shippingBody.classList.contains('open');
+      shippingBody.classList.toggle('open', !isOpen);
+      shippingBody.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+      this.classList.toggle('open', !isOpen);
+      this.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    });
+
+    /* ZIP input → show shipping options */
+    (function () {
+      const zipInput = document.getElementById('cart-zip');
+      const shipOpts = document.getElementById('cart-ship-options');
+      if (!zipInput || !shipOpts) return;
+
+      function tryShowShipping() {
+        const digits = zipInput.value.trim().replace(/\D/g, '');
+        if (digits.length >= 5) {
+          shipOpts.classList.add('visible');
+        } else {
+          shipOpts.classList.remove('visible');
+          // Deselect any chosen method and clear shipping from totals
+          document.querySelectorAll('.cart-ship-radio').forEach(r => { r.checked = false; });
+          cartShipping = 0;
+          document.getElementById('summary-shipping').textContent = '—';
+          recalcCart();
+        }
+      }
+
+      zipInput.addEventListener('blur',   tryShowShipping);
+      zipInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') { e.preventDefault(); zipInput.blur(); }
+      });
+
+      document.querySelectorAll('.cart-ship-radio').forEach(radio => {
+        radio.addEventListener('change', function () {
+          cartShipping = parseFloat(this.dataset.price) || 0;
+          document.getElementById('summary-shipping').textContent = fmt(cartShipping);
+          recalcCart();
+        });
+      });
+    })();
+
+    /* Initial calc on load */
+    recalcCart();
+
+    /* ── Equal-height product cards (Best Sellers) ────────────────── */
+    function equalizeCardHeights(sel) {
+      var container = document.querySelector(sel);
+      if (!container) return;
+      var cards = Array.from(container.querySelectorAll('.product-card'));
+      var visible = cards.filter(function(c) { return c.offsetParent !== null; });
+      visible.forEach(function(c) { c.style.minHeight = ''; });
+      if (!visible.length) return;
+      var maxH = 0;
+      visible.forEach(function(c) { if (c.offsetHeight > maxH) maxH = c.offsetHeight; });
+      if (maxH > 0) visible.forEach(function(c) { c.style.minHeight = maxH + 'px'; });
+    }
+    window.addEventListener('load', function() { equalizeCardHeights('#bs-grid'); });
+    var _eqTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(_eqTimer);
+      _eqTimer = setTimeout(function() { equalizeCardHeights('#bs-grid'); }, 150);
+    });
+
+  </script>
+
+</body>
+</html>

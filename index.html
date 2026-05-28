@@ -56,7 +56,7 @@
           <a href="tel:18882758755">1-888-275-8755</a>
         </span>
         <div class="top-bar-separator"></div>
-        <a href="/chat" class="top-bar-item" style="color:#ffffff; text-decoration:none;">
+        <a href="/chat" class="top-bar-item">
           <i data-lucide="message-circle"></i> Chat With Us
         </a>
       </div>
@@ -74,7 +74,7 @@
         <!-- Logo -->
         <a href="/" class="logo" aria-label="SF Cable – Home">
           <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="160" height="48" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="logo-fallback" style="display:none;"><span style="color:var(--red)">SF</span><span>Cable</span></div>
+          <div class="logo-fallback" style="display:none;"><span class="logo-sf">SF</span><span>Cable</span></div>
         </a>
 
         <!-- Search -->
@@ -748,7 +748,7 @@
               <a href="#">Cat 6A Cables</a>
               <a href="#">Cat 8 Shielded Booted Cables</a>
             </div>
-            <div class="mob-cat-groups" style="margin-top:6px;">
+            <div class="mob-cat-groups">
               <div class="mob-sub-group is-open">
                 <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="radio"></i></span>
@@ -778,7 +778,7 @@
               <a href="#">Cable Management</a>
               <a href="#">Media Converter</a>
             </div>
-            <div class="mob-cat-groups" style="margin-top:6px;">
+            <div class="mob-cat-groups">
               <div class="mob-sub-group is-open">
                 <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="server"></i></span>
@@ -816,7 +816,7 @@
               <a href="#">Extension Power Cords</a>
               <a href="#">Multi-Outlet Extension Cords</a>
             </div>
-            <div class="mob-cat-groups" style="margin-top:6px;">
+            <div class="mob-cat-groups">
               <div class="mob-sub-group is-open">
                 <div class="mob-sub-head" role="button" tabindex="0" aria-expanded="true">
                   <span class="mob-sub-icon"><i data-lucide="plug"></i></span>
@@ -1051,7 +1051,7 @@
     </section>
 
     <!-- CATEGORIES -->
-    <section class="section" style="padding:40px 0;" aria-labelledby="categories-heading-2">
+    <section class="section section--pad-40" aria-labelledby="categories-heading-2">
       <div class="container">
         <div class="cat-section-header">
           <div>
@@ -1119,7 +1119,7 @@
     </section>
 
     <!-- FEATURED PRODUCTS -->
-    <section class="section" aria-labelledby="products-heading" style="padding:0 0 40px;">
+    <section class="section section--pad-bottom-40" aria-labelledby="products-heading">
       <div class="container">
         <div class="section-header">
           <div class="section-header-row">
@@ -1369,7 +1369,7 @@
     </section>
 
     <!-- DEALS -->
-    <section class="section-sm" aria-label="Promotions and deals" style="padding:40px 0;">
+    <section class="section-sm section--pad-40" aria-label="Promotions and deals">
       <div class="container">
         <div class="deals-grid">
           <a href="/get-quote" class="deal-card deal-custom">
@@ -2050,7 +2050,7 @@
         ).slice(0, 5);
 
         if (!results.length) {
-          dropdown.innerHTML = '<div class="sdd-empty"><i data-lucide="search"></i>No results for "' + q.replace(/</g,'&lt;') + '"<br><span style="font-size:11px;display:block;margin-top:4px;">Try a different keyword or browse categories</span></div>';
+          dropdown.innerHTML = '<div class="sdd-empty"><i data-lucide="search"></i>No results for "' + q.replace(/</g,'&lt;') + '"<br><span class="sdd-empty-hint">Try a different keyword or browse categories</span></div>';
           lucide.createIcons({ nodes: [dropdown] });
           dropdown.classList.add('open'); return;
         }

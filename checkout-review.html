@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Review your order and complete payment at SF Cable — Secure, encrypted checkout." />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Review &amp; Payments — SF Cable | Cables, Adapters &amp; Connectors</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       CHECKOUT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .checkout-header {
+      background: var(--dark);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 0;
+    }
+    .checkout-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 66px;
+    }
+    .checkout-header .logo img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+    .checkout-header .logo-fallback {
+      font-size: 22px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .checkout-header .logo-fallback .logo-sf  { color: var(--red); }
+    .checkout-header .logo-fallback .logo-cable { color: var(--white); }
+    .checkout-secure-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+    }
+    .checkout-secure-badge svg.lucide { width: 15px; height: 15px; color: var(--green); }
+
+    /* ═══════════════════════════════════════════════════════════
+       CHECKOUT STEPPER
+    ═══════════════════════════════════════════════════════════ */
+    .checkout-stepper-bar {
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+      padding: 0;
+    }
+    .checkout-stepper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 18px 0;
+    }
+    .checkout-step { display: flex; align-items: center; position: relative; }
+    .checkout-step > a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+    .checkout-step-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--gray-300);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-500);
+      flex-shrink: 0;
+      transition: all var(--transition);
+    }
+    .checkout-step-circle svg.lucide { width: 14px; height: 14px; }
+    .checkout-step-label {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--gray-500);
+      white-space: nowrap;
+      transition: color var(--transition);
+    }
+    .checkout-step.is-active .checkout-step-circle { border-color: var(--red); background: var(--red); color: var(--white); }
+    .checkout-step.is-active .checkout-step-label  { color: var(--dark); font-weight: 700; }
+    .checkout-step.is-done .checkout-step-circle   { border-color: var(--red); background: var(--red); color: var(--white); }
+    .checkout-step.is-done .checkout-step-label    { color: var(--red); font-weight: 600; }
+    .checkout-step-connector {
+      width: 80px;
+      height: 2px;
+      background: var(--gray-300);
+      margin: 0 10px;
+      flex-shrink: 0;
+    }
+    .checkout-step-connector.is-done { background: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       CHECKOUT BODY
+    ═══════════════════════════════════════════════════════════ */
+    .checkout-body {
+      background: var(--white);
+      padding: 32px 0 64px;
+      min-height: calc(100vh - 66px - 60px - 56px);
+    }
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 28px;
+      align-items: start;
+    }
+    .checkout-main { min-width: 0; }
+
+    /* ─── Shared card block ─── */
+    .co-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .co-card:last-child { margin-bottom: 0; }
+    .co-card-head {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--gray-300);
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .co-card-head h2 { margin: 0; font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.35; }
+    .co-card-body { padding: 20px 20px 28px; }
+
+    /* ─── Sign-in prompt ─── */
+    .co-signin-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: var(--blue-light);
+      border: 1px solid rgba(0,141,255,.22);
+      border-radius: var(--radius-sm);
+      padding: 14px 20px;
+      margin-bottom: 20px;
+    }
+    .co-signin-text {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 16px;
+      color: var(--dark);
+      font-weight: 700;
+      flex: 1;
+      min-width: 0;
+    }
+    .co-signin-text svg.lucide { width: 17px; height: 17px; color: var(--red); flex-shrink: 0; }
+    .co-signin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: var(--control-h);
+      padding: 0 24px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background var(--transition);
+    }
+    .co-signin-btn:hover { background: var(--red-dark); }
+
+    /* ─── Form fields (reused in CC form) ─── */
+    .co-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .co-form-grid .co-field-full { grid-column: 1 / -1; }
+    .co-field { display: flex; flex-direction: column; gap: 5px; }
+    .co-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .co-required { color: var(--error); font-size: 13px; font-weight: 700; }
+    .co-input {
+      width: 100%;
+      height: var(--control-h);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      padding: 0 14px;
+      font-size: 15px;
+      color: var(--dark);
+      font-family: var(--font);
+      background: var(--white);
+      transition: border-color var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .co-input::placeholder { color: var(--gray-500); }
+    .co-input:hover  { border-color: var(--gray-500); }
+    .co-input:focus  { outline: none; border-color: var(--red); }
+
+    /* ─── Form actions ─── */
+    .co-form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+    }
+    .co-next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: var(--control-h);
+      padding: 0 32px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 17px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition);
+    }
+    .co-next-btn svg.lucide { width: 17px; height: 17px; }
+    .co-next-btn:hover { background: var(--red-dark); }
+    .co-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--red);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .co-back-link svg.lucide { width: 14px; height: 14px; transition: transform var(--transition); }
+    .co-back-link:hover { color: var(--red-dark); text-decoration: underline; }
+    .co-back-link:hover svg.lucide { transform: translateX(-3px); }
+
+    /* ═══════════════════════════════════════════════════════════
+       PAYMENT METHOD SELECTION
+    ═══════════════════════════════════════════════════════════ */
+    .co-pay-methods { display: flex; flex-direction: column; gap: 10px; }
+    .co-pay-option {
+      border: 1.5px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .co-pay-option.is-selected { border-color: var(--red); }
+    .co-pay-option-hd {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      background: var(--white);
+      user-select: none;
+    }
+    .co-pay-option-hd input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--red);
+      cursor: pointer;
+      flex-shrink: 0;
+      margin: 0;
+    }
+    .co-pay-option-name {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+    }
+    .co-pay-option-logos { display: flex; gap: 5px; align-items: center; flex-shrink: 0; }
+    .co-pay-option-body {
+      padding: 18px 18px 22px;
+      border-top: 1px solid var(--gray-200);
+      background: var(--gray-50);
+      display: none;
+    }
+    .co-pay-option.is-selected .co-pay-option-body { display: block; }
+
+    /* CC security note */
+    .co-pay-cc-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 10px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: #15803d;
+      font-weight: 500;
+    }
+    .co-pay-cc-note svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* Alt-pay redirect notice */
+    .co-pay-redirect-notice {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .co-pay-redirect-text {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .co-pay-redirect-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 50px;
+      padding: 0 28px;
+      background: var(--white);
+      color: var(--dark);
+      border: 1.5px solid var(--dark);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .co-pay-redirect-btn:hover { border-color: var(--red); color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ORDER SUMMARY SIDEBAR
+    ═══════════════════════════════════════════════════════════ */
+    .co-sidebar { position: sticky; top: 24px; }
+    .co-summary {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .co-summary-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .co-summary-head h2 { margin: 0; font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.35; }
+    .co-edit-cart-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: var(--control-h);
+      padding: 0 24px;
+      background: var(--white);
+      color: var(--dark);
+      border: 1.5px solid var(--dark);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .co-edit-cart-btn svg.lucide { width: 17px; height: 17px; }
+    .co-edit-cart-btn:hover { border-color: var(--red); color: var(--red); }
+
+    .co-summary-items { padding: 16px 20px; border-bottom: 1px solid var(--gray-300); }
+    .co-summary-item { display: flex; align-items: flex-start; gap: 12px; }
+    .co-item-img {
+      width: 68px;
+      height: 68px;
+      flex-shrink: 0;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      position: relative;
+    }
+    .co-item-img img { width: 100%; height: 100%; object-fit: contain; }
+    .co-item-qty-badge {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      width: 20px;
+      height: 20px;
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font);
+    }
+    .co-item-info { flex: 1; min-width: 0; }
+    .co-item-name {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+      margin-bottom: 4px;
+    }
+    .co-item-sku  { font-size: 16px; font-weight: 500; color: var(--gray-500); margin-bottom: 4px; }
+    .co-item-qty-price { font-size: 16px; color: var(--gray-500); }
+    .co-item-price { font-size: 15px; font-weight: 800; color: var(--dark); flex-shrink: 0; white-space: nowrap; }
+
+    /* Totals */
+    .co-summary-rows { border-bottom: 1px solid var(--gray-300); }
+    .co-summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 20px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .co-summary-row:last-child { border-bottom: none; }
+    .co-row-label {
+      font-size: 16px;
+      color: var(--gray-500);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .co-row-label svg.lucide { width: 13px; height: 13px; color: var(--gray-400); cursor: help; }
+    .co-row-value { font-weight: 700; color: var(--dark); }
+    .co-row-value-group { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
+    .co-row-sub { font-size: 12px; font-weight: 400; color: var(--gray-500); }
+
+    .co-summary-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: var(--gray-100);
+      border-top: 2px solid var(--gray-300);
+    }
+    .co-total-label { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .co-total-value { font-size: 22px; font-weight: 800; color: var(--dark); }
+
+    /* Trust badges */
+    .co-trust-badges { padding: 16px 20px; border-top: 1px solid var(--gray-300); }
+    .co-trust-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      margin-bottom: 10px;
+    }
+    .co-trust-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
+    .co-trust-badge {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .co-payment-icons { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .co-secure-note {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--gray-500);
+      padding: 10px 20px 14px;
+      border-top: 1px solid var(--gray-200);
+      justify-content: center;
+    }
+    .co-secure-note svg.lucide { width: 12px; height: 12px; color: #15803d; }
+
+    /* ─── Sidebar info cards ─── */
+    .co-info-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-top: 16px;
+    }
+    .co-info-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 20px;
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .co-info-card-head h3 { margin: 0; font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.35; }
+    .co-info-change {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--red);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color var(--transition);
+    }
+    .co-info-change:hover { color: var(--red-dark); text-decoration: underline; }
+    .co-info-card-body {
+      padding: 14px 20px 16px;
+      font-size: 14px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    .co-info-card-body strong { font-weight: 600; }
+    .co-ship-method-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .co-ship-method-name { font-size: 14px; font-weight: 600; color: var(--dark); }
+    .co-ship-method-price { font-size: 14px; font-weight: 700; color: var(--dark); white-space: nowrap; }
+    .co-ship-method-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       CHECKOUT FOOTER
+    ═══════════════════════════════════════════════════════════ */
+    .checkout-footer { background: var(--dark); padding: 18px 0; text-align: center; }
+    .checkout-footer p { font-size: 13px; color: rgba(255,255,255,.55); }
+    .checkout-footer a { color: rgba(255,255,255,.7); text-decoration: underline; transition: color var(--transition); }
+    .checkout-footer a:hover { color: var(--white); }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 1100px) {
+      .checkout-layout { grid-template-columns: 1fr 360px; gap: 22px; }
+    }
+    @media (max-width: 900px) {
+      .checkout-layout { grid-template-columns: 1fr; }
+      .co-sidebar { position: static; top: auto; order: -1; }
+      .checkout-body { padding: 24px 0 48px; }
+    }
+    @media (max-width: 768px) {
+      .checkout-stepper { padding: 14px 0; }
+      .checkout-step-connector { width: 48px; }
+      .checkout-step-label { font-size: 15px; }
+      .co-card-body { padding: 18px; }
+      .co-card-head { padding: 13px 18px; }
+      .co-card-head h2 { font-size: 15px; }
+      .co-label { font-size: 14px; }
+      .co-pay-option-hd { padding: 12px 14px; }
+      .co-pay-option-body { padding: 14px 14px 18px; }
+      .co-info-card-head { padding: 11px 16px; }
+      .co-info-card-body { padding: 13px 16px 15px; }
+    }
+    @media (max-width: 640px) {
+      .co-form-grid { grid-template-columns: 1fr; }
+      .co-form-grid .co-field-full { grid-column: 1; }
+      .checkout-step-connector { width: 32px; }
+      .checkout-step-label { font-size: 12px; }
+      .checkout-step-circle { width: 28px; height: 28px; font-size: 12px; }
+      .co-pay-option-logos { display: none; }
+    }
+    @media (max-width: 480px) {
+      .co-pay-redirect-btn { height: 36px; font-size: 14px; }
+      .co-label { font-size: 13px; }
+      .co-row-label { font-size: 15px; }
+      .co-signin-text { font-size: 15px; }
+      .co-item-sku { font-size: 15px; }
+      .co-item-qty-price { font-size: 15px; }
+      .co-pay-option-name { font-size: 14px; }
+      .checkout-body { padding: 16px 0 40px; }
+      .co-signin-prompt { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .co-signin-btn { width: 100%; justify-content: center; }
+      .co-form-actions { flex-direction: column-reverse; align-items: stretch; }
+      .co-next-btn { width: 100%; justify-content: center; }
+      .co-back-link { justify-content: center; }
+      .checkout-step-connector { width: 20px; }
+      .checkout-step-label { display: none; }
+      .checkout-step.is-active .checkout-step-label { display: block; font-size: 13px; }
+      .checkout-step.is-done .checkout-step-label  { display: none; }
+    }
+    @media (max-width: 380px) {
+      .co-card-body { padding: 14px; }
+      .co-summary-head { padding: 12px 14px; }
+      .co-summary-items { padding: 12px 14px; }
+      .co-summary-row { padding: 10px 14px; }
+      .co-summary-total { padding: 12px 14px; }
+      .co-trust-badges { padding: 12px 14px; }
+      .co-row-label { font-size: 14px; }
+      .co-signin-text { font-size: 14px; }
+      .co-item-sku { font-size: 14px; }
+      .co-item-qty-price { font-size: 14px; }
+      .co-info-card-head { padding: 10px 14px; }
+      .co-info-card-body { padding: 12px 14px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHECKOUT HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <header class="checkout-header" role="banner">
+    <div class="container">
+      <div class="checkout-header-inner">
+        <a href="/" class="logo" aria-label="SF Cable – Home">
+          <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png"
+               alt="SF Cable Logo" width="150" height="46" loading="eager"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="logo-fallback" style="display:none;">
+            <span class="logo-sf">SF</span><span class="logo-cable">Cable</span>
+          </div>
+        </a>
+        <div class="checkout-secure-badge" aria-label="Secure Checkout">
+          <i data-lucide="lock"></i>
+          <span>Secure Checkout</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHECKOUT STEPPER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="checkout-stepper-bar" role="navigation" aria-label="Checkout progress">
+    <div class="container">
+      <ol class="checkout-stepper" aria-label="Checkout steps">
+
+        <!-- Step 1: Shipping — completed -->
+        <li class="checkout-step is-done" aria-label="Step 1: Shipping (completed)">
+          <a href="checkout-shipping.html">
+            <div class="checkout-step-circle" aria-hidden="true">
+              <i data-lucide="check"></i>
+            </div>
+            <span class="checkout-step-label">Shipping</span>
+          </a>
+        </li>
+
+        <div class="checkout-step-connector is-done" aria-hidden="true"></div>
+
+        <!-- Step 2: Review & Payments — active -->
+        <li class="checkout-step is-active" aria-current="step">
+          <a href="checkout-review.html">
+            <div class="checkout-step-circle" aria-hidden="true">2</div>
+            <span class="checkout-step-label">Review &amp; Payments</span>
+          </a>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHECKOUT BODY
+  ══════════════════════════════════════════════════════════ -->
+  <main id="main-content" class="checkout-body">
+    <div class="container">
+      <div class="checkout-layout">
+
+        <!-- ── LEFT: PAYMENT FORM ── -->
+        <div class="checkout-main">
+
+          <!-- Sign-in prompt -->
+          <div class="co-signin-prompt" role="complementary" aria-label="Sign in to check out faster">
+            <div class="co-signin-text">
+              <i data-lucide="user-circle"></i>
+              <span>Do you have an account? Sign in and purchase faster</span>
+            </div>
+            <a href="/account/login" class="co-signin-btn">
+              <i data-lucide="log-in"></i> Sign In
+            </a>
+          </div>
+
+          <!-- ─── PAYMENT METHOD ─── -->
+          <div class="co-card" id="co-payment">
+            <div class="co-card-head">
+              <h2>Payment Method</h2>
+            </div>
+            <div class="co-card-body">
+
+              <div class="co-pay-methods" role="radiogroup" aria-label="Select payment method">
+
+                <!-- ── Credit Card (default selected) ── -->
+                <div class="co-pay-option is-selected" id="pay-cc-option">
+                  <div class="co-pay-option-hd" onclick="selectPayment('cc')">
+                    <input type="radio" name="payment_method" id="pay-cc" value="cc" checked
+                           aria-label="Credit Card" />
+                    <label class="co-pay-option-name" for="pay-cc">Credit Card</label>
+                    <div class="co-pay-option-logos" aria-label="Accepted cards">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="36" height="23" role="img" aria-label="Visa"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="36" height="23" role="img" aria-label="Mastercard"><rect width="50" height="32" rx="3.5" fill="#1a1a1a"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="36" height="23" role="img" aria-label="American Express"><rect width="50" height="32" rx="3.5" fill="#007BC1"/><text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="36" height="23" role="img" aria-label="Discover"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><circle cx="49" cy="16" r="13" fill="#F76F20"/><text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text></svg>
+                    </div>
+                  </div>
+
+                  <!-- Credit card fields -->
+                  <div class="co-pay-option-body" id="pay-cc-body">
+                    <div class="co-form-grid">
+
+                      <div class="co-field co-field-full">
+                        <label class="co-label" for="cc-number">
+                          Card Number <span class="co-required" aria-label="required">*</span>
+                        </label>
+                        <input class="co-input" id="cc-number" type="text"
+                               name="cc_number" autocomplete="cc-number"
+                               placeholder="1234 5678 9012 3456"
+                               inputmode="numeric" maxlength="19"
+                               required aria-required="true" />
+                      </div>
+
+                      <div class="co-field co-field-full">
+                        <label class="co-label" for="cc-name">
+                          Name on Card <span class="co-required" aria-label="required">*</span>
+                        </label>
+                        <input class="co-input" id="cc-name" type="text"
+                               name="cc_name" autocomplete="cc-name"
+                               placeholder="As it appears on your card"
+                               required aria-required="true" />
+                      </div>
+
+                      <div class="co-field">
+                        <label class="co-label" for="cc-expiry">
+                          Expiry Date <span class="co-required" aria-label="required">*</span>
+                        </label>
+                        <input class="co-input" id="cc-expiry" type="text"
+                               name="cc_expiry" autocomplete="cc-exp"
+                               placeholder="MM / YY"
+                               inputmode="numeric" maxlength="7"
+                               required aria-required="true" />
+                      </div>
+
+                      <div class="co-field">
+                        <label class="co-label" for="cc-cvv">
+                          CVV <span class="co-required" aria-label="required">*</span>
+                          <span title="3 digits on the back of your card (4 digits for Amex)" style="display:inline-flex;cursor:help;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                          </span>
+                        </label>
+                        <input class="co-input" id="cc-cvv" type="text"
+                               name="cc_cid" autocomplete="cc-csc"
+                               placeholder="CVV"
+                               inputmode="numeric" maxlength="4"
+                               required aria-required="true" />
+                      </div>
+
+                    </div>
+
+                    <div class="co-pay-cc-note" role="note">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                      Your card details are encrypted and never stored on our servers.
+                    </div>
+                  </div>
+                </div><!-- /pay-cc-option -->
+
+                <!-- ── Amazon Pay ── -->
+                <div class="co-pay-option" id="pay-amazon-option">
+                  <div class="co-pay-option-hd" onclick="selectPayment('amazon')">
+                    <input type="radio" name="payment_method" id="pay-amazon" value="amazon_payment"
+                           aria-label="Amazon Pay" />
+                    <label class="co-pay-option-name" for="pay-amazon">Amazon Pay</label>
+                    <div class="co-pay-option-logos">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 32" width="60" height="25" role="img" aria-label="Amazon Pay">
+                        <rect width="76" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+                        <text x="8" y="16" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#232f3e">amazon</text>
+                        <text x="8" y="27" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#ff9900">pay</text>
+                        <path d="M44 14 Q58 26 72 14" stroke="#ff9900" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="co-pay-option-body" id="pay-amazon-body">
+                    <div class="co-pay-redirect-notice">
+                      <p class="co-pay-redirect-text">You'll be securely redirected to Amazon to complete your purchase.</p>
+                      <a href="#" class="co-pay-redirect-btn amazon">Continue with Amazon Pay</a>
+                    </div>
+                  </div>
+                </div><!-- /pay-amazon-option -->
+
+                <!-- ── PayPal ── -->
+                <div class="co-pay-option" id="pay-paypal-option">
+                  <div class="co-pay-option-hd" onclick="selectPayment('paypal')">
+                    <input type="radio" name="payment_method" id="pay-paypal" value="paypal"
+                           aria-label="PayPal" />
+                    <label class="co-pay-option-name" for="pay-paypal">PayPal</label>
+                    <div class="co-pay-option-logos">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 32" width="48" height="25" role="img" aria-label="PayPal">
+                        <rect width="60" height="32" rx="3.5" fill="#003087"/>
+                        <text font-family="Arial,sans-serif" font-size="15" font-weight="700" y="22">
+                          <tspan x="7" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan>
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="co-pay-option-body" id="pay-paypal-body">
+                    <div class="co-pay-redirect-notice">
+                      <p class="co-pay-redirect-text">You'll be securely redirected to PayPal to complete your purchase.</p>
+                      <a href="#" class="co-pay-redirect-btn paypal">Continue with PayPal</a>
+                    </div>
+                  </div>
+                </div><!-- /pay-paypal-option -->
+
+              </div><!-- /co-pay-methods -->
+
+              <!-- Form actions -->
+              <div class="co-form-actions" style="margin-top: 28px;">
+                <a href="checkout.html" class="co-back-link">
+                  <i data-lucide="arrow-left"></i> Back to Shipping
+                </a>
+                <button type="button" class="co-next-btn" id="co-place-order-btn">
+                  <i data-lucide="lock"></i> Place Order — $63.57
+                </button>
+              </div>
+
+            </div><!-- /co-card-body -->
+          </div><!-- /co-payment -->
+
+        </div><!-- /checkout-main -->
+
+        <!-- ── RIGHT: SIDEBAR ── -->
+        <aside class="co-sidebar" aria-label="Order summary and shipping details">
+
+          <!-- Order Summary -->
+          <div class="co-summary">
+
+            <div class="co-summary-head">
+              <h2>Order Summary</h2>
+              <a href="cart.html" class="co-edit-cart-btn">
+                <i data-lucide="pencil"></i> Edit Cart
+              </a>
+            </div>
+
+            <!-- Product -->
+            <div class="co-summary-items">
+              <div class="co-summary-item">
+                <div class="co-item-img">
+                  <img src="images/3.jpg"
+                       alt="20ft USB 2.0 A Male to B Male Cable with Ferrite"
+                       loading="lazy" />
+                  <span class="co-item-qty-badge" aria-label="Quantity: 1">1</span>
+                </div>
+                <div class="co-item-info">
+                  <span class="co-item-name product-name">20ft USB 2.0 A Male to B Male Cable with Ferrite</span>
+                  <div class="co-item-sku">SKU: UB12-20</div>
+                  <div class="co-item-qty-price">Qty 1 × $8.75</div>
+                </div>
+                <div class="co-item-price">$8.75</div>
+              </div>
+            </div>
+
+            <!-- Totals -->
+            <div class="co-summary-rows">
+              <div class="co-summary-row">
+                <span class="co-row-label">Cart Subtotal</span>
+                <span class="co-row-value">$8.75</span>
+              </div>
+              <div class="co-summary-row">
+                <span class="co-row-label">Shipping</span>
+                <div class="co-row-value-group">
+                  <span class="co-row-value">$54.21</span>
+                  <span class="co-row-sub">UPS Three-Day Select</span>
+                </div>
+              </div>
+              <div class="co-summary-row">
+                <span class="co-row-label">
+                  Tax
+                  <i data-lucide="info" title="Taxes calculated based on your shipping address and applicable state rates."></i>
+                </span>
+                <span class="co-row-value">$0.61</span>
+              </div>
+            </div>
+
+            <!-- Grand total -->
+            <div class="co-summary-total">
+              <span class="co-total-label">Order Total</span>
+              <span class="co-total-value">$63.57</span>
+            </div>
+
+            <!-- Trust badges -->
+            <div class="co-trust-badges">
+              <div class="co-trust-title">Trusted &amp; Secure</div>
+              <div class="co-trust-grid" aria-label="Security and trust certifications">
+                <div class="co-trust-badge" title="McAfee Secure">
+                  <img src="images/McAfee.png" alt="McAfee Secure" style="height:22px;width:auto;display:block;">
+                </div>
+                <div class="co-trust-badge" title="BBB Accredited Business">
+                  <img src="images/bbb.png" alt="BBB Accredited Business" style="height:22px;width:auto;display:block;">
+                </div>
+                <div class="co-trust-badge" title="GSA Contract Holder">
+                  <img src="images/GSA.jpg" alt="GSA Contract Holder" style="height:22px;width:auto;display:block;">
+                </div>
+              </div>
+              <div class="co-payment-icons" aria-label="Accepted payment methods">
+                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="Visa"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text></svg></span>
+                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="Mastercard"><rect width="50" height="32" rx="3.5" fill="#1a1a1a"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/></svg></span>
+                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="American Express"><rect width="50" height="32" rx="3.5" fill="#007BC1"/><text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text></svg></span>
+                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="Discover"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><circle cx="49" cy="16" r="13" fill="#F76F20"/><text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text></svg></span>
+                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="PayPal"><rect width="50" height="32" rx="3.5" fill="#003087"/><text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text></svg></span>
+              </div>
+            </div>
+
+            <div class="co-secure-note">
+              <i data-lucide="shield-check"></i>
+              <span>SSL encrypted &amp; secure checkout</span>
+            </div>
+
+          </div><!-- /co-summary -->
+
+          <!-- Ship To -->
+          <div class="co-info-card" aria-label="Shipping address">
+            <div class="co-info-card-head">
+              <h3>Ship To</h3>
+              <a href="checkout.html" class="co-info-change">Change</a>
+            </div>
+            <div class="co-info-card-body">
+              <strong>lopa joshi</strong><br />
+              asas<br />
+              sasasasasasa<br />
+              Miami, FL 33101<br />
+              United States<br />
+              <span style="color: var(--gray-500); font-size: 13px;">Phone: 123456897</span>
+            </div>
+          </div>
+
+          <!-- Shipping Method -->
+          <div class="co-info-card" aria-label="Selected shipping method">
+            <div class="co-info-card-head">
+              <h3>Shipping Method</h3>
+              <a href="checkout.html" class="co-info-change">Change</a>
+            </div>
+            <div class="co-info-card-body">
+              <div class="co-ship-method-row">
+                <div>
+                  <div class="co-ship-method-name">UPS Three-Day Select</div>
+                  <div class="co-ship-method-sub">Estimated delivery in 3 business days</div>
+                </div>
+                <div class="co-ship-method-price">$54.21</div>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+      </div><!-- /checkout-layout -->
+    </div>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHECKOUT FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="checkout-footer" role="contentinfo">
+    <div class="container">
+      <p>Copyright &copy; 2002&ndash;2026 SF Cable, Inc. All Rights Reserved.&trade;
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/privacy-policy">Privacy Policy</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/terms-conditions">Terms &amp; Conditions</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    /* ─── Lucide icons ─── */
+    lucide.createIcons({
+      attrs: { 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+    });
+
+    /* ─── Payment method switching ─── */
+    var paymentOptions = {
+      cc:     'pay-cc-option',
+      amazon: 'pay-amazon-option',
+      paypal: 'pay-paypal-option'
+    };
+    function selectPayment(method) {
+      Object.keys(paymentOptions).forEach(function (key) {
+        var el    = document.getElementById(paymentOptions[key]);
+        var radio = el.querySelector('input[type="radio"]');
+        if (key === method) {
+          el.classList.add('is-selected');
+          radio.checked = true;
+        } else {
+          el.classList.remove('is-selected');
+          radio.checked = false;
+        }
+      });
+    }
+
+    /* ─── Card number formatting (groups of 4) ─── */
+    var ccNum = document.getElementById('cc-number');
+    if (ccNum) {
+      ccNum.addEventListener('input', function () {
+        var digits = this.value.replace(/\D/g, '').substring(0, 16);
+        this.value = digits.replace(/(.{4})(?=.)/g, '$1 ');
+      });
+    }
+
+    /* ─── Expiry formatting (MM / YY) ─── */
+    var ccExp = document.getElementById('cc-expiry');
+    if (ccExp) {
+      ccExp.addEventListener('input', function () {
+        var digits = this.value.replace(/\D/g, '').substring(0, 4);
+        this.value = digits.length > 2 ? digits.substring(0, 2) + ' / ' + digits.substring(2) : digits;
+      });
+    }
+
+    /* ─── Also allow clicking radio directly ─── */
+    document.querySelectorAll('input[name="payment_method"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        selectPayment(this.value === 'cc' ? 'cc' : this.value === 'amazon_payment' ? 'amazon' : 'paypal');
+      });
+    });
+  </script>
+
+</body>
+</html>
