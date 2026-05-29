@@ -22,54 +22,30 @@
 
   <style>
     /* ═══════════════════════════════════════════════════════════
-       CONTACT PAGE — MAIN BODY
+       CONTACT PAGE — LAYOUT
     ═══════════════════════════════════════════════════════════ */
     .contact-body { padding: 0; }
-
     .contact-layout {
       display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 28px;
+      grid-template-columns: 1fr 420px;
+      gap: 56px;
       align-items: start;
+      padding: 32px 0 56px;
     }
 
-    /* ── Form Card ── */
-    .contact-form-card {
-      background: var(--white);
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    .contact-form-head {
-      padding: 18px 24px;
-      background: var(--sf-primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .contact-form-head-icon {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.15);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--white);
-    }
-    .contact-form-head-icon svg.lucide { width: 17px; height: 17px; }
-    .contact-form-head h2 {
-      margin: 0;
-      font-size: 18px;
+    /* ── Form (clean, no box) ── */
+    .contact-form-title {
+      font-size: 20px;
       font-weight: 700;
-      color: var(--white);
-      line-height: 1.3;
+      color: var(--dark);
+      margin: 0 0 6px;
     }
-    .contact-form-head p {
-      margin: 2px 0 0;
-      font-size: 13px;
-      color: rgba(255,255,255,.7);
+    .contact-form-sub {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin: 0 0 28px;
+      line-height: 1.55;
     }
-    .contact-form-body { padding: 28px 24px 32px; }
 
     /* Form fields (mirrors checkout pattern) */
     .cf-grid {
@@ -163,384 +139,86 @@
     }
     .contact-submit-note { font-size: 13px; color: var(--gray-500); }
 
-    /* ── Quick Contact Sidebar ── */
-    .contact-quick-stack { display: flex; flex-direction: column; gap: 16px; }
-
-    .contact-quick-card {
-      background: var(--white);
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    .contact-quick-head {
-      padding: 14px 20px;
-      background: var(--gray-100);
-      border-bottom: 1px solid var(--gray-300);
+    /* ── Contact Info List (right column) ── */
+    .contact-info-list { display: flex; flex-direction: column; }
+    .contact-info-item {
       display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .contact-quick-head-icon {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: rgba(0,141,255,.12);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--sf-primary-cta);
-    }
-    .contact-quick-head-icon svg.lucide { width: 15px; height: 15px; }
-    .contact-quick-head h3 { margin: 0; font-size: 15px; font-weight: 700; color: var(--dark); }
-    .contact-quick-body { padding: 18px 20px; }
-
-    .contact-phone-primary {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      background: var(--sf-primary-dark);
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      margin-bottom: 12px;
-      transition: background var(--transition);
-    }
-    .contact-phone-primary:hover { background: #003a70; }
-    .contact-phone-primary-icon {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.15);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--white);
-    }
-    .contact-phone-primary-icon svg.lucide { width: 18px; height: 18px; }
-    .contact-phone-primary-text { min-width: 0; }
-    .contact-phone-primary-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.65); text-transform: uppercase; letter-spacing: .06em; display: block; }
-    .contact-phone-primary-num { font-size: 18px; font-weight: 800; color: var(--white); display: block; }
-
-    .contact-phone-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding: 9px 0;
+      gap: 16px;
+      padding: 20px 0;
       border-bottom: 1px solid var(--gray-200);
-      font-size: 14px;
     }
-    .contact-phone-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .contact-phone-row-label {
-      color: var(--gray-500);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-    .contact-phone-row-label svg.lucide { width: 13px; height: 13px; color: var(--gray-400); }
-    .contact-phone-row-val {
-      font-weight: 600;
-      color: var(--dark);
-      text-decoration: none;
-    }
-    .contact-phone-row-val:hover { color: var(--sf-primary-cta); text-decoration: underline; }
-
-    /* Hours badge */
-    .contact-hours-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 10px;
-      background: var(--green-light);
-      border: 1px solid rgba(34,197,94,.2);
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #16a34a;
-      margin-bottom: 14px;
-    }
-    .contact-hours-badge svg.lucide { width: 12px; height: 12px; }
-
-    /* Chat CTA */
-    .contact-chat-btn {
+    .contact-info-item:first-child { padding-top: 0; }
+    .contact-info-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-info-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(0,141,255,.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      width: 100%;
-      height: 42px;
-      background: transparent;
-      border: 1.5px solid var(--sf-primary-cta);
-      border-radius: var(--radius-sm);
+      flex-shrink: 0;
       color: var(--sf-primary-cta);
-      font-size: 14px;
-      font-weight: 700;
-      font-family: var(--font);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all var(--transition);
+      margin-top: 1px;
     }
-    .contact-chat-btn:hover {
-      background: var(--sf-primary-cta);
-      color: var(--white);
-    }
-    .contact-chat-btn svg.lucide { width: 16px; height: 16px; }
-
-    /* ═══════════════════════════════════════════════════════════
-       CONTACT DETAILS GRID
-    ═══════════════════════════════════════════════════════════ */
-    .contact-details-section {
-      padding: 40px 0 0;
-    }
-    .contact-details-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .contact-details-title {
-      font-size: 22px;
+    .contact-info-icon svg.lucide { width: 18px; height: 18px; }
+    .contact-info-body { flex: 1; min-width: 0; }
+    .contact-info-title {
+      font-size: 13px;
       font-weight: 700;
       color: var(--dark);
-      margin: 0 0 4px;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
     }
-    .contact-details-sub {
-      font-size: 15px;
-      color: var(--gray-500);
-      margin: 0;
-    }
-
-    .contact-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    /* Make Email Us span 2 cols so 5 cards fit: 3+2 */
-    .contact-card-email { grid-column: span 2; }
-
-    .contact-detail-card {
-      background: var(--white);
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-detail-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--sf-primary-cta), #0066cc);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .contact-detail-card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-      border-color: rgba(0,141,255,.25);
-    }
-    .contact-detail-card:hover::before { opacity: 1; }
-
-    .contact-card-icon-wrap {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: rgba(0,141,255,.1);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--sf-primary-cta);
-      margin-bottom: 16px;
-      transition: background var(--transition);
-    }
-    .contact-detail-card:hover .contact-card-icon-wrap {
-      background: rgba(0,141,255,.18);
-    }
-    .contact-card-icon-wrap svg.lucide { width: 22px; height: 22px; }
-
-    .contact-card-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--dark);
-      margin: 0 0 12px;
-    }
-    .contact-card-lines { display: flex; flex-direction: column; gap: 7px; }
-    .contact-card-line {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
+    .contact-info-body p {
       font-size: 14px;
       color: var(--gray-700);
-      line-height: 1.5;
+      margin: 0 0 3px;
+      line-height: 1.6;
     }
-    .contact-card-line-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gray-500);
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      flex-shrink: 0;
-      min-width: 60px;
-    }
-    .contact-card-line a {
-      color: var(--sf-primary-cta);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color var(--transition);
-    }
-    .contact-card-line a:hover {
-      color: var(--sf-secondary-dark);
-      text-decoration: underline;
-    }
-    .contact-card-address { font-style: normal; }
-    .contact-card-address p {
-      margin: 0;
+    .contact-info-body p:last-child { margin-bottom: 0; }
+    .contact-info-body a { color: inherit; text-decoration: none; }
+    .contact-info-body a:hover { color: var(--sf-primary-cta); text-decoration: underline; }
+    .contact-info-address {
+      font-style: normal;
       font-size: 14px;
       color: var(--gray-700);
       line-height: 1.7;
+      margin: 0;
     }
-
-    /* Email grid inside email card */
-    .contact-email-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 24px;
+    .contact-map-wrap {
+      margin-top: 12px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
     }
-    .contact-email-item { font-size: 14px; color: var(--gray-700); }
-    .contact-email-item-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gray-500);
-      text-transform: uppercase;
-      letter-spacing: .04em;
+    .contact-map-wrap iframe {
       display: block;
-      margin-bottom: 2px;
+      width: 100%;
+      height: 200px;
+      border: none;
     }
-    .contact-email-item a {
-      color: var(--sf-primary-cta);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 13px;
-    }
-    .contact-email-item a:hover { text-decoration: underline; }
-
-    /* Live Chat badge inside card */
-    .contact-chat-status {
+    .contact-chat-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
-      background: var(--green-light);
-      border: 1px solid rgba(34,197,94,.22);
-      border-radius: 100px;
-      font-size: 12px;
+      margin-top: 8px;
+      color: var(--sf-primary-cta);
+      font-size: 14px;
       font-weight: 600;
-      color: #16a34a;
-      margin-bottom: 12px;
+      text-decoration: none;
     }
-    .contact-chat-status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #22c55e;
-      animation: pulse-dot 1.8s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .35; }
-    }
+    .contact-chat-link:hover { text-decoration: underline; }
+    .contact-chat-link svg.lucide { width: 14px; height: 14px; }
 
-    /* ═══════════════════════════════════════════════════════════
-       NEWSLETTER CTA SECTION
-    ═══════════════════════════════════════════════════════════ */
-    .contact-newsletter-section { padding: 40px 0 0; }
-    .contact-newsletter-card {
-      background: linear-gradient(135deg, var(--sf-primary-dark) 0%, #00336b 100%);
-      border-radius: var(--radius-lg);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-newsletter-card::after {
-      content: '';
-      position: absolute;
-      right: -60px; top: -60px;
-      width: 260px; height: 260px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.04);
-      pointer-events: none;
-    }
-    .contact-newsletter-copy { flex: 1; min-width: 220px; }
-    .contact-newsletter-copy h2 {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--white);
-      margin: 0 0 6px;
-      line-height: 1.25;
-    }
-    .contact-newsletter-copy p {
-      font-size: 15px;
-      color: rgba(255,255,255,.72);
-      margin: 0;
-      line-height: 1.5;
-    }
-    .contact-newsletter-form {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      border: 1.5px solid rgba(255,255,255,.25);
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,.08);
-      overflow: hidden;
-      transition: border-color var(--transition);
-      flex-shrink: 0;
-      width: 360px;
-      max-width: 100%;
-    }
-    .contact-newsletter-form:focus-within { border-color: rgba(255,255,255,.55); }
-    .contact-newsletter-input {
-      flex: 1;
-      height: 46px;
-      padding: 0 16px;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-size: 14px;
-      font-family: var(--font);
-      color: var(--white);
-      min-width: 0;
-    }
-    .contact-newsletter-input::placeholder { color: rgba(255,255,255,.5); }
-    .contact-newsletter-btn {
-      height: 46px;
-      padding: 0 20px;
-      background: var(--sf-primary-cta);
-      color: var(--white);
-      border: none;
-      font-size: 14px;
-      font-weight: 700;
-      font-family: var(--font);
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: background var(--transition);
-    }
-    .contact-newsletter-btn:hover { background: #0077dd; }
-
-    /* ═══════════════════════════════════════════════════════════
-       FORM SUCCESS STATE
-    ═══════════════════════════════════════════════════════════ */
+    /* ── Success State ── */
     .contact-success {
       display: none;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 48px 24px;
+      padding: 48px 0;
       gap: 16px;
     }
     .contact-success-icon {
@@ -554,34 +232,21 @@
     .contact-success h3 { margin: 0; font-size: 22px; font-weight: 700; color: var(--dark); }
     .contact-success p { margin: 0; font-size: 15px; color: var(--gray-500); line-height: 1.6; }
 
-    /* ═══════════════════════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════════════════════ */
+    /* ── Responsive ── */
     @media (max-width: 1100px) {
-      .contact-layout { grid-template-columns: 1fr 320px; }
+      .contact-layout { grid-template-columns: 1fr 380px; gap: 40px; }
     }
     @media (max-width: 900px) {
-      .contact-layout { grid-template-columns: 1fr; }
-      .contact-quick-stack { flex-direction: row; flex-wrap: wrap; }
-      .contact-quick-stack > * { flex: 1 1 260px; }
-      .contact-cards-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-card-email { grid-column: span 2; }
+      .contact-layout { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
     }
     @media (max-width: 640px) {
       .cf-grid { grid-template-columns: 1fr; }
       .cf-grid .cf-full { grid-column: 1; }
-      .contact-cards-grid { grid-template-columns: 1fr; }
-      .contact-card-email { grid-column: span 1; }
-      .contact-email-grid { grid-template-columns: 1fr; }
-      .contact-newsletter-card { padding: 28px 24px; }
-      .contact-newsletter-form { width: 100%; }
       .contact-submit-btn { width: 100%; justify-content: center; }
+      .contact-layout { padding: 24px 0 32px; }
     }
     @media (max-width: 480px) {
-      .contact-quick-stack { flex-direction: column; }
-      .contact-quick-stack > * { flex: none; }
-      .contact-form-body { padding: 20px 16px 24px; }
-      .contact-newsletter-card { padding: 22px 18px; }
+      .contact-layout { gap: 20px; }
     }
   </style>
 </head>
@@ -823,7 +488,7 @@
       </div>
     </nav>
 
-    <!-- ── PAGE TITLE ── -->
+    <!-- ── PAGE TITLE + DESCRIPTION ── -->
     <section class="section--page-title" aria-labelledby="contact-heading">
       <div class="container">
         <div class="section-header">
@@ -831,33 +496,19 @@
             <h1 class="section-title listing-page-heading" id="contact-heading">Contact Us</h1>
           </div>
         </div>
+        <p class="section-subtitle" style="margin-top:6px; max-width:640px;">Have a question? We're here to assist you with any issue. Call us toll free at <a href="tel:18882758755">1-888-275-8755</a>, send us a message using the form below, or reach us by email, fax, or live chat. We'd love to hear from you!</p>
       </div>
     </section>
 
-    <!-- ── PAGE DESCRIPTION ── -->
-    <section class="section-sm listing-desc" aria-label="Contact SF Cable">
-      <div class="container">
-        <p class="section-subtitle">Have a question? We're here to assist you with any issue. Call us toll free at <a href="tel:18882758755">1-888-275-8755</a>, send us a message using the form below, or reach us by email, fax, or live chat. We'd love to hear from you!</p>
-        <p class="section-subtitle">Our support team is available Monday through Friday, 8:00 AM to 5:00 PM PST. At SF Cable, your satisfaction is our top priority.</p>
-      </div>
-    </section>
-
-    <!-- ── MAIN LAYOUT: FORM + SIDEBAR ── -->
-    <section class="contact-body" aria-label="Contact form and quick contact">
+    <!-- ── MAIN LAYOUT: FORM + CONTACT INFO ── -->
+    <section class="contact-body" aria-label="Contact form and information">
       <div class="container">
         <div class="contact-layout">
 
-          <!-- LEFT: Contact Form -->
-          <div class="contact-form-card" id="contact-form-card">
-            <div class="contact-form-head">
-              <div class="contact-form-head-icon" aria-hidden="true">
-                <i data-lucide="send"></i>
-              </div>
-              <div>
-                <h2>Send Us a Message</h2>
-                <p>Please fill out the form below and one of our helpful staff will contact you shortly.</p>
-              </div>
-            </div>
+          <!-- LEFT: Contact Form (clean, no box) -->
+          <div id="contact-form-card">
+            <h2 class="contact-form-title">Send Us a Message</h2>
+            <p class="contact-form-sub">Fill out the form below and one of our helpful staff will contact you shortly.</p>
 
             <!-- Success state (shown after submit) -->
             <div class="contact-success" id="contact-success" aria-live="polite">
@@ -866,76 +517,34 @@
               <p>Thank you for reaching out. A member of our team will get back to you within 1 business day.</p>
             </div>
 
-            <form class="contact-form-body" id="contact-form" novalidate aria-label="Contact form">
+            <form id="contact-form" novalidate aria-label="Contact form">
               <div class="cf-grid">
 
                 <!-- Name -->
                 <div class="cf-field" id="field-name">
-                  <label class="cf-label" for="cf-name">
-                    Name <span class="cf-required" aria-label="required">*</span>
-                  </label>
-                  <input
-                    class="cf-input"
-                    type="text"
-                    id="cf-name"
-                    name="name"
-                    placeholder="Your full name"
-                    autocomplete="name"
-                    required
-                    aria-required="true"
-                    aria-describedby="cf-name-error"
-                  />
+                  <label class="cf-label" for="cf-name">Name <span class="cf-required" aria-label="required">*</span></label>
+                  <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your full name" autocomplete="name" required aria-required="true" aria-describedby="cf-name-error" />
                   <span class="cf-error-msg" id="cf-name-error" role="alert">Please enter your name.</span>
                 </div>
 
                 <!-- Email -->
                 <div class="cf-field" id="field-email">
-                  <label class="cf-label" for="cf-email">
-                    Email <span class="cf-required" aria-label="required">*</span>
-                  </label>
-                  <input
-                    class="cf-input"
-                    type="email"
-                    id="cf-email"
-                    name="email"
-                    placeholder="you@example.com"
-                    autocomplete="email"
-                    required
-                    aria-required="true"
-                    aria-describedby="cf-email-error"
-                  />
+                  <label class="cf-label" for="cf-email">Email <span class="cf-required" aria-label="required">*</span></label>
+                  <input class="cf-input" type="email" id="cf-email" name="email" placeholder="you@example.com" autocomplete="email" required aria-required="true" aria-describedby="cf-email-error" />
                   <span class="cf-error-msg" id="cf-email-error" role="alert">Please enter a valid email address.</span>
                 </div>
 
                 <!-- Phone -->
                 <div class="cf-field cf-full" id="field-phone">
                   <label class="cf-label" for="cf-phone">Phone Number</label>
-                  <input
-                    class="cf-input"
-                    type="tel"
-                    id="cf-phone"
-                    name="phone"
-                    placeholder="e.g. 1-888-275-8755"
-                    autocomplete="tel"
-                    aria-describedby="cf-phone-hint"
-                  />
+                  <input class="cf-input" type="tel" id="cf-phone" name="phone" placeholder="e.g. 1-888-275-8755" autocomplete="tel" aria-describedby="cf-phone-hint" />
                   <span class="cf-hint" id="cf-phone-hint">Optional — so we can call you back if needed.</span>
                 </div>
 
                 <!-- Message -->
                 <div class="cf-field cf-full" id="field-message">
-                  <label class="cf-label" for="cf-message">
-                    What's on your mind? <span class="cf-required" aria-label="required">*</span>
-                  </label>
-                  <textarea
-                    class="cf-textarea"
-                    id="cf-message"
-                    name="message"
-                    placeholder="Describe your question, order issue, or how we can help you…"
-                    required
-                    aria-required="true"
-                    aria-describedby="cf-message-error"
-                  ></textarea>
+                  <label class="cf-label" for="cf-message">What's on your mind? <span class="cf-required" aria-label="required">*</span></label>
+                  <textarea class="cf-textarea" id="cf-message" name="message" placeholder="Describe your question, order issue, or how we can help you…" required aria-required="true" aria-describedby="cf-message-error"></textarea>
                   <span class="cf-error-msg" id="cf-message-error" role="alert">Please enter your message.</span>
                 </div>
 
@@ -949,202 +558,89 @@
                 <span class="contact-submit-note">We typically respond within 1 business day.</span>
               </div>
             </form>
-          </div><!-- /contact-form-card -->
+          </div><!-- /form -->
 
-          <!-- RIGHT: Quick Contact Stack -->
-          <div class="contact-quick-stack">
+          <!-- RIGHT: Simple contact info list -->
+          <div class="contact-info-list">
 
-            <!-- Phone Card -->
-            <div class="contact-quick-card">
-              <div class="contact-quick-head">
-                <div class="contact-quick-head-icon" aria-hidden="true"><i data-lucide="phone"></i></div>
-                <h3>Call Us</h3>
+            <!-- Phone -->
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true"><i data-lucide="phone"></i></div>
+              <div class="contact-info-body">
+                <h3 class="contact-info-title">Phone</h3>
+                <p>Toll-Free <a href="tel:18882758755">1-888-275-8755</a></p>
+                <p>Local <a href="tel:15102649988">1-510-264-9988</a></p>
+                <p>Fax 1-510-264-9989</p>
               </div>
-              <div class="contact-quick-body">
-                <div class="contact-hours-badge">
-                  <i data-lucide="clock"></i>
-                  Mon–Fri: 8AM – 5PM PST
-                </div>
-                <a href="tel:18882758755" class="contact-phone-primary" aria-label="Call toll-free 1-888-275-8755">
-                  <div class="contact-phone-primary-icon"><i data-lucide="phone"></i></div>
-                  <div class="contact-phone-primary-text">
-                    <span class="contact-phone-primary-label">Toll-Free</span>
-                    <span class="contact-phone-primary-num">1-888-275-8755</span>
-                  </div>
-                </a>
-                <div class="contact-phone-row">
-                  <span class="contact-phone-row-label"><i data-lucide="phone-call"></i> Local</span>
-                  <a href="tel:15102649988" class="contact-phone-row-val">1-510-264-9988</a>
-                </div>
-                <div class="contact-phone-row">
-                  <span class="contact-phone-row-label"><i data-lucide="printer"></i> Fax</span>
-                  <span class="contact-phone-row-val" style="color:var(--gray-700);">1-510-264-9989</span>
+            </div>
+
+            <!-- Location & Will Call -->
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true"><i data-lucide="map-pin"></i></div>
+              <div class="contact-info-body">
+                <h3 class="contact-info-title">Location &amp; Will Call Hours</h3>
+                <address class="contact-info-address">
+                  SF Cable, Inc.<br>
+                  28300 Industrial Boulevard Suite F<br>
+                  Hayward, CA 94545-4439<br>
+                  Monday–Friday: 8:00 AM to 5:00 PM PST
+                </address>
+                <div class="contact-map-wrap">
+                  <iframe
+                    src="https://maps.google.com/maps?q=28300+Industrial+Blvd+Hayward+CA+94545&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="SF Cable location map"
+                    aria-label="Google map showing SF Cable location"
+                  ></iframe>
                 </div>
               </div>
             </div>
 
-            <!-- Live Chat Card -->
-            <div class="contact-quick-card">
-              <div class="contact-quick-head">
-                <div class="contact-quick-head-icon" aria-hidden="true"><i data-lucide="message-circle"></i></div>
-                <h3>Live Chat</h3>
+            <!-- Mailing Address -->
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true"><i data-lucide="mail-open"></i></div>
+              <div class="contact-info-body">
+                <h3 class="contact-info-title">Mailing Address</h3>
+                <address class="contact-info-address">
+                  PO Box 990<br>
+                  Union City, CA 94587-0990
+                </address>
               </div>
-              <div class="contact-quick-body">
-                <div class="contact-chat-status">
-                  <span class="contact-chat-status-dot" aria-hidden="true"></span>
-                  Available Now
-                </div>
-                <p style="font-size:14px; color:var(--gray-500); line-height:1.6; margin:0 0 14px;">Chat live with a support agent. Monday–Friday, 8:00 AM to 5:00 PM PST.</p>
-                <a href="/chat" class="contact-chat-btn" aria-label="Start a live chat">
-                  <i data-lucide="message-circle"></i>
-                  Start Live Chat
+            </div>
+
+            <!-- Email Us -->
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true"><i data-lucide="mail"></i></div>
+              <div class="contact-info-body">
+                <h3 class="contact-info-title">Email Us</h3>
+                <p>Customer Service: <a href="mailto:customerservice@sfcable.com">customerservice@sfcable.com</a></p>
+                <p>Reseller: <a href="mailto:reseller@sfcable.com">reseller@sfcable.com</a></p>
+                <p>OEM Inquiry: <a href="mailto:sales@sfcable.com">sales@sfcable.com</a></p>
+                <p>Website Issues: <a href="mailto:webmaster@sfcable.com">webmaster@sfcable.com</a></p>
+              </div>
+            </div>
+
+            <!-- Live Chat -->
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true"><i data-lucide="message-circle"></i></div>
+              <div class="contact-info-body">
+                <h3 class="contact-info-title">Live Chat</h3>
+                <p>Available Monday–Friday, 8:00 AM to 5:00 PM PST.</p>
+                <a href="/chat" class="contact-chat-link" aria-label="Start a live chat session">
+                  <i data-lucide="arrow-right"></i> Start Live Chat
                 </a>
               </div>
             </div>
 
-          </div><!-- /contact-quick-stack -->
+          </div><!-- /contact-info-list -->
 
         </div><!-- /contact-layout -->
       </div>
     </section>
 
-    <!-- ── CONTACT DETAILS GRID ── -->
-    <section class="contact-details-section" aria-labelledby="contact-details-heading">
-      <div class="container">
-        <div class="contact-details-header">
-          <div>
-            <h2 class="contact-details-title" id="contact-details-heading">All Ways to Reach Us</h2>
-            <p class="contact-details-sub">Multiple channels available — choose what works best for you.</p>
-          </div>
-        </div>
-
-        <div class="contact-cards-grid">
-
-          <!-- Phone Card -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon-wrap" aria-hidden="true"><i data-lucide="phone"></i></div>
-            <h3 class="contact-card-title">Phone</h3>
-            <div class="contact-card-lines">
-              <div class="contact-card-line">
-                <span class="contact-card-line-label">Toll-Free</span>
-                <a href="tel:18882758755">1-888-275-8755</a>
-              </div>
-              <div class="contact-card-line">
-                <span class="contact-card-line-label">Local</span>
-                <a href="tel:15102649988">1-510-264-9988</a>
-              </div>
-              <div class="contact-card-line">
-                <span class="contact-card-line-label">Fax</span>
-                <span>1-510-264-9989</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Location & Will Call -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon-wrap" aria-hidden="true"><i data-lucide="map-pin"></i></div>
-            <h3 class="contact-card-title">Location &amp; Will Call</h3>
-            <address class="contact-card-address">
-              <p>
-                <strong>SF Cable, Inc.</strong><br>
-                28300 Industrial Boulevard, Suite F<br>
-                Hayward, CA 94545-4439
-              </p>
-            </address>
-            <div class="contact-card-lines" style="margin-top:10px;">
-              <div class="contact-card-line">
-                <span class="contact-card-line-label">Hours</span>
-                <span>Mon–Fri: 8:00 AM – 5:00 PM PST</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mailing Address -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon-wrap" aria-hidden="true"><i data-lucide="mail-open"></i></div>
-            <h3 class="contact-card-title">Mailing Address</h3>
-            <address class="contact-card-address">
-              <p>
-                <strong>SF Cable, Inc.</strong><br>
-                PO Box 990<br>
-                Union City, CA 94587-0990
-              </p>
-            </address>
-            <p style="font-size:13px; color:var(--gray-500); margin:10px 0 0; line-height:1.5;">For written correspondence, returns documentation, and purchase orders.</p>
-          </div>
-
-          <!-- Email Us (spans 2 cols on desktop) -->
-          <div class="contact-detail-card contact-card-email">
-            <div class="contact-card-icon-wrap" aria-hidden="true"><i data-lucide="mail"></i></div>
-            <h3 class="contact-card-title">Email Us</h3>
-            <div class="contact-email-grid">
-              <div class="contact-email-item">
-                <span class="contact-email-item-label">Customer Service</span>
-                <a href="mailto:customerservice@sfcable.com">customerservice@sfcable.com</a>
-              </div>
-              <div class="contact-email-item">
-                <span class="contact-email-item-label">Reseller</span>
-                <a href="mailto:reseller@sfcable.com">reseller@sfcable.com</a>
-              </div>
-              <div class="contact-email-item">
-                <span class="contact-email-item-label">OEM Inquiry</span>
-                <a href="mailto:sales@sfcable.com">sales@sfcable.com</a>
-              </div>
-              <div class="contact-email-item">
-                <span class="contact-email-item-label">Website Issues</span>
-                <a href="mailto:webmaster@sfcable.com">webmaster@sfcable.com</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Live Chat -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon-wrap" aria-hidden="true"><i data-lucide="message-circle"></i></div>
-            <h3 class="contact-card-title">Live Chat</h3>
-            <div class="contact-chat-status" style="margin-bottom:12px;">
-              <span class="contact-chat-status-dot" aria-hidden="true"></span>
-              Available Mon–Fri
-            </div>
-            <div class="contact-card-lines">
-              <div class="contact-card-line">
-                <span class="contact-card-line-label">Hours</span>
-                <span>8:00 AM – 5:00 PM PST</span>
-              </div>
-            </div>
-            <a href="/chat" class="contact-chat-btn" style="margin-top:14px;" aria-label="Start a live chat session">
-              <i data-lucide="message-circle"></i>
-              Chat Now
-            </a>
-          </div>
-
-        </div><!-- /contact-cards-grid -->
-      </div>
-    </section>
-
-    <!-- ── NEWSLETTER CTA ── -->
-    <section class="contact-newsletter-section" aria-labelledby="newsletter-heading">
-      <div class="container">
-        <div class="contact-newsletter-card">
-          <div class="contact-newsletter-copy">
-            <h2 id="newsletter-heading">Sign Up for Our Newsletter</h2>
-            <p>Get seasonal offers and advance sale notices delivered to your inbox.</p>
-          </div>
-          <form class="contact-newsletter-form" aria-label="Newsletter signup" novalidate>
-            <input
-              class="contact-newsletter-input"
-              type="email"
-              placeholder="Your work email address"
-              aria-label="Email address for newsletter"
-              required
-            />
-            <button type="submit" class="contact-newsletter-btn">Join Us</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
     <!-- ── USP / TRUST BAR ── -->
-    <section class="footer-trust-bar" aria-label="Trust and credentials" style="margin-top:40px;">
+    <section class="footer-trust-bar" aria-label="Trust and credentials">
       <div class="container">
         <div class="footer-trust-slider-wrap">
           <button class="footer-trust-prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
@@ -1441,8 +937,8 @@
       });
     })();
 
-    /* ─── Newsletter CTA submit ─── */
-    document.querySelectorAll('.contact-newsletter-form, .newsletter-form').forEach(function(f) {
+    /* ─── Footer newsletter submit ─── */
+    document.querySelectorAll('.newsletter-form').forEach(function(f) {
       f.addEventListener('submit', function(e) {
         e.preventDefault();
         var btn = f.querySelector('button[type="submit"]');
