@@ -22,99 +22,9 @@
 
   <style>
     /* ═══════════════════════════════════════════════════════════
-       CONTACT PAGE — HERO
-    ═══════════════════════════════════════════════════════════ */
-    .contact-hero {
-      background: linear-gradient(135deg, var(--sf-primary-dark) 0%, #00336b 60%, #004a96 100%);
-      padding: 40px 0 44px;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .contact-hero-inner {
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .contact-hero-text { flex: 1; min-width: 0; }
-    .contact-hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(255,255,255,.65);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .contact-hero-eyebrow svg.lucide { width: 14px; height: 14px; }
-    .contact-hero-title {
-      font-size: clamp(30px, 4vw, 44px);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin: 0 0 14px;
-    }
-    .contact-hero-desc {
-      font-size: 16px;
-      color: rgba(255,255,255,.82);
-      line-height: 1.7;
-      max-width: 580px;
-      margin: 0 0 10px;
-    }
-    .contact-hero-tagline {
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(255,255,255,.6);
-      margin: 0;
-    }
-    .contact-hero-chips {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      flex-shrink: 0;
-      align-self: center;
-    }
-    .contact-hero-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: var(--radius-lg);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all var(--transition);
-      white-space: nowrap;
-      backdrop-filter: blur(4px);
-    }
-    .contact-hero-chip:hover {
-      background: rgba(255,255,255,.18);
-      border-color: rgba(255,255,255,.45);
-      transform: translateY(-1px);
-    }
-    .contact-hero-chip svg.lucide { width: 16px; height: 16px; flex-shrink: 0; }
-    .contact-hero-chip-label { font-size: 11px; font-weight: 500; opacity: .7; display: block; line-height: 1; margin-bottom: 1px; }
-    .contact-hero-chip-val { display: block; line-height: 1; }
-
-    /* ═══════════════════════════════════════════════════════════
        CONTACT PAGE — MAIN BODY
     ═══════════════════════════════════════════════════════════ */
-    .contact-body { padding: 36px 0 0; }
+    .contact-body { padding: 0; }
 
     .contact-layout {
       display: grid;
@@ -658,9 +568,6 @@
       .contact-card-email { grid-column: span 2; }
     }
     @media (max-width: 640px) {
-      .contact-hero { padding: 28px 0 32px; }
-      .contact-hero-chips { width: 100%; }
-      .contact-hero-chip { flex: 1; justify-content: center; }
       .cf-grid { grid-template-columns: 1fr; }
       .cf-grid .cf-full { grid-column: 1; }
       .contact-cards-grid { grid-template-columns: 1fr; }
@@ -916,36 +823,22 @@
       </div>
     </nav>
 
-    <!-- ── HERO ── -->
-    <section class="contact-hero" aria-labelledby="contact-hero-heading">
+    <!-- ── PAGE TITLE ── -->
+    <section class="section--page-title" aria-labelledby="contact-heading">
       <div class="container">
-        <div class="contact-hero-inner">
-          <div class="contact-hero-text">
-            <div class="contact-hero-eyebrow">
-              <i data-lucide="headphones"></i>
-              Support &amp; Contact
-            </div>
-            <h1 class="contact-hero-title" id="contact-hero-heading">Contact Us</h1>
-            <p class="contact-hero-desc">Have a question? We're here to assist you with any issue. Call us toll free or by local call. You can also send us a fax or use the Contact Form below. We'd love to hear from you!</p>
-            <p class="contact-hero-tagline">At SF Cable, your satisfaction is our top priority.</p>
-          </div>
-          <div class="contact-hero-chips">
-            <a href="tel:18882758755" class="contact-hero-chip">
-              <i data-lucide="phone"></i>
-              <span>
-                <span class="contact-hero-chip-label">Toll-Free</span>
-                <span class="contact-hero-chip-val">1-888-275-8755</span>
-              </span>
-            </a>
-            <a href="tel:15102649988" class="contact-hero-chip">
-              <i data-lucide="phone-call"></i>
-              <span>
-                <span class="contact-hero-chip-label">Local</span>
-                <span class="contact-hero-chip-val">1-510-264-9988</span>
-              </span>
-            </a>
+        <div class="section-header">
+          <div class="section-header-row">
+            <h1 class="section-title listing-page-heading" id="contact-heading">Contact Us</h1>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ── PAGE DESCRIPTION ── -->
+    <section class="section-sm listing-desc" aria-label="Contact SF Cable">
+      <div class="container">
+        <p class="section-subtitle">Have a question? We're here to assist you with any issue. Call us toll free at <a href="tel:18882758755">1-888-275-8755</a>, send us a message using the form below, or reach us by email, fax, or live chat. We'd love to hear from you!</p>
+        <p class="section-subtitle">Our support team is available Monday through Friday, 8:00 AM to 5:00 PM PST. At SF Cable, your satisfaction is our top priority.</p>
       </div>
     </section>
 
