@@ -1677,15 +1677,6 @@
 
       /* Init selected-option pills from pre-selected state */
       const activeLen = row.querySelector('.row-length-pill.active');
-      /* Inject checkmark span into every length pill */
-      row.querySelectorAll('.row-length-pill').forEach(pill => {
-        const ck = document.createElement('span');
-        ck.className = 'plp-pill-check';
-        ck.setAttribute('aria-hidden', 'true');
-        ck.textContent = '✔';
-        pill.insertBefore(ck, pill.firstChild);
-      });
-
       if (activeLen) {
         updateOptionPill(row, 'len', activeLen.dataset.tip || activeLen.dataset.value || '');
         row.querySelector('.plp-tier-pricing')?.classList.add('visible');
@@ -1811,6 +1802,64 @@
           btn.classList.add('active'); btn.setAttribute('aria-current', 'page');
         }
         window.scrollTo({ top: (document.querySelector('.plp-toolbar')?.getBoundingClientRect().top + window.scrollY - 120) || 0, behavior: 'smooth' });
+      });
+    });
+
+    /* ── JS tooltip for sidebar filter pills (CSS tooltip clipped by sidebar overflow) ── */
+    (function initSidebarTooltips() {
+      const tip = document.createElement('div');
+      tip.className = 'js-tooltip';
+      tip.setAttribute('role', 'tooltip');
+      tip.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(tip);
+      let hideTimer;
+
+      function showTip(el) {
+        clearTimeout(hideTimer);
+        tip.textContent = el.getAttribute('data-tip') || '';
+        if (!tip.textContent) return;
+        tip.style.left = '-9999px';
+        tip.style.top  = '-9999px';
+        tip.classList.add('is-visible');
+        requestAnimationFrame(() => {
+          const elRect  = el.getBoundingClientRect();
+          const tipRect = tip.getBoundingClientRect();
+          const gap = 14;
+          const spaceAbove = elRect.top;
+          let top, left;
+          left = elRect.left + elRect.width / 2 - tipRect.width / 2;
+          left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
+          top  = spaceAbove >= tipRect.height + gap + 12
+            ? elRect.top  - tipRect.height - gap
+            : elRect.bottom + gap;
+          /* keep arrow centred over chip */
+          const arrowLeft = (elRect.left + elRect.width / 2) - left;
+          tip.style.setProperty('--arrow-left', arrowLeft + 'px');
+          tip.style.top  = top  + 'px';
+          tip.style.left = left + 'px';
+        });
+      }
+
+      function hideTip() {
+        hideTimer = setTimeout(() => tip.classList.remove('is-visible'), 120);
+      }
+
+      document.querySelectorAll('.plp-sidebar .filter-length-pill[data-tip]').forEach(el => {
+        el.addEventListener('mouseenter', () => showTip(el));
+        el.addEventListener('mouseleave',  hideTip);
+        el.addEventListener('focus',       () => showTip(el));
+        el.addEventListener('blur',        hideTip);
+      });
+    })();
+
+    /* ── Tooltip repositioning: show below chip when near top of viewport ── */
+    document.querySelectorAll('[data-tip]').forEach(el => {
+      el.addEventListener('mouseenter', function () {
+        if (this.getBoundingClientRect().top < 60) {
+          this.setAttribute('data-tip-below', '');
+        } else {
+          this.removeAttribute('data-tip-below');
+        }
       });
     });
 

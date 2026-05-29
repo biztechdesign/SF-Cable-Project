@@ -57,7 +57,7 @@
        PAGE TITLE SECTION
     ═══════════════════════════════════════════════════════════ */
     .cart-page-title {
-      padding: 20px 0 0;
+      padding: 14px 0 0;
       margin-bottom: 0;
     }
     .cart-page-title .section-header { margin-bottom: 16px; }
@@ -71,7 +71,7 @@
     /* ═══════════════════════════════════════════════════════════
        CART LAYOUT
     ═══════════════════════════════════════════════════════════ */
-    .cart-section { padding: 0 0 56px; }
+    .cart-section { padding: 0 0 32px; }
 
     .cart-layout {
       display: grid;
@@ -530,11 +530,11 @@
       justify-content: space-between;
       padding: 13px 20px;
       border-bottom: 1px solid var(--gray-300);
-      font-size: 17px;
+      font-size: 15px;
     }
     .cart-summary-row:last-of-type { border-bottom: none; }
-    .cart-row-label { color: var(--gray-500); font-weight: 500; }
-    .cart-row-value { font-weight: 700; color: var(--dark); }
+    .cart-row-label { color: var(--gray-700); font-weight: 400; }
+    .cart-row-value { font-size: 15px; font-weight: 700; color: var(--dark); }
 
     /* Grand total */
     .cart-grand-total {
@@ -601,7 +601,7 @@
        BEST SELLERS SECTION
     ═══════════════════════════════════════════════════════════ */
     .cart-bestsellers {
-      padding: 0 0 56px;
+      padding: 0 0 32px;
       background: var(--white);
     }
 
@@ -712,7 +712,7 @@
 
     /* 640px — stack footer, tighten card gap */
     @media (max-width: 640px) {
-      .cart-section { padding: 0 0 40px; }
+      .cart-section { padding: 0 0 32px; }
       .cart-footer-row { flex-direction: column; align-items: stretch; }
       .cart-continue-link { justify-content: center; }
       .cart-update-btn { width: 100%; justify-content: center; }
@@ -1298,7 +1298,7 @@
               <!-- Shipping & Tax accordion -->
               <button class="cart-shipping-toggle" id="shipping-toggle" aria-expanded="false" aria-controls="shipping-body">
                 <span class="cart-shipping-toggle-label">
-                  <i data-lucide="map-pin"></i>&nbsp; Click Here to Calculate Shipping and Tax
+                  <i data-lucide="map-pin"></i>&nbsp; Calculate Shipping &amp; Tax
                 </span>
                 <span class="cart-shipping-chevron"><i data-lucide="chevron-down"></i></span>
               </button>

@@ -111,7 +111,7 @@
     ═══════════════════════════════════════════════════════════ */
     .checkout-body {
       background: var(--white);
-      padding: 32px 0 64px;
+      padding: 14px 0 32px;
       min-height: calc(100vh - 66px - 60px - 56px);
     }
     .checkout-layout {
@@ -128,7 +128,7 @@
       border: 1px solid var(--gray-300);
       border-radius: var(--radius-sm);
       overflow: hidden;
-      margin-bottom: 20px;
+      margin-bottom: 32px;
     }
     .co-card:last-child { margin-bottom: 0; }
     .co-card-head {
@@ -154,7 +154,7 @@
       border: 1px solid rgba(0,141,255,.22);
       border-radius: var(--radius-sm);
       padding: 14px 20px;
-      margin-bottom: 20px;
+      margin-bottom: 32px;
     }
     .co-signin-text {
       display: flex;
@@ -456,15 +456,15 @@
     }
     .co-summary-row:last-child { border-bottom: none; }
     .co-row-label {
-      font-size: 16px;
-      color: var(--gray-500);
-      font-weight: 700;
+      font-size: 15px;
+      color: var(--gray-700);
+      font-weight: 400;
       display: flex;
       align-items: center;
       gap: 5px;
     }
-    .co-row-label svg.lucide { width: 13px; height: 13px; color: var(--gray-400); cursor: help; }
-    .co-row-value { font-weight: 700; color: var(--dark); }
+    .co-row-label svg.lucide { width: 13px; height: 13px; color: var(--blue); cursor: help; }
+    .co-row-value { font-size: 15px; font-weight: 600; color: var(--gray-700); }
     .co-row-value-group { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
     .co-row-sub { font-size: 12px; font-weight: 400; color: var(--gray-500); }
 
@@ -476,11 +476,11 @@
       background: var(--gray-100);
       border-top: 2px solid var(--gray-300);
     }
-    .co-total-label { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .co-total-label { font-size: 22px; font-weight: 800; color: var(--dark); }
     .co-total-value { font-size: 22px; font-weight: 800; color: var(--dark); }
 
     /* Trust badges */
-    .co-trust-badges { padding: 16px 20px; border-top: 1px solid var(--gray-300); }
+    .co-trust-badges { padding: 16px 20px; border-top: 1px solid var(--gray-300); text-align: center; }
     .co-trust-title {
       font-size: 11px;
       font-weight: 700;
@@ -489,13 +489,14 @@
       letter-spacing: .7px;
       margin-bottom: 10px;
     }
-    .co-trust-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
+    .co-trust-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; margin-bottom: 12px; }
     .co-trust-badge {
       display: flex;
       align-items: center;
       flex-shrink: 0;
     }
-    .co-payment-icons { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .co-trust-badge img { height: 35px; width: auto; display: block; }
+    .co-payment-icons { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: center; }
     .co-secure-note {
       display: flex;
       align-items: center;
@@ -506,7 +507,7 @@
       border-top: 1px solid var(--gray-200);
       justify-content: center;
     }
-    .co-secure-note svg.lucide { width: 12px; height: 12px; color: #15803d; }
+    .co-secure-note svg.lucide { width: 12px; height: 12px; color: #15803d; display: block; flex-shrink: 0; }
 
     /* ─── Sidebar info cards ─── */
     .co-info-card {
@@ -514,7 +515,7 @@
       border: 1px solid var(--gray-300);
       border-radius: var(--radius-sm);
       overflow: hidden;
-      margin-top: 16px;
+      margin-top: 32px;
     }
     .co-info-card-head {
       display: flex;
@@ -538,15 +539,15 @@
     .co-info-change:hover { color: var(--red-dark); text-decoration: underline; }
     .co-info-card-body {
       padding: 14px 20px 16px;
-      font-size: 14px;
-      color: var(--dark);
+      font-size: 15px;
+      color: var(--gray-700);
       line-height: 1.7;
     }
     .co-info-card-body strong { font-weight: 600; }
     .co-ship-method-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .co-ship-method-name { font-size: 14px; font-weight: 600; color: var(--dark); }
-    .co-ship-method-price { font-size: 14px; font-weight: 700; color: var(--dark); white-space: nowrap; }
-    .co-ship-method-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+    .co-ship-method-name { font-size: 15px; font-weight: 600; color: var(--gray-700); }
+    .co-ship-method-price { font-size: 15px; font-weight: 600; color: var(--gray-700); white-space: nowrap; }
+    .co-ship-method-sub { font-size: 15px; font-weight: 400; color: var(--gray-700); margin-top: 2px; }
 
     /* ═══════════════════════════════════════════════════════════
        CHECKOUT FOOTER
@@ -578,7 +579,11 @@
       .co-pay-option-hd { padding: 12px 14px; }
       .co-pay-option-body { padding: 14px 14px 18px; }
       .co-info-card-head { padding: 11px 16px; }
-      .co-info-card-body { padding: 13px 16px 15px; }
+      .co-info-card-body { padding: 13px 16px 15px; font-size: 15px; }
+      .co-ship-method-name { font-size: 15px; }
+      .co-ship-method-price { font-size: 15px; }
+      .co-ship-method-sub { font-size: 15px; }
+      .co-trust-badge img { height: 28px; }
     }
     @media (max-width: 640px) {
       .co-form-grid { grid-template-columns: 1fr; }
@@ -589,6 +594,11 @@
       .co-pay-option-logos { display: none; }
     }
     @media (max-width: 480px) {
+      .co-info-card-body { font-size: 14px; }
+      .co-ship-method-name { font-size: 14px; }
+      .co-ship-method-price { font-size: 14px; }
+      .co-ship-method-sub { font-size: 14px; }
+      .co-trust-badge img { height: 22px; }
       .co-pay-redirect-btn { height: 36px; font-size: 14px; }
       .co-label { font-size: 13px; }
       .co-row-label { font-size: 15px; }
@@ -619,7 +629,10 @@
       .co-item-sku { font-size: 14px; }
       .co-item-qty-price { font-size: 14px; }
       .co-info-card-head { padding: 10px 14px; }
-      .co-info-card-body { padding: 12px 14px 14px; }
+      .co-info-card-body { padding: 12px 14px 14px; font-size: 13px; }
+      .co-ship-method-name { font-size: 13px; }
+      .co-ship-method-price { font-size: 13px; }
+      .co-ship-method-sub { font-size: 13px; }
     }
   </style>
 </head>
@@ -910,21 +923,48 @@
               <div class="co-trust-title">Trusted &amp; Secure</div>
               <div class="co-trust-grid" aria-label="Security and trust certifications">
                 <div class="co-trust-badge" title="McAfee Secure">
-                  <img src="images/McAfee.png" alt="McAfee Secure" style="height:22px;width:auto;display:block;">
+                  <img src="images/McAfee.png" alt="McAfee Secure" style="height:30px;width:auto;display:block;">
                 </div>
                 <div class="co-trust-badge" title="BBB Accredited Business">
-                  <img src="images/bbb.png" alt="BBB Accredited Business" style="height:22px;width:auto;display:block;">
+                  <img src="images/bbb.png" alt="BBB Accredited Business" style="height:30px;width:auto;display:block;">
                 </div>
                 <div class="co-trust-badge" title="GSA Contract Holder">
-                  <img src="images/GSA.jpg" alt="GSA Contract Holder" style="height:22px;width:auto;display:block;">
+                  <img src="images/GSA.jpg" alt="GSA Contract Holder" style="height:30px;width:auto;display:block;">
                 </div>
               </div>
               <div class="co-payment-icons" aria-label="Accepted payment methods">
-                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="Visa"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text></svg></span>
-                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="Mastercard"><rect width="50" height="32" rx="3.5" fill="#1a1a1a"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/></svg></span>
-                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="American Express"><rect width="50" height="32" rx="3.5" fill="#007BC1"/><text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text></svg></span>
-                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="Discover"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><circle cx="49" cy="16" r="13" fill="#F76F20"/><text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text></svg></span>
-                <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="40" height="26" role="img" aria-label="PayPal"><rect width="50" height="32" rx="3.5" fill="#003087"/><text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text></svg></span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Visa">
+                    <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+                    <text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text>
+                  </svg>
+                </span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Mastercard">
+                    <rect width="50" height="32" rx="3.5" fill="#1a1a1a"/>
+                    <circle cx="19" cy="16" r="10" fill="#EB001B"/>
+                    <circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/>
+                  </svg>
+                </span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="American Express">
+                    <rect width="50" height="32" rx="3.5" fill="#007BC1"/>
+                    <text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text>
+                  </svg>
+                </span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Discover">
+                    <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+                    <circle cx="49" cy="16" r="13" fill="#F76F20"/>
+                    <text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text>
+                  </svg>
+                </span>
+                <span class="payment-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="PayPal">
+                    <rect width="50" height="32" rx="3.5" fill="#003087"/>
+                    <text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text>
+                  </svg>
+                </span>
               </div>
             </div>
 

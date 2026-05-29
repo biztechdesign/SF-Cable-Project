@@ -856,6 +856,7 @@
             </label>
           </div>
 
+          <div class="pdp-reviews-topics-sort-row">
           <div class="pdp-reviews-topics">
             <strong class="pdp-topics-label">Popular topics</strong>
             <div class="pdp-topics-tags">
@@ -881,6 +882,7 @@
                 <button class="plp-dropdown-item" data-value="lowest" role="option">Lowest rated</button>
               </div>
             </div>
+          </div>
           </div>
 
           <div class="pdp-review-list">
@@ -1677,14 +1679,8 @@
       skuEl.textContent = 'CAT5-' + col + '-' + lenNum;
     }
 
-    /* ── Inject checkmark span + data-tip into every length pill (matches listing page) ── */
+    /* ── Add data-tip tooltip to every length pill ── */
     document.querySelectorAll('#pdpLengthPills .row-length-pill').forEach(pill => {
-      const ck = document.createElement('span');
-      ck.className = 'plp-pill-check';
-      ck.setAttribute('aria-hidden', 'true');
-      ck.textContent = '✔';
-      pill.insertBefore(ck, pill.firstChild);
-      /* Add tooltip matching listing page hover behaviour */
       if (!pill.dataset.tip) pill.setAttribute('data-tip', pill.dataset.length || pill.textContent.trim());
     });
 
@@ -1853,6 +1849,33 @@
     window.addEventListener('resize', function() {
       clearTimeout(_eqTimer);
       _eqTimer = setTimeout(function() { equalizeCardHeights('.pdp-recently-grid'); }, 150);
+    });
+
+    /* ── Tooltip repositioning: show below chip when near top of viewport ── */
+    document.querySelectorAll('[data-tip]').forEach(el => {
+      el.addEventListener('mouseenter', function () {
+        if (this.getBoundingClientRect().top < 60) {
+          this.setAttribute('data-tip-below', '');
+        } else {
+          this.removeAttribute('data-tip-below');
+        }
+      });
+    });
+
+    /* ── Length pills: set data-tip from data-length for tooltip ── */
+    document.querySelectorAll('.row-length-pill[data-length]').forEach(pill => {
+      pill.setAttribute('data-tip', pill.getAttribute('data-length'));
+    });
+
+    /* ── Tooltip repositioning: show below chip when near top of viewport ── */
+    document.querySelectorAll('[data-tip]').forEach(el => {
+      el.addEventListener('mouseenter', function () {
+        if (this.getBoundingClientRect().top < 60) {
+          this.setAttribute('data-tip-below', '');
+        } else {
+          this.removeAttribute('data-tip-below');
+        }
+      });
     });
 
     /* ── Initialise Lucide icons ── */
