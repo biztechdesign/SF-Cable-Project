@@ -1371,6 +1371,7 @@ a.top-bar-item { color: var(--white); text-decoration: none; }
   background: #000000; color: #ffffff; font-size: 15px; font-weight: 600;
   padding: 5px 12px; border-radius: 6px; white-space: nowrap;
   opacity: 0; pointer-events: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.38);
   transition: opacity 0.15s ease;
   z-index: 10; mix-blend-mode: normal;
 }
@@ -4320,7 +4321,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   border-radius: 8px;
   white-space: nowrap;
   pointer-events: none;
-  box-shadow: 0 4px 12px rgba(0,38,72,0.22);
+  box-shadow: 0 6px 20px rgba(0,38,72,0.38);
   font-family: var(--font);
   line-height: 1.4;
   opacity: 0;
@@ -4499,7 +4500,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .pdp-hero                   { padding: 14px 0 0px; }
 .pdp-layout                 { display: flex; gap: 32px; align-items: flex-start; }
-.pdp-gallery                { flex: 0 0 40%; min-width: 0; position: sticky; top: 120px; }
+.pdp-gallery                { flex: 0 0 40%; min-width: 0; position: sticky; top: 120px; padding-top: 4px; }
 .pdp-info                   { flex: 0 0 calc(60% - 40px); min-width: 0; }
 
 .pdp-gallery-main {
@@ -4950,7 +4951,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 @media (max-width: 900px) {
   .pdp-layout { flex-direction: column; }
-  .pdp-gallery { flex: none; width: 100%; position: static; }
+  .pdp-gallery { flex: none; width: 100%; position: static; padding-top: 0; }
   .pdp-info { flex: none; width: 100%; }
   .pdp-gallery-main { width: 100%; max-width: 100%; max-height: 350px; }
   .pdp-gallery-main img { height: auto; }
