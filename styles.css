@@ -1371,7 +1371,7 @@ a.top-bar-item { color: var(--white); text-decoration: none; }
   background: #000000; color: #ffffff; font-size: 15px; font-weight: 600;
   padding: 5px 12px; border-radius: 6px; white-space: nowrap;
   opacity: 0; pointer-events: none;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.38);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.42);
   transition: opacity 0.15s ease;
   z-index: 10; mix-blend-mode: normal;
 }
@@ -4321,7 +4321,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   border-radius: 8px;
   white-space: nowrap;
   pointer-events: none;
-  box-shadow: 0 6px 20px rgba(0,38,72,0.38);
+  box-shadow: 0 4px 10px rgba(0,38,72,0.42);
   font-family: var(--font);
   line-height: 1.4;
   opacity: 0;
