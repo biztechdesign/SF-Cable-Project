@@ -71,7 +71,7 @@
     /* ═══════════════════════════════════════════════════════════
        ABOUT PAGE — BODY
     ═══════════════════════════════════════════════════════════ */
-    .about-body { padding: 32px 0; }
+    .about-body { padding: 0 0 32px; }
 
     /* ── Intro two-column layout ── */
     .about-intro-layout {
@@ -169,12 +169,14 @@
       font-size: 16px;
       color: var(--gray-700);
       line-height: 1.7;
-      margin-bottom: 48px;
+      margin-top: 10px;
+      margin-bottom: 0;
     }
 
     /* ── Company Certificate section ── */
     .about-cert-section {
       padding: 0;
+      margin-top: 32px;
     }
     .about-section-title {
       font-size: clamp(22px, 2.8vw, 28px);
@@ -223,7 +225,7 @@
 
     /* ── Photo Gallery — Bento Grid ── */
     .about-gallery-section {
-      padding: 32px 0;
+      padding: 32px 0 0;
     }
 
     .about-bento-grid {
@@ -337,15 +339,15 @@
       .about-strategy-icon svg.lucide { width: 22px; height: 22px; }
     }
     @media (max-width: 900px) {
-      .about-strategies { grid-template-columns: 1fr 1fr; }
-      .about-body { padding: 32px 0; }
+      .about-strategies { grid-template-columns: 1fr; }
+      .about-body { padding: 0 0 32px; }
       .about-strategy-icon { width: 40px; height: 40px; }
       .about-strategy-icon svg.lucide { width: 20px; height: 20px; }
     }
     @media (max-width: 640px) {
       .about-strategies { grid-template-columns: 1fr; }
       .about-photos-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-      .about-body { padding: 32px 0; }
+      .about-body { padding: 0 0 32px; }
     }
     @media (max-width: 480px) {
       .about-photos-grid { grid-template-columns: 1fr 1fr; }
