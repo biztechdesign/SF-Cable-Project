@@ -4806,10 +4806,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   }
   .pdp-qty-add-row .plp-outline-btn { flex: none; width: var(--control-h); height: var(--control-h); }
 
-  /* All thumbs always fully visible — flex:1 shares space equally, no clipping */
-  .pdp-gallery-thumbs { gap: 5px; flex-wrap: nowrap; overflow: visible; }
-  .pdp-thumb { flex: 1 0 0; min-width: 0; max-width: 68px; height: auto; aspect-ratio: 1 / 1; } .pdp-thumb img { padding: 3px; }
-  .pdp-thumbs-arrow { display: none; } /* arrows not needed when all thumbs fit */
+  /* Thumbs distribute evenly within gallery area (after arrows); flex:1 = (gallery_w - gaps) / count */
+  .pdp-gallery-thumbs { gap: 5px; flex-wrap: nowrap; overflow: hidden; }
+  .pdp-thumb { flex: 1 0 0; min-width: 0; height: auto; aspect-ratio: 1 / 1; } .pdp-thumb img { padding: 3px; }
+  .pdp-thumbs-arrow svg.lucide { width: 16px; height: 16px; }
   .pdp-write-review-btn { width: 100%; justify-content: center; }
   .pdp-tabs-section { padding: 24px 0; }
   .pdp-tab-btn { padding: 12px 12px; font-size: 16px; gap: 6px; }
