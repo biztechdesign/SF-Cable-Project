@@ -1460,7 +1460,7 @@
       btn.addEventListener('click', function () {
         const orig = this.innerHTML;
         this.innerHTML = '✓ Added!'; this.style.background = 'var(--green)';
-        setTimeout(() => { this.innerHTML = orig; this.style.background = ''; lucide.createIcons({ nodes: [this], strokeWidth: 1.5 }); }, 1800);
+        setTimeout(() => { this.innerHTML = orig; this.style.background = ''; lucide.createIcons({ nodes: [this], strokeWidth: 2 }); }, 1800);
       });
     });
 
@@ -1658,7 +1658,7 @@
           `<button class="plp-outline-btn plp-btn-compare" data-row="${rowNum}" aria-label="Compare"><i data-lucide="arrow-right-left"></i></button>`;
         actions.appendChild(ctaRow);
         ctaRow.querySelectorAll('.plp-outline-btn').forEach(btn => btn.addEventListener('click', () => btn.classList.toggle('is-active')));
-        lucide.createIcons({ nodes: [ctaRow], strokeWidth: 1.5 });
+        lucide.createIcons({ nodes: [ctaRow], strokeWidth: 2 });
       }
 
       buildTierPricing(row);
@@ -1864,7 +1864,7 @@
     });
 
     /* Init all Lucide icons */
-    lucide.createIcons({ strokeWidth: 1.5 });
+    lucide.createIcons({ strokeWidth: 2 });
   </script>
 </body>
 </html>

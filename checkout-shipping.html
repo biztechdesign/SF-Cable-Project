@@ -55,8 +55,9 @@
       color: rgba(255,255,255,.7);
     }
     .checkout-secure-badge svg.lucide {
-      width: 15px;
-      height: 15px;
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
       color: var(--green);
     }
 
@@ -207,8 +208,9 @@
       min-width: 0;
     }
     .co-signin-text svg.lucide {
-      width: 17px;
-      height: 17px;
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
       color: var(--red);
       flex-shrink: 0;
     }
@@ -233,6 +235,7 @@
       transition: background var(--transition);
     }
     .co-signin-btn:hover { background: var(--red-dark); }
+    .co-signin-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
 
     /* ─── Form fields ─── */
     .co-form-grid {
@@ -255,11 +258,7 @@
       font-size: 13px;
       font-weight: 700;
     }
-    .co-label-icon {
-      color: var(--gray-500);
-      cursor: help;
-    }
-    .co-label-icon svg.lucide { width: 14px; height: 14px; }
+
     .co-input,
     .co-select {
       width: 100%;
@@ -295,14 +294,14 @@
     }
     .co-field.has-error .co-error-msg { display: block; }
     .co-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23002648' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23002648' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       padding-right: 34px;
       cursor: pointer;
     }
     .co-select:focus {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23008dff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23008dff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     }
     /* Email helper text */
     .co-field-hint {
@@ -427,7 +426,7 @@
       text-decoration: none;
       transition: background var(--transition);
     }
-    .co-next-btn svg.lucide { width: 17px; height: 17px; }
+    .co-next-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .co-next-btn:hover { background: var(--red-dark); }
     .co-back-link {
       display: inline-flex;
@@ -439,7 +438,7 @@
       text-decoration: none;
       transition: color var(--transition);
     }
-    .co-back-link svg.lucide { width: 14px; height: 14px; transition: transform var(--transition); }
+    .co-back-link svg.lucide { width: 20px; height: 20px; stroke-width: 2; transition: transform var(--transition); }
     .co-back-link:hover { color: var(--red-dark); text-decoration: underline; }
     .co-back-link:hover svg.lucide { transform: translateX(-3px); }
 
@@ -483,7 +482,7 @@
       flex-shrink: 0;
       transition: border-color var(--transition), color var(--transition), background var(--transition);
     }
-    .co-edit-cart-btn svg.lucide { width: 17px; height: 17px; }
+    .co-edit-cart-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .co-edit-cart-btn:hover {
       border-color: var(--red);
       color: var(--red);
@@ -578,7 +577,7 @@
       align-items: center;
       gap: 5px;
     }
-    .co-row-label svg.lucide { width: 13px; height: 13px; color: var(--blue); cursor: help; }
+    .co-row-label svg.lucide { width: 16px; height: 16px; color: var(--blue); cursor: help; }
     .co-row-value { font-size: 15px; font-weight: 700; color: var(--dark); }
     .co-row-value.muted { color: var(--gray-500); font-weight: 400; font-style: italic; }
 
@@ -828,9 +827,6 @@
                   <div class="co-field co-field-full" id="field-email">
                     <label class="co-label" for="co-email">
                       Email Address <span class="co-required" aria-label="required">*</span>
-                      <span class="co-label-icon" title="We'll use this to send your order confirmation">
-                        <i data-lucide="info"></i>
-                      </span>
                     </label>
                     <input class="co-input" id="co-email" type="email"
                            name="email" autocomplete="email"
@@ -1031,9 +1027,6 @@
                   <div class="co-field co-field-full" id="field-telephone">
                     <label class="co-label" for="co-telephone">
                       Phone Number <span class="co-required" aria-label="required">*</span>
-                      <span class="co-label-icon" title="For delivery questions only — we won't call for marketing">
-                        <i data-lucide="info"></i>
-                      </span>
                     </label>
                     <input class="co-input" id="co-telephone" type="tel"
                            name="telephone" autocomplete="tel"
@@ -1242,7 +1235,7 @@
   <script>
     /* ─── Lucide icons ─── */
     lucide.createIcons({
-      attrs: { 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+      attrs: { 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
     });
 
     /* ─── Form validation ─── */

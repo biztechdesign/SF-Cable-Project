@@ -400,6 +400,10 @@
                 <i data-lucide="chevron-right"></i>
               </button>
             </div>
+            <div class="pdp-thumbs-wrap">
+              <button class="pdp-thumbs-arrow pdp-thumbs-prev" id="pdpThumbsPrev" aria-label="Previous thumbnails">
+                <i data-lucide="arrow-left"></i>
+              </button>
             <div class="pdp-gallery-thumbs" id="pdpThumbs">
               <button class="pdp-thumb active"
                 data-img="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000"
@@ -420,6 +424,25 @@
                 data-img="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p4.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000"
                 data-alt="Cat5e UTP Ethernet Cable – length overview">
                 <img src="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p4.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=90&width=90&canvas=90:90" alt="Length overview" loading="lazy" />
+              </button>
+              <button class="pdp-thumb"
+                data-img="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p2.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000"
+                data-alt="Cat5e UTP Ethernet Cable – connector detail">
+                <img src="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p2.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=90&width=90&canvas=90:90" alt="Connector detail" loading="lazy" />
+              </button>
+              <button class="pdp-thumb"
+                data-img="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p3.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000"
+                data-alt="Cat5e UTP Ethernet Cable – cable view 2">
+                <img src="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p3.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=90&width=90&canvas=90:90" alt="Cable view 2" loading="lazy" />
+              </button>
+              <button class="pdp-thumb"
+                data-img="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000"
+                data-alt="Cat5e UTP Ethernet Cable – overview">
+                <img src="https://www.sfcable.com/media/catalog/product/c/a/cat5-06-blu-p1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=90&width=90&canvas=90:90" alt="Overview" loading="lazy" />
+              </button>
+            </div>
+              <button class="pdp-thumbs-arrow pdp-thumbs-next" id="pdpThumbsNext" aria-label="Next thumbnails">
+                <i data-lucide="arrow-right"></i>
               </button>
             </div>
           </div>
@@ -1580,7 +1603,7 @@
       btn.addEventListener('click', function () {
         const orig = this.innerHTML;
         this.innerHTML = '✓ Added!'; this.style.background = 'var(--green)';
-        setTimeout(() => { this.innerHTML = orig; this.style.background = ''; lucide.createIcons({ nodes: [this], strokeWidth: 1.5 }); }, 1800);
+        setTimeout(() => { this.innerHTML = orig; this.style.background = ''; lucide.createIcons({ nodes: [this], strokeWidth: 2 }); }, 1800);
       });
     });
 
@@ -1615,6 +1638,34 @@
       pdpActivateThumb(0);
     })();
 
+    /* ── Thumbnail strip scroll arrows ── */
+    (function () {
+      const strip   = document.getElementById('pdpThumbs');
+      const wrap    = strip && strip.closest('.pdp-thumbs-wrap');
+      const btnPrev = document.getElementById('pdpThumbsPrev');
+      const btnNext = document.getElementById('pdpThumbsNext');
+      if (!strip || !btnPrev || !btnNext) return;
+
+      function clipStrip() {
+        const thumb = strip.querySelector('.pdp-thumb');
+        if (!thumb) return;
+        strip.style.width = '';            /* CSS flex:1 owns the width */
+        strip._scrollStep = thumb.offsetWidth + 8;
+      }
+
+      function updateArrows() {
+        btnPrev.disabled = strip.scrollLeft <= 0;
+        btnNext.disabled = strip.scrollLeft + strip.offsetWidth >= strip.scrollWidth - 1;
+      }
+
+      clipStrip();
+      updateArrows();
+
+      btnPrev.addEventListener('click', function () { strip.scrollBy({ left: -(strip._scrollStep || 84), behavior: 'smooth' }); });
+      btnNext.addEventListener('click', function () { strip.scrollBy({ left:  (strip._scrollStep || 84), behavior: 'smooth' }); });
+      strip.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', function () { clipStrip(); updateArrows(); });
+    })();
 
     /* ── Price data ── */
     const pdpPrices = {
@@ -1870,7 +1921,7 @@
     });
 
     /* ── Initialise Lucide icons ── */
-    lucide.createIcons({ strokeWidth: 1.5 });
+    lucide.createIcons({ strokeWidth: 2 });
 
     /* ── Fill rating/review stars after Lucide init ── */
     document.querySelectorAll('.pdp-rating .stars svg, .pdp-reviews-score-stars svg, .pdp-review-stars svg, .pdp-review-bar-label svg').forEach(svg => {

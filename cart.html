@@ -252,7 +252,7 @@
       flex-shrink: 0;
       padding: 0;
     }
-    .cart-action-btn svg.lucide { width: 15px; height: 15px; }
+    .cart-action-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .cart-action-btn:hover {
       color: var(--dark);
       background: var(--gray-100);
@@ -283,7 +283,7 @@
       transition: color var(--transition);
     }
     .cart-continue-link:hover { color: var(--red-dark); text-decoration: underline; }
-    .cart-continue-link svg.lucide { width: 15px; height: 15px; transition: transform var(--transition); }
+    .cart-continue-link svg.lucide { width: 20px; height: 20px; stroke-width: 2; transition: transform var(--transition); }
     .cart-continue-link:hover svg.lucide { transform: translateX(-3px); }
     .cart-update-btn {
       display: inline-flex;
@@ -301,7 +301,7 @@
       cursor: pointer;
       transition: border-color var(--transition), color var(--transition);
     }
-    .cart-update-btn svg.lucide { width: 15px; height: 15px; }
+    .cart-update-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .cart-update-btn:hover {
       border-color: var(--sf-primary-cta);
       color: var(--sf-primary-cta);
@@ -434,7 +434,8 @@
       color: var(--gray-500);
       transition: transform var(--transition);
     }
-    .cart-shipping-chevron svg.lucide { width: 16px; height: 16px; }
+    .cart-shipping-chevron svg.lucide { width: 18px; height: 18px; stroke-width: 2.5; }
+    .cart-shipping-toggle-label svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .cart-shipping-toggle.open .cart-shipping-chevron { transform: rotate(180deg); }
 
     .cart-shipping-body {
@@ -567,7 +568,7 @@
       text-decoration: none;
       transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
     }
-    .cart-checkout-btn svg.lucide { width: 17px; height: 17px; }
+    .cart-checkout-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .cart-checkout-btn:hover {
       background: var(--red-dark);
       color: var(--white);
@@ -1714,7 +1715,7 @@
 
     /* ─── Lucide icons ─── */
     lucide.createIcons({
-      attrs: { 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+      attrs: { 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
     });
 
     /* ─── Header scroll + back-to-top ─── */

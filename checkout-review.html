@@ -51,7 +51,7 @@
       font-weight: 600;
       color: rgba(255,255,255,.7);
     }
-    .checkout-secure-badge svg.lucide { width: 15px; height: 15px; color: var(--green); }
+    .checkout-secure-badge svg.lucide { width: 20px; height: 20px; stroke-width: 2; color: var(--green); }
 
     /* ═══════════════════════════════════════════════════════════
        CHECKOUT STEPPER
@@ -166,7 +166,7 @@
       flex: 1;
       min-width: 0;
     }
-    .co-signin-text svg.lucide { width: 17px; height: 17px; color: var(--red); flex-shrink: 0; }
+    .co-signin-text svg.lucide { width: 20px; height: 20px; stroke-width: 2; color: var(--red); flex-shrink: 0; }
     .co-signin-btn {
       display: inline-flex;
       align-items: center;
@@ -189,6 +189,7 @@
       transition: background var(--transition);
     }
     .co-signin-btn:hover { background: var(--red-dark); }
+    .co-signin-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
 
     /* ─── Form fields (reused in CC form) ─── */
     .co-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -247,7 +248,7 @@
       text-decoration: none;
       transition: background var(--transition);
     }
-    .co-next-btn svg.lucide { width: 17px; height: 17px; }
+    .co-next-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .co-next-btn:hover { background: var(--red-dark); }
     .co-back-link {
       display: inline-flex;
@@ -259,7 +260,7 @@
       text-decoration: none;
       transition: color var(--transition);
     }
-    .co-back-link svg.lucide { width: 14px; height: 14px; transition: transform var(--transition); }
+    .co-back-link svg.lucide { width: 20px; height: 20px; stroke-width: 2; transition: transform var(--transition); }
     .co-back-link:hover { color: var(--red-dark); text-decoration: underline; }
     .co-back-link:hover svg.lucide { transform: translateX(-3px); }
 
@@ -397,7 +398,7 @@
       flex-shrink: 0;
       transition: border-color var(--transition), color var(--transition);
     }
-    .co-edit-cart-btn svg.lucide { width: 17px; height: 17px; }
+    .co-edit-cart-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
     .co-edit-cart-btn:hover { border-color: var(--red); color: var(--red); }
 
     .co-summary-items { padding: 16px 20px; border-bottom: 1px solid var(--gray-300); }
@@ -465,7 +466,7 @@
       align-items: center;
       gap: 5px;
     }
-    .co-row-label svg.lucide { width: 13px; height: 13px; color: var(--blue); cursor: help; }
+    .co-row-label svg.lucide { width: 16px; height: 16px; color: var(--blue); cursor: help; }
     .co-row-value { font-size: 15px; font-weight: 600; color: var(--gray-700); }
     .co-row-value-group { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
     .co-row-sub { font-size: 12px; font-weight: 400; color: var(--gray-500); }
@@ -778,9 +779,6 @@
                       <div class="co-field">
                         <label class="co-label" for="cc-cvv">
                           CVV <span class="co-required" aria-label="required">*</span>
-                          <span title="3 digits on the back of your card (4 digits for Amex)" style="display:inline-flex;cursor:help;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                          </span>
                         </label>
                         <input class="co-input" id="cc-cvv" type="text"
                                name="cc_cid" autocomplete="cc-csc"
@@ -1033,7 +1031,7 @@
   <script>
     /* ─── Lucide icons ─── */
     lucide.createIcons({
-      attrs: { 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+      attrs: { 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
     });
 
     /* ─── Payment method switching ─── */

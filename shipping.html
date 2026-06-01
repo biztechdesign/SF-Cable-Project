@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SF Cable Shipping Information — Same-day shipping on in-stock items ordered by 2 PM PST. UPS & USPS options, free shipping over $75, Will Call pickup in Hayward, CA." />
+  <meta name="keywords" content="SF Cable shipping, UPS ground, USPS priority mail, same day shipping, free shipping, will call Hayward CA" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Shipping Information – SF Cable" />
+  <meta property="og:description" content="Same-day shipping on in-stock items. UPS & USPS options available. Free shipping over $75. Order by 2 PM PST." />
+  <meta property="og:type" content="website" />
+  <title>Shipping Information — SF Cable | Same-Day Shipping Available</title>
+  <link rel="canonical" href="https://www.sfcable.com/shipping.html" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Shared site styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ── Shipping page specific styles ── */
+
+    /* CMS page nav (same as contact.html) */
+    .cms-page-nav { background: var(--gray-100); border-bottom: 1px solid var(--gray-300); }
+    .cms-nav-wrap { display: flex; align-items: center; height: 42px; position: relative; }
+    .cms-nav-inner { display: flex; align-items: center; min-width: 0; height: 42px; overflow: hidden; }
+    .cms-nav-link { display: inline-flex; align-items: center; padding: 0 13px; height: 42px; font-size: 15px; font-weight: 700; color: var(--gray-700); text-decoration: none; white-space: nowrap; flex-shrink: 0; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+    .cms-nav-link:hover { color: var(--sf-primary-cta); }
+    .cms-nav-link--active { color: var(--sf-primary-cta); border-bottom-color: var(--sf-primary-cta); font-weight: 600; }
+    .cms-nav-link--hidden { display: none !important; }
+    .cms-nav-more { display: none; flex-shrink: 0; }
+    .cms-nav-more.visible { display: block; }
+    .cms-nav-more .plp-dropdown-trigger { border: none; border-radius: 0; background: transparent; height: 42px; padding: 0 10px; box-shadow: none; }
+    .cms-nav-more .plp-dropdown-trigger:hover { background: transparent; border: none; }
+    .cms-nav-more .plp-dropdown-trigger svg.lucide { width: 22px; height: 22px; stroke-width: 2.5; }
+    .cms-nav-more-panel { left: 0; right: auto; min-width: 180px; }
+
+    /* Hero stat bar */
+    .ship-hero {
+      background: var(--sf-primary-dark);
+      padding: 40px 0 44px;
+    }
+    .ship-hero-inner {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .ship-hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 40px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      gap: 6px;
+    }
+    .ship-hero-stat:last-child { border-right: none; }
+    .ship-hero-stat-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .ship-hero-stat-icon svg.lucide { width: 22px; height: 22px; }
+    .ship-hero-stat strong {
+      font-size: 17px; font-weight: 800; color: var(--white);
+      line-height: 1.2;
+    }
+    .ship-hero-stat span {
+      font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 400; line-height: 1.3;
+    }
+
+    /* 2-column title layout: 40% left, 60% right */
+    .ship-title-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 48px;
+    }
+    .ship-title-left {
+      flex: 0 0 40%;
+      min-width: 0;
+    }
+
+    /* Stat grid — 2×2 on right side */
+    .ship-title-stats {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .ship-title-stat {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+    }
+    .ship-title-stat-icon {
+      width: 54px; height: 54px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(0,141,255,.12);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--sf-primary-cta);
+    }
+    .ship-title-stat-icon svg.lucide { width: 28px; height: 28px; }
+    .ship-title-stat strong {
+      display: block;
+      font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.3;
+      margin-bottom: 2px;
+    }
+    .ship-title-stat span {
+      display: block;
+      font-size: 15px; font-weight: 400; color: var(--gray-500); line-height: 1.3;
+    }
+
+    /* Main content layout */
+    .ship-section { padding: 32px 0; }
+    .ship-section-title {
+      font-size: clamp(22px, 2.8vw, 28px); font-weight: 700; color: var(--dark);
+      line-height: 1.2; margin: 0 0 8px;
+    }
+    .ship-section-sub {
+      font-size: 16px; color: var(--gray-700); margin: 0 0 28px; line-height: 1.5;
+    }
+    .ship-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .ship-grid-full { grid-column: 1 / -1; }
+
+    /* Section heading within content */
+    .ship-section-head {
+      padding-top: 48px;
+      margin-bottom: 6px;
+    }
+    .ship-section-head-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 10px;
+      background: rgba(0,141,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--sf-primary-cta);
+    }
+    .ship-section-head-icon svg.lucide { width: 20px; height: 20px; }
+    .ship-section-head h2 {
+      font-size: clamp(22px, 2.8vw, 30px); font-weight: 700; color: var(--dark);
+      margin: 0; line-height: 1.2;
+    }
+    .ship-section-head p {
+      color: var(--gray-700); font-weight: 400; margin: 10px 0 0;
+    }
+    /* Override global gray-500 to darker gray-700 for all subtitle text on this page */
+    .section-subtitle { color: var(--gray-700); }
+
+    .ship-section-desc {
+      color: var(--gray-700); font-weight: 400; margin: 0 0 24px; line-height: 1.5;
+    }
+
+    /* Card */
+    .ship-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+    .ship-card--highlight {
+      border-color: var(--sf-primary-cta);
+      position: relative;
+    }
+    .ship-card--highlight::before {
+      content: 'Recommended';
+      position: absolute;
+      top: -1px; right: 20px;
+      background: var(--sf-primary-cta);
+      color: var(--white);
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 0 0 6px 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Carrier badge */
+    .ship-carrier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 6px 14px;
+      margin-bottom: 18px;
+    }
+    .ship-carrier-badge svg.lucide { width: 16px; height: 16px; color: var(--sf-primary-cta); }
+    .ship-carrier-badge span { font-size: 13px; font-weight: 700; color: var(--dark); letter-spacing: 0.02em; }
+
+    /* Service list */
+    .ship-service-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .ship-service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(0,38,72,.08);
+      border-radius: 8px;
+    }
+    .ship-service-item-body { flex: 1; min-width: 0; }
+    .ship-service-item-name {
+      /* matches .filter-section-hd h4 */
+      font-size: 15px; font-weight: 700; color: var(--dark); line-height: 1.3; margin: 0;
+    }
+    .ship-service-item-desc {
+      /* matches .filter-chip desktop */
+      font-size: 15px; font-weight: 400; color: var(--dark); margin-top: 3px; line-height: 1.5;
+    }
+    .ship-service-item-badge {
+      flex-shrink: 0;
+      font-size: 13px; font-weight: 700;
+      white-space: nowrap;
+      background: transparent;
+      padding: 0;
+    }
+    .badge--guaranteed   { color: #15803d; }
+    .badge--standard     { color: var(--gray-700); }
+    .badge--no-guarantee { color: #b45309; }
+
+    /* Note box */
+    .ship-note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: var(--blue-light);
+      border: 1px solid rgba(0,141,255,.22);
+      border-radius: var(--radius-sm);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .ship-note svg.lucide { width: 16px; height: 16px; color: var(--sf-primary-cta); flex-shrink: 0; margin-top: 2px; }
+    .ship-note p { font-size: 14px; color: var(--dark); margin: 0; line-height: 1.5; }
+    .ship-note a { color: var(--sf-primary-cta); font-weight: 600; }
+
+    .ship-warn {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: var(--radius-sm);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .ship-warn svg.lucide { width: 16px; height: 16px; color: #f59e0b; flex-shrink: 0; margin-top: 2px; }
+    .ship-warn p { font-size: 14px; color: #92400e; margin: 0; line-height: 1.5; }
+
+    /* Delivery schedule table */
+    .ship-table-wrap { overflow-x: auto; }
+    .ship-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .ship-table thead tr {
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .ship-table thead th {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      padding: 12px 16px;
+      text-align: left;
+      white-space: nowrap;
+      vertical-align: middle;
+      border-bottom: none;
+    }
+    .ship-table tbody tr { border-bottom: 1px solid var(--gray-200); }
+    .ship-table tbody tr:last-child { border-bottom: none; }
+    .ship-table tbody td {
+      padding: 11px 16px;
+      color: var(--dark);
+      font-size: 15px;
+      font-weight: 400;
+      vertical-align: middle;
+    }
+    .ship-table tbody td:first-child { font-weight: 600; }
+    .ship-table .td-result {
+      font-size: 15px; font-weight: 400; color: var(--dark);
+    }
+
+    /* Stock status */
+    .ship-stock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .ship-stock-item {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+    }
+    .ship-stock-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+    }
+    .ship-stock-dot--green  { background: #22c55e; }
+    .ship-stock-dot--yellow { background: #f59e0b; }
+    .ship-stock-dot--red    { background: #ef4444; }
+    .ship-stock-label {
+      margin-bottom: 6px; line-height: 1.3;
+    }
+    .ship-stock-desc {
+      color: var(--gray-700); font-weight: 400; margin-top: 6px; line-height: 1.5;
+    }
+
+    /* Will call */
+    .ship-willcall-inner {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .ship-willcall-map {
+      flex: 0 0 300px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 20px;
+      text-align: center;
+      gap: 10px;
+    }
+    .ship-willcall-map svg.lucide { width: 36px; height: 36px; color: var(--sf-primary-cta); }
+    .ship-willcall-map strong { display: block; }
+    .ship-willcall-map span { font-size: 15px; font-weight: 400; color: var(--gray-700); line-height: 1.5; }
+    .ship-willcall-body { flex: 1; min-width: 0; }
+    .ship-willcall-steps { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; }
+    .ship-willcall-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .ship-willcall-num {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--sf-primary-cta);
+      color: var(--white);
+      font-size: 13px; font-weight: 800; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ship-willcall-step p { margin: 0; color: var(--gray-700); font-weight: 400; line-height: 1.5; padding-top: 3px; }
+    .ship-willcall-step a { color: var(--sf-primary-cta); font-weight: 600; }
+
+    /* Holiday tables */
+    .ship-holiday-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    /* Fixed layout so both stacked tables share identical column widths */
+    .ship-holiday-grid .ship-table { table-layout: fixed; }
+    .ship-holiday-grid .ship-table tbody td:first-child { width: 65%; }
+    .ship-holiday-grid .ship-table tbody td:last-child  { width: 35%; }
+
+    /* Maps */
+    .ship-map-block {
+      margin-top: 20px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .ship-map-block img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .ship-maps-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    /* ── Carrier collapse headers (reuse pdp-collapse-section) ── */
+    .ship-carrier-hd .pdp-collapse-title { flex: 1; }
+    .ship-carrier-hd { cursor: default; pointer-events: none; }
+    .ship-carrier-hd:hover .pdp-collapse-title  { color: var(--dark); }
+    .ship-carrier-hd:hover .pdp-collapse-chevron { color: var(--dark); }
+
+    /* Inline carrier badge — matches .badge.badge-sale from product card exactly */
+    .ship-inline-badge {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      background: #16a34a;
+      color: #ffffff;
+      border: none;
+      white-space: nowrap;
+    }
+    .ship-inline-badge--economy { background: #b45309; color: #ffffff; }
+
+    /* Map/maps-row at top of collapse body — remove top margin */
+    .ship-map-block--top  { margin-top: 0; margin-bottom: 20px; }
+    .ship-maps-row--top   { margin-top: 0; margin-bottom: 20px; }
+
+    /* Service list inside collapse body */
+    .pdp-collapse-body .ship-service-list { margin-bottom: 16px; }
+    /* Remove icon column from service items (simplified for shipping page) */
+    .pdp-collapse-body .ship-service-item { gap: 10px; }
+
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .ship-title-stat-icon { width: 44px; height: 44px; }
+      .ship-title-stat strong { font-size: 15px; }
+      .ship-title-stat span { font-size: 13px; }
+    }
+    @media (max-width: 900px) {
+      .ship-title-layout { flex-direction: column; gap: 24px; }
+      .ship-title-left { flex: none; width: 100%; }
+      .ship-title-stats { width: 100%; grid-template-columns: repeat(2, 1fr); }
+      .ship-title-stat-icon { width: 40px; height: 40px; }
+      .ship-title-stat strong { font-size: 14px; }
+      .ship-title-stat span { font-size: 12px; }
+      .ship-grid { grid-template-columns: 1fr; }
+      .ship-grid-full { grid-column: 1; }
+      .ship-stock-grid { grid-template-columns: repeat(3, 1fr); }
+      .ship-holiday-grid { grid-template-columns: 1fr; }
+      .ship-willcall-inner { flex-direction: column; }
+      .ship-willcall-map { flex: none; width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .ship-stock-grid { grid-template-columns: 1fr; }
+      .ship-card { padding: 20px; }
+      .ship-table thead th { padding: 10px 12px; }
+      .ship-table tbody td { padding: 10px 12px; font-size: 13px; }
+    }
+    @media (max-width: 480px) {
+      .ship-section { padding: 24px 0; }
+      .ship-section-sub { font-size: 15px; margin-bottom: 20px; }
+      .ship-title-stats { grid-template-columns: 1fr; }
+      .ship-title-stat { padding: 12px; gap: 10px; }
+      .ship-note, .ship-warn { padding: 12px 14px; gap: 8px; }
+      .ship-willcall-map { padding: 20px 16px; }
+    }
+    @media (max-width: 360px) {
+      .ship-card { padding: 16px; }
+      .ship-note, .ship-warn { padding: 10px 12px; }
+      .ship-section-sub { font-size: 14px; }
+    }
+    @media (max-width: 320px) {
+      .ship-section { padding: 20px 0; }
+      .ship-section-title { font-size: 20px; }
+      .ship-section-sub { font-size: 13px; margin-bottom: 14px; }
+      .ship-card { padding: 12px; }
+      .ship-table thead th { padding: 8px 10px; }
+      .ship-table tbody td { padding: 8px 10px; font-size: 12px; }
+      .ship-note, .ship-warn { padding: 8px 10px; }
+      .ship-note p, .ship-warn p { font-size: 13px; }
+      .ship-stock-item { padding: 14px; }
+      .ship-willcall-map { padding: 16px 12px; }
+      .ship-willcall-num { width: 22px; height: 22px; font-size: 11px; }
+      .ship-service-item { padding: 10px 12px; }
+      .ship-service-item-name { font-size: 13px; }
+      .ship-service-item-desc { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sticky-top-wrap">
+
+  <!-- ============================================================
+       ROW 1 — UTILITY BAR
+  ============================================================ -->
+  <div class="top-bar" role="complementary" aria-label="Trust and utility links">
+    <div class="container">
+      <div class="top-bar-promo">
+        <button class="promo-arrow promo-prev" aria-label="Previous promotion">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="promo-track">
+          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;10% Off — Code: <strong>MEMORIAL10</strong></span>
+          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping over $75</span>
+          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on Cables</span>
+          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping Available</span>
+        </div>
+        <button class="promo-arrow promo-next" aria-label="Next promotion">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:18882758755">1-888-275-8755</a>
+        </span>
+        <div class="top-bar-separator"></div>
+        <a href="/chat" class="top-bar-item" style="color:#ffffff; text-decoration:none;">
+          <i data-lucide="message-circle"></i> Chat With Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ROW 2 — MIDDLE HEADER
+  ============================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <div class="header-mid">
+        <a href="/" class="logo" aria-label="SF Cable – Home">
+          <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="160" height="48" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="logo-fallback" style="display:none;"><span style="color:var(--red)">SF</span><span>Cable</span></div>
+        </a>
+        <div class="header-search-wrap" id="search-wrap">
+          <form class="header-search" role="search" action="/search" method="get" autocomplete="off">
+            <input class="search-input" id="search-input" type="search" name="q" placeholder="Search by SKU, product type, connector, cable standard, or use case" aria-label="Search products" autocomplete="off" />
+            <button class="search-btn" type="submit" aria-label="Search"><i data-lucide="search"></i></button>
+          </form>
+          <div class="search-dropdown" id="search-dropdown" role="listbox"></div>
+        </div>
+        <div class="header-help-wrap" id="helpMenuWrap">
+          <button class="header-help" id="helpMenuTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="helpMenuDropdown">
+            <i data-lucide="help-circle"></i> Help <i data-lucide="chevron-down" class="help-caret"></i>
+          </button>
+          <div class="header-help-dropdown" id="helpMenuDropdown" role="menu" aria-label="Help menu">
+            <a href="/get-quote" role="menuitem"><i data-lucide="file-text"></i> Get Quote</a>
+            <a href="/order-tracking" role="menuitem"><i data-lucide="package"></i> Order Tracking</a>
+            <a href="/change-cancel-order" role="menuitem"><i data-lucide="x-circle"></i> Change / Cancel Order</a>
+            <a href="/shipping-information" role="menuitem" aria-current="page"><i data-lucide="truck"></i> Shipping Information</a>
+            <a href="/schools-government" role="menuitem"><i data-lucide="building-2"></i> Schools &amp; Government</a>
+            <a href="/payment-terms" role="menuitem"><i data-lucide="credit-card"></i> Payment Terms</a>
+            <a href="/returns-refunds" role="menuitem"><i data-lucide="rotate-ccw"></i> Returns / Refunds</a>
+            <a href="/warranty-claims" role="menuitem"><i data-lucide="shield-check"></i> Warranty / Claims</a>
+            <a href="/will-call" role="menuitem"><i data-lucide="map-pin"></i> Will Call</a>
+            <a href="/contact-us" role="menuitem"><i data-lucide="mail"></i> Contact Us</a>
+          </div>
+        </div>
+        <div class="mobile-contact-btns">
+          <a href="tel:+18882758755" class="mobile-contact-btn mobile-contact-phone" aria-label="Call us">
+            <i data-lucide="phone"></i>
+          </a>
+          <a href="/live-chat" class="mobile-contact-btn mobile-contact-chat" aria-label="Live chat">
+            <i data-lucide="message-circle"></i>
+          </a>
+        </div>
+        <div class="mobile-header-actions">
+          <a href="/help" class="mobile-header-btn" aria-label="Help"><i data-lucide="help-circle"></i></a>
+          <a href="/account" class="mobile-header-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+          <a href="/cart" class="mobile-header-btn" aria-label="Cart">
+            <i data-lucide="shopping-cart"></i>
+            <span class="cart-count" aria-live="polite">0</span>
+          </a>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile shop bar -->
+    <div class="mobile-shop-bar" id="mobile-shop-bar">
+      <div class="container">
+        <div class="mobile-shop-bar-inner">
+          <button class="mobile-shop-trigger" id="mobile-shop-toggle" aria-label="Toggle shop menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+            <span class="mobile-shop-label">Shop</span>
+          </button>
+          <div class="mobile-shop-icons">
+            <button class="mobile-shop-icon-btn" id="mobile-help-toggle" aria-label="Help" aria-expanded="false"><i data-lucide="help-circle"></i></button>
+            <a href="/account" class="mobile-shop-icon-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+            <a href="/cart" class="mobile-shop-icon-btn" aria-label="Cart">
+              <i data-lucide="shopping-cart"></i>
+              <span class="mobile-shop-cart-count" aria-live="polite">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         ROW 3 — BOTTOM NAV
+    ============================================================ -->
+    <div class="nav-bar" id="nav-bar">
+      <div class="container">
+        <div class="nav-bar-inner">
+          <button class="all-cats-trigger" id="allCatsTrigger" aria-expanded="false" aria-controls="megaMenuWrap">
+            <i data-lucide="menu"></i> Shop by Category <i data-lucide="chevron-down" class="nav-caret"></i>
+          </button>
+          <div class="nav-actions">
+            <a href="/quick-order" class="nav-action-link">
+              <i data-lucide="file-text"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Fast</span>
+                <span class="nav-action-value">Quick Order</span>
+              </span>
+            </a>
+            <a href="/account" class="nav-action-link">
+              <i data-lucide="user"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Sign In</span>
+                <span class="nav-action-value">My Account</span>
+              </span>
+            </a>
+            <div class="nav-actions-sep"></div>
+            <a href="/cart" class="nav-action-link nav-action-cart">
+              <span class="nav-action-icon-wrap">
+                <i data-lucide="shopping-cart"></i>
+                <span class="nav-cart-count" id="nav-cart-count" aria-live="polite">0</span>
+              </span>
+              <span class="nav-action-text">
+                <span class="nav-action-value nav-cart-price">$0.00</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Mega Menu -->
+          <div class="mega-menu-wrap" id="megaMenuWrap" aria-hidden="true">
+      <div class="mega-menu">
+        <div class="mega-rail">
+          <button class="mega-rail-item active" data-panel="panel-accessories">Accessories <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-adapters">Adapters &amp; Connectors <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-audiovideo">Audio Video <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-cables">Cables <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-network">Network Cables &amp; Fiber Optics <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-networking">Networking <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-power">Power Cords &amp; Adapters <i data-lucide="chevron-right"></i></button>
+        </div>
+        <div class="mega-panel active" id="panel-accessories">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Accessories</h3>
+            <a href="/accessories.html" class="mega-panel-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">Cables Ties</a>
+            <a href="#">Plain Ties</a><a href="#">Releasable Cable Ties</a><a href="#">Hook and Loop Ties</a><a href="#">Wall Mountable Ties</a>
+            <a href="#" class="mega-col-head">Power Supplies / Batteries</a>
+            <a href="#">AC/DC Adapters</a><a href="#">Car Charger</a><a href="#">USB / Mobile Chargers</a>
+            <a href="#" class="mega-col-head">Security Camera</a>
+            <a href="#">CCTV Camera</a><a href="#">Camera Cables/Adapters</a><a href="#">Camera Mounts / Housing Brackets</a>
+            <a href="#" class="mega-col-head">Home/Office Accessories</a>
+            <a href="#">KVM Switches</a><a href="#">Tools &amp; Testers</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-adapters">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Adapters &amp; Connectors</h3>
+            <a href="/adapters-connectors.html" class="mega-panel-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">BNC Connectors</a><a href="#">DisplayPort and Mini DP Adapters</a><a href="#">DVI/Displayport Adapters</a>
+            <a href="#">F Type Connectors</a><a href="#">RCA Connectors/Adapters</a><a href="#">D-Sub Connectors</a>
+            <a href="#">USB Couplers / Adapters</a><a href="#">USB Keystone Jacks</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-audiovideo">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Audio Video</h3>
+            <a href="/audio-video.html" class="mega-panel-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">XLR / XLR Cables</a><a href="#">RCA Cables</a><a href="#">Speaker Wires</a>
+            <a href="#">Component Video Cables</a><a href="#">Switches &amp; Splitters</a><a href="#">Wall Plates</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-cables">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Cables</h3>
+            <a href="/cables.html" class="mega-panel-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">HDMI</a>
+            <a href="#">HDMI Cables</a><a href="#">HDMI Adapters</a><a href="#">HDMI Extension Cables</a>
+            <a href="#" class="mega-col-head">USB</a>
+            <a href="#">USB Cables</a><a href="#">USB Hubs</a><a href="#">USB Extenders</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-network">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Network Cables &amp; Fiber Optics</h3>
+            <a href="/network-cables.html" class="mega-panel-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Cat 5E Cables</a><a href="#">Cat 6 Cables</a><a href="#">Cat 6A Cables</a><a href="#">Cat 8 Shielded Booted Cables</a>
+            <a href="#" class="mega-col-head">Fiber Optic Products</a>
+            <a href="#">OM3 Multimode Duplex</a><a href="#">OM4 Multimode Duplex</a><a href="#">Singlemode</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-networking">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Networking</h3>
+            <a href="/networking.html" class="mega-panel-seeall">See All Networking <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Patch Panels</a><a href="#">Keystone Jacks</a><a href="#">Cable Management</a><a href="#">Media Converter</a>
+            <a href="#" class="mega-col-head">Networking Racks</a>
+            <a href="#">Floorstand Racks</a><a href="#">Wallmount Racks</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-power">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Power Cords &amp; Adapters</h3>
+            <a href="/power-cords-adapters.html" class="mega-panel-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Extension Power Cords</a><a href="#">Multi-Outlet Extension Cords</a>
+            <a href="#" class="mega-col-head">NEMA Power Cords</a>
+            <a href="#">NEMA 5-15 to IEC 320 C13</a><a href="#">NEMA 5-20</a>
+            <a href="#" class="mega-col-head">IEC320 Power Cords</a>
+            <a href="#">C14 to C13</a><a href="#">C14 to C19</a>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <div class="mob-nav-panel" id="mob-tab-shop">
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Accessories <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel"><a href="/accessories.html" class="mob-cat-seeall">See All Accessories <i data-lucide="arrow-right"></i></a></div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Adapters &amp; Connectors <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel"><a href="/adapters-connectors.html" class="mob-cat-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a></div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Audio Video <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel"><a href="/audio-video.html" class="mob-cat-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a></div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Cables <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel"><a href="/cables.html" class="mob-cat-seeall">See All Cables <i data-lucide="arrow-right"></i></a></div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Network Cables &amp; Fiber <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel"><a href="/network-cables.html" class="mob-cat-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a></div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Networking <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel"><a href="/networking.html" class="mob-cat-seeall">See All Networking <i data-lucide="arrow-right"></i></a></div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Power Cords &amp; Adapters <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel"><a href="/power-cords-adapters.html" class="mob-cat-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a></div>
+        </div>
+      </div>
+      <div class="mob-nav-panel" id="mob-tab-account" style="display:none">
+        <div class="mob-help-header">
+          <span class="mob-help-title"><i data-lucide="help-circle"></i> Help</span>
+          <button class="mob-help-close" id="mob-help-close" aria-label="Close Help menu"><i data-lucide="x"></i></button>
+        </div>
+        <a href="/order-tracking" class="mobile-nav-link"><i data-lucide="package"></i> <span>Order Tracking</span></a>
+        <a href="/shipping-information" class="mobile-nav-link" aria-current="page"><i data-lucide="truck"></i> <span>Shipping Information</span></a>
+        <a href="/returns-refunds" class="mobile-nav-link"><i data-lucide="rotate-ccw"></i> <span>Returns / Refunds</span></a>
+        <a href="/warranty-claims" class="mobile-nav-link"><i data-lucide="shield-check"></i> <span>Warranty / Claims</span></a>
+        <a href="/contact-us" class="mobile-nav-link"><i data-lucide="mail"></i> <span>Contact Us</span></a>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  </div><!-- /sticky-top-wrap -->
+
+  <!-- ============================================================
+       BREADCRUMB
+  ============================================================ -->
+  <nav class="cms-page-nav" aria-label="CMS pages">
+    <div class="container">
+      <div class="cms-nav-wrap">
+        <div class="cms-nav-inner" id="cmsNavInner">
+          <a href="/help"                 class="cms-nav-link">Help</a>
+          <a href="/about"                class="cms-nav-link">About Us</a>
+          <a href="/contact"              class="cms-nav-link">Contact Us</a>
+          <a href="/faq"                  class="cms-nav-link">FAQ</a>
+          <a href="/shipping-information" class="cms-nav-link cms-nav-link--active" aria-current="page">Shipping Info</a>
+          <a href="/returns-refunds"      class="cms-nav-link">Return Policy</a>
+          <a href="/return-form"          class="cms-nav-link">Return Form</a>
+          <a href="/product-warranties"   class="cms-nav-link">Product Warranties</a>
+          <a href="/schools-government"   class="cms-nav-link">School, Government &amp; Corporate</a>
+          <a href="/business-forms"       class="cms-nav-link">Business Forms</a>
+          <a href="/technical-resources"  class="cms-nav-link">Technical Resources</a>
+        </div>
+        <div class="cms-nav-more plp-dropdown" id="cmsMoreDropdown">
+          <button class="plp-dropdown-trigger" id="cmsMoreTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="More CMS pages">
+            <i data-lucide="more-horizontal"></i>
+          </button>
+          <div class="plp-dropdown-panel cms-nav-more-panel" id="cmsMorePanel" role="listbox"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         PAGE TITLE + STATS
+    ============================================================ -->
+    <section class="section--page-title" aria-labelledby="shipping-heading">
+      <div class="container">
+
+        <div class="ship-title-layout">
+
+          <!-- Left 40%: heading + description -->
+          <div class="ship-title-left">
+            <h1 class="section-title listing-page-heading" id="shipping-heading">Shipping Information</h1>
+            <p class="section-subtitle" style="margin-top:8px;">
+              All in-stock orders placed by <strong>2 PM PST</strong> ship the same business day. We offer UPS and USPS shipping options, plus Will Call pickup at our Hayward, CA location.
+            </p>
+          </div>
+
+          <!-- Right 60%: 2×2 stat grid -->
+          <div class="ship-title-stats" aria-label="Shipping highlights">
+            <div class="ship-title-stat">
+              <div class="ship-title-stat-icon"><i data-lucide="zap"></i></div>
+              <div>
+                <strong>Same-Day Shipping</strong>
+                <span>Order by 2 PM PST</span>
+              </div>
+            </div>
+            <div class="ship-title-stat">
+              <div class="ship-title-stat-icon"><i data-lucide="package"></i></div>
+              <div>
+                <strong>8,000+ SKUs</strong>
+                <span>In stock &amp; ready to ship</span>
+              </div>
+            </div>
+            <div class="ship-title-stat">
+              <div class="ship-title-stat-icon"><i data-lucide="truck"></i></div>
+              <div>
+                <strong>Free Shipping</strong>
+                <span>On orders over $75</span>
+              </div>
+            </div>
+            <div class="ship-title-stat">
+              <div class="ship-title-stat-icon"><i data-lucide="map-pin"></i></div>
+              <div>
+                <strong>Will Call Available</strong>
+                <span>Hayward, CA</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         MAIN SHIPPING CONTENT
+    ============================================================ -->
+    <!-- ══ SECTION 1: CARRIERS ══ -->
+    <section class="ship-section" aria-labelledby="sec-carriers">
+      <div class="container">
+        <h2 class="ship-section-title" id="sec-carriers">Shipping Options</h2>
+        <p class="ship-section-sub">Choose from UPS or USPS depending on your speed and budget needs.</p>
+        <div class="ship-grid">
+
+          <!-- UPS Block -->
+          <div class="pdp-collapse-section">
+            <button class="pdp-collapse-hd ship-carrier-hd" aria-expanded="true" aria-controls="section-ups">
+              <h2 class="pdp-collapse-title">UPS — United Parcel Service</h2>
+              <span class="ship-inline-badge">Recommended</span>
+            </button>
+            <div class="pdp-collapse-body" id="section-ups">
+
+              <!-- MAP FIRST -->
+              <div class="ship-map-block ship-map-block--top">
+                <img
+                  src="https://www.sfcable.com/media/wysiwyg/estimate-img.png"
+                  alt="Estimated UPS Ground Transit Times from SF Cable"
+                  loading="lazy"
+                  width="377" height="243"
+                />
+              </div>
+
+              <!-- SERVICE LIST -->
+              <ul class="ship-service-list" role="list">
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">UPS Ground</div>
+                    <div class="ship-service-item-desc">1–6 Business Days depending on destination. Tracking provided with daily updates.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--standard">Standard</span>
+                </li>
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">UPS 3 Day Select</div>
+                    <div class="ship-service-item-desc">Guaranteed delivery in 3 business days.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--guaranteed">Guaranteed</span>
+                </li>
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">UPS 2nd Day Air</div>
+                    <div class="ship-service-item-desc">Guaranteed delivery in 2 business days.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--guaranteed">Guaranteed</span>
+                </li>
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">UPS Next Day Air</div>
+                    <div class="ship-service-item-desc">Next business day by 10:30 AM (business address) or end of business day (residential), depending on destination ZIP.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--guaranteed">Guaranteed</span>
+                </li>
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">UPS Next Day Air Saver</div>
+                    <div class="ship-service-item-desc">Next business day by 3:30 PM (business address) or end of next business day (residential), depending on destination ZIP.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--guaranteed">Guaranteed</span>
+                </li>
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">UPS Next Day Air Early A.M.</div>
+                    <div class="ship-service-item-desc">Next business day by 8:30 AM (business addresses only). Call <a href="tel:18882758755" style="color:var(--sf-primary-cta);font-weight:600;">888-275-8755</a> to verify your ZIP code.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--guaranteed">Guaranteed</span>
+                </li>
+              </ul>
+
+              <!-- ALERT LAST -->
+              <div class="ship-note">
+                <i data-lucide="info"></i>
+                <p>UPS delivers <strong>Monday–Friday only</strong>. Saturday and Sunday are not considered business days. No Saturday delivery available.<br>
+                <a href="https://www.ups.com/us/en/help-center/shipping-support/service-guarantee.page" target="_blank" rel="noopener">View UPS Service Guarantee &rarr;</a></p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- USPS Block -->
+          <div class="pdp-collapse-section">
+            <button class="pdp-collapse-hd ship-carrier-hd" aria-expanded="true" aria-controls="section-usps">
+              <h2 class="pdp-collapse-title">USPS — U.S. Postal Service</h2>
+              <span class="ship-inline-badge ship-inline-badge--economy">Economy</span>
+            </button>
+            <div class="pdp-collapse-body" id="section-usps">
+
+              <!-- MAPS FIRST -->
+              <div class="ship-map-block ship-map-block--top">
+                <img
+                  src="https://www.sfcable.com/media/wysiwyg/USPS-MAP.jpg"
+                  alt="Delivery Areas for USPS Priority Mail Shipments"
+                  loading="lazy"
+                  width="648" height="432"
+                />
+              </div>
+              <div class="ship-map-block" style="margin-top:12px;">
+                <img
+                  src="https://www.sfcable.com/media/wysiwyg/collection/USPS_Ground_Advantage.png"
+                  alt="USPS Ground Advantage Shipping Coverage Map"
+                  loading="lazy"
+                  width="1536" height="1152"
+                />
+              </div>
+
+              <!-- SERVICE LIST -->
+              <ul class="ship-service-list" role="list">
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">First Class Mail</div>
+                    <div class="ship-service-item-desc">Approximately 2–4 days. Tracking number provided.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--no-guarantee">Not Guaranteed</span>
+                </li>
+                <li class="ship-service-item">
+                  <div class="ship-service-item-body">
+                    <div class="ship-service-item-name">Priority Mail</div>
+                    <div class="ship-service-item-desc">Approximately 1–3 days. Delivery time varies based on destination. See USPS Priority Mail service map for your area.</div>
+                  </div>
+                  <span class="ship-service-item-badge badge--no-guarantee">Not Guaranteed</span>
+                </li>
+              </ul>
+
+              <!-- ALERTS LAST -->
+              <div class="ship-warn">
+                <i data-lucide="alert-triangle"></i>
+                <p><strong>No guaranteed delivery date for USPS.</strong> A tracking number is provided, but tracking updates may not be available while the package is in transit.</p>
+              </div>
+              <div class="ship-note" style="margin-top:12px;">
+                <i data-lucide="map"></i>
+                <p>The USPS service map shows expected 1, 2, or 3-day delivery areas for Priority Mail® shipments. Exceptions apply and delivery time is not guaranteed.</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /ship-grid -->
+
+      </div>
+    </section>
+
+    <!-- ══ SECTION 2: ESTIMATED DELIVERY TIMES ══ -->
+    <section class="ship-section" style="padding-top:0" aria-labelledby="sec-delivery">
+      <div class="container">
+        <h2 class="ship-section-title" id="sec-delivery">Estimated Delivery Times</h2>
+        <p class="ship-section-sub">For in-stock items ordered by 4 PM PST on the day shown.</p>
+
+        <div class="ship-card" style="padding:0; overflow:hidden;">
+          <div class="ship-table-wrap">
+            <table class="ship-table" aria-label="UPS delivery schedule">
+              <thead>
+                <tr>
+                  <th>Order Day</th>
+                  <th>Shipping Method</th>
+                  <th>Estimated Delivery</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Monday – Friday</td>
+                  <td>Overnight (Next Day Air)</td>
+                  <td class="td-result">Next Business Day</td>
+                </tr>
+                <tr>
+                  <td>Saturday &amp; Sunday</td>
+                  <td>Overnight (Next Day Air)</td>
+                  <td class="td-result">Tuesday</td>
+                </tr>
+                <tr>
+                  <td>Monday</td>
+                  <td>2nd Day Air</td>
+                  <td class="td-result">Wednesday</td>
+                </tr>
+                <tr>
+                  <td>Tuesday</td>
+                  <td>2nd Day Air</td>
+                  <td class="td-result">Thursday</td>
+                </tr>
+                <tr>
+                  <td>Wednesday</td>
+                  <td>2nd Day Air</td>
+                  <td class="td-result">Friday</td>
+                </tr>
+                <tr>
+                  <td>Thursday</td>
+                  <td>2nd Day Air</td>
+                  <td class="td-result">Monday</td>
+                </tr>
+                <tr>
+                  <td>Friday</td>
+                  <td>2nd Day Air</td>
+                  <td class="td-result">Tuesday</td>
+                </tr>
+                <tr>
+                  <td>Friday</td>
+                  <td>Overnight (Next Day Air)</td>
+                  <td class="td-result">Monday</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="ship-note" style="margin-top:16px;">
+          <i data-lucide="info"></i>
+          <p>Per UPS shipping guidelines, a <strong>Business Day</strong> is defined as Monday through Friday. Saturday and Sunday are <strong>not</strong> considered business days. Use the <a href="https://www.ups.com/us/en/help-center/shipping-support/service-guarantee.page" target="_blank" rel="noopener">UPS Time-in-Transit Calculator</a> for precise ground delivery estimates from our location.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ SECTION 3: ORDER STOCK STATUS ══ -->
+    <section class="ship-section" style="padding-top:0" aria-labelledby="sec-stock">
+      <div class="container">
+        <h2 class="ship-section-title" id="sec-stock">Order Stock Status</h2>
+        <p class="ship-section-sub">What each shipping estimate means on our product pages.</p>
+
+        <div class="ship-stock-grid">
+          <div class="ship-stock-item">
+            <div class="ship-stock-dot ship-stock-dot--green"></div>
+            <div class="ship-stock-label product-name">Usually Ships in 1 Day</div>
+            <div class="ship-stock-desc section-subtitle">This product is in stock in our warehouse and ready to ship immediately.</div>
+          </div>
+          <div class="ship-stock-item">
+            <div class="ship-stock-dot ship-stock-dot--yellow"></div>
+            <div class="ship-stock-label product-name">Usually Ships in 1–2 Days</div>
+            <div class="ship-stock-desc section-subtitle">This product is in stock with our vendor and will be dispatched quickly.</div>
+          </div>
+          <div class="ship-stock-item">
+            <div class="ship-stock-dot ship-stock-dot--red"></div>
+            <div class="ship-stock-label product-name">Usually Ships in 5–7 Days</div>
+            <div class="ship-stock-desc section-subtitle">This product is on backorder. We will ship as soon as it becomes available.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ SECTION 4: WILL CALL ══ -->
+    <section class="ship-section" style="padding-top:0" aria-labelledby="sec-willcall">
+      <div class="container">
+        <h2 class="ship-section-title" id="sec-willcall">Will Call — Local Pickup</h2>
+        <p class="ship-section-sub">Pick up your order in person at our Hayward, CA location.</p>
+
+        <div class="ship-card">
+          <div class="ship-willcall-inner">
+            <div class="ship-willcall-map">
+              <i data-lucide="map-pin"></i>
+              <strong class="product-name">Hayward, CA</strong>
+              <span>Call ahead to confirm availability before pickup</span>
+              <a href="tel:15102649988" style="color:var(--sf-primary-cta); font-size:15px; font-weight:800; margin-top:4px;">1-510-264-9988</a>
+            </div>
+            <div class="ship-willcall-body">
+              <ul class="ship-willcall-steps" role="list">
+                <li class="ship-willcall-step">
+                  <div class="ship-willcall-num">1</div>
+                  <p class="section-subtitle">Call us at <a href="tel:15102649988">1-510-264-9988</a> to verify that your item(s) are in stock and available for same-day pickup at our Hayward, California location.</p>
+                </li>
+                <li class="ship-willcall-step">
+                  <div class="ship-willcall-num">2</div>
+                  <p class="section-subtitle">Place your order online or over the phone and select <strong>Will Call</strong> as your shipping method at checkout.</p>
+                </li>
+                <li class="ship-willcall-step">
+                  <div class="ship-willcall-num">3</div>
+                  <p class="section-subtitle">Come in during business hours (<strong>Monday–Friday, 8 AM–5 PM PST</strong>) to collect your order. Please bring your order confirmation.</p>
+                </li>
+              </ul>
+              <div class="ship-warn">
+                <i data-lucide="alert-triangle"></i>
+                <p>Some items are <strong>not available for same-day pickup</strong> at our Hayward, CA location as they may be stored at or shipped from a different warehouse. Always call ahead to confirm.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ SECTION 5: HOLIDAY SCHEDULES ══ -->
+    <section class="ship-section" style="padding-top:0" aria-labelledby="sec-holidays">
+      <div class="container">
+        <h2 class="ship-section-title" id="sec-holidays">Holiday Schedules — 2026</h2>
+        <p class="ship-section-sub">No shipping or pickup on the following dates.</p>
+
+        <div class="ship-holiday-grid">
+
+          <!-- UPS Holidays -->
+          <div class="ship-card" style="padding:0; overflow:hidden;">
+            <div class="ship-table-wrap">
+              <table class="ship-table">
+                <thead>
+                  <tr><th colspan="2">UPS Holiday Schedule 2026</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>New Year's Day</td><td>January 1, 2026</td></tr>
+                  <tr><td>Martin Luther King, Jr. Day</td><td>January 19, 2026</td></tr>
+                  <tr><td>Memorial Day</td><td>May 25, 2026</td></tr>
+                  <tr><td>Independence Day</td><td>July 4, 2026</td></tr>
+                  <tr><td>Labor Day</td><td>September 7, 2026</td></tr>
+                  <tr><td>Thanksgiving</td><td>November 26, 2026</td></tr>
+                  <tr><td>Christmas Day</td><td>December 25, 2026</td></tr>
+                  <tr><td>New Year's Day</td><td>January 1, 2027</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SF Cable Holidays -->
+          <div class="ship-card" style="padding:0; overflow:hidden;">
+            <div class="ship-table-wrap">
+              <table class="ship-table">
+                <thead>
+                  <tr><th colspan="2">SF Cable Office Holidays 2026</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>New Year's Day</td><td>January 1, 2026</td></tr>
+                  <tr><td>Memorial Day</td><td>May 25, 2026</td></tr>
+                  <tr><td>Independence Day</td><td>July 4, 2026</td></tr>
+                  <tr><td>Labor Day</td><td>September 7, 2026</td></tr>
+                  <tr><td>Thanksgiving Holiday</td><td>November 26–27, 2026</td></tr>
+                  <tr><td>Christmas Day</td><td>December 25, 2026</td></tr>
+                  <tr><td>New Year's Day</td><td>January 1, 2027</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ship-note" style="margin-top:16px;">
+          <i data-lucide="external-link"></i>
+          <p>For the full UPS holiday operation schedule, visit the <a href="https://www.ups.com/us/en/help-center/shipping-support/service-guarantee.page" target="_blank" rel="noopener">UPS Holiday Operation Schedule page</a>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         USP / FOOTER TRUST BAR
+    ============================================================ -->
+    <section class="footer-trust-bar" aria-label="Trust and credentials">
+      <div class="container">
+        <div class="footer-trust-slider-wrap">
+          <button class="footer-trust-prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <div class="footer-trust-inner">
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="history"></i></div>
+              <div class="footer-trust-text"><strong>20+ Years of Industry</strong><span>Expertise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="award"></i></div>
+              <div class="footer-trust-text"><strong>Lifetime Warranty</strong><span>on Cables</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="package-open"></i></div>
+              <div class="footer-trust-text"><strong>No Minimum Order</strong><span>or Fees</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="truck"></i></div>
+              <div class="footer-trust-text"><strong>Same-Day Shipping</strong><span>on Stock Items</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="rotate-ccw"></i></div>
+              <div class="footer-trust-text"><strong>60-Day Money-Back</strong><span>Promise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="headphones"></i></div>
+              <div class="footer-trust-text"><strong>Free Lifetime</strong><span>Technical Support</span></div>
+            </div>
+          </div>
+          <button class="footer-trust-next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" aria-label="SF Cable – Home">
+            <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="140" height="42" loading="lazy" onerror="this.style.display='none'" />
+          </a>
+          <p>Your trusted source for cables, connectors &amp; AV gear since 1996. Over 40,000 products in stock &amp; shipped fast.</p>
+          <form class="footer-brand-form newsletter-form" aria-label="Newsletter signup">
+            <div class="newsletter-inline">
+              <input class="newsletter-input" type="email" placeholder="Work email address" aria-label="Email address" required />
+              <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+            </div>
+            <p class="newsletter-note">No spam. <a href="/privacy-policy">Privacy Policy</a>.</p>
+          </form>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="X / Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.263 5.633 5.901-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col open">
+          <h4>Information<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/about">About SF Cable</a></li>
+            <li><a href="/shipping-information" aria-current="page">Shipping Info</a></li>
+            <li><a href="/returns-refunds">Returns &amp; Refunds</a></li>
+            <li><a href="/warranty-claims">Warranty</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/order-tracking">Track My Order</a></li>
+            <li><a href="/quick-order">Quick Order</a></li>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/clearance">Clearance</a></li>
+            <li><a href="/rewards">SF Cable Rewards</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Shop<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/hdmi-cables.html">HDMI Cables</a></li>
+            <li><a href="/usb-cables.html">USB Cables</a></li>
+            <li><a href="/network-cables.html">Ethernet Cables</a></li>
+            <li><a href="/fiber-optics.html">Fiber Optics</a></li>
+            <li><a href="/power-cords.html">Power Cords</a></li>
+            <li><a href="/adapters-connectors.html">Adapters &amp; Connectors</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <div class="footer-contact">
+            <a href="tel:18882758755"><i data-lucide="phone"></i> 1-888-275-8755</a>
+            <a href="mailto:sales@sfcable.com"><i data-lucide="mail"></i> sales@sfcable.com</a>
+            <a href="/contact"><i data-lucide="map-pin"></i> Fremont, CA — Mon–Fri 8AM–5PM PST</a>
+            <a href="/chat"><i data-lucide="message-circle"></i> Live Chat</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="footer-badges">
+        <div class="footer-badge-group" aria-label="Accreditations and certifications">
+          <a href="#" class="footer-badge" aria-label="CMAS — California Multiple Award Schedule">
+            <img src="images/CMAS.png" alt="CMAS — California Multiple Award Schedule" />
+          </a>
+          <a href="#" class="footer-badge" aria-label="GSA Contract Holder">
+            <img src="images/GSA.jpg" alt="GSA Contract Holder" />
+          </a>
+          <a href="#" class="footer-badge" aria-label="BBB Accredited Business">
+            <img src="images/blue.png" alt="BBB Accredited Business" />
+          </a>
+        </div>
+        <a href="#" class="footer-reviews" aria-label="7,786 Certified Reviews, powered by YOTPO">
+          <img src="images/yotpo-badge.png" alt="7,786 Certified Reviews – Powered by YOTPO" class="footer-yotpo-img" />
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SF Cable, Inc. All rights reserved. Fremont, CA 94538</p>
+        <div class="footer-payments">
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Visa">
+              <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+              <text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Mastercard">
+              <rect width="50" height="32" rx="3.5" fill="#1a1a1a"/>
+              <circle cx="19" cy="16" r="10" fill="#EB001B"/>
+              <circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="American Express">
+              <rect width="50" height="32" rx="3.5" fill="#007BC1"/>
+              <text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Discover">
+              <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+              <circle cx="49" cy="16" r="13" fill="#F76F20"/>
+              <text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="PayPal">
+              <rect width="50" height="32" rx="3.5" fill="#003087"/>
+              <text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-trust-strip">
+      <p>SSL Secured Checkout · RoHS Compliant · TAA Compliant Products Available · GSA Schedule · <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-conditions">Terms</a></p>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top"><i data-lucide="chevron-up"></i></a>
+
+  <script>
+    /* ---- Scroll: header shadow + back-to-top ---- */
+    const header    = document.getElementById('site-header');
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      header.classList.toggle('scrolled', y > 10);
+      backToTop.classList.toggle('visible', y > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ---- Footer accordion ---- */
+    (function initFooterAccordion() {
+      const mqAll  = window.matchMedia('(max-width: 900px)');
+      const mq2col = window.matchMedia('(min-width: 481px) and (max-width: 900px)');
+      const cols   = Array.from(document.querySelectorAll('.footer-grid .footer-col'));
+      function setInitialState() {
+        cols.forEach((col, i) => {
+          if (!mqAll.matches) { col.classList.remove('open'); return; }
+          mq2col.matches ? col.classList.toggle('open', i === 0 || i === 1) : col.classList.toggle('open', i === 0);
+        });
+      }
+      cols.forEach(col => {
+        const h = col.querySelector('h4');
+        if (!h) return;
+        h.addEventListener('click', () => { if (!mqAll.matches) return; col.classList.toggle('open'); });
+      });
+      setInitialState();
+      mqAll.addEventListener('change', setInitialState);
+      mq2col.addEventListener('change', setInitialState);
+    })();
+
+    /* ---- Mobile nav ---- */
+    (function () {
+      var mobileNav  = document.getElementById('mobile-nav');
+      var shopPanel  = document.getElementById('mob-tab-shop');
+      var helpPanel  = document.getElementById('mob-tab-account');
+      var shopToggle = document.getElementById('mobile-shop-toggle');
+      var helpToggle = document.getElementById('mobile-help-toggle');
+      var tabToggle  = document.getElementById('mobile-menu-toggle');
+      if (!mobileNav) return;
+      function showPanel(panel) {
+        if (shopPanel) shopPanel.style.display = 'none';
+        if (helpPanel) helpPanel.style.display = 'none';
+        if (panel)     panel.style.display = 'block';
+      }
+      function openNav(panel) { mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false'); showPanel(panel); }
+      function closeNav() {
+        mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true');
+        [shopToggle,tabToggle].forEach(t => { if(t){ t.setAttribute('aria-expanded','false'); t.classList.remove('is-open'); }});
+        if (helpToggle) { helpToggle.setAttribute('aria-expanded','false'); helpToggle.classList.remove('mobile-help-active'); }
+      }
+      function isNavOpen() { return mobileNav.classList.contains('open'); }
+      if (shopToggle) shopToggle.addEventListener('click', function() {
+        if (isNavOpen() && shopPanel && shopPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(shopPanel); shopToggle.setAttribute('aria-expanded','true'); shopToggle.classList.add('is-open'); if(tabToggle){tabToggle.classList.add('is-open');tabToggle.setAttribute('aria-expanded','true');} if(helpToggle){helpToggle.classList.remove('mobile-help-active');helpToggle.setAttribute('aria-expanded','false');} }
+      });
+      if (helpToggle) helpToggle.addEventListener('click', function() {
+        if (isNavOpen() && helpPanel && helpPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(helpPanel); helpToggle.setAttribute('aria-expanded','true'); helpToggle.classList.add('mobile-help-active'); if(shopToggle){shopToggle.classList.remove('is-open');shopToggle.setAttribute('aria-expanded','false');} if(tabToggle){tabToggle.classList.remove('is-open');tabToggle.setAttribute('aria-expanded','false');} }
+      });
+      if (tabToggle) tabToggle.addEventListener('click', function() {
+        if (isNavOpen() && shopPanel && shopPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(shopPanel); tabToggle.setAttribute('aria-expanded','true'); tabToggle.classList.add('is-open'); if(shopToggle){shopToggle.classList.add('is-open');shopToggle.setAttribute('aria-expanded','true');} if(helpToggle){helpToggle.classList.remove('mobile-help-active');helpToggle.setAttribute('aria-expanded','false');} }
+      });
+    })();
+
+    /* ---- Desktop Help dropdown ---- */
+    (function () {
+      var trigger  = document.getElementById('helpMenuTrigger');
+      var dropdown = document.getElementById('helpMenuDropdown');
+      if (!trigger || !dropdown) return;
+      var hoverTimer;
+      function openHelp()         { clearTimeout(hoverTimer); dropdown.classList.add('open');    trigger.setAttribute('aria-expanded','true'); }
+      function closeHelp()        { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); }
+      function closeHelpDelayed() { hoverTimer = setTimeout(closeHelp, 150); }
+      function toggleHelp(e)      { e.stopPropagation(); dropdown.classList.contains('open') ? closeHelp() : openHelp(); }
+      trigger.addEventListener('click', toggleHelp);
+      trigger.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' '){e.preventDefault();toggleHelp(e);} if(e.key==='Escape')closeHelp(); });
+      dropdown.addEventListener('keydown', e => { if(e.key==='Escape'){closeHelp();trigger.focus();} });
+      var wrap = document.getElementById('helpMenuWrap');
+      wrap.addEventListener('mouseenter', openHelp);
+      wrap.addEventListener('mouseleave', closeHelpDelayed);
+      document.addEventListener('click', e => { if(!wrap.contains(e.target)) closeHelp(); });
+    })();
+
+    /* ---- Help panel close ---- */
+    (function () {
+      var closeBtn = document.getElementById('mob-help-close');
+      if (!closeBtn) return;
+      closeBtn.addEventListener('click', function() {
+        var nav = document.getElementById('mobile-nav');
+        var ht  = document.getElementById('mobile-help-toggle');
+        var st  = document.getElementById('mobile-shop-toggle');
+        if(nav){nav.classList.remove('open');nav.setAttribute('aria-hidden','true');}
+        if(ht){ht.classList.remove('mobile-help-active');ht.setAttribute('aria-expanded','false');}
+        if(st){st.classList.remove('is-open');st.setAttribute('aria-expanded','false');}
+      });
+    })();
+
+    /* ---- Mobile nav: category accordion ---- */
+    document.querySelectorAll('.mob-cat-trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var item = trigger.closest('.mob-cat-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.mob-cat-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.mob-cat-trigger').setAttribute('aria-expanded','false'); });
+        if (!isOpen) { item.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
+      });
+    });
+
+    /* ---- Mega menu ---- */
+    (() => {
+      const trigger   = document.getElementById('allCatsTrigger');
+      const wrap      = document.getElementById('megaMenuWrap');
+      if (!trigger || !wrap) return;
+      const railItems = wrap.querySelectorAll('.mega-rail-item');
+      const panels    = wrap.querySelectorAll('.mega-panel');
+      let closeTimer, hoverTimer;
+      function openMenu()     { clearTimeout(closeTimer); wrap.classList.add('open');    trigger.classList.add('open');    trigger.setAttribute('aria-expanded','true');  wrap.setAttribute('aria-hidden','false'); }
+      function closeMenu()    {                           wrap.classList.remove('open'); trigger.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); wrap.setAttribute('aria-hidden','true'); }
+      function scheduleClose(){ clearTimeout(closeTimer); closeTimer = setTimeout(closeMenu, 200); }
+      function switchPanel(item){ railItems.forEach(r=>r.classList.remove('active')); panels.forEach(p=>p.classList.remove('active')); item.classList.add('active'); const panel=document.getElementById(item.dataset.panel); if(panel)panel.classList.add('active'); }
+      trigger.addEventListener('mouseenter', openMenu);
+      trigger.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('mouseenter', ()=>clearTimeout(closeTimer));
+      wrap.addEventListener('mouseleave', scheduleClose);
+      trigger.addEventListener('click', e=>{e.stopPropagation(); wrap.classList.contains('open')?closeMenu():openMenu();});
+      document.addEventListener('keydown', e=>{if(e.key==='Escape'&&wrap.classList.contains('open'))closeMenu();});
+      document.addEventListener('click', e=>{if(wrap.classList.contains('open')&&!wrap.contains(e.target)&&!trigger.contains(e.target))closeMenu();});
+      railItems.forEach(item=>{
+        item.addEventListener('mouseenter',()=>{clearTimeout(hoverTimer);hoverTimer=setTimeout(()=>switchPanel(item),60);});
+        item.addEventListener('click',()=>{clearTimeout(hoverTimer);switchPanel(item);});
+      });
+    })();
+
+    /* ---- Promo bar carousel ---- */
+    (function() {
+      var slides  = document.querySelectorAll('.promo-slide');
+      var current = 0;
+      var timer;
+      if (!slides.length) return;
+      function show(idx) { slides[current].classList.remove('active'); current=(idx+slides.length)%slides.length; slides[current].classList.add('active'); }
+      function startAuto() { timer = setInterval(()=>show(current+1), 5000); }
+      function resetAuto() { clearInterval(timer); startAuto(); }
+      document.querySelector('.promo-prev').addEventListener('click', ()=>{show(current-1);resetAuto();});
+      document.querySelector('.promo-next').addEventListener('click', ()=>{show(current+1);resetAuto();});
+      startAuto();
+    })();
+
+    /* ---- Carrier collapse sections ---- */
+    document.querySelectorAll('.pdp-collapse-hd:not(.ship-carrier-hd)').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        var body = document.getElementById(btn.getAttribute('aria-controls'));
+        if (body) body.classList.toggle('is-hidden', expanded);
+        var chev = btn.querySelector('.pdp-collapse-chevron');
+        if (chev) chev.style.transform = expanded ? 'rotate(-90deg)' : '';
+      });
+    });
+
+    /* ─── CMS Priority Nav ─── */
+    (function initCmsNav() {
+      var inner    = document.getElementById('cmsNavInner');
+      var moreWrap = document.getElementById('cmsMoreDropdown');
+      var trigger  = document.getElementById('cmsMoreTrigger');
+      var panel    = document.getElementById('cmsMorePanel');
+      if (!inner || !moreWrap) return;
+      var links = Array.from(inner.querySelectorAll('.cms-nav-link'));
+      function buildNav() {
+        links.forEach(function(l) { l.classList.remove('cms-nav-link--hidden'); });
+        moreWrap.classList.remove('visible');
+        panel.innerHTML = '';
+        moreWrap.style.visibility = 'hidden'; moreWrap.style.display = 'block';
+        var moreW = moreWrap.offsetWidth + 8;
+        moreWrap.style.visibility = ''; moreWrap.style.display = '';
+        var available = inner.offsetWidth, used = 0, overflowFrom = -1;
+        for (var i = 0; i < links.length; i++) {
+          var lw = links[i].offsetWidth;
+          var needed = used + lw + (i < links.length - 1 ? moreW : 0);
+          if (needed > available) { overflowFrom = i; break; }
+          used += lw;
+        }
+        if (overflowFrom === -1) return;
+        for (var j = overflowFrom; j < links.length; j++) {
+          links[j].classList.add('cms-nav-link--hidden');
+          var a = document.createElement('a');
+          a.href = links[j].getAttribute('href');
+          a.className = 'plp-dropdown-item';
+          if (links[j].classList.contains('cms-nav-link--active')) a.classList.add('active');
+          a.textContent = links[j].textContent.trim();
+          panel.appendChild(a);
+        }
+        moreWrap.classList.add('visible');
+        lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+      }
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var opening = !moreWrap.classList.contains('open');
+        moreWrap.classList.toggle('open', opening);
+        trigger.setAttribute('aria-expanded', String(opening));
+      });
+      document.addEventListener('click', function() {
+        moreWrap.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false');
+      });
+      buildNav();
+      if (window.ResizeObserver) { new ResizeObserver(buildNav).observe(inner); }
+      else { window.addEventListener('resize', buildNav); }
+    })();
+
+    /* ---- Lucide icons ---- */
+    lucide.createIcons({
+      attrs: { 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+    });
+  </script>
+
+</body>
+</html>
