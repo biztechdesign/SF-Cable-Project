@@ -35,8 +35,6 @@
     .cms-nav-more.visible { display: block; }
     .cms-nav-more .plp-dropdown-trigger { border: none; border-radius: 0; background: transparent; height: 42px; padding: 0 10px; box-shadow: none; }
     .cms-nav-more .plp-dropdown-trigger:hover { background: transparent; border: none; }
-    .cms-nav-more .plp-dropdown-trigger svg.lucide { width: 22px; height: 22px; stroke-width: 2.5; }
-    .cms-nav-more-panel { left: 0; right: auto; min-width: 180px; }
 
     /* Hero stat bar */
     .ship-hero {
@@ -125,13 +123,17 @@
     }
 
     /* Main content layout */
-    .ship-section { padding: 32px 0; }
+    .ship-section { padding: 40px 0; }
+    .ship-section > *:last-child { margin-bottom: 0; }
+
+    /* H1 margin — standardized to 24px */
+    .ship-title-left .listing-page-heading { margin-bottom: 24px; }
     .ship-section-title {
       font-size: clamp(22px, 2.8vw, 28px); font-weight: 700; color: var(--dark);
-      line-height: 1.2; margin: 0 0 8px;
+      line-height: 1.2; margin: 0 0 24px;
     }
     .ship-section-sub {
-      font-size: 16px; color: var(--gray-700); margin: 0 0 28px; line-height: 1.5;
+      font-size: 16px; color: var(--gray-700); margin: 0 0 10px; line-height: 1.5;
     }
     .ship-grid {
       display: grid;
@@ -154,8 +156,12 @@
     }
     .ship-section-head-icon svg.lucide { width: 20px; height: 20px; }
     .ship-section-head h2 {
-      font-size: clamp(22px, 2.8vw, 30px); font-weight: 700; color: var(--dark);
-      margin: 0; line-height: 1.2;
+      font-size: 18px; font-weight: 700; color: var(--dark);
+      margin-bottom: 24px; line-height: 1.4;
+    }
+    h3.pdp-collapse-title {
+      font-size: 18px; font-weight: 700; color: var(--dark);
+      margin: 0; line-height: 1.4;
     }
     .ship-section-head p {
       color: var(--gray-700); font-weight: 400; margin: 10px 0 0;
@@ -247,7 +253,10 @@
     }
     .ship-note svg.lucide { width: 16px; height: 16px; color: var(--sf-primary-cta); flex-shrink: 0; margin-top: 2px; }
     .ship-note p { font-size: 14px; color: var(--dark); margin: 0; line-height: 1.5; }
-    .ship-note a { color: var(--sf-primary-cta); font-weight: 600; }
+    .ship-note a,
+    .ship-service-item-desc a { color: var(--sf-primary-cta); }
+    .ship-note a:hover,
+    .ship-service-item-desc a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
 
     .ship-warn {
       display: flex;
@@ -346,6 +355,8 @@
       gap: 10px;
     }
     .ship-willcall-map svg.lucide { width: 36px; height: 36px; color: var(--sf-primary-cta); }
+    .ship-willcall-map a { color: var(--sf-primary-cta); }
+    .ship-willcall-map a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
     .ship-willcall-map strong { display: block; }
     .ship-willcall-map span { font-size: 15px; font-weight: 400; color: var(--gray-700); line-height: 1.5; }
     .ship-willcall-body { flex: 1; min-width: 0; }
@@ -365,7 +376,8 @@
       display: flex; align-items: center; justify-content: center;
     }
     .ship-willcall-step p { margin: 0; color: var(--gray-700); font-weight: 400; line-height: 1.5; padding-top: 3px; }
-    .ship-willcall-step a { color: var(--sf-primary-cta); font-weight: 600; }
+    .ship-willcall-step a { color: var(--sf-primary-cta); }
+    .ship-willcall-step a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
 
     /* Holiday tables */
     .ship-holiday-grid {
@@ -450,6 +462,13 @@
       .ship-willcall-inner { flex-direction: column; }
       .ship-willcall-map { flex: none; width: 100%; }
     }
+    @media (max-width: 768px) {
+      .ship-section { padding: 28px 0; }
+      .ship-title-left .listing-page-heading { margin-bottom: 14px; }
+      .ship-section-title { margin-bottom: 14px; }
+      .ship-section-head h2,
+      h3.pdp-collapse-title { font-size: 15px; margin-bottom: 14px; }
+    }
     @media (max-width: 600px) {
       .ship-stock-grid { grid-template-columns: 1fr; }
       .ship-card { padding: 20px; }
@@ -457,7 +476,7 @@
       .ship-table tbody td { padding: 10px 12px; font-size: 13px; }
     }
     @media (max-width: 480px) {
-      .ship-section { padding: 24px 0; }
+      .ship-section { padding: 22px 0; }
       .ship-section-sub { font-size: 15px; margin-bottom: 20px; }
       .ship-title-stats { grid-template-columns: 1fr; }
       .ship-title-stat { padding: 12px; gap: 10px; }
@@ -470,7 +489,7 @@
       .ship-section-sub { font-size: 14px; }
     }
     @media (max-width: 320px) {
-      .ship-section { padding: 20px 0; }
+      .ship-section { padding: 22px 0; }
       .ship-section-title { font-size: 20px; }
       .ship-section-sub { font-size: 13px; margin-bottom: 14px; }
       .ship-card { padding: 12px; }
@@ -886,7 +905,7 @@
           <!-- UPS Block -->
           <div class="pdp-collapse-section">
             <button class="pdp-collapse-hd ship-carrier-hd" aria-expanded="true" aria-controls="section-ups">
-              <h2 class="pdp-collapse-title">UPS — United Parcel Service</h2>
+              <h3 class="pdp-collapse-title">UPS — United Parcel Service</h3>
               <span class="ship-inline-badge">Recommended</span>
             </button>
             <div class="pdp-collapse-body" id="section-ups">
@@ -941,7 +960,7 @@
                 <li class="ship-service-item">
                   <div class="ship-service-item-body">
                     <div class="ship-service-item-name">UPS Next Day Air Early A.M.</div>
-                    <div class="ship-service-item-desc">Next business day by 8:30 AM (business addresses only). Call <a href="tel:18882758755" style="color:var(--sf-primary-cta);font-weight:600;">888-275-8755</a> to verify your ZIP code.</div>
+                    <div class="ship-service-item-desc">Next business day by 8:30 AM (business addresses only). Call <a href="tel:18882758755">888-275-8755</a> to verify your ZIP code.</div>
                   </div>
                   <span class="ship-service-item-badge badge--guaranteed">Guaranteed</span>
                 </li>
@@ -960,7 +979,7 @@
           <!-- USPS Block -->
           <div class="pdp-collapse-section">
             <button class="pdp-collapse-hd ship-carrier-hd" aria-expanded="true" aria-controls="section-usps">
-              <h2 class="pdp-collapse-title">USPS — U.S. Postal Service</h2>
+              <h3 class="pdp-collapse-title">USPS — U.S. Postal Service</h3>
               <span class="ship-inline-badge ship-inline-badge--economy">Economy</span>
             </button>
             <div class="pdp-collapse-body" id="section-usps">
@@ -1128,7 +1147,7 @@
               <i data-lucide="map-pin"></i>
               <strong class="product-name">Hayward, CA</strong>
               <span>Call ahead to confirm availability before pickup</span>
-              <a href="tel:15102649988" style="color:var(--sf-primary-cta); font-size:15px; font-weight:800; margin-top:4px;">1-510-264-9988</a>
+              <a href="tel:15102649988" style="font-size:15px; margin-top:4px;">1-510-264-9988</a>
             </div>
             <div class="ship-willcall-body">
               <ul class="ship-willcall-steps" role="list">

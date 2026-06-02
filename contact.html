@@ -71,19 +71,19 @@
     .cms-nav-more.visible { display: block; }
     .cms-nav-more .plp-dropdown-trigger { border: none; border-radius: 0; background: transparent; height: 42px; padding: 0 10px; box-shadow: none; }
     .cms-nav-more .plp-dropdown-trigger:hover { background: transparent; border: none; }
-    .cms-nav-more .plp-dropdown-trigger svg.lucide { width: 22px; height: 22px; stroke-width: 2.5; }
-    .cms-nav-more-panel { left: 0; right: auto; min-width: 180px; }
 
     /* ═══════════════════════════════════════════════════════════
        CONTACT PAGE — LAYOUT
     ═══════════════════════════════════════════════════════════ */
+    .section-header { margin-bottom: 0; }
     .contact-body { padding: 0; }
+    .contact-layout > *:last-child { margin-bottom: 0; }
     .contact-layout {
       display: grid;
       grid-template-columns: 65fr 35fr;
       gap: 28px;
       align-items: start;
-      padding: 32px 0 56px;
+      padding: 40px 0 40px;
     }
 
     /* ── Form (clean, no box) ── */
@@ -216,10 +216,11 @@
     .contact-info-icon svg.lucide { width: 28px; height: 28px; }
     .contact-info-body { flex: 1; min-width: 0; }
     .contact-info-title {
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--dark);
-      margin: 0 0 6px;
+      margin: 0 0 4px;
+      line-height: 1.4;
     }
     .contact-info-list .contact-info-item .contact-info-body p {
       font-size: 15px !important;
@@ -293,14 +294,19 @@
       .contact-layout { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
       .contact-info-icon { width: 40px; height: 40px; }
     }
+    @media (max-width: 768px) {
+      .contact-layout { padding: 28px 0 28px; }
+      .contact-info-title { font-size: 16px; margin-bottom: 2px; line-height: 1.35; }
+    }
     @media (max-width: 640px) {
       .cf-grid { grid-template-columns: 1fr; }
       .cf-grid .cf-full { grid-column: 1; }
       .contact-submit-btn { width: 100%; justify-content: center; }
-      .contact-layout { padding: 24px 0 32px; }
+      .contact-layout { padding: 28px 0 28px; }
     }
     @media (max-width: 480px) {
-      .contact-layout { gap: 20px; }
+      .contact-layout { gap: 20px; padding: 22px 0 22px; }
+      .contact-info-title { font-size: 16px; margin-bottom: 2px; line-height: 1.35; }
     }
   </style>
 </head>
@@ -571,7 +577,7 @@
             <h1 class="section-title listing-page-heading" id="contact-heading">Contact Us</h1>
           </div>
         </div>
-        <div style="margin-top:8px; color: var(--gray-700); font-size:16px; line-height:1.6;">
+        <div style="color: var(--gray-700); font-size:16px; line-height:1.6;">
           <p style="margin:0 0 8px;">Have a question? We're here to assist you with any issue. Call us toll free or by local call. You can also send us a fax or use the Contact Form below. We'd love to hear from you!</p>
           <p style="margin:0 0 8px;">At SF Cable your satisfaction is our top priority.</p>
           <p style="margin:0;">Please fill out the form below and one of our helpful staff will contact you shortly.</p>

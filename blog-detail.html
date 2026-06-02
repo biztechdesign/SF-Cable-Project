@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Browse all cable categories at SF Cable — Power Cords, Network Cables, HDMI, USB, Fiber Optics, Adapters, Audio Video, and more. Over 10,000 products with free shipping over $75." />
-  <meta name="keywords" content="cable categories, HDMI cables, USB cables, network cables, fiber optics, power cords, adapters, connectors, SF Cable" />
+  <meta name="description" content="Cat5e vs Cat6 Ethernet cable comparison — speed, bandwidth, gaming, home networks, office use, and which cable is better for your setup. SF Cable Blog." />
+  <meta name="keywords" content="cat5e vs cat6, ethernet cable, cat6 speed, cat5e performance, network cable comparison, SF Cable" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="All Categories – SF Cable | Cables, Adapters & Connectors" />
-  <meta property="og:description" content="Shop all 12 cable categories at SF Cable. Free shipping over $75. Lifetime warranty on all cables." />
-  <meta property="og:type" content="website" />
-  <title>All Categories — SF Cable | Cables, Adapters &amp; Connectors</title>
-  <link rel="canonical" href="https://www.sfcable.com/categories" />
+  <meta property="og:title" content="Cat5e vs Cat6: Which Ethernet Cable Is Better? — SF Cable Blog" />
+  <meta property="og:description" content="Cat5e vs Cat6 Ethernet cable comparison — speed, bandwidth, gaming, home networks, office use, and which cable is better for your setup." />
+  <meta property="og:type" content="article" />
+  <title>Cat5e vs Cat6: Which Ethernet Cable Is Better? — SF Cable Blog</title>
+  <link rel="canonical" href="https://www.sfcable.com/blog/cat5e-vs-cat6" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,276 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <!-- Shared site styles -->
   <link rel="stylesheet" href="styles.css">
+
   <style>
-    .section-header { margin-bottom: 0; }
+.section-header { margin-bottom: 0; }
+/* ═══════════════════════════════════════════════════════════
+   BLOG LAYOUT
+═══════════════════════════════════════════════════════════ */
+.blog-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 0 0 40px;
+}
+.blog-article { min-width: 0; flex: 1; }
+.blog-body > *:last-child,
+.blog-comments > *:last-child { margin-bottom: 0; }
+
+/* ── Article meta (below image) ── */
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0 0 28px;
+  padding: 14px 0;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+}
+.blog-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: var(--gray-500);
+}
+.blog-meta-item svg.lucide { width: 14px; height: 14px; flex-shrink: 0; }
+.blog-meta-item a { color: var(--sf-primary-cta); text-decoration: none; transition: color var(--transition); }
+.blog-meta-item a:hover { color: var(--sf-primary-dark); text-decoration: underline; }
+
+.blog-featured-img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  display: block;
+  margin-bottom: 0;
+}
+
+/* ── Article body ── */
+.blog-body { font-size: 16px; color: var(--gray-700); line-height: 1.75; }
+.blog-body h2 {
+  font-size: clamp(22px, 2.8vw, 28px);
+  font-weight: 700;
+  color: var(--dark);
+  margin: 32px 0 24px;
+  line-height: 1.2;
+}
+.blog-body h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+.blog-body p { margin: 0 0 16px; }
+.blog-body p:last-child { margin-bottom: 0; }
+.blog-body ul, .blog-body ol { margin: 0 0 16px 20px; padding: 0; }
+.blog-body li { margin-bottom: 6px; }
+.blog-body a { color: var(--sf-primary-cta); text-decoration: none; }
+.blog-body a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
+.blog-body strong { font-weight: 700; color: var(--dark); }
+
+/* ── Blog table (matches ship-table styling) ── */
+.blog-table-wrap { overflow-x: auto; margin: 20px 0; }
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.blog-table thead tr {
+  background: var(--gray-100);
+  border-bottom: 1px solid var(--gray-300);
+}
+.blog-table thead th {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  padding: 12px 16px;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.blog-table tbody tr { border-bottom: 1px solid var(--gray-200); }
+.blog-table tbody tr:last-child { border-bottom: none; }
+.blog-table tbody td {
+  padding: 11px 16px;
+  color: var(--dark);
+  font-size: 15px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+.blog-table tbody td:first-child { font-weight: 600; }
+.blog-table-card { border: 1px solid var(--gray-300); border-radius: var(--radius-lg); overflow: hidden; }
+
+/* FAQ */
+.blog-faq-item {
+  border-bottom: 1px solid var(--gray-200);
+  padding: 14px 0;
+}
+.blog-faq-item:last-child { border-bottom: none; }
+.blog-faq-q { font-size: 16px; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
+.blog-faq-a { font-size: 16px; color: var(--gray-700); margin: 0; line-height: 1.7; }
+
+/* CTA box */
+.blog-cta-box {
+  background: var(--blue-light);
+  border: 1px solid rgba(0,141,255,.22);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 32px 0;
+  text-align: center;
+}
+.blog-cta-box p { margin: 0 0 16px; font-size: 16px; color: var(--dark); font-weight: 500; }
+.blog-cta-box p:last-child { margin: 0; }
+
+/* ── Share bar ── */
+.blog-share {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 18px 0;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  margin: 32px 0 28px;
+}
+.blog-share-label { font-size: 14px; font-weight: 600; color: var(--gray-700); white-space: nowrap; }
+.blog-share-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.blog-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--gray-300);
+  background: var(--white);
+  color: var(--gray-700);
+  transition: background var(--sf-transition), color var(--sf-transition);
+  font-family: var(--font);
+}
+.blog-share-btn svg.lucide { width: 15px; height: 15px; }
+.blog-share-btn--facebook { background: #1877f2; color: #fff; border-color: #1877f2; }
+.blog-share-btn--facebook:hover { background: #1463cc; border-color: #1463cc; }
+.blog-share-btn--x { background: #000; color: #fff; border-color: #000; }
+.blog-share-btn--x:hover { background: #333; border-color: #333; }
+.blog-share-btn--linkedin { background: #0a66c2; color: #fff; border-color: #0a66c2; }
+.blog-share-btn--linkedin:hover { background: #0857a3; border-color: #0857a3; }
+.blog-share-btn--copy:hover { background: var(--gray-100); }
+
+/* ── Prev / Next navigation ── */
+.blog-post-nav {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.blog-post-nav-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.blog-post-nav-link:hover { border-color: var(--sf-primary-cta); box-shadow: 0 2px 8px rgba(0,141,255,.1); }
+.blog-post-nav-link--next { text-align: right; }
+.blog-post-nav-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--gray-500);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.blog-post-nav-link--next .blog-post-nav-label { justify-content: flex-end; }
+.blog-post-nav-label svg.lucide { width: 13px; height: 13px; }
+.blog-post-nav-title { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.4; }
+.blog-post-nav-link:hover .blog-post-nav-title { color: var(--sf-primary-cta); }
+
+/* ── Comments ── */
+.blog-comments { margin-bottom: 40px; }
+.blog-comments-hd { font-size: 20px; font-weight: 700; color: var(--dark); margin: 0 0 24px; padding-bottom: 12px; border-bottom: 2px solid var(--gray-200); }
+/* heading border-bottom already separates — suppress first card's redundant border-top */
+.blog-comments .pdp-review-list > .pdp-review-card:first-child { border-top: none; }
+.blog-comment-form-wrap {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 24px;
+}
+.blog-comment-form-title { font-size: 18px; font-weight: 700; color: var(--dark); margin: 0 0 18px; }
+.blog-comment-form { display: flex; flex-direction: column; gap: 12px; }
+.blog-comment-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.blog-comment-field { display: flex; flex-direction: column; gap: 4px; }
+.blog-comment-field label { font-size: 13px; font-weight: 600; color: var(--gray-700); }
+.blog-comment-field input {
+  width: 100%;
+  height: var(--control-h);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  padding: 0 14px;
+  font-size: 15px;
+  font-family: var(--font);
+  color: var(--dark);
+  background: var(--white);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.blog-comment-field textarea {
+  width: 100%;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  padding: 9px 14px;
+  font-size: 15px;
+  font-family: var(--font);
+  color: var(--dark);
+  background: var(--white);
+  outline: none;
+  resize: vertical;
+  min-height: 110px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.blog-comment-field input::placeholder,
+.blog-comment-field textarea::placeholder { color: var(--gray-500); }
+.blog-comment-field input:hover,
+.blog-comment-field textarea:hover { border-color: var(--gray-500); }
+.blog-comment-field input:focus,
+.blog-comment-field textarea:focus { outline: none; border-color: var(--red); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .blog-layout { flex-direction: column; gap: 24px; padding: 28px 0; }
+  .blog-sidebar-col { order: 2; width: 100%; position: static; }
+  .blog-article { order: 1; }
+}
+@media (max-width: 768px) {
+  .blog-layout { padding: 28px 0; }
+  .blog-body h2 { font-size: 22px; margin-bottom: 14px; }
+  .blog-body h3 { font-size: 15px; }
+}
+@media (max-width: 600px) {
+  .blog-body h3 { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .blog-layout { padding: 22px 0; }
+  .blog-body h2 { font-size: 20px; }
+  .blog-body h3 { font-size: 16px; }
+  .blog-featured-img { border-radius: var(--radius-sm); }
+  .blog-comment-row { grid-template-columns: 1fr; }
+  .blog-post-nav { flex-direction: column; }
+}
   </style>
 </head>
 <body>
@@ -820,162 +1088,653 @@
 
   </div><!-- /sticky-top-wrap -->
 
-  <!-- ============================================================
-       BREADCRUMB
-  ============================================================ -->
-  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
-        <li class="breadcrumb-item"><a href="/categories.html">All Categories</a></li>
-        <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
-        <li class="breadcrumb-item breadcrumb-current" aria-current="page">Audio Video</li>
-      </ol>
-    </div>
-  </nav>
-
   <main id="main-content">
 
     <!-- ============================================================
-         CATEGORY LISTING
+         BREADCRUMB
     ============================================================ -->
-    <section class="section--page-title" aria-labelledby="categories-heading">
+    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+          <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+          <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Cat5e vs Cat6</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         PAGE TITLE
+    ============================================================ -->
+    <section class="section--page-title" aria-labelledby="blog-heading">
       <div class="container">
         <div class="section-header">
           <div class="section-header-row">
-            <h1 class="section-title listing-page-heading" id="categories-heading">Audio Video</h1>
-          </div>
-        </div>
-        <div class="categories-track-wrap">
-          <div class="categories-grid" id="categoriesTrack2">
-            <a href="https://www.sfcable.com/audio-video-accessories/1-4-in-to-1-4-in-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/14%20to%2014%20Cables.png" alt="1/4&quot; to 1/4&quot; Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>1/4" to 1/4" Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/1-4-in-plug-to-rca-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/14%20to%20RCA%20Cables.png" alt="1/4&quot; to RCA Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>1/4" to RCA Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/2-5mm-3-5mm-stereo-audio-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/2.5mm3.5mm%20Cables.png" alt="2.5mm/3.5mm Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>2.5mm/3.5mm Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/ht-antennas.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Antennas.png" alt="Antennas" loading="lazy"></div>
-              <div class="cat-text"><h3>Antennas</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/audio-splitter-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Audio%20Stereo%20Y%20Adapter%20Cable.png" alt="Audio Stereo Y Adapter Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>Audio Stereo Y Adapter Cable</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/component-video-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Component%20Video%20Cables.png" alt="Component Video Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>Component Video Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/component-optical-digital-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Digital%20Audio%20%20Video%20Cables.png" alt="Digital Audio / Video Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>Digital Audio / Video Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/ethernet-extenders.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Ethernet%20Extenders.png" alt="Ethernet Extenders" loading="lazy"></div>
-              <div class="cat-text"><h3>Ethernet Extenders</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/headset-microphone.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Microphone.png" alt="Microphone" loading="lazy"></div>
-              <div class="cat-text"><h3>Microphone</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/pattern-generator.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Pattern%20Generator.png" alt="Pattern Generator" loading="lazy"></div>
-              <div class="cat-text"><h3>Pattern Generator</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/rca-3-5-mm-cable.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/RCA%20%203.5mm%20Cables.png" alt="RCA / 3.5mm Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>RCA / 3.5mm Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/rca-audio-video-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/RCA%20Cables.png" alt="RCA Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>RCA Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/recessed-wall-plates.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Recessed%20Wall%20Plates.png" alt="Recessed Wall Plates" loading="lazy"></div>
-              <div class="cat-text"><h3>Recessed Wall Plates</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/rg59-coaxial-cable.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/RG59%20Coaxial%20Cables.png" alt="RG59 Coaxial Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>RG59 Coaxial Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/rg6-coaxial-cable.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/RG6%20Coax%20Cables.png" alt="RG6 Coax Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>RG6 Coax Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/svideo-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/S-Video%20Cables.png" alt="S-Video Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>S-Video Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/speaker-wire-cable.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Speaker%20Wires.png" alt="Speaker Wires" loading="lazy"></div>
-              <div class="cat-text"><h3>Speaker Wires</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/audio-switch-splitter.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Switches%20%26%20Splitters.png" alt="Switches &amp; Splitters" loading="lazy"></div>
-              <div class="cat-text"><h3>Switches &amp; Splitters</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/tv-signal-splitter.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/TV%20Signal%20Splitter.png" alt="TV Signal Splitter" loading="lazy"></div>
-              <div class="cat-text"><h3>TV Signal Splitter</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/audio-wallplate.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Wall%20Plates.png" alt="Wall Plates" loading="lazy"></div>
-              <div class="cat-text"><h3>Wall Plates</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/wireless-presentation-systems.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/Wireless%20Presentation%20Systems.png" alt="Wireless Presentation Systems" loading="lazy"></div>
-              <div class="cat-text"><h3>Wireless Presentation Systems</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/xlr-to-1-4-stereo-cable.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%2014%20Stereo%20Cable.png" alt="XLR to 1/4&quot; Stereo Cable" loading="lazy"></div>
-              <div class="cat-text"><h3>XLR to 1/4" Stereo Cable</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/xlr-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20%20XLR%20Cables.png" alt="XLR / XLR Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>XLR / XLR Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/xlr-14inches-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%2014%20Cables.png" alt="XLR to 1/4&quot; Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>XLR to 1/4" Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/xlr-stereo-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%203.5mm%20Cables.png" alt="XLR to 3.5mm Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>XLR to 3.5mm Cables</h3><span class="cat-count"></span></div>
-            </a>
-            <a href="https://www.sfcable.com/audio-video-accessories/xlr-rca-stereo-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/Categroy/XLR%20to%20RCA%20Cables.png" alt="XLR to RCA Cables" loading="lazy"></div>
-              <div class="cat-text"><h3>XLR to RCA Cables</h3><span class="cat-count"></span></div>
-            </a>
+            <h1 class="section-title listing-page-heading" id="blog-heading">Cat5e vs Cat6: Which Ethernet Cable Is Better for Speed &amp; Performance?</h1>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         CATEGORY DESCRIPTION
+         BLOG LAYOUT
     ============================================================ -->
-    <section class="section-sm listing-desc" aria-label="About SF Cable categories">
+    <section aria-label="Blog article and sidebar">
       <div class="container">
-        <p class="section-subtitle">
-          Our range of audio/video equipment and cables includes everything from microphones, generators, antennas to speaker wires, extenders and wall plates and is one of the widest you will find on any online store.
-        </p>
-        <p class="section-subtitle">
-          You can choose the right audio/video cables based on the length and equipment to which it will be connected to. Apart from various cables we also have various audio video equipment and accessories like antennas, ethernet extenders, pattern generators, wall plates, wireless presentation systems, microphones, etc.
-        </p>
-        <p class="section-subtitle">
-          We specialize in providing high quality products at the lowest prices on the internet (upto 90% off retail price). We also provide lifetime technical support and lifetime warranty on cables.
-        </p>
+        <div class="blog-layout">
+
+          <!-- ── SIDEBAR (LEFT) ── -->
+          <aside class="blog-sidebar-col" aria-label="Blog sidebar">
+
+            <!-- Search -->
+            <form class="blog-search-form" role="search" action="/blog/search" method="get">
+              <input class="blog-search-input" type="search" name="q" placeholder="Search articles…" aria-label="Search blog articles" />
+              <button class="blog-search-btn" type="submit" aria-label="Search">
+                <i data-lucide="search"></i>
+              </button>
+            </form>
+
+            <!-- Recent Posts Widget -->
+            <div class="blog-widget">
+              <div class="blog-widget-hd"><h3>Recent Posts</h3></div>
+              <div class="blog-widget-body">
+                <ul class="blog-recent-list">
+                  <li>
+                    <a href="https://www.sfcable.com/blog/cat5e-vs-cat6" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/blog/cache/300x200/magefan_blog/featturedimage2.png" alt="Cat5e vs Cat6" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">Cat5e vs Cat6: Which Ethernet Cable Is Better for Speed &amp; Performance?</span>
+                        <span class="blog-recent-date">May 31, 2026</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/electrical-wire-and-cable-types-explained" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/blog/cache/300x200/magefan_blog/BlogFeatureImage.png" alt="Electrical Wire Types" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">Electrical Wire and Cable Types Explained for Home &amp; Office Use</span>
+                        <span class="blog-recent-date">May 29, 2026</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/power-plug-adapter-for-international-use" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/blog/cache/300x200/magefan_blog/Feature_image___How_to_Choose_the_Right_Power_Plug_Adapter_for_International_Use_1_.png" alt="Power Plug Adapter" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">How to Choose the Right Power Plug Adapter for International Use</span>
+                        <span class="blog-recent-date">May 27, 2026</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/nema-5-15p-to-5-15r-cable" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/blog/cache/300x200/magefan_blog/Feature_image___Common_Devices_That_Use_NEMA_5-15P_to_5-15R_Cables_1_.png" alt="NEMA Cables" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">Common Devices That Use NEMA 5-15P to 5-15R Cables</span>
+                        <span class="blog-recent-date">May 25, 2026</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/cat6-utp-vs-cat6-shielded" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/blog/cache/300x200/magefan_blog/Feature_image___Cat6_UTP_vs_Cat6_Shielded_Which_Should_You_Install.png" alt="Cat6 UTP vs Shielded" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">Cat6 UTP vs Cat6 Shielded: Which Should You Install?</span>
+                        <span class="blog-recent-date">May 22, 2026</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Popular Posts Widget -->
+            <div class="blog-widget">
+              <div class="blog-widget-hd"><h3>Popular Posts</h3></div>
+              <div class="blog-widget-body">
+                <ul class="blog-recent-list">
+                  <li>
+                    <a href="https://www.sfcable.com/blog/active-vs-passive-displayport-to-hdmi-adapters" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/magefan_blog/ves/blog/Active-Adapter-or-Passive-Adapter-Which-to-Use-for-Displayport-to-HDMI-Conversion.jpg" alt="DisplayPort to HDMI Adapters" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">Active vs. Passive DisplayPort to HDMI Adapters: Which One Do You Need?</span>
+                        <span class="blog-recent-date">Aug 27, 2025</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/fiber-optic-cables-vs-ethernet-cables-difference" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/magefan_blog/wysiwyg/uploads/2018/03/Fiber-Optic-Cables-Vs-Ethernet-Cables-What-Is-the-Difference.png" alt="Fiber Optic vs Ethernet" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">Fiber Optic Cables vs. Ethernet Cables: What Is the Difference?</span>
+                        <span class="blog-recent-date">Sep 26, 2025</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/wired-vs-wireless" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/magefan_blog/Wired_or_Wireless__How_to_Choose_Your_Connection_Type2.png" alt="Wired vs Wireless" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">Wired vs Wireless: How to Choose Your Connection Type</span>
+                        <span class="blog-recent-date">Jun 24, 2025</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/safe-extension-cord" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/magefan_blog/ves/blog/safe_extension_cord.jpg" alt="Safe Extension Cord" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">How to Choose a Safe Extension Cord</span>
+                        <span class="blog-recent-date">Sep 11, 2024</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.sfcable.com/blog/what-difference-c13-c15-power-cords" class="blog-recent-item">
+                      <div class="blog-recent-thumb">
+                        <img src="https://www.sfcable.com/media/magefan_blog/C13_vs_C15_power_cords.png" alt="C13 vs C15 Power Cords" loading="lazy" />
+                      </div>
+                      <div class="blog-recent-info">
+                        <span class="blog-recent-title">What Is the Difference between C13 and C15 Power Cords?</span>
+                        <span class="blog-recent-date">Jun 17, 2024</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="blog-widget">
+              <div class="blog-widget-hd"><h3>Categories</h3></div>
+              <div class="blog-widget-body">
+                <ul class="blog-cat-list">
+                  <li class="blog-cat-item"><a href="/blog/category/network-cables" class="blog-cat-link"><i data-lucide="chevron-right"></i> Network Cables</a><span class="blog-cat-count">67</span></li>
+                  <li class="blog-cat-item"><a href="/blog/category/power-cords" class="blog-cat-link"><i data-lucide="chevron-right"></i> Power Cords</a><span class="blog-cat-count">77</span></li>
+                  <li class="blog-cat-item"><a href="/blog/category/hdmi-cables" class="blog-cat-link"><i data-lucide="chevron-right"></i> HDMI Cables</a><span class="blog-cat-count">31</span></li>
+                  <li class="blog-cat-item"><a href="/blog/category/usb-cables" class="blog-cat-link"><i data-lucide="chevron-right"></i> USB Cables</a><span class="blog-cat-count">36</span></li>
+                  <li class="blog-cat-item"><a href="/blog/category/fiber-optics" class="blog-cat-link"><i data-lucide="chevron-right"></i> Fiber Optics</a><span class="blog-cat-count">26</span></li>
+                  <li class="blog-cat-item"><a href="/blog/category/audio-video" class="blog-cat-link"><i data-lucide="chevron-right"></i> Audio Video</a><span class="blog-cat-count">22</span></li>
+                  <li class="blog-cat-item"><a href="/blog/category/accessories" class="blog-cat-link"><i data-lucide="chevron-right"></i> Accessories</a><span class="blog-cat-count">17</span></li>
+                  <li class="blog-cat-item"><a href="/blog/category/general-tech" class="blog-cat-link"><i data-lucide="chevron-right"></i> General Tech</a><span class="blog-cat-count">10</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Archives Widget -->
+            <div class="blog-widget">
+              <div class="blog-widget-hd"><h3>Archives</h3></div>
+              <div class="blog-widget-body">
+                <ul class="blog-archive-list">
+                  <li class="blog-archive-item"><a href="/blog/archive/2026/05" class="blog-archive-link"><i data-lucide="chevron-right"></i> May 2026 <span class="blog-cat-count blog-archive-count">5</span></a></li>
+                  <li class="blog-archive-item"><a href="/blog/archive/2026/04" class="blog-archive-link"><i data-lucide="chevron-right"></i> April 2026 <span class="blog-cat-count blog-archive-count">4</span></a></li>
+                  <li class="blog-archive-item"><a href="/blog/archive/2026/03" class="blog-archive-link"><i data-lucide="chevron-right"></i> March 2026 <span class="blog-cat-count blog-archive-count">3</span></a></li>
+                  <li class="blog-archive-item"><a href="/blog/archive/2026/02" class="blog-archive-link"><i data-lucide="chevron-right"></i> February 2026 <span class="blog-cat-count blog-archive-count">5</span></a></li>
+                  <li class="blog-archive-item"><a href="/blog/archive/2026/01" class="blog-archive-link"><i data-lucide="chevron-right"></i> January 2026 <span class="blog-cat-count blog-archive-count">4</span></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="blog-widget">
+              <div class="blog-widget-hd"><h3>Tags</h3></div>
+              <div class="blog-widget-body">
+                <div class="blog-tags">
+                  <a href="/blog/tag/ethernet" class="blog-tag">Ethernet</a>
+                  <a href="/blog/tag/cat6" class="blog-tag">Cat6</a>
+                  <a href="/blog/tag/cat5e" class="blog-tag">Cat5e</a>
+                  <a href="/blog/tag/networking" class="blog-tag">Networking</a>
+                  <a href="/blog/tag/hdmi" class="blog-tag">HDMI</a>
+                  <a href="/blog/tag/fiber-optic" class="blog-tag">Fiber Optic</a>
+                  <a href="/blog/tag/power-cord" class="blog-tag">Power Cord</a>
+                  <a href="/blog/tag/usb-c" class="blog-tag">USB-C</a>
+                  <a href="/blog/tag/data-center" class="blog-tag">Data Center</a>
+                  <a href="/blog/tag/home-office" class="blog-tag">Home Office</a>
+                </div>
+              </div>
+            </div>
+
+          </aside>
+
+          <!-- ── ARTICLE (RIGHT) ── -->
+          <article class="blog-article">
+
+            <!-- Featured Image -->
+            <img
+              src="https://www.sfcable.com/media/magefan_blog/featturedimage2.png"
+              alt="Cat5e vs Cat6 Ethernet Cable Comparison"
+              class="blog-featured-img"
+              loading="eager"
+            />
+
+            <!-- Meta (date + category, below image) -->
+            <div class="blog-meta">
+              <span class="blog-meta-item">
+                <i data-lucide="calendar"></i>
+                May 31, 2026
+              </span>
+              <span class="blog-meta-item">
+                <i data-lucide="folder"></i>
+                <a href="/blog/category/network-cables">Ethernet Cables</a>
+              </span>
+            </div>
+
+            <!-- Article Body -->
+            <div class="blog-body">
+
+              <p>Fast internet is no longer a luxury — it's the silent hero behind home networking that doesn't glitch, late-night gaming victories, clean streaming, and office setups that don't suddenly fall apart five minutes before a deadline. So the whole cat5e vs cat6 discussion keeps popping up anywhere performance actually matters, like when everyone suddenly needs the connection at the same time. Picking the right Ethernet cable can change your real speed, the available bandwidth, and how gracefully the network handles pressure when multiple devices start demanding attention all at once.</p>
+
+              <h2>What Are Cat5e and Cat6 Ethernet Cables?</h2>
+
+              <h3>What Is a Cat5e Ethernet Cable?</h3>
+              <p>Cat5e is a twisted pair Ethernet cable built for calm day-to-day networking. It's rated for steady performance up to 1 Gbps, with bandwidth up to 100 MHz. It works well for home setups, office networks, VoIP phones, and streaming.</p>
+
+              <h3>What Is a Cat6 Ethernet Cable?</h3>
+              <p>Cat6 is the upgraded version — higher performance with better shielding and improved construction. It supports up to 10 Gbps over shorter distances, plus bandwidth up to 250 MHz. Common in gaming setups, data centers, and newer office environments.</p>
+
+              <h3>Why Are Ethernet Categories Important?</h3>
+              <p>Ethernet categories define the cable standards for speed, reliability, and compatibility. The right cable keeps performance steady and prevents connection failures under load.</p>
+
+              <h2>What Is the Difference Between Cat5e and Cat6?</h2>
+
+              <div class="blog-table-wrap blog-table-card">
+                <table class="blog-table">
+                  <thead>
+                    <tr>
+                      <th>Feature</th>
+                      <th>Cat5e</th>
+                      <th>Cat6</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Maximum Speed</td>
+                      <td>Up to 1 Gbps at 100 meters</td>
+                      <td>Up to 10 Gbps up to 55 meters; 1 Gbps up to 100 meters</td>
+                    </tr>
+                    <tr>
+                      <td>Bandwidth</td>
+                      <td>100 MHz</td>
+                      <td>250 MHz</td>
+                    </tr>
+                    <tr>
+                      <td>Data Handling</td>
+                      <td>Handles everyday traffic well</td>
+                      <td>Moves more data efficiently for heavy workloads</td>
+                    </tr>
+                    <tr>
+                      <td>Interference Protection</td>
+                      <td>Basic crosstalk protection</td>
+                      <td>Better insulation and tighter twists reduce noise</td>
+                    </tr>
+                    <tr>
+                      <td>Signal Stability</td>
+                      <td>Reliable for standard use</td>
+                      <td>More stable under multi-device pressure</td>
+                    </tr>
+                    <tr>
+                      <td>Performance Over Distance</td>
+                      <td>Strong up to 100 meters</td>
+                      <td>Excellent at shorter distances for 10 Gbps</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2>Cat5e vs Cat6 Speed Comparison</h2>
+
+              <h3>Is Cat6 Faster Than Cat5e?</h3>
+              <p>Yes — Cat6 can handle higher transfer rates, but real-world speed depends on the whole chain. If the router or switch is the weak link, even the best cable cannot compensate.</p>
+
+              <h3>Can Cat5e Handle Gigabit Internet?</h3>
+              <p>Cat5e supports Gigabit Ethernet up to 1 Gbps over 100 meters. It pairs well with most ISP plans and handles daily traffic without issue.</p>
+
+              <h3>Does Cat6 Improve Internet Speed?</h3>
+              <p>A Cat6 upgrade will not increase internet speed beyond the router or modem limit. What Cat6 improves is internal network performance — better stability, cleaner data transfer, and less signal interference.</p>
+
+              <h2>Which Ethernet Cable Is Better for Gaming?</h2>
+
+              <h3>Does Cat6 Reduce Gaming Lag?</h3>
+              <p>Cat6 can help reduce lag by delivering a cleaner and more stable connection. Lower interference means better signal consistency during gameplay, especially when several devices are online simultaneously.</p>
+
+              <h3>Is Cat5e Good Enough for Online Gaming?</h3>
+              <p>Yes. Cat5e supports Gigabit speeds and handles casual gaming, ranked matches, and everyday play without issue.</p>
+
+              <h3>Which Cable Is Best for Streaming and 4K Content?</h3>
+              <p>Cat6 handles heavier traffic more efficiently, so streams tend to be smoother and buffering less likely — especially with multiple devices active.</p>
+
+              <h2>Which Cable Is Better for Home Networks?</h2>
+
+              <h3>Is Cat5e Enough for Smart Homes?</h3>
+              <p>For most smart homes, Cat5e is more than capable — supporting smart TVs, Wi-Fi routers, security cameras, and IoT devices.</p>
+
+              <h3>Should You Upgrade to Cat6 at Home?</h3>
+              <p>Cat6 is a smart upgrade for homes planning ahead, offering more bandwidth and better support for future networking needs. The difference becomes clearer when more devices join the network simultaneously.</p>
+
+              <h3>What Cable Is Best for Home Offices?</h3>
+              <p>Both work well, but Cat6 gives smoother video calls, faster file transfers, and stronger performance when productivity cannot afford interruptions.</p>
+
+              <h2>Which Ethernet Cable Is Better for Office Networks?</h2>
+
+              <h3>Why Do Businesses Prefer Cat6?</h3>
+              <p>Cat6 supports faster data transfer and stronger overall performance — a good fit for server rooms, shared workplaces, and busy networks. It reduces interference and maintains stronger signal stability.</p>
+
+              <h3>Is Cat5e Still Used in Offices?</h3>
+              <p>Yes. Cat5e is still common in offices — cost-friendly and fine for smaller businesses covering standard networking: workstations, printers, VoIP systems.</p>
+
+              <h2>Cat5e vs Cat6 Cable Comparison Table</h2>
+
+              <div class="blog-table-wrap blog-table-card">
+                <table class="blog-table">
+                  <thead>
+                    <tr>
+                      <th>Feature</th>
+                      <th>Cat5e</th>
+                      <th>Cat6</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Speed</td>
+                      <td>Up to 1 Gbps at 100 meters</td>
+                      <td>Up to 10 Gbps up to 55 meters; 1 Gbps at 100 meters</td>
+                    </tr>
+                    <tr>
+                      <td>Bandwidth</td>
+                      <td>100 MHz</td>
+                      <td>250 MHz</td>
+                    </tr>
+                    <tr>
+                      <td>Shielding</td>
+                      <td>Standard, basic protection</td>
+                      <td>Better internal separation, stronger crosstalk protection</td>
+                    </tr>
+                    <tr>
+                      <td>Maximum Distance</td>
+                      <td>100 meters</td>
+                      <td>100 meters (1 Gbps); ~55 meters (10 Gbps)</td>
+                    </tr>
+                    <tr>
+                      <td>Cost</td>
+                      <td>More budget-friendly</td>
+                      <td>Higher cost due to upgraded construction</td>
+                    </tr>
+                    <tr>
+                      <td>Best Use Cases</td>
+                      <td>Home networking, smart devices, basic offices, streaming</td>
+                      <td>Gaming, data centers, business networks, high-speed apps</td>
+                    </tr>
+                    <tr>
+                      <td>Gaming Performance</td>
+                      <td>Great for casual and competitive gaming</td>
+                      <td>Better for low-interference and heavier gaming traffic</td>
+                    </tr>
+                    <tr>
+                      <td>Office Suitability</td>
+                      <td>Strong for small offices, everyday traffic</td>
+                      <td>Better for larger offices, server rooms, high-demand environments</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2>Which Ethernet Cable Offers Better Value?</h2>
+
+              <h3>Is Cat6 Worth the Extra Cost?</h3>
+              <p>Cat6 usually costs more but offers more bandwidth and better signal control under heavy usage. It often makes sense for users planning long-term.</p>
+
+              <h3>When Should You Choose Cat5e?</h3>
+              <p>Cat5e is a strong choice for budget-conscious users and basic networking — browsing, streaming, smart devices, office tasks.</p>
+
+              <h3>When Should You Choose Cat6?</h3>
+              <p>Choose Cat6 for high-speed setups, gaming, streaming, or future-proof planning. The difference is most visible when performance is under real pressure.</p>
+
+              <h2>How Do You Choose the Right Ethernet Cable?</h2>
+
+              <h3>Key Factors to Consider:</h3>
+              <ul>
+                <li>Internet speed, usage type, network size, and budget</li>
+                <li>Home setups with a few devices have different needs than busy offices or gaming networks</li>
+              </ul>
+
+              <h3>Should You Consider Shielded Ethernet Cables?</h3>
+              <p>Shielded cables (STP) are useful in interference-heavy spaces. UTP works well in standard environments.</p>
+
+              <h3>What Cable Length Do You Need?</h3>
+              <p>Cable length affects signal quality and installation. Picking the correct length keeps things running strong and the setup clean.</p>
+
+              <h2>Common Mistakes to Avoid When Buying Ethernet Cables</h2>
+
+              <h3>Are Cheap Ethernet Cables Reliable?</h3>
+              <p>Cheap cables can work but not all are built to last. Poor materials cause weaker performance, unstable speeds, and connection drops. Cable quality matters almost as much as the cable category.</p>
+
+              <h3>Why Does Cable Quality Matter?</h3>
+              <p>Quality affects durability, signal consistency, and connector reliability. Well-built cables handle daily wear better and keep data flowing without interruption. Loose connectors and weak insulation create intermittent problems.</p>
+
+              <h2>Conclusion</h2>
+              <p>The cat5e vs cat6 comparison boils down to performance, budget, and expected network load:</p>
+              <ul>
+                <li><strong>Cat5e</strong> — solid choice for home use, everyday streaming, and standard office setups</li>
+                <li><strong>Cat6</strong> — steps ahead for gaming, 4K streaming, business networks, and high-demand environments</li>
+              </ul>
+
+              <!-- CTA Box -->
+              <div class="blog-cta-box">
+                <p>Explore SF Cable's full range of Cat5e and Cat6 Ethernet cables — built for reliable performance at competitive prices.</p>
+                <p>
+                  <a href="/network-cables/cat5e-cables.html" class="btn btn-primary">Shop Cat5e Cables</a>
+                  &nbsp;&nbsp;
+                  <a href="/network-cables/cat6-cables.html" class="btn btn-secondary">Shop Cat6 Cables</a>
+                </p>
+              </div>
+
+              <h2>Frequently Asked Questions (FAQs)</h2>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Is Cat6 better than Cat5e for home use?</p>
+                <p class="blog-faq-a">Cat6 offers more bandwidth and better signal stability, but Cat5e handles most home networking needs without issue. The upgrade makes more sense in homes with many devices or future-proofing in mind.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Can I replace Cat5e with Cat6 without changing anything else?</p>
+                <p class="blog-faq-a">Yes. Cat6 is backward compatible with Cat5e equipment. Swapping the cable is straightforward — no changes to routers or switches are required.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Does Cat6 work with a Cat5e router?</p>
+                <p class="blog-faq-a">Yes. Cat6 cables work with Cat5e routers. Speed will be limited to what the router supports, but the cable itself is fully compatible.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">What is the max speed of Cat5e?</p>
+                <p class="blog-faq-a">Cat5e supports a maximum speed of 1 Gbps (Gigabit Ethernet) at distances up to 100 meters.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">What is the max speed of Cat6?</p>
+                <p class="blog-faq-a">Cat6 supports up to 10 Gbps at distances up to 55 meters. At 100 meters, it supports 1 Gbps — matching Cat5e's range performance.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Is Cat6 good for a home theater or 4K streaming setup?</p>
+                <p class="blog-faq-a">Yes. Cat6's higher bandwidth makes it a better fit for 4K streaming, especially when other devices are competing for bandwidth on the same network.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Which cable is better for a small business office?</p>
+                <p class="blog-faq-a">Cat5e handles standard office traffic well. Cat6 is the stronger choice for offices with server rooms, higher device counts, or heavier data transfer needs.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Do longer cables affect performance?</p>
+                <p class="blog-faq-a">Yes. Both Cat5e and Cat6 are rated up to 100 meters. Beyond that, signal quality degrades. Staying within the rated distance keeps performance consistent.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Is shielded (STP) better than unshielded (UTP) for Cat6?</p>
+                <p class="blog-faq-a">Shielded Cat6 (STP) reduces interference in high-noise environments like industrial spaces or areas with many electronics. For standard home and office use, unshielded (UTP) performs reliably.</p>
+              </div>
+
+              <div class="blog-faq-item">
+                <p class="blog-faq-q">Where can I buy quality Cat5e and Cat6 cables?</p>
+                <p class="blog-faq-a">SF Cable carries a wide selection of Cat5e and Cat6 Ethernet cables in various lengths and configurations — built to standard and priced competitively. Lifetime warranty included on cables.</p>
+              </div>
+
+            </div><!-- /blog-body -->
+
+            <!-- ── Share ── -->
+            <div class="blog-share">
+              <span class="blog-share-label">Share this article:</span>
+              <div class="blog-share-btns">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.sfcable.com/blog/cat5e-vs-cat6" target="_blank" rel="noopener" class="blog-share-btn blog-share-btn--facebook" aria-label="Share on Facebook">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  Facebook
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https://www.sfcable.com/blog/cat5e-vs-cat6&text=Cat5e+vs+Cat6%3A+Which+Ethernet+Cable+Is+Better%3F" target="_blank" rel="noopener" class="blog-share-btn blog-share-btn--x" aria-label="Share on X / Twitter">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.263 5.633 5.901-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  Twitter
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.sfcable.com/blog/cat5e-vs-cat6" target="_blank" rel="noopener" class="blog-share-btn blog-share-btn--linkedin" aria-label="Share on LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </a>
+                <button class="blog-share-btn blog-share-btn--copy" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='<i data-lucide=\'link\'></i> Copy Link';lucide.createIcons()},2000)})" aria-label="Copy link">
+                  <i data-lucide="link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+
+            <!-- ── Prev / Next Navigation ── -->
+            <nav class="blog-post-nav" aria-label="Blog post navigation">
+              <a href="https://www.sfcable.com/blog/electrical-wire-and-cable-types-explained" class="blog-post-nav-link blog-post-nav-link--prev">
+                <span class="blog-post-nav-label"><i data-lucide="chevron-left"></i> Previous Post</span>
+                <span class="blog-post-nav-title">Electrical Wire and Cable Types Explained for Home &amp; Office Use</span>
+              </a>
+              <a href="https://www.sfcable.com/blog/cat6-utp-vs-cat6-shielded" class="blog-post-nav-link blog-post-nav-link--next">
+                <span class="blog-post-nav-label">Next Post <i data-lucide="chevron-right"></i></span>
+                <span class="blog-post-nav-title">Cat6 UTP vs Cat6 Shielded: Which Should You Install?</span>
+              </a>
+            </nav>
+
+            <!-- ── Comments ── -->
+            <section class="blog-comments" aria-label="Comments">
+              <h2 class="blog-comments-hd">Comments (3)</h2>
+
+              <div class="pdp-review-list">
+
+                <div class="pdp-review-card">
+                  <div class="pdp-review-author">
+                    <div class="pdp-review-avatar"><i data-lucide="user"></i></div>
+                    <div class="pdp-review-name">James T. <span class="pdp-review-country">us</span></div>
+                    <div class="pdp-review-verified"><i data-lucide="check-circle"></i> Verified</div>
+                  </div>
+                  <div class="pdp-review-content">
+                    <div class="pdp-review-top-row">
+                      <div class="pdp-review-stars-title">
+                        <span class="pdp-review-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                        <span class="pdp-review-title">Great breakdown!</span>
+                      </div>
+                      <span class="pdp-review-date">May 31, 2026</span>
+                    </div>
+                    <div class="pdp-review-body">Great breakdown! I've been debating whether to upgrade my home lab from Cat5e to Cat6 and this makes it much clearer. Going with Cat6 for the new runs since I'm already pulling cable.</div>
+                    <div class="pdp-review-helpful">Was this helpful? <button class="pdp-helpful-btn" aria-label="Helpful"><i data-lucide="thumbs-up"></i> 3</button> <button class="pdp-helpful-btn" aria-label="Not helpful"><i data-lucide="thumbs-down"></i> 0</button></div>
+                  </div>
+                </div>
+
+                <div class="pdp-review-card">
+                  <div class="pdp-review-author">
+                    <div class="pdp-review-avatar"><i data-lucide="user"></i></div>
+                    <div class="pdp-review-name">Sarah R. <span class="pdp-review-country">us</span></div>
+                    <div class="pdp-review-verified"><i data-lucide="check-circle"></i> Verified</div>
+                  </div>
+                  <div class="pdp-review-content">
+                    <div class="pdp-review-top-row">
+                      <div class="pdp-review-stars-title">
+                        <span class="pdp-review-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                        <span class="pdp-review-title">Very helpful comparison table</span>
+                      </div>
+                      <span class="pdp-review-date">Jun 1, 2026</span>
+                    </div>
+                    <div class="pdp-review-body">The comparison table is really helpful. We're wiring a new office with 40 workstations and I was leaning Cat5e for cost reasons, but the bandwidth argument for Cat6 is convincing.</div>
+                    <div class="pdp-review-helpful">Was this helpful? <button class="pdp-helpful-btn" aria-label="Helpful"><i data-lucide="thumbs-up"></i> 7</button> <button class="pdp-helpful-btn" aria-label="Not helpful"><i data-lucide="thumbs-down"></i> 0</button></div>
+                  </div>
+                </div>
+
+                <div class="pdp-review-card">
+                  <div class="pdp-review-author">
+                    <div class="pdp-review-avatar"><i data-lucide="user"></i></div>
+                    <div class="pdp-review-name">Mike K. <span class="pdp-review-country">us</span></div>
+                    <div class="pdp-review-verified"><i data-lucide="check-circle"></i> Verified</div>
+                  </div>
+                  <div class="pdp-review-content">
+                    <div class="pdp-review-top-row">
+                      <div class="pdp-review-stars-title">
+                        <span class="pdp-review-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                        <span class="pdp-review-title">Useful for gamers too</span>
+                      </div>
+                      <span class="pdp-review-date">Jun 2, 2026</span>
+                    </div>
+                    <div class="pdp-review-body">Does Cat6 make a noticeable difference for gaming if the router is only gigabit? Asking because I already have Cat5e running to my gaming PC.</div>
+                    <div class="pdp-review-helpful">Was this helpful? <button class="pdp-helpful-btn" aria-label="Helpful"><i data-lucide="thumbs-up"></i> 2</button> <button class="pdp-helpful-btn" aria-label="Not helpful"><i data-lucide="thumbs-down"></i> 0</button></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Comment Form -->
+              <div class="blog-comment-form-wrap">
+                <h3 class="blog-comment-form-title">Leave a Comment</h3>
+                <form class="blog-comment-form" onsubmit="event.preventDefault()">
+                  <div class="blog-comment-row">
+                    <div class="blog-comment-field">
+                      <label for="comment-name">Name <span aria-hidden="true">*</span></label>
+                      <input id="comment-name" type="text" placeholder="Your name" required />
+                    </div>
+                    <div class="blog-comment-field">
+                      <label for="comment-email">Email <span aria-hidden="true">*</span></label>
+                      <input id="comment-email" type="email" placeholder="your@email.com" required />
+                    </div>
+                  </div>
+                  <div class="blog-comment-field">
+                    <label for="comment-text">Comment <span aria-hidden="true">*</span></label>
+                    <textarea id="comment-text" placeholder="Share your thoughts…" required></textarea>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                  </div>
+                </form>
+              </div>
+            </section>
+
+          </article>
+
+        </div><!-- /blog-layout -->
       </div>
     </section>
 
-    <!-- FOOTER TRUST BAR -->
+    <!-- ============================================================
+         TRUST BAR
+    ============================================================ -->
     <section class="footer-trust-bar" aria-label="Trust and credentials">
       <div class="container">
         <div class="footer-trust-slider-wrap">
@@ -1408,6 +2167,84 @@
       document.querySelector('.promo-prev').addEventListener('click', function () { show(current - 1); resetAuto(); });
       document.querySelector('.promo-next').addEventListener('click', function () { show(current + 1); resetAuto(); });
       startAuto();
+    })();
+
+    /* ---- Footer newsletter submit ---- */
+    document.querySelectorAll('.newsletter-form').forEach(function(f) {
+      f.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = f.querySelector('button[type="submit"]');
+        if (btn) { btn.textContent = 'Subscribed!'; btn.disabled = true; }
+      });
+    });
+
+    /* ---- CMS Priority Nav ---- */
+    (function initCmsNav() {
+      var inner    = document.getElementById('cmsNavInner');
+      var moreWrap = document.getElementById('cmsMoreDropdown');
+      var trigger  = document.getElementById('cmsMoreTrigger');
+      var panel    = document.getElementById('cmsMorePanel');
+      if (!inner || !moreWrap) return;
+
+      var links = Array.from(inner.querySelectorAll('.cms-nav-link'));
+
+      function buildNav() {
+        links.forEach(function(l) { l.classList.remove('cms-nav-link--hidden'); });
+        moreWrap.classList.remove('visible');
+        panel.innerHTML = '';
+
+        moreWrap.style.visibility = 'hidden';
+        moreWrap.style.display    = 'block';
+        var moreW = moreWrap.offsetWidth + 8;
+        moreWrap.style.visibility = '';
+        moreWrap.style.display    = '';
+
+        var available = inner.offsetWidth;
+        var used = 0;
+        var overflowFrom = -1;
+
+        for (var i = 0; i < links.length; i++) {
+          var lw = links[i].offsetWidth;
+          var needed = used + lw + (i < links.length - 1 ? moreW : 0);
+          if (needed > available) {
+            overflowFrom = i;
+            break;
+          }
+          used += lw;
+        }
+
+        if (overflowFrom === -1) return;
+
+        for (var j = overflowFrom; j < links.length; j++) {
+          links[j].classList.add('cms-nav-link--hidden');
+          var a = document.createElement('a');
+          a.href = links[j].getAttribute('href');
+          a.className = 'plp-dropdown-item';
+          if (links[j].classList.contains('cms-nav-link--active')) a.classList.add('active');
+          a.textContent = links[j].textContent.trim();
+          panel.appendChild(a);
+        }
+        moreWrap.classList.add('visible');
+        lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+      }
+
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var opening = !moreWrap.classList.contains('open');
+        moreWrap.classList.toggle('open', opening);
+        trigger.setAttribute('aria-expanded', String(opening));
+      });
+      document.addEventListener('click', function() {
+        moreWrap.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+
+      buildNav();
+      if (window.ResizeObserver) {
+        new ResizeObserver(buildNav).observe(inner);
+      } else {
+        window.addEventListener('resize', buildNav);
+      }
     })();
 
     /* ---- Initialise all Lucide icons ---- */

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About SF Cable — Established in 2002, SF Cable is a woman-owned small business in the San Francisco Bay Area. Over 20 years of delivering superior cables, connectors &amp; accessories with a lifetime warranty." />
+  <meta name="description" content="SF Cable Privacy Policy — learn how we collect, use, and protect your personal information when you shop at sfcable.com." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="About Us — SF Cable | Cables, Adapters &amp; Connectors" />
-  <meta property="og:description" content="Learn about SF Cable — over 20 years of delivering superior technology products with a commitment to quality, service, and amazing prices." />
+  <meta property="og:title" content="Privacy Policy — SF Cable | Cables, Adapters &amp; Connectors" />
+  <meta property="og:description" content="SF Cable is committed to keeping your personal information private and protected. Read our full privacy policy here." />
   <meta property="og:type" content="website" />
-  <title>About Us — SF Cable | Cables, Adapters &amp; Connectors</title>
-  <link rel="canonical" href="https://www.sfcable.com/about" />
+  <title>Privacy Policy — SF Cable | Cables, Adapters &amp; Connectors</title>
+  <link rel="canonical" href="https://www.sfcable.com/privacy-policy" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
 
   <style>
     /* ═══════════════════════════════════════════════════════════
-       CMS PAGE NAV — identical to Contact Us
+       CMS PAGE NAV — identical to About Us / Contact Us
     ═══════════════════════════════════════════════════════════ */
     .cms-page-nav {
       background: var(--gray-100);
@@ -64,123 +64,44 @@
     .cms-nav-link--hidden { display: none !important; }
     .cms-nav-more { display: none; flex-shrink: 0; }
     .cms-nav-more.visible { display: block; }
-    .cms-nav-more .plp-dropdown-trigger { border: none; border-radius: 0; background: transparent; height: 42px; padding: 0 10px; box-shadow: none; }
+    .cms-nav-more .plp-dropdown-trigger { border-left: 1px solid var(--gray-200); border-radius: 0; border-top: none; border-right: none; border-bottom: none; height: 42px; padding: 0 12px; }
 
     /* ═══════════════════════════════════════════════════════════
-       ABOUT PAGE — BODY
+       PRIVACY POLICY PAGE — BODY
     ═══════════════════════════════════════════════════════════ */
-    .about-body { padding: 0 0 40px; }
-    .about-body > *:last-child,
-    .about-gallery-section > *:last-child { margin-bottom: 0; }
     .section-header { margin-bottom: 0; }
+    .privacy-body { padding: 0 0 40px; }
 
-    /* ── Intro two-column layout ── */
-    .about-intro-layout {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 48px;
-      align-items: flex-start;
-    }
-    .about-intro-text {
-      min-width: 0;
-    }
-    .about-intro-img {
+    /* ── Privacy content wrapper ── */
+    .privacy-content {
       width: 100%;
-      height: auto;
-      border-radius: var(--radius-lg);
-      object-fit: cover;
-      display: block;
-      position: sticky;
-      top: 120px;
     }
 
-    /* ── Intro paragraphs ── */
-    .about-intro {
-      margin-bottom: 20px;
+    /* ── Intro paragraph ── */
+    .privacy-intro {
+      margin-bottom: 0;
     }
-    .about-intro p {
+    .privacy-intro p {
       font-size: 16px;
       color: var(--gray-700);
       line-height: 1.7;
-      margin: 0 0 14px;
-    }
-    .about-intro p:last-child { margin-bottom: 0; }
-
-    @media (max-width: 900px) {
-      .about-intro-layout {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-      .about-intro-img {
-        position: static;
-        max-height: 340px;
-        object-fit: cover;
-        order: -1;
-      }
-    }
-    @media (max-width: 480px) {
-      .about-intro-img { max-height: 240px; }
-    }
-
-    /* ── Lead-in to strategies ── */
-    .about-strategies-lead {
-      font-size: 16px;
-      color: var(--gray-700);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    /* ── Three core strategy cards ── */
-    .about-strategies {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .about-strategy-card {
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-lg);
-      padding: 28px 24px;
-      background: var(--white);
-    }
-    .about-strategy-icon {
-      width: 54px; height: 54px;
-      border-radius: 50%;
-      background: rgba(0,141,255,.12);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--sf-primary-cta);
-      margin-bottom: 16px;
-      flex-shrink: 0;
-    }
-    .about-strategy-icon svg.lucide { width: 28px; height: 28px; }
-    .about-strategy-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.4;
-      margin: 0 0 10px;
-    }
-    .about-strategy-body {
-      font-size: 15px;
-      color: var(--gray-700);
-      line-height: 1.65;
       margin: 0;
     }
 
-    /* ── Closing statement ── */
-    .about-closing {
-      font-size: 16px;
-      color: var(--gray-700);
-      line-height: 1.7;
-      margin-top: 10px;
-      margin-bottom: 0;
+    /* ── Section wrapper — 32px padding top and bottom ── */
+    .privacy-section {
+      padding: 40px 0;
     }
+    .privacy-section + .privacy-section {
+      padding-top: 0;
+    }
+    .privacy-section:last-child {
+      padding-bottom: 0;
+    }
+    .privacy-section > *:last-child { margin-bottom: 0; }
 
-    /* ── Company Certificate section ── */
-    .about-cert-section {
-      padding: 0;
-      margin-top: 32px;
-    }
-    .about-section-title {
+    /* ── Section headings — matches H1 listing-page-heading exactly ── */
+    .privacy-content .privacy-section-title {
       font-size: clamp(22px, 2.8vw, 28px);
       font-weight: 700;
       color: var(--dark);
@@ -188,17 +109,65 @@
       line-height: 1.2;
     }
 
-    /* ── Certificate table — matches Holiday Schedule in shipping.html ── */
+    /* ── Sub-headings (cookie types, PayPal, etc.) ── */
+    .privacy-content .privacy-subsection-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 20px 0 6px;
+      line-height: 1.4;
+    }
+
+    /* ── Body text ── */
+    .privacy-content p {
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin: 0 0 14px;
+    }
+    .privacy-content p:last-child { margin-bottom: 0; }
+
+    /* ── Lists ── */
+    .privacy-content ul,
+    .privacy-content ol {
+      margin: 0 0 14px;
+      padding-left: 22px;
+    }
+    .privacy-content li {
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    .privacy-content li:last-child { margin-bottom: 0; }
+
+    /* ── Links ── */
+    .privacy-content a {
+      color: var(--sf-primary-cta);
+      text-decoration: none;
+    }
+    .privacy-content a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
+
+    /* ── Contact address block ── */
+    .privacy-contact-block {
+      margin-top: 8px;
+    }
+    .privacy-contact-block p {
+      margin-bottom: 4px;
+    }
+
+    /* ── Cookie table — matches shipping page exactly ── */
     .ship-card {
       background: var(--white);
       border: 1px solid var(--gray-300);
       border-radius: var(--radius-lg);
+      padding: 28px;
     }
     .ship-table-wrap { overflow-x: auto; }
     .ship-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 15px;
+      font-size: 14px;
     }
     .ship-table thead tr {
       background: var(--gray-100);
@@ -225,146 +194,26 @@
     }
     .ship-table tbody td:first-child { font-weight: 600; }
 
-    /* ── Photo Gallery — Bento Grid ── */
-    .about-gallery-section {
-      padding: 40px 0 0;
-    }
-
-    .about-bento-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 240px 240px;
-      gap: 12px;
-    }
-
-    /* Hero tile — spans both rows on the left */
-    .about-bento-hero {
-      grid-column: 1;
-      grid-row: 1 / 3;
-    }
-
-    /* Bottom-right tile spans 2 columns */
-    .about-bento-wide {
-      grid-column: 2 / 4;
-      grid-row: 2;
-    }
-
-    /* Each photo tile */
-    .about-photo-tile {
-      position: relative;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--gray-200);
-    }
-    .about-photo-tile img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform 0.45s ease;
-    }
-    .about-photo-tile:hover img {
-      transform: scale(1.06);
-    }
-
-    /* Permanent gradient overlay — always visible */
-    .about-tile-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top,
-        rgba(0,22,50,0.82) 0%,
-        rgba(0,22,50,0.25) 45%,
-        transparent 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 16px 18px;
-    }
-
-    /* Category label */
-    .about-tile-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      margin: 0 0 4px;
-    }
-
-    /* Always-visible title */
-    .about-tile-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.25;
-      margin: 0;
-    }
-    .about-bento-hero .about-tile-title { font-size: 22px; }
-
-    /* 2-line description — hidden by default, reveals on hover */
-    .about-tile-desc {
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.5;
-      margin: 6px 0 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, opacity 0.35s ease;
-      opacity: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-    .about-photo-tile:hover .about-tile-desc {
-      max-height: 48px;
-      opacity: 1;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .about-bento-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 200px 200px 200px;
-      }
-      .about-bento-hero { grid-column: 1 / 3; grid-row: 1; }
-      .about-bento-wide { grid-column: 1 / 3; grid-row: 3; }
+    @media (max-width: 640px) {
+      .ship-table thead th { padding: 10px 12px; }
+      .ship-table tbody td { padding: 10px 12px; font-size: 13px; }
     }
     @media (max-width: 480px) {
-      .about-bento-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 200px); }
-      .about-bento-hero { grid-column: 1; grid-row: 1; }
-      .about-bento-wide { grid-column: 1; grid-row: 4; }
+      .ship-table thead th { padding: 8px 10px; }
+      .ship-table tbody td { padding: 8px 10px; font-size: 12px; }
     }
 
     /* ── Responsive ── */
-    @media (max-width: 1200px) {
-      .about-strategy-icon { width: 44px; height: 44px; }
-      .about-strategy-icon svg.lucide { width: 22px; height: 22px; }
-    }
-    @media (max-width: 900px) {
-      .about-strategies { grid-template-columns: 1fr; }
-      .about-strategy-icon { width: 40px; height: 40px; }
-      .about-strategy-icon svg.lucide { width: 20px; height: 20px; }
-    }
     @media (max-width: 768px) {
-      .about-section-title { margin-bottom: 14px; }
-      .about-body { padding: 0 0 28px; }
-      .about-cert-section { margin-top: 20px; }
-      .about-gallery-section { padding: 28px 0 0; }
-      .about-strategy-title { font-size: 15px; }
+      .privacy-section { padding: 28px 0; }
+      .privacy-content .privacy-section-title { margin-bottom: 14px; }
     }
     @media (max-width: 640px) {
-      .about-strategies { grid-template-columns: 1fr; }
-      .about-photos-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+      .privacy-content .privacy-section-title { font-size: 22px; }
+      .privacy-body { padding: 0 0 28px; }
     }
     @media (max-width: 480px) {
-      .about-body { padding: 0 0 22px; }
-      .about-cert-section { margin-top: 16px; }
-      .about-gallery-section { padding: 22px 0 0; }
-      .about-photos-grid { grid-template-columns: 1fr 1fr; }
-      .about-strategy-title { font-size: 16px; }
-    }
-    @media (max-width: 360px) {
-      .about-photos-grid { grid-template-columns: 1fr; }
+      .privacy-section { padding: 22px 0; }
     }
   </style>
 </head>
@@ -601,7 +450,7 @@
         <div class="cms-nav-wrap">
           <div class="cms-nav-inner" id="cmsNavInner">
             <a href="/help"                 class="cms-nav-link">Help</a>
-            <a href="/about"                class="cms-nav-link cms-nav-link--active" aria-current="page">About Us</a>
+            <a href="/about"                class="cms-nav-link">About Us</a>
             <a href="/contact"              class="cms-nav-link">Contact Us</a>
             <a href="/faq"                  class="cms-nav-link">FAQ</a>
             <a href="/shipping-information" class="cms-nav-link">Shipping Info</a>
@@ -611,6 +460,7 @@
             <a href="/schools-government"   class="cms-nav-link">School, Government &amp; Corporate</a>
             <a href="/business-forms"       class="cms-nav-link">Business Forms</a>
             <a href="/technical-resources"  class="cms-nav-link">Technical Resources</a>
+            <a href="/privacy-policy"       class="cms-nav-link cms-nav-link--active" aria-current="page">Privacy Policy</a>
           </div>
           <div class="cms-nav-more plp-dropdown" id="cmsMoreDropdown">
             <button class="plp-dropdown-trigger" id="cmsMoreTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="More CMS pages">
@@ -623,150 +473,228 @@
     </nav>
 
     <!-- ── PAGE TITLE ── -->
-    <section class="section--page-title" aria-labelledby="about-heading">
+    <section class="section--page-title" aria-labelledby="privacy-heading">
       <div class="container">
         <div class="section-header">
           <div class="section-header-row">
-            <h1 class="section-title listing-page-heading" id="about-heading">About Us</h1>
+            <h1 class="section-title listing-page-heading" id="privacy-heading">Privacy Policy</h1>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── ABOUT BODY ── -->
-    <section class="about-body" aria-label="About SF Cable">
+    <!-- ── PRIVACY POLICY BODY ── -->
+    <section class="privacy-body" aria-label="Privacy Policy">
       <div class="container">
+        <div class="privacy-content">
 
-        <!-- Intro two-column layout -->
-        <div class="about-intro-layout">
-
-          <!-- Left: description text -->
-          <div class="about-intro-text">
-            <div class="about-intro">
-              <p>Established in 2002, SF Cable, Inc. is a woman-owned, small business located in the San Francisco Bay Area. We've been satisfying customers' technology accessory and equipment needs for over 20 years.</p>
-              <p>Most of our business growth comes from word-of-mouth backed up by a solid, customer friendly reputation.</p>
-              <p>Our success is built on a lasting commitment to deliver superior technology products at affordable prices. The SF Cable team is dedicated to exceptional customer service, timely output and efficiency in our efforts. We never stop working to bring value to the market. Our customers come away with a fantastic experience, and this keeps our business growing.</p>
-            </div>
-            <p class="about-strategies-lead">We attract and retain customers by focusing on three core strategies: <strong>State-of-the-Art Quality</strong>, <strong>Service You Love</strong> and <strong>Amazing Price</strong>.</p>
+          <!-- Introduction -->
+          <div class="privacy-intro">
+            <p>Welcome to sfcable.com! When you shop at our website, we want you to be confident that your personal information will remain private and protected. We also want you to be in control of the information we collect so you can access it and update it at any time.</p>
           </div>
 
-          <!-- Right: image -->
-          <img src="images/about-us-img.jpg" alt="SF Cable team and facility" class="about-intro-img" loading="lazy" />
+          <!-- Section 1: Use of Cookies -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Use of Cookies and Other Tracking Technologies</h2>
+            <p>We use cookies to provide more personalized services and marketing to you. We use the cookies to keep track of your preferences and profile information. Cookies are also used to collect general usage and volume statistical information that does not include personal information. We use another company to place cookies on your computer to collect non-personally identifiable information to compile aggregated statistics for us about visitors to our site. Read our Cookie Policy carefully. If you do not agree, you can still use our site but some features will be disabled. If you have any questions about this policy or any other privacy concerns, please contact us at <a href="mailto:customerservice@sfcable.com">customerservice@sfcable.com</a>.</p>
 
-        </div>
+            <h3 class="privacy-subsection-title">Functional Cookies</h3>
+            <p>These improve the functional performance of our Site and make it easier for you to use. For example, cookies are used to remember your language, previously viewed products and certain page preferences such as sort order. These cookies qualify as persistent cookies, because they remain on your device for us to use during your next visit to our Site.</p>
 
-        <!-- Three strategy cards -->
-        <div class="about-strategies">
+            <h3 class="privacy-subsection-title">Analytical / Performance Cookies</h3>
+            <p>These allow us to collect anonymous and aggregated statistics on the use of our Site. This helps to improve how our Site works, for example, by ensuring that users can find what they are looking for easily. These cookies are session cookies. We use Google Analytics, and you can see below for how to control the use of cookies by Google Analytics.</p>
 
-          <div class="about-strategy-card">
-            <div class="about-strategy-icon" aria-hidden="true">
-              <i data-lucide="shield-check"></i>
-            </div>
-            <h3 class="about-strategy-title">State-of-the-Art Quality</h3>
-            <p class="about-strategy-body">We continuously scan the market for technology advances that improve our product quality. Plus, we always keep an eye out for new tech development. Our products are RoHS compliant and environmentally-friendly. All cables, adapters and non-electronic products come with a lifetime guarantee.</p>
+            <h3 class="privacy-subsection-title">Targeting Cookies</h3>
+            <p>These record your visit to our Site, the pages you have visited and the links you have followed to recognize you as a previous visitor and to track your activity on the Site and other websites you visit. These cookies qualify as persistent cookies, because they remain on your device for us to use during your next visit to our Site.</p>
+
+            <h3 class="privacy-subsection-title">What are your options if you do not want cookies on your device?</h3>
+            <p>You can review your Internet browser settings, typically under the sections "Help" or "Internet Options," to exercise choices you have for certain non-essential cookies. If you disable or delete certain non-essential cookies in your Internet browser settings, you might not be able to access or use important functions or features of this Site, and you may be required to re-enter your log-in details.</p>
           </div>
 
-          <div class="about-strategy-card">
-            <div class="about-strategy-icon" aria-hidden="true">
-              <i data-lucide="heart-handshake"></i>
-            </div>
-            <h3 class="about-strategy-title">Service You Love</h3>
-            <p class="about-strategy-body">We do everything we can to make you — our customer — happy! There are no limits on order size; you can order just one cable, 100 or more. We have a huge inventory (over 8K SKUs) so most orders get shipped the same day. By always putting the customer first, we enjoy lasting relationships with government organizations, companies and schools.</p>
+          <!-- Section 2: Collection and Use -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Collection and Use of Personal Information</h2>
+            <p>We collect the following personal information from you:</p>
+            <ul>
+              <li>Contact Information such as name, email address, mailing address, phone number</li>
+              <li>Billing Information such as credit card number, and billing address</li>
+              <li>Unique Identifiers such as user name, account number, password</li>
+              <li>Preferences Information such as product wish lists, order history, marketing preferences</li>
+            </ul>
+            <p>As is true of most Web sites, we automatically gather information about your computer such as your IP address, browser type, referring/exit pages, and operating system.</p>
+            <p>We use this information to:</p>
+            <ul>
+              <li>Fulfill your order</li>
+              <li>Send you an order confirmation</li>
+              <li>Respond to customer service requests</li>
+              <li>Administer your account</li>
+              <li>Send you marketing communications</li>
+              <li>Display content based upon your interests</li>
+            </ul>
           </div>
 
-          <div class="about-strategy-card">
-            <div class="about-strategy-icon" aria-hidden="true">
-              <i data-lucide="tag"></i>
-            </div>
-            <h3 class="about-strategy-title">Amazing Price</h3>
-            <p class="about-strategy-body">At SF Cable there's no middle man. We offer wholesale prices on every order, plus additional discount on volume orders. Many times customers can't believe how much they can save with us. Combined with superior quality and service, it's no surprise that people recommend us and stay with us.</p>
+          <!-- Section 3: Third Parties -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Information Obtained from Third Parties</h2>
+            <p>If you provide us personal information about others, or if others give us your information, we will only use that information for the specific reason for which it was provided to us.</p>
           </div>
 
-        </div><!-- /about-strategies -->
+          <!-- Section 4: Information Sharing -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Information Sharing</h2>
+            <p>At SF Cable, we do not sell your personal information to third parties.</p>
+            <p>We may provide your personal information to companies that provide services to help us with our business activities such as shipping your order or offering customer service. These companies are authorized to use your personal information only as necessary to provide these services to us.</p>
+            <p>We may also disclose your personal information:</p>
+            <ul>
+              <li>As required by law such as to comply with a subpoena, or similar legal process</li>
+              <li>When we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request</li>
+              <li>If SF Cable, Inc. is involved in a merger, acquisition, or sale of all or a portion of its assets, you will be notified via email and/or a prominent notice on our Web site of any change in ownership or uses of your personal information, as well as any choices you may have regarding your personal information</li>
+              <li>To any other third party with your prior consent to do so</li>
+            </ul>
 
-        <!-- Closing statement -->
-        <p class="about-closing">We're proud of our company history, professionalism and work ethic. We look forward to doing business with you!</p>
+            <h3 class="privacy-subsection-title">PayPal</h3>
+            <p>If you choose to use PayPal to finalize and pay for your order, you will provide your credit card number directly to PayPal. PayPal's privacy policy will apply to the information you provide on the PayPal Web site.</p>
+          </div>
 
-        <!-- Company Certificate -->
-        <div class="about-cert-section">
-          <h2 class="about-section-title">Company Certificate</h2>
+          <!-- Section 5: Marketing Communications -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Marketing Communications</h2>
+            <p>We may collect and use your information to send you marketing communications, such as email communications, mobile messages (including text and/or push notifications), and postal mailings. These communications may inform you about new products, special discounts and coupons, and other news and special offers.</p>
+            <p>Sending you marketing communications mostly requires the collection and use of certain personal contact information and/or demographic information. In some instances (such as for mobile messages), this may involve the use of technical information or general location information obtained from your mobile device.</p>
+            <p>You can always opt-out from receiving marketing communications either by following the unsubscribe instructions provided in each such communications or by updating your device settings for mobile messages. If you have an online account with us, you may be given the option to change some of your communication preferences under the My Account section of our site or by calling Customer Service at <a href="tel:18882758755">1-888-275-8755</a> or <a href="tel:15102649988">1-510-264-9988</a>. Please note that even if you opt-out from receiving marketing communications, you may still receive other communications from us, such as order confirmations, notifications about account activities (e.g., account confirmations, password changes, etc.), and other important announcements (e.g., product recalls, privacy policy changes, etc.).</p>
+          </div>
+
+          <!-- Section 6: Security -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Security</h2>
+            <p>We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.</p>
+          </div>
+
+          <!-- Section 7: How We Use Cookies -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">How We Use Cookies</h2>
+            <p>A cookie is a small file which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.</p>
+            <p>We use traffic log cookies to identify which pages are being used. This helps us analyse data about web page traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system.</p>
+            <p>Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us. You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p>
+          </div>
+
+          <!-- Section 8: Controlling Personal Information -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Controlling Your Personal Information</h2>
+            <p>You may choose to restrict the collection or use of your personal information in the following ways:</p>
+            <ul>
+              <li>Whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used by anybody for direct marketing purposes</li>
+              <li>If you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by letting us know using our <a href="/contact">Contact Us</a> information</li>
+            </ul>
+            <p>We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.</p>
+            <p>You may request details of personal information which we hold about you under the Data Protection Act 1998. If you would like a copy of the information held on you please email us this request using our <a href="/contact">Contact Us</a> information.</p>
+            <p>If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible at the address below. We will promptly correct any information found to be incorrect.</p>
+          </div>
+
+          <!-- Section 9: Cookie Table -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">List of Cookies We Collect</h2>
+            <p>The table below lists the cookies we collect and what information they store.</p>
+
           <div class="ship-card" style="padding:0; overflow:hidden;">
             <div class="ship-table-wrap">
               <table class="ship-table">
                 <thead>
-                  <tr><th>Certificate Type</th><th>Value</th></tr>
+                  <tr>
+                    <th>Cookie Name</th>
+                    <th>Cookie Description</th>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr><td>DUNS</td><td>141117239</td></tr>
-                  <tr><td>NAICS</td><td>423610, 423510, 423690</td></tr>
-                  <tr><td>CAGE Code</td><td>1ZGU2</td></tr>
-                  <tr><td>SIN</td><td>132 8</td></tr>
-                  <tr><td>SLEB Certificate No.</td><td>11-00117</td></tr>
-                  <tr><td>GSA Contract Holder</td><td>GS-35F-012CA</td></tr>
-                  <tr><td>CMAS Number</td><td>3-25-01-1037</td></tr>
-                  <tr><td>UEI</td><td>LSXDLW349VD5</td></tr>
-                  <tr><td>State of California Certification</td><td>1603180</td></tr>
-                  <tr><td>Fiscal Vendor ID</td><td>0000001403</td></tr>
+                  <tr>
+                    <td>FORM_KEY</td>
+                    <td>Stores randomly generated key used to prevent forged requests.</td>
+                  </tr>
+                  <tr>
+                    <td>PHPSESSID</td>
+                    <td>Your session ID on the server.</td>
+                  </tr>
+                  <tr>
+                    <td>GUEST-VIEW</td>
+                    <td>Allows guests to view and edit their orders.</td>
+                  </tr>
+                  <tr>
+                    <td>PERSISTENT_SHOPPING_CART</td>
+                    <td>A link to information about your cart and viewing history, if you have asked for this.</td>
+                  </tr>
+                  <tr>
+                    <td>STF</td>
+                    <td>Information on products you have emailed to friends.</td>
+                  </tr>
+                  <tr>
+                    <td>STORE</td>
+                    <td>The store view or language you have selected.</td>
+                  </tr>
+                  <tr>
+                    <td>USER_ALLOWED_SAVE_COOKIE</td>
+                    <td>Indicates whether a customer allowed to use cookies.</td>
+                  </tr>
+                  <tr>
+                    <td>MAGE-CACHE-SESSID</td>
+                    <td>Facilitates caching of content on the browser to make pages load faster.</td>
+                  </tr>
+                  <tr>
+                    <td>MAGE-CACHE-STORAGE</td>
+                    <td>Facilitates caching of content on the browser to make pages load faster.</td>
+                  </tr>
+                  <tr>
+                    <td>MAGE-CACHE-STORAGE-SECTION-INVALIDATION</td>
+                    <td>Facilitates caching of content on the browser to make pages load faster.</td>
+                  </tr>
+                  <tr>
+                    <td>MAGE-CACHE-TIMEOUT</td>
+                    <td>Facilitates caching of content on the browser to make pages load faster.</td>
+                  </tr>
+                  <tr>
+                    <td>SECTION-DATA-IDS</td>
+                    <td>Facilitates caching of content on the browser to make pages load faster.</td>
+                  </tr>
+                  <tr>
+                    <td>PRIVATE_CONTENT_VERSION</td>
+                    <td>Facilitates caching of content on the browser to make pages load faster.</td>
+                  </tr>
+                  <tr>
+                    <td>X-MAGENTO-VARY</td>
+                    <td>Facilitates caching of content on the server to make pages load faster.</td>
+                  </tr>
+                  <tr>
+                    <td>MAGE-TRANSLATION-FILE-VERSION</td>
+                    <td>Facilitates translation of content to other languages.</td>
+                  </tr>
+                  <tr>
+                    <td>MAGE-TRANSLATION-STORAGE</td>
+                    <td>Facilitates translation of content to other languages.</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
-        </div><!-- /about-cert-section -->
 
-        <!-- Photo Gallery (Tradeshow + Warehouse) -->
-        <div class="about-gallery-section">
-          <h2 class="about-section-title">Photo Gallery</h2>
+          </div><!-- /privacy-section: cookie table -->
 
-          <div class="about-bento-grid">
-
-            <!-- Hero tile: Team at Booth (large left) -->
-            <div class="about-photo-tile about-bento-hero">
-              <img src="images/booth.png" alt="SF Cable Team at Booth" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Tradeshow</p>
-                <h4 class="about-tile-title">Team at Booth</h4>
-                <p class="about-tile-desc">Meeting customers and partners face-to-face at industry events across the country.</p>
-              </div>
+          <!-- Section 10: Contact Information -->
+          <div class="privacy-section">
+            <h2 class="privacy-section-title">Contact Information</h2>
+            <p>You can contact us about this privacy statement by writing or emailing us at the address below:</p>
+            <div class="privacy-contact-block">
+              <p>SF Cable, Inc.<br>
+              28300 Industrial Blvd Ste F<br>
+              Hayward, CA 94545</p>
+              <p>Email: <a href="mailto:customerservice@sfcable.com">customerservice@sfcable.com</a><br>
+              Phone: <a href="tel:15102649988">510-264-9988</a></p>
             </div>
+          </div><!-- /privacy-section: contact -->
 
-            <!-- Top-right tile 1: Warehouse Parts -->
-            <div class="about-photo-tile">
-              <img src="images/parts.png" alt="SF Cable Parts and Inventory" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Warehouse</p>
-                <h4 class="about-tile-title">Parts &amp; Inventory</h4>
-                <p class="about-tile-desc">8,000+ SKUs in stock at our Hayward, CA facility ready for same-day shipping.</p>
-              </div>
-            </div>
-
-            <!-- Top-right tile 2: Shipping Stock -->
-            <div class="about-photo-tile">
-              <img src="images/shippingstock.png" alt="SF Cable Shipping Stock" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Warehouse</p>
-                <h4 class="about-tile-title">Shipping Stock</h4>
-                <p class="about-tile-desc">Organised shelving ensures fast, accurate order fulfilment every business day.</p>
-              </div>
-            </div>
-
-            <!-- Bottom-right wide tile: Team at Booth -->
-            <div class="about-photo-tile about-bento-wide">
-              <img src="images/tradebooth.png" alt="SF Cable Tradeshow Booth" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Tradeshow</p>
-                <h4 class="about-tile-title">Tradeshow Booth</h4>
-                <p class="about-tile-desc">Showcasing our latest cables, adapters, and connectivity solutions to industry professionals nationwide.</p>
-              </div>
-            </div>
-
-          </div>
-
-        </div><!-- /about-gallery-section -->
-
+        </div><!-- /privacy-content -->
       </div>
     </section>
 
-    <!-- ── USP / TRUST BAR — identical to Contact Us ── -->
+    <!-- ── USP / TRUST BAR — identical to About Us ── -->
     <section class="footer-trust-bar" aria-label="Trust and credentials">
       <div class="container">
         <div class="footer-trust-slider-wrap">
@@ -805,7 +733,7 @@
   </main>
 
   <!-- ============================================================
-       FOOTER — identical to Contact Us
+       FOOTER — identical to About Us
   ============================================================ -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">

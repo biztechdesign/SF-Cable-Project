@@ -60,7 +60,7 @@
       padding: 14px 0 0;
       margin-bottom: 0;
     }
-    .cart-page-title .section-header { margin-bottom: 16px; }
+
     .cart-item-count {
       font-size: 17px;
       font-weight: 500;
@@ -71,7 +71,13 @@
     /* ═══════════════════════════════════════════════════════════
        CART LAYOUT
     ═══════════════════════════════════════════════════════════ */
-    .cart-section { padding: 0 0 32px; }
+    .section-header { margin-bottom: 0; }
+    h2.section-title { margin-bottom: 0; }
+    #bestsellers-heading { margin-bottom: 0; }
+    .section-header:has(#bestsellers-heading) { margin-bottom: 24px; }
+    .cart-section { padding: 0 0 40px; }
+    .cart-section > *:last-child,
+    .cart-bestsellers > *:last-child { margin-bottom: 0; }
 
     .cart-layout {
       display: grid;
@@ -318,7 +324,7 @@
     .cart-empty-state.visible { display: block; }
     .cart-empty-icon { color: var(--gray-300); margin-bottom: 18px; }
     .cart-empty-icon svg.lucide { width: 60px; height: 60px; }
-    .cart-empty-state h2 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .cart-empty-state h2 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
     .cart-empty-state p { font-size: 15px; color: var(--gray-500); margin-bottom: 24px; }
 
     /* ═══════════════════════════════════════════════════════════
@@ -335,7 +341,7 @@
 
     /* Summary header */
     .cart-summary-head {
-      padding: 15px 20px;
+      padding: 15px 20px 0;
       background: var(--gray-100);
       border-bottom: 1px solid var(--gray-300);
     }
@@ -343,7 +349,7 @@
       font-size: 17px;
       font-weight: 800;
       color: var(--dark);
-      margin: 0;
+      margin-bottom: 24px;
     }
 
     /* Summary items list */
@@ -602,7 +608,7 @@
        BEST SELLERS SECTION
     ═══════════════════════════════════════════════════════════ */
     .cart-bestsellers {
-      padding: 0 0 32px;
+      padding: 0 0 40px;
       background: var(--white);
     }
 
@@ -711,20 +717,31 @@
       .cart-table tbody tr.cart-item-row:last-child { border-bottom: 1px solid var(--gray-300); }
     }
 
-    /* 640px — stack footer, tighten card gap */
-    @media (max-width: 640px) {
-      .cart-section { padding: 0 0 32px; }
+    @media (max-width: 768px) {
+      .cart-section { padding: 0 0 28px; }
+      .cart-bestsellers { padding: 0 0 28px; }
+      .section-header:has(#bestsellers-heading) { margin-bottom: 14px; }
+    }
+    @media (max-width: 480px) {
       .cart-footer-row { flex-direction: column; align-items: stretch; }
       .cart-continue-link { justify-content: center; }
       .cart-update-btn { width: 100%; justify-content: center; }
+    }
+
+    /* 640px — tighten card gap */
+    @media (max-width: 640px) {
       /* Reduce column gap so row-2 cells fit without horizontal overflow */
       .cart-table tbody tr.cart-item-row { gap: 8px 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .cart-section { padding: 0 0 22px; }
+      .cart-bestsellers { padding: 0 0 22px; }
     }
 
     /* 480px — very compact */
     @media (max-width: 480px) {
       .cart-item-name { font-size: 16px; line-height: 1.35; }
-      .cart-bestsellers { padding: 0 0 40px; }
       /* Stack each row-2 cell on its own full-width line */
       .td-price,
       .td-qty,

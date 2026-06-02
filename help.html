@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About SF Cable — Established in 2002, SF Cable is a woman-owned small business in the San Francisco Bay Area. Over 20 years of delivering superior cables, connectors &amp; accessories with a lifetime warranty." />
+  <meta name="description" content="Get Help From SF Cable — Contact us by phone, live chat, or email. Find answers on order tracking, shipping, returns, warranty, and more. Mon–Fri 8AM–5PM PST." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="About Us — SF Cable | Cables, Adapters &amp; Connectors" />
-  <meta property="og:description" content="Learn about SF Cable — over 20 years of delivering superior technology products with a commitment to quality, service, and amazing prices." />
+  <meta property="og:title" content="Help &amp; Customer Support — SF Cable | Cables, Adapters &amp; Connectors" />
+  <meta property="og:description" content="Get help from SF Cable. Call 1-888-275-8755, chat live, or browse our support topics for shipping, returns, warranty, order tracking, and more." />
   <meta property="og:type" content="website" />
-  <title>About Us — SF Cable | Cables, Adapters &amp; Connectors</title>
-  <link rel="canonical" href="https://www.sfcable.com/about" />
+  <title>Help &amp; Customer Support — SF Cable | Cables, Adapters &amp; Connectors</title>
+  <link rel="canonical" href="https://www.sfcable.com/help" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
 
   <style>
     /* ═══════════════════════════════════════════════════════════
-       CMS PAGE NAV — identical to Contact Us
+       CMS PAGE NAV — identical to About Us / Contact Us
     ═══════════════════════════════════════════════════════════ */
     .cms-page-nav {
       background: var(--gray-100);
@@ -64,307 +64,242 @@
     .cms-nav-link--hidden { display: none !important; }
     .cms-nav-more { display: none; flex-shrink: 0; }
     .cms-nav-more.visible { display: block; }
-    .cms-nav-more .plp-dropdown-trigger { border: none; border-radius: 0; background: transparent; height: 42px; padding: 0 10px; box-shadow: none; }
+    .cms-nav-more .plp-dropdown-trigger { border-left: 1px solid var(--gray-200); border-radius: 0; border-top: none; border-right: none; border-bottom: none; height: 42px; padding: 0 12px; }
 
     /* ═══════════════════════════════════════════════════════════
-       ABOUT PAGE — BODY
+       HELP PAGE — BODY
     ═══════════════════════════════════════════════════════════ */
-    .about-body { padding: 0 0 40px; }
-    .about-body > *:last-child,
-    .about-gallery-section > *:last-child { margin-bottom: 0; }
-    .section-header { margin-bottom: 0; }
+    .help-body { padding: 0 0 48px; }
 
-    /* ── Intro two-column layout ── */
-    .about-intro-layout {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 48px;
-      align-items: flex-start;
+    /* ── Intro text ── */
+    .help-intro {
+      margin-bottom: 32px;
     }
-    .about-intro-text {
-      min-width: 0;
-    }
-    .about-intro-img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-lg);
-      object-fit: cover;
-      display: block;
-      position: sticky;
-      top: 120px;
-    }
-
-    /* ── Intro paragraphs ── */
-    .about-intro {
-      margin-bottom: 20px;
-    }
-    .about-intro p {
+    .help-intro p {
       font-size: 16px;
       color: var(--gray-700);
       line-height: 1.7;
       margin: 0 0 14px;
     }
-    .about-intro p:last-child { margin-bottom: 0; }
+    .help-intro p:last-child { margin-bottom: 0; }
 
-    @media (max-width: 900px) {
-      .about-intro-layout {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-      .about-intro-img {
-        position: static;
-        max-height: 340px;
-        object-fit: cover;
-        order: -1;
-      }
-    }
-    @media (max-width: 480px) {
-      .about-intro-img { max-height: 240px; }
-    }
-
-    /* ── Lead-in to strategies ── */
-    .about-strategies-lead {
-      font-size: 16px;
-      color: var(--gray-700);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    /* ── Three core strategy cards ── */
-    .about-strategies {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .about-strategy-card {
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-lg);
-      padding: 28px 24px;
-      background: var(--white);
-    }
-    .about-strategy-icon {
-      width: 54px; height: 54px;
-      border-radius: 50%;
-      background: rgba(0,141,255,.12);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--sf-primary-cta);
-      margin-bottom: 16px;
-      flex-shrink: 0;
-    }
-    .about-strategy-icon svg.lucide { width: 28px; height: 28px; }
-    .about-strategy-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.4;
-      margin: 0 0 10px;
-    }
-    .about-strategy-body {
-      font-size: 15px;
-      color: var(--gray-700);
-      line-height: 1.65;
-      margin: 0;
-    }
-
-    /* ── Closing statement ── */
-    .about-closing {
-      font-size: 16px;
-      color: var(--gray-700);
-      line-height: 1.7;
-      margin-top: 10px;
-      margin-bottom: 0;
-    }
-
-    /* ── Company Certificate section ── */
-    .about-cert-section {
-      padding: 0;
-      margin-top: 32px;
-    }
-    .about-section-title {
+    /* ── Section heading ── */
+    .help-section-title {
       font-size: clamp(22px, 2.8vw, 28px);
       font-weight: 700;
       color: var(--dark);
-      margin: 0 0 24px;
+      margin: 0 0 20px;
       line-height: 1.2;
     }
 
-    /* ── Certificate table — matches Holiday Schedule in shipping.html ── */
-    .ship-card {
-      background: var(--white);
+    /* ── Contact channel cards ── */
+    .help-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .help-contact-card {
       border: 1px solid var(--gray-300);
       border-radius: var(--radius-lg);
-    }
-    .ship-table-wrap { overflow-x: auto; }
-    .ship-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
-    .ship-table thead tr {
-      background: var(--gray-100);
-      border-bottom: 1px solid var(--gray-300);
-    }
-    .ship-table thead th {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--dark);
-      padding: 12px 16px;
-      text-align: left;
-      white-space: nowrap;
-      vertical-align: middle;
-      border-bottom: none;
-    }
-    .ship-table tbody tr { border-bottom: 1px solid var(--gray-200); }
-    .ship-table tbody tr:last-child { border-bottom: none; }
-    .ship-table tbody td {
-      padding: 11px 16px;
-      color: var(--dark);
-      font-size: 15px;
-      font-weight: 400;
-      vertical-align: middle;
-    }
-    .ship-table tbody td:first-child { font-weight: 600; }
-
-    /* ── Photo Gallery — Bento Grid ── */
-    .about-gallery-section {
-      padding: 40px 0 0;
-    }
-
-    .about-bento-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 240px 240px;
-      gap: 12px;
-    }
-
-    /* Hero tile — spans both rows on the left */
-    .about-bento-hero {
-      grid-column: 1;
-      grid-row: 1 / 3;
-    }
-
-    /* Bottom-right tile spans 2 columns */
-    .about-bento-wide {
-      grid-column: 2 / 4;
-      grid-row: 2;
-    }
-
-    /* Each photo tile */
-    .about-photo-tile {
-      position: relative;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--gray-200);
-    }
-    .about-photo-tile img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform 0.45s ease;
-    }
-    .about-photo-tile:hover img {
-      transform: scale(1.06);
-    }
-
-    /* Permanent gradient overlay — always visible */
-    .about-tile-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top,
-        rgba(0,22,50,0.82) 0%,
-        rgba(0,22,50,0.25) 45%,
-        transparent 100%);
+      padding: 24px 20px;
+      background: var(--white);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 16px 18px;
+      align-items: flex-start;
+      gap: 12px;
     }
-
-    /* Category label */
-    .about-tile-label {
-      font-size: 11px;
+    .help-contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0, 141, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sf-primary-cta);
+      flex-shrink: 0;
+    }
+    .help-contact-icon svg.lucide { width: 24px; height: 24px; }
+    .help-contact-label {
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      margin: 0 0 4px;
+      letter-spacing: 0.07em;
+      color: var(--gray-500);
+      margin: 0 0 2px;
     }
-
-    /* Always-visible title */
-    .about-tile-title {
-      font-size: 18px;
+    .help-contact-value {
+      font-size: 17px;
       font-weight: 700;
-      color: #ffffff;
-      line-height: 1.25;
+      color: var(--dark);
+      line-height: 1.3;
       margin: 0;
     }
-    .about-bento-hero .about-tile-title { font-size: 22px; }
-
-    /* 2-line description — hidden by default, reveals on hover */
-    .about-tile-desc {
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.85);
+    .help-contact-value a {
+      color: var(--sf-primary-cta);
+      text-decoration: none;
+    }
+    .help-contact-value a:hover { text-decoration: underline; }
+    .help-contact-sub {
+      font-size: 14px;
+      color: var(--gray-500);
       line-height: 1.5;
-      margin: 6px 0 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, opacity 0.35s ease;
-      opacity: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      margin: 0;
     }
-    .about-photo-tile:hover .about-tile-desc {
-      max-height: 48px;
-      opacity: 1;
+    .help-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      padding: 9px 18px;
+      background: var(--sf-primary-cta);
+      color: var(--white);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .help-contact-btn:hover { background: var(--sf-primary-dark); }
+    .help-contact-btn svg.lucide { width: 15px; height: 15px; }
+
+    /* ── Help topic cards ── */
+    .help-topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .help-topic-card {
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 24px 22px;
+      background: var(--white);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .help-topic-card:hover {
+      border-color: var(--sf-primary-cta);
+      box-shadow: 0 2px 12px rgba(0, 141, 255, 0.10);
+    }
+    .help-topic-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(0, 141, 255, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sf-primary-cta);
+      flex-shrink: 0;
+    }
+    .help-topic-icon svg.lucide { width: 22px; height: 22px; }
+    .help-topic-text { min-width: 0; }
+    .help-topic-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0 0 4px;
+      line-height: 1.3;
+    }
+    .help-topic-card:hover .help-topic-title { color: var(--sf-primary-cta); }
+    .help-topic-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.55;
+      margin: 0;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .about-bento-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 200px 200px 200px;
-      }
-      .about-bento-hero { grid-column: 1 / 3; grid-row: 1; }
-      .about-bento-wide { grid-column: 1 / 3; grid-row: 3; }
+    /* ── Promo banner ── */
+    .help-promo-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
     }
-    @media (max-width: 480px) {
-      .about-bento-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 200px); }
-      .about-bento-hero { grid-column: 1; grid-row: 1; }
-      .about-bento-wide { grid-column: 1; grid-row: 4; }
+    .help-promo-card {
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
+    .help-promo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 141, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sf-primary-cta);
+      flex-shrink: 0;
+    }
+    .help-promo-icon svg.lucide { width: 22px; height: 22px; }
+    .help-promo-text { min-width: 0; }
+    .help-promo-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0 0 3px;
+    }
+    .help-promo-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .help-promo-desc a {
+      color: var(--sf-primary-cta);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .help-promo-desc a:hover { text-decoration: underline; }
+
+    /* ── Additional info section ── */
+    .help-info-body {
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+    .help-info-body p { margin: 0 0 14px; }
+    .help-info-body p:last-child { margin-bottom: 0; }
+    .help-info-body a {
+      color: var(--sf-primary-cta);
+      text-decoration: none;
+    }
+    .help-info-body a:hover { text-decoration: underline; }
+    .help-info-body strong { color: var(--dark); }
 
     /* ── Responsive ── */
-    @media (max-width: 1200px) {
-      .about-strategy-icon { width: 44px; height: 44px; }
-      .about-strategy-icon svg.lucide { width: 22px; height: 22px; }
+    @media (max-width: 1100px) {
+      .help-contact-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
-      .about-strategies { grid-template-columns: 1fr; }
-      .about-strategy-icon { width: 40px; height: 40px; }
-      .about-strategy-icon svg.lucide { width: 20px; height: 20px; }
+      .help-topics-grid { grid-template-columns: repeat(2, 1fr); }
+      .help-promo-bar { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .about-section-title { margin-bottom: 14px; }
-      .about-body { padding: 0 0 28px; }
-      .about-cert-section { margin-top: 20px; }
-      .about-gallery-section { padding: 28px 0 0; }
-      .about-strategy-title { font-size: 15px; }
+      .help-section-title { margin-bottom: 14px; }
+      .help-body { padding: 0 0 32px; }
+      .help-contact-grid { gap: 12px; margin-bottom: 32px; }
+      .help-topics-grid { gap: 12px; margin-bottom: 32px; }
+      .help-promo-bar { margin-bottom: 32px; }
     }
     @media (max-width: 640px) {
-      .about-strategies { grid-template-columns: 1fr; }
-      .about-photos-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+      .help-contact-grid { grid-template-columns: 1fr; }
+      .help-topics-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
-      .about-body { padding: 0 0 22px; }
-      .about-cert-section { margin-top: 16px; }
-      .about-gallery-section { padding: 22px 0 0; }
-      .about-photos-grid { grid-template-columns: 1fr 1fr; }
-      .about-strategy-title { font-size: 16px; }
-    }
-    @media (max-width: 360px) {
-      .about-photos-grid { grid-template-columns: 1fr; }
+      .help-body { padding: 0 0 24px; }
+      .help-contact-card { padding: 18px 16px; }
+      .help-topic-card { padding: 18px 16px; }
     }
   </style>
 </head>
@@ -600,8 +535,8 @@
       <div class="container">
         <div class="cms-nav-wrap">
           <div class="cms-nav-inner" id="cmsNavInner">
-            <a href="/help"                 class="cms-nav-link">Help</a>
-            <a href="/about"                class="cms-nav-link cms-nav-link--active" aria-current="page">About Us</a>
+            <a href="/help"                 class="cms-nav-link cms-nav-link--active" aria-current="page">Help</a>
+            <a href="/about"                class="cms-nav-link">About Us</a>
             <a href="/contact"              class="cms-nav-link">Contact Us</a>
             <a href="/faq"                  class="cms-nav-link">FAQ</a>
             <a href="/shipping-information" class="cms-nav-link">Shipping Info</a>
@@ -623,150 +558,236 @@
     </nav>
 
     <!-- ── PAGE TITLE ── -->
-    <section class="section--page-title" aria-labelledby="about-heading">
+    <section class="section--page-title" aria-labelledby="help-heading">
       <div class="container">
         <div class="section-header">
           <div class="section-header-row">
-            <h1 class="section-title listing-page-heading" id="about-heading">About Us</h1>
+            <h1 class="section-title listing-page-heading" id="help-heading">Help &amp; Customer Support</h1>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── ABOUT BODY ── -->
-    <section class="about-body" aria-label="About SF Cable">
+    <!-- ── HELP BODY ── -->
+    <section class="help-body" aria-label="Help and Customer Support">
       <div class="container">
 
-        <!-- Intro two-column layout -->
-        <div class="about-intro-layout">
-
-          <!-- Left: description text -->
-          <div class="about-intro-text">
-            <div class="about-intro">
-              <p>Established in 2002, SF Cable, Inc. is a woman-owned, small business located in the San Francisco Bay Area. We've been satisfying customers' technology accessory and equipment needs for over 20 years.</p>
-              <p>Most of our business growth comes from word-of-mouth backed up by a solid, customer friendly reputation.</p>
-              <p>Our success is built on a lasting commitment to deliver superior technology products at affordable prices. The SF Cable team is dedicated to exceptional customer service, timely output and efficiency in our efforts. We never stop working to bring value to the market. Our customers come away with a fantastic experience, and this keeps our business growing.</p>
-            </div>
-            <p class="about-strategies-lead">We attract and retain customers by focusing on three core strategies: <strong>State-of-the-Art Quality</strong>, <strong>Service You Love</strong> and <strong>Amazing Price</strong>.</p>
-          </div>
-
-          <!-- Right: image -->
-          <img src="images/about-us-img.jpg" alt="SF Cable team and facility" class="about-intro-img" loading="lazy" />
-
+        <!-- Intro -->
+        <div class="help-intro">
+          <p>We're here to help. Whether you have a question about your order, need help choosing the right cable, or want to learn about our policies, our team is ready to assist you. Browse the topics below or reach out to us directly — we aim to respond to all inquiries promptly during business hours.</p>
         </div>
 
-        <!-- Three strategy cards -->
-        <div class="about-strategies">
+        <!-- Contact channels -->
+        <h2 class="help-section-title">Contact Us</h2>
+        <div class="help-contact-grid" aria-label="Contact channels">
 
-          <div class="about-strategy-card">
-            <div class="about-strategy-icon" aria-hidden="true">
+          <div class="help-contact-card">
+            <div class="help-contact-icon" aria-hidden="true">
+              <i data-lucide="phone"></i>
+            </div>
+            <div>
+              <p class="help-contact-label">Phone</p>
+              <p class="help-contact-value"><a href="tel:18882758755">1-888-275-8755</a></p>
+              <p class="help-contact-sub">Toll-free · Mon–Fri 8AM–5PM PST</p>
+            </div>
+          </div>
+
+          <div class="help-contact-card">
+            <div class="help-contact-icon" aria-hidden="true">
+              <i data-lucide="message-circle"></i>
+            </div>
+            <div>
+              <p class="help-contact-label">Live Chat</p>
+              <p class="help-contact-value">Chat With Us</p>
+              <p class="help-contact-sub">Real-time support during business hours</p>
+              <a href="/chat" class="help-contact-btn"><i data-lucide="message-circle"></i> Start Chat</a>
+            </div>
+          </div>
+
+          <div class="help-contact-card">
+            <div class="help-contact-icon" aria-hidden="true">
+              <i data-lucide="mail"></i>
+            </div>
+            <div>
+              <p class="help-contact-label">Email</p>
+              <p class="help-contact-value"><a href="mailto:customerservice@sfcable.com">customerservice@sfcable.com</a></p>
+              <p class="help-contact-sub">We respond within one business day</p>
+            </div>
+          </div>
+
+          <div class="help-contact-card">
+            <div class="help-contact-icon" aria-hidden="true">
+              <i data-lucide="clock"></i>
+            </div>
+            <div>
+              <p class="help-contact-label">Business Hours</p>
+              <p class="help-contact-value">Mon–Fri 8AM–5PM PST</p>
+              <p class="help-contact-sub">Same-day shipping on orders placed before 1PM PST</p>
+            </div>
+          </div>
+
+        </div><!-- /help-contact-grid -->
+
+        <!-- Help topics -->
+        <h2 class="help-section-title">How Can We Help You?</h2>
+        <div class="help-topics-grid" aria-label="Help topics">
+
+          <a href="/order-tracking" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="package"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Order Tracking</h3>
+              <p class="help-topic-desc">Check the status of your order and get real-time shipping updates.</p>
+            </div>
+          </a>
+
+          <a href="/shipping-information" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="truck"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Shipping Information</h3>
+              <p class="help-topic-desc">Learn about our shipping options, rates, carriers, and same-day cutoff times.</p>
+            </div>
+          </a>
+
+          <a href="/returns-refunds" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="rotate-ccw"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Returns &amp; Refunds</h3>
+              <p class="help-topic-desc">Review our 60-day return policy and find out how to start a return.</p>
+            </div>
+          </a>
+
+          <a href="/warranty-claims" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
               <i data-lucide="shield-check"></i>
             </div>
-            <h3 class="about-strategy-title">State-of-the-Art Quality</h3>
-            <p class="about-strategy-body">We continuously scan the market for technology advances that improve our product quality. Plus, we always keep an eye out for new tech development. Our products are RoHS compliant and environmentally-friendly. All cables, adapters and non-electronic products come with a lifetime guarantee.</p>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Warranty &amp; Claims</h3>
+              <p class="help-topic-desc">All cables and non-electronic products include a lifetime warranty. Find out how to make a claim.</p>
+            </div>
+          </a>
+
+          <a href="/change-cancel-order" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="x-circle"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Change or Cancel an Order</h3>
+              <p class="help-topic-desc">Need to modify or cancel a recent order? Contact us as soon as possible — we process orders quickly.</p>
+            </div>
+          </a>
+
+          <a href="/get-quote" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="file-text"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Get a Quote</h3>
+              <p class="help-topic-desc">Request a quote for large or bulk orders and get our best available pricing.</p>
+            </div>
+          </a>
+
+          <a href="/payment-terms" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="credit-card"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Payment Terms</h3>
+              <p class="help-topic-desc">Learn about accepted payment methods, net terms for approved businesses, and purchase orders.</p>
+            </div>
+          </a>
+
+          <a href="/schools-government" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="building-2"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Schools &amp; Government</h3>
+              <p class="help-topic-desc">SF Cable is a certified GSA and CMAS vendor. We support schools, agencies, and government organizations.</p>
+            </div>
+          </a>
+
+          <a href="/will-call" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="map-pin"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Will Call / Local Pickup</h3>
+              <p class="help-topic-desc">Pick up your order in person from our Hayward, CA facility. Available Mon–Fri during business hours.</p>
+            </div>
+          </a>
+
+          <a href="/quick-order" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="zap"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Quick Order</h3>
+              <p class="help-topic-desc">Order by SKU or part number for fast, efficient ordering of multiple items at once.</p>
+            </div>
+          </a>
+
+          <a href="/contact" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="mail"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">Contact Us</h3>
+              <p class="help-topic-desc">Send us a message using our contact form and we'll get back to you within one business day.</p>
+            </div>
+          </a>
+
+          <a href="/faq" class="help-topic-card">
+            <div class="help-topic-icon" aria-hidden="true">
+              <i data-lucide="help-circle"></i>
+            </div>
+            <div class="help-topic-text">
+              <h3 class="help-topic-title">FAQ</h3>
+              <p class="help-topic-desc">Browse answers to our most frequently asked questions about products, orders, and policies.</p>
+            </div>
+          </a>
+
+        </div><!-- /help-topics-grid -->
+
+        <!-- Promo highlights -->
+        <div class="help-promo-bar" aria-label="Current offers">
+          <div class="help-promo-card">
+            <div class="help-promo-icon" aria-hidden="true">
+              <i data-lucide="truck"></i>
+            </div>
+            <div class="help-promo-text">
+              <p class="help-promo-title">Free Standard Shipping on Orders Over $75</p>
+              <p class="help-promo-desc">Online orders only. Use code: <strong>FREESHIP</strong> at checkout. <a href="/free-standard-shipping-on-orders-of-50-or-more-use-code-freeship">Details</a></p>
+            </div>
           </div>
-
-          <div class="about-strategy-card">
-            <div class="about-strategy-icon" aria-hidden="true">
-              <i data-lucide="heart-handshake"></i>
+          <div class="help-promo-card">
+            <div class="help-promo-icon" aria-hidden="true">
+              <i data-lucide="award"></i>
             </div>
-            <h3 class="about-strategy-title">Service You Love</h3>
-            <p class="about-strategy-body">We do everything we can to make you — our customer — happy! There are no limits on order size; you can order just one cable, 100 or more. We have a huge inventory (over 8K SKUs) so most orders get shipped the same day. By always putting the customer first, we enjoy lasting relationships with government organizations, companies and schools.</p>
-          </div>
-
-          <div class="about-strategy-card">
-            <div class="about-strategy-icon" aria-hidden="true">
-              <i data-lucide="tag"></i>
-            </div>
-            <h3 class="about-strategy-title">Amazing Price</h3>
-            <p class="about-strategy-body">At SF Cable there's no middle man. We offer wholesale prices on every order, plus additional discount on volume orders. Many times customers can't believe how much they can save with us. Combined with superior quality and service, it's no surprise that people recommend us and stay with us.</p>
-          </div>
-
-        </div><!-- /about-strategies -->
-
-        <!-- Closing statement -->
-        <p class="about-closing">We're proud of our company history, professionalism and work ethic. We look forward to doing business with you!</p>
-
-        <!-- Company Certificate -->
-        <div class="about-cert-section">
-          <h2 class="about-section-title">Company Certificate</h2>
-          <div class="ship-card" style="padding:0; overflow:hidden;">
-            <div class="ship-table-wrap">
-              <table class="ship-table">
-                <thead>
-                  <tr><th>Certificate Type</th><th>Value</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>DUNS</td><td>141117239</td></tr>
-                  <tr><td>NAICS</td><td>423610, 423510, 423690</td></tr>
-                  <tr><td>CAGE Code</td><td>1ZGU2</td></tr>
-                  <tr><td>SIN</td><td>132 8</td></tr>
-                  <tr><td>SLEB Certificate No.</td><td>11-00117</td></tr>
-                  <tr><td>GSA Contract Holder</td><td>GS-35F-012CA</td></tr>
-                  <tr><td>CMAS Number</td><td>3-25-01-1037</td></tr>
-                  <tr><td>UEI</td><td>LSXDLW349VD5</td></tr>
-                  <tr><td>State of California Certification</td><td>1603180</td></tr>
-                  <tr><td>Fiscal Vendor ID</td><td>0000001403</td></tr>
-                </tbody>
-              </table>
+            <div class="help-promo-text">
+              <p class="help-promo-title">Lifetime Warranty on Cables &amp; Non-Electronic Products</p>
+              <p class="help-promo-desc">All cables and non-electronics come backed by our lifetime guarantee. <a href="/lifetime-warranty-on-cables-and-non-electronics-products">Details</a></p>
             </div>
           </div>
-        </div><!-- /about-cert-section -->
+        </div><!-- /help-promo-bar -->
 
-        <!-- Photo Gallery (Tradeshow + Warehouse) -->
-        <div class="about-gallery-section">
-          <h2 class="about-section-title">Photo Gallery</h2>
-
-          <div class="about-bento-grid">
-
-            <!-- Hero tile: Team at Booth (large left) -->
-            <div class="about-photo-tile about-bento-hero">
-              <img src="images/booth.png" alt="SF Cable Team at Booth" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Tradeshow</p>
-                <h4 class="about-tile-title">Team at Booth</h4>
-                <p class="about-tile-desc">Meeting customers and partners face-to-face at industry events across the country.</p>
-              </div>
-            </div>
-
-            <!-- Top-right tile 1: Warehouse Parts -->
-            <div class="about-photo-tile">
-              <img src="images/parts.png" alt="SF Cable Parts and Inventory" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Warehouse</p>
-                <h4 class="about-tile-title">Parts &amp; Inventory</h4>
-                <p class="about-tile-desc">8,000+ SKUs in stock at our Hayward, CA facility ready for same-day shipping.</p>
-              </div>
-            </div>
-
-            <!-- Top-right tile 2: Shipping Stock -->
-            <div class="about-photo-tile">
-              <img src="images/shippingstock.png" alt="SF Cable Shipping Stock" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Warehouse</p>
-                <h4 class="about-tile-title">Shipping Stock</h4>
-                <p class="about-tile-desc">Organised shelving ensures fast, accurate order fulfilment every business day.</p>
-              </div>
-            </div>
-
-            <!-- Bottom-right wide tile: Team at Booth -->
-            <div class="about-photo-tile about-bento-wide">
-              <img src="images/tradebooth.png" alt="SF Cable Tradeshow Booth" loading="lazy" />
-              <div class="about-tile-overlay">
-                <p class="about-tile-label">Tradeshow</p>
-                <h4 class="about-tile-title">Tradeshow Booth</h4>
-                <p class="about-tile-desc">Showcasing our latest cables, adapters, and connectivity solutions to industry professionals nationwide.</p>
-              </div>
-            </div>
-
-          </div>
-
-        </div><!-- /about-gallery-section -->
+        <!-- Additional info -->
+        <h2 class="help-section-title">Additional Information</h2>
+        <div class="help-info-body">
+          <p>SF Cable, Inc. is a woman-owned small business located in <strong>Hayward, CA</strong>, serving customers since 2002. With over 8,000 SKUs in stock, most orders ship the same business day when placed before 1PM PST.</p>
+          <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and purchase orders from approved businesses, schools, and government agencies. For net terms or tax-exempt purchases, please <a href="/contact">contact us</a> prior to placing your order.</p>
+          <p>For technical questions about product compatibility, custom lengths, or bulk pricing, our team of specialists is available by phone or chat during business hours. You can also <a href="/technical-resources">browse our technical resources</a> for spec sheets, installation guides, and product comparisons.</p>
+        </div>
 
       </div>
     </section>
 
-    <!-- ── USP / TRUST BAR — identical to Contact Us ── -->
+    <!-- ── USP / TRUST BAR — identical to About Us ── -->
     <section class="footer-trust-bar" aria-label="Trust and credentials">
       <div class="container">
         <div class="footer-trust-slider-wrap">
@@ -805,7 +826,7 @@
   </main>
 
   <!-- ============================================================
-       FOOTER — identical to Contact Us
+       FOOTER — identical to About Us
   ============================================================ -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
