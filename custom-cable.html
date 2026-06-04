@@ -515,13 +515,14 @@
     .cc-design-extra { padding: 14px 16px 20px; border-top: 1px solid var(--gray-200); }
 
     /* ── Responsive ── */
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
       .cc-layout { grid-template-columns: 1fr; }
       .cc-sidebar { position: static; }
       .cc-summary-head h2 { font-size: 15px; }
-      /* Match product-name at ≤900px */
       .cc-cat-name { font-size: 15px; }
       .cc-cat-desc { font-size: 12px; }
+      /* Stepper centred when columns stack to full width */
+      .cc-stepper { justify-content: center; }
     }
     @media (max-width: 768px) {
       .cc-step-title { font-size: 15px; }
