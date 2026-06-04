@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Get Help From SF Cable — Contact us by phone, live chat, or email. Find answers on order tracking, shipping, returns, warranty, and more. Mon–Fri 8AM–5PM PST." />
+  <meta name="description" content="Get Help From SF Cable — For the best possible customer service. Contact us by phone, live chat, or email. Mon–Fri 8AM–5PM PST. Order tracking, shipping, returns, warranty and more." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Help &amp; Customer Support — SF Cable | Cables, Adapters &amp; Connectors" />
-  <meta property="og:description" content="Get help from SF Cable. Call 1-888-275-8755, chat live, or browse our support topics for shipping, returns, warranty, order tracking, and more." />
+  <meta property="og:title" content="Customer Service — SF Cable | Cables, Adapters &amp; Connectors" />
+  <meta property="og:description" content="At SF Cable, your satisfaction is our top priority. Call 1-888-275-8755, chat live, or browse support topics — shipping, returns, warranty, order tracking, and more." />
   <meta property="og:type" content="website" />
-  <title>Help &amp; Customer Support — SF Cable | Cables, Adapters &amp; Connectors</title>
+  <title>Customer Service — SF Cable | Cables, Adapters &amp; Connectors</title>
   <link rel="canonical" href="https://www.sfcable.com/help" />
 
   <!-- Google Fonts -->
@@ -31,21 +31,21 @@
     .cms-nav-wrap {
       display: flex;
       align-items: center;
-      height: 42px;
+      height: 50px;
       position: relative;
     }
     .cms-nav-inner {
       display: flex;
       align-items: center;
       min-width: 0;
-      height: 42px;
+      height: 50px;
       overflow: hidden;
     }
     .cms-nav-link {
       display: inline-flex;
       align-items: center;
       padding: 0 13px;
-      height: 42px;
+      height: 50px;
       font-size: 15px;
       font-weight: 700;
       color: var(--gray-700);
@@ -64,7 +64,8 @@
     .cms-nav-link--hidden { display: none !important; }
     .cms-nav-more { display: none; flex-shrink: 0; }
     .cms-nav-more.visible { display: block; }
-    .cms-nav-more .plp-dropdown-trigger { border-left: 1px solid var(--gray-200); border-radius: 0; border-top: none; border-right: none; border-bottom: none; height: 42px; padding: 0 12px; }
+    .cms-nav-more .plp-dropdown-trigger { border: none; border-radius: 0; background: transparent; height: 50px; padding: 0 10px; box-shadow: none; }
+    .cms-nav-more .plp-dropdown-trigger:hover { background: transparent; border: none; }
 
     /* ═══════════════════════════════════════════════════════════
        HELP PAGE — BODY
@@ -277,9 +278,154 @@
     .help-info-body a:hover { text-decoration: underline; }
     .help-info-body strong { color: var(--dark); }
 
+    /* ── Support links layout ── */
+    .help-links-layout {
+      display: grid;
+      grid-template-columns: 1fr 284px;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+    .help-links-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+    .help-links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .help-guarantee-below { margin: 0; }
+
+    /* ── Category cards (matching checkout co-card) ── */
+    .help-cat-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .help-cat-card-head {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--gray-300);
+      background: var(--gray-100);
+    }
+    .help-cat-card-head h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+    .help-cat-card-body { padding: 16px 18px 20px; }
+
+    .help-link-list {
+      list-style: disc;
+      padding-left: 18px;
+      margin: 0;
+    }
+    .help-link-list li { margin-bottom: 5px; }
+    .help-link-list li:last-child { margin-bottom: 0; }
+    .help-link-list a {
+      font-size: 16px;
+      color: var(--sf-primary-cta);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .help-link-list a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
+
+    /* ── Contact sidebar ── */
+    .help-guarantee-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff8ec;
+      border: 1px solid #f0c060;
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .help-guarantee-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(240, 160, 20, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b86f00;
+      flex-shrink: 0;
+    }
+    .help-guarantee-icon svg.lucide { width: 24px; height: 24px; stroke-width: 2; display: block; }
+    .help-guarantee-content { min-width: 0; }
+    .help-guarantee-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0 0 7px;
+    }
+    .help-guarantee-text {
+      font-size: 16px;
+      color: var(--gray-700);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .help-address-box {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      padding: 20px 18px;
+    }
+    .help-address-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0 0 10px;
+    }
+    .help-address-text {
+      font-style: normal;
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+    .help-contact-pairs {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .help-contact-pair {
+      display: flex;
+      gap: 6px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .help-contact-pair { font-size: 16px; }
+    .help-contact-pair dt { font-weight: 600; color: var(--gray-600); flex-shrink: 0; white-space: nowrap; }
+    .help-contact-pair dd { margin: 0; color: var(--dark); }
+    .help-contact-pair dd a { color: var(--sf-primary-cta); text-decoration: none; transition: color var(--transition); }
+    .help-contact-pair dd a:hover { color: var(--sf-primary-dark); text-decoration: underline; }
+    .help-hours-block { margin-bottom: 14px; }
+    .help-hours-label { font-size: 16px; font-weight: 700; color: var(--dark); margin: 0 0 3px; }
+    .help-hours-text { font-size: 16px; color: var(--gray-700); margin: 0; line-height: 1.5; }
+    .help-emails-block { display: flex; flex-direction: column; gap: 5px; }
+    .help-email-row { font-size: 16px; line-height: 1.4; }
+    .help-email-row .help-email-label { font-weight: 600; color: var(--gray-600); display: block; }
+    .help-email-row a { color: var(--sf-primary-cta); text-decoration: none; transition: color var(--transition); }
+    .help-email-row a:hover { color: var(--sf-primary-dark); text-decoration: underline; }
+
     /* ── Responsive ── */
     @media (max-width: 1100px) {
       .help-contact-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 960px) {
+      .help-links-layout { grid-template-columns: 1fr; }
+      .help-links-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .help-links-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
       .help-topics-grid { grid-template-columns: repeat(2, 1fr); }
@@ -291,15 +437,15 @@
       .help-contact-grid { gap: 12px; margin-bottom: 32px; }
       .help-topics-grid { gap: 12px; margin-bottom: 32px; }
       .help-promo-bar { margin-bottom: 32px; }
+      .help-links-layout { margin-bottom: 32px; }
     }
     @media (max-width: 640px) {
-      .help-contact-grid { grid-template-columns: 1fr; }
-      .help-topics-grid { grid-template-columns: 1fr; }
+      .help-links-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 480px) {
       .help-body { padding: 0 0 24px; }
-      .help-contact-card { padding: 18px 16px; }
-      .help-topic-card { padding: 18px 16px; }
+      .help-links-grid { grid-template-columns: 1fr; }
+      .help-links-layout { margin-bottom: 28px; }
     }
   </style>
 </head>
@@ -562,7 +708,7 @@
       <div class="container">
         <div class="section-header">
           <div class="section-header-row">
-            <h1 class="section-title listing-page-heading" id="help-heading">Help &amp; Customer Support</h1>
+            <h1 class="section-title listing-page-heading" id="help-heading">Customer Service</h1>
           </div>
         </div>
       </div>
@@ -574,215 +720,154 @@
 
         <!-- Intro -->
         <div class="help-intro">
-          <p>We're here to help. Whether you have a question about your order, need help choosing the right cable, or want to learn about our policies, our team is ready to assist you. Browse the topics below or reach out to us directly — we aim to respond to all inquiries promptly during business hours.</p>
+          <p>Welcome to our Customer Support Center! Find exactly what you're looking for here.</p>
+          <p>SF Cable offers high quality, affordable cables, components and accessories for computers and electronics. No order is too big or too small. From a single cable (or item) end user to large government, education and corporate clients, we bring industry leading value and expertise to the San Francisco Bay Area and beyond.</p>
+          <p>At SF Cable, you come first. Our goal is to ensure your complete satisfaction with our products and services!</p>
         </div>
 
-        <!-- Contact channels -->
-        <h2 class="help-section-title">Contact Us</h2>
-        <div class="help-contact-grid" aria-label="Contact channels">
+        <!-- Support links + Contact sidebar -->
+        <div class="help-links-layout" aria-label="Support topics and contact information">
 
-          <div class="help-contact-card">
-            <div class="help-contact-icon" aria-hidden="true">
-              <i data-lucide="phone"></i>
-            </div>
-            <div>
-              <p class="help-contact-label">Phone</p>
-              <p class="help-contact-value"><a href="tel:18882758755">1-888-275-8755</a></p>
-              <p class="help-contact-sub">Toll-free · Mon–Fri 8AM–5PM PST</p>
-            </div>
-          </div>
+          <!-- Left: 6 link cards + guarantee below -->
+          <div class="help-links-left">
+          <div class="help-links-grid">
 
-          <div class="help-contact-card">
-            <div class="help-contact-icon" aria-hidden="true">
-              <i data-lucide="message-circle"></i>
+            <div class="help-cat-card">
+              <div class="help-cat-card-head"><h3>Customer Support</h3></div>
+              <div class="help-cat-card-body">
+                <ul class="help-link-list">
+                  <li><a href="/about">About Us</a></li>
+                  <li><a href="/contact">Contact Us</a></li>
+                  <li><a href="/reviews">Company Reviews</a></li>
+                  <li><a href="/giving-back">Giving Back</a></li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <p class="help-contact-label">Live Chat</p>
-              <p class="help-contact-value">Chat With Us</p>
-              <p class="help-contact-sub">Real-time support during business hours</p>
-              <a href="/chat" class="help-contact-btn"><i data-lucide="message-circle"></i> Start Chat</a>
-            </div>
-          </div>
 
-          <div class="help-contact-card">
-            <div class="help-contact-icon" aria-hidden="true">
-              <i data-lucide="mail"></i>
+            <div class="help-cat-card">
+              <div class="help-cat-card-head"><h3>New Customers</h3></div>
+              <div class="help-cat-card-body">
+                <ul class="help-link-list">
+                  <li><a href="/faq">Frequently Asked Questions</a></li>
+                  <li><a href="/product-warranties">Product Warranties</a></li>
+                  <li><a href="/schools-government">School and Government</a></li>
+                  <li><a href="/terms-conditions">Terms and Conditions</a></li>
+                  <li><a href="/privacy-policy">Privacy Policy</a></li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <p class="help-contact-label">Email</p>
-              <p class="help-contact-value"><a href="mailto:customerservice@sfcable.com">customerservice@sfcable.com</a></p>
-              <p class="help-contact-sub">We respond within one business day</p>
-            </div>
-          </div>
 
-          <div class="help-contact-card">
-            <div class="help-contact-icon" aria-hidden="true">
-              <i data-lucide="clock"></i>
+            <div class="help-cat-card">
+              <div class="help-cat-card-head"><h3>My Account</h3></div>
+              <div class="help-cat-card-body">
+                <ul class="help-link-list">
+                  <li><a href="/account/orders">Order Status</a></li>
+                  <li><a href="/account/orders">View Your Order History</a></li>
+                  <li><a href="/account/edit">Edit Account Information</a></li>
+                  <li><a href="/account/change-password">Change Your Email Address or Password</a></li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <p class="help-contact-label">Business Hours</p>
-              <p class="help-contact-value">Mon–Fri 8AM–5PM PST</p>
-              <p class="help-contact-sub">Same-day shipping on orders placed before 1PM PST</p>
-            </div>
-          </div>
 
-        </div><!-- /help-contact-grid -->
+            <div class="help-cat-card">
+              <div class="help-cat-card-head"><h3>Ordering and Billing</h3></div>
+              <div class="help-cat-card-body">
+                <ul class="help-link-list">
+                  <li><a href="/cart">Place an Order Using Shopping Cart</a></li>
+                  <li><a href="/quick-order">Place an Order Using Quick Reorder</a></li>
+                  <li><a href="/coupons">Coupons</a></li>
+                  <li><a href="/payment-terms">Payment Options</a></li>
+                  <li><a href="/sales-tax">Sales Tax</a></li>
+                </ul>
+              </div>
+            </div>
 
-        <!-- Help topics -->
-        <h2 class="help-section-title">How Can We Help You?</h2>
-        <div class="help-topics-grid" aria-label="Help topics">
+            <div class="help-cat-card">
+              <div class="help-cat-card-head"><h3>Product</h3></div>
+              <div class="help-cat-card-body">
+                <ul class="help-link-list">
+                  <li><a href="/product-warranties">Product Warranties</a></li>
+                  <li><a href="/catalog-request">Catalog Request</a></li>
+                  <li><a href="/reviews">Product Reviews</a></li>
+                  <li><a href="/technical-resources">Technical Resources</a></li>
+                  <li><a href="/testimonials">Testimonial</a></li>
+                  <li><a href="/all-products">View All Products</a></li>
+                </ul>
+              </div>
+            </div>
 
-          <a href="/order-tracking" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="package"></i>
+            <div class="help-cat-card">
+              <div class="help-cat-card-head"><h3>Shipping</h3></div>
+              <div class="help-cat-card-body">
+                <ul class="help-link-list">
+                  <li><a href="/shipping-information">Shipping Information</a></li>
+                  <li><a href="/shipping-rate">Shipping Rate</a></li>
+                </ul>
+              </div>
             </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Order Tracking</h3>
-              <p class="help-topic-desc">Check the status of your order and get real-time shipping updates.</p>
-            </div>
-          </a>
 
-          <a href="/shipping-information" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="truck"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Shipping Information</h3>
-              <p class="help-topic-desc">Learn about our shipping options, rates, carriers, and same-day cutoff times.</p>
-            </div>
-          </a>
+          </div><!-- /help-links-grid -->
 
-          <a href="/returns-refunds" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="rotate-ccw"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Returns &amp; Refunds</h3>
-              <p class="help-topic-desc">Review our 60-day return policy and find out how to start a return.</p>
-            </div>
-          </a>
-
-          <a href="/warranty-claims" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
+          <!-- Guarantee — full width below the 3-column grid -->
+          <div class="help-guarantee-box help-guarantee-below">
+            <div class="help-guarantee-icon" aria-hidden="true">
               <i data-lucide="shield-check"></i>
             </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Warranty &amp; Claims</h3>
-              <p class="help-topic-desc">All cables and non-electronic products include a lifetime warranty. Find out how to make a claim.</p>
-            </div>
-          </a>
-
-          <a href="/change-cancel-order" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="x-circle"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Change or Cancel an Order</h3>
-              <p class="help-topic-desc">Need to modify or cancel a recent order? Contact us as soon as possible — we process orders quickly.</p>
-            </div>
-          </a>
-
-          <a href="/get-quote" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="file-text"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Get a Quote</h3>
-              <p class="help-topic-desc">Request a quote for large or bulk orders and get our best available pricing.</p>
-            </div>
-          </a>
-
-          <a href="/payment-terms" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="credit-card"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Payment Terms</h3>
-              <p class="help-topic-desc">Learn about accepted payment methods, net terms for approved businesses, and purchase orders.</p>
-            </div>
-          </a>
-
-          <a href="/schools-government" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="building-2"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Schools &amp; Government</h3>
-              <p class="help-topic-desc">SF Cable is a certified GSA and CMAS vendor. We support schools, agencies, and government organizations.</p>
-            </div>
-          </a>
-
-          <a href="/will-call" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="map-pin"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Will Call / Local Pickup</h3>
-              <p class="help-topic-desc">Pick up your order in person from our Hayward, CA facility. Available Mon–Fri during business hours.</p>
-            </div>
-          </a>
-
-          <a href="/quick-order" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="zap"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Quick Order</h3>
-              <p class="help-topic-desc">Order by SKU or part number for fast, efficient ordering of multiple items at once.</p>
-            </div>
-          </a>
-
-          <a href="/contact" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="mail"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">Contact Us</h3>
-              <p class="help-topic-desc">Send us a message using our contact form and we'll get back to you within one business day.</p>
-            </div>
-          </a>
-
-          <a href="/faq" class="help-topic-card">
-            <div class="help-topic-icon" aria-hidden="true">
-              <i data-lucide="help-circle"></i>
-            </div>
-            <div class="help-topic-text">
-              <h3 class="help-topic-title">FAQ</h3>
-              <p class="help-topic-desc">Browse answers to our most frequently asked questions about products, orders, and policies.</p>
-            </div>
-          </a>
-
-        </div><!-- /help-topics-grid -->
-
-        <!-- Promo highlights -->
-        <div class="help-promo-bar" aria-label="Current offers">
-          <div class="help-promo-card">
-            <div class="help-promo-icon" aria-hidden="true">
-              <i data-lucide="truck"></i>
-            </div>
-            <div class="help-promo-text">
-              <p class="help-promo-title">Free Standard Shipping on Orders Over $75</p>
-              <p class="help-promo-desc">Online orders only. Use code: <strong>FREESHIP</strong> at checkout. <a href="/free-standard-shipping-on-orders-of-50-or-more-use-code-freeship">Details</a></p>
+            <div class="help-guarantee-content">
+              <p class="help-guarantee-title">100% satisfaction guarantee</p>
+              <p class="help-guarantee-text">We will refund your money on any purchase that is not 100% satisfactory. Anytime, for any reason. It's that simple.</p>
             </div>
           </div>
-          <div class="help-promo-card">
-            <div class="help-promo-icon" aria-hidden="true">
-              <i data-lucide="award"></i>
-            </div>
-            <div class="help-promo-text">
-              <p class="help-promo-title">Lifetime Warranty on Cables &amp; Non-Electronic Products</p>
-              <p class="help-promo-desc">All cables and non-electronics come backed by our lifetime guarantee. <a href="/lifetime-warranty-on-cables-and-non-electronics-products">Details</a></p>
-            </div>
-          </div>
-        </div><!-- /help-promo-bar -->
 
-        <!-- Additional info -->
-        <h2 class="help-section-title">Additional Information</h2>
-        <div class="help-info-body">
-          <p>SF Cable, Inc. is a woman-owned small business located in <strong>Hayward, CA</strong>, serving customers since 2002. With over 8,000 SKUs in stock, most orders ship the same business day when placed before 1PM PST.</p>
-          <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and purchase orders from approved businesses, schools, and government agencies. For net terms or tax-exempt purchases, please <a href="/contact">contact us</a> prior to placing your order.</p>
-          <p>For technical questions about product compatibility, custom lengths, or bulk pricing, our team of specialists is available by phone or chat during business hours. You can also <a href="/technical-resources">browse our technical resources</a> for spec sheets, installation guides, and product comparisons.</p>
-        </div>
+          </div><!-- /help-links-left -->
+
+          <!-- Right: Contact details only -->
+          <aside aria-label="Contact details">
+
+            <div class="help-address-box">
+              <h3 class="help-address-title">SF Cable, Inc.</h3>
+              <address class="help-address-text">
+                28300 Industrial Boulevard Suite F<br>
+                Hayward, CA 94545-4439
+              </address>
+              <dl class="help-contact-pairs">
+                <div class="help-contact-pair">
+                  <dt>Toll-Free:</dt>
+                  <dd><a href="tel:18882758755">888-275-8755</a></dd>
+                </div>
+                <div class="help-contact-pair">
+                  <dt>Local:</dt>
+                  <dd><a href="tel:15102649988">510-264-9988</a></dd>
+                </div>
+                <div class="help-contact-pair">
+                  <dt>Fax:</dt>
+                  <dd>510-264-9989</dd>
+                </div>
+              </dl>
+              <div class="help-hours-block">
+                <p class="help-hours-label">Business Hours</p>
+                <p class="help-hours-text">Monday–Friday: 8:00 AM to 5:00 PM<br>(Pacific Standard Time)</p>
+              </div>
+              <div class="help-emails-block">
+                <div class="help-email-row">
+                  <span class="help-email-label">Sales:</span>
+                  <a href="mailto:sales@sfcable.com">sales@sfcable.com</a>
+                </div>
+                <div class="help-email-row">
+                  <span class="help-email-label">Customer Service:</span>
+                  <a href="mailto:customerservice@sfcable.com">customerservice@sfcable.com</a>
+                </div>
+                <div class="help-email-row">
+                  <span class="help-email-label">Support:</span>
+                  <a href="mailto:support@sfcable.com">support@sfcable.com</a>
+                </div>
+              </div>
+            </div>
+
+          </aside>
+
+        </div><!-- /help-links-layout -->
+
 
       </div>
     </section>
@@ -887,7 +972,7 @@
           <h4>Contact Us<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
           <div class="footer-contact">
             <a href="tel:18882758755"><i data-lucide="phone"></i> 1-888-275-8755</a>
-            <a href="mailto:customerservice@sfcable.com"><i data-lucide="mail"></i> customerservice@sfcable.com</a>
+            <a href="mailto:sales@sfcable.com"><i data-lucide="mail"></i> sales@sfcable.com</a>
             <a href="/contact"><i data-lucide="map-pin"></i> Hayward, CA — Mon–Fri 8AM–5PM PST</a>
             <a href="/chat"><i data-lucide="message-circle"></i> Live Chat</a>
           </div>
@@ -1112,5 +1197,6 @@
     });
   </script>
 
+  <script src="minicart.js?v=2"></script>
 </body>
 </html>

@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Custom Cable Builder at SF Cable — Design a fiber optic, ethernet, coaxial, or audio cable to your exact specs. Choose connectors, cable grade, and length. Get a fast quote. 7–10 business day production." />
+  <meta name="keywords" content="custom cable, custom fiber optic cable, custom ethernet cable, custom cable builder, custom coax cable, SF Cable" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Custom Cable Builder — SF Cable" />
+  <meta property="og:description" content="Design a custom cable in minutes. Select connector types, cable grade, and length. Get a fast quote from SF Cable." />
+  <meta property="og:type" content="website" />
+  <title>Custom Cable — SF Cable | Cables, Adapters &amp; Connectors</title>
+  <link rel="canonical" href="https://www.sfcable.com/custom-cable" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Shared site styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .section-header { margin-bottom: 0; }
+
+    /* ── Page intro description ── */
+    .cc-page-desc { color: var(--gray-700); font-size: 16px; line-height: 1.6; }
+    .cc-page-desc a { color: var(--sf-primary-cta); text-decoration: none; transition: color var(--transition); }
+    .cc-page-desc a:hover { color: var(--sf-primary-dark); text-decoration: underline; }
+
+    /* ── Page body ── */
+    .cc-body { background: var(--white); padding: 20px 0 56px; }
+
+    /* ── Two-column layout: builder + sticky summary ── */
+    .cc-layout {
+      display: grid;
+      grid-template-columns: 13fr 7fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ── Step progress indicator ── */
+    .cc-stepper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .cc-step { display: flex; align-items: center; gap: 10px; }
+    .cc-step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid var(--gray-300); background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--gray-500);
+      flex-shrink: 0; transition: all var(--transition);
+    }
+    .cc-step-num svg.lucide { width: 14px; height: 14px; }
+    .cc-step-title { font-size: 18px; font-weight: 500; color: var(--gray-500); transition: color var(--transition); }
+    .cc-step.is-active .cc-step-num { border-color: var(--sf-primary-cta); background: var(--sf-primary-cta); color: var(--white); }
+    .cc-step.is-active .cc-step-title { color: var(--dark); font-weight: 700; }
+    .cc-step.is-done .cc-step-num { border-color: var(--sf-primary-cta); background: var(--sf-primary-cta); color: var(--white); }
+    .cc-step.is-done .cc-step-title { color: var(--sf-primary-cta); font-weight: 600; }
+    .cc-step-line { width: 56px; height: 2px; background: var(--gray-300); margin: 0 12px; flex-shrink: 0; transition: background var(--transition); }
+    .cc-step-line.is-done { background: var(--sf-primary-cta); }
+
+    /* ── Step panels ── */
+    .cc-step-panel { display: none; }
+    .cc-step-panel.is-active { display: block; }
+
+    /* ── Card styles (checkout-matching) ── */
+    .co-card {
+      background: var(--white); border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 20px;
+    }
+    .co-card:last-of-type { margin-bottom: 0; }
+    .co-card-head {
+      padding: 14px 20px; border-bottom: 1px solid var(--gray-300);
+      background: var(--gray-100); display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+    }
+    .co-card-head h2 { margin: 0; font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.35; }
+    .co-card-body { padding: 20px 20px 28px; }
+
+    /* ── Form fields (checkout-matching) ── */
+    .co-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .co-form-grid .co-field-full { grid-column: 1 / -1; }
+    .co-field { display: flex; flex-direction: column; gap: 5px; }
+    .co-label { font-size: 15px; font-weight: 600; color: var(--dark); display: flex; align-items: center; gap: 5px; }
+    .co-required { color: var(--error); font-size: 13px; font-weight: 700; }
+    .co-input,
+    .co-select {
+      width: 100%; height: var(--control-h); border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm); padding: 0 14px; font-size: 15px;
+      color: var(--dark); font-family: var(--font); background: var(--white);
+      transition: border-color var(--transition); -webkit-appearance: none; appearance: none; outline: none;
+    }
+    .co-input::placeholder { color: var(--gray-500); }
+    .co-input:hover, .co-select:hover { border-color: var(--gray-500); }
+    .co-input:focus, .co-select:focus { outline: none; border-color: var(--sf-primary-cta); }
+    .co-input.has-error, .co-select.has-error { border-color: var(--error); }
+    .co-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23002648' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; padding-right: 34px; cursor: pointer;
+    }
+    .co-error-msg { font-size: 12px; color: var(--error); font-weight: 500; display: none; margin-top: 2px; }
+    .co-field.has-error .co-error-msg { display: block; }
+    .co-field-hint { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+    .co-section-sep { height: 1px; background: var(--gray-200); margin: 22px 0; }
+    .co-textarea {
+      width: 100%; min-height: 100px; resize: vertical;
+      border: 1px solid var(--gray-300); border-radius: var(--radius-sm);
+      padding: 10px 14px; font-size: 15px; color: var(--dark); font-family: var(--font);
+      background: var(--white); transition: border-color var(--transition); outline: none;
+    }
+    .co-textarea::placeholder { color: var(--gray-500); }
+    .co-textarea:hover { border-color: var(--gray-500); }
+    .co-textarea:focus { outline: none; border-color: var(--sf-primary-cta); }
+
+    /* ── Category cards ── */
+    .cc-hint { font-size: 16px; font-weight: 400; color: var(--gray-700); margin: 0 0 16px; line-height: 1.7; }
+    .cc-cat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cc-cat-card {
+      border: 1px solid var(--gray-300); border-radius: var(--radius-sm);
+      padding: 28px 20px 24px; cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      text-align: center; background: var(--white); position: relative;
+      -webkit-user-select: none; user-select: none;
+    }
+    .cc-cat-card:hover { border-color: var(--sf-primary-cta); background: #f0f8ff; }
+    .cc-cat-card:focus-visible { outline: 2px solid var(--sf-primary-cta); outline-offset: 2px; }
+    .cc-cat-card.is-selected { border-color: var(--sf-primary-cta); background: var(--blue-light); }
+    .cc-cat-check {
+      position: absolute; top: 8px; right: 8px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--sf-primary-cta); color: var(--white);
+      display: none; align-items: center; justify-content: center;
+    }
+    .cc-cat-card.is-selected .cc-cat-check { display: flex; }
+    .cc-cat-check svg.lucide { width: 11px; height: 11px; stroke-width: 3; }
+    .cc-cat-img { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+    .cc-cat-img img { width: 100%; height: 100%; object-fit: contain; }
+    .cc-cat-name { font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.4; }
+    .cc-cat-desc { font-size: 12px; color: var(--gray-500); line-height: 1.4; }
+
+    /* ── Category error ── */
+    .cc-cat-error { font-size: 12px; color: var(--error); font-weight: 500; margin-top: 10px; display: none; }
+    .cc-cat-error.visible { display: block; }
+
+    /* ── Selected category summary bar (top of step 2) ── */
+    .cc-cat-bar {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--blue-light); border: 1px solid rgba(0,141,255,.22);
+      border-radius: var(--radius-sm); padding: 14px 20px; margin-bottom: 20px;
+    }
+    .cc-cat-bar svg.lucide { width: 20px; height: 20px; color: var(--sf-primary-cta); flex-shrink: 0; }
+    .cc-cat-bar-text { flex: 1; min-width: 0; font-size: 16px; font-weight: 700; color: var(--dark); }
+    .cc-cat-change-btn {
+      font-size: 15px; font-weight: 700; color: var(--sf-primary-cta);
+      background: none; border: none; cursor: pointer; font-family: var(--font);
+      padding: 0; white-space: nowrap; transition: color var(--transition);
+    }
+    .cc-cat-change-btn:hover { color: var(--sf-primary-dark); text-decoration: underline; }
+
+    /* ── Config group header (Length / Special Note) ── */
+    .cc-group-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .cc-group-badge {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--sf-primary-cta); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+    .cc-group-badge svg.lucide { width: 12px; height: 12px; stroke-width: 2.5; }
+    .cc-group-title { font-size: 14px; font-weight: 700; color: var(--dark); }
+    .cc-group-subtitle { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
+    .cc-group-sep { height: 1px; background: var(--gray-100); margin: 16px 0; }
+
+    /* ── Option tiles (connector / cable type) ── */
+    .cc-option-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+    .cc-tile {
+      border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
+      padding: 6px 13px; cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      font-size: 13px; font-weight: 600; color: var(--dark); background: var(--white);
+      display: flex; align-items: center; gap: 6px;
+      -webkit-user-select: none; user-select: none;
+    }
+    .cc-tile:hover { border-color: var(--sf-primary-cta); background: #f0f8ff; }
+    .cc-tile:focus-visible { outline: 2px solid var(--sf-primary-cta); outline-offset: 2px; }
+    .cc-tile.is-selected { border-color: var(--sf-primary-cta); background: var(--blue-light); }
+    .cc-tile .tile-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      border: 1.5px solid var(--gray-300); flex-shrink: 0;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .cc-tile.is-selected .tile-dot { border-color: var(--sf-primary-cta); background: var(--sf-primary-cta); }
+    .cc-tile .tile-swatch {
+      width: 12px; height: 12px; border-radius: 3px;
+      border: 1px solid rgba(0,0,0,.15); flex-shrink: 0;
+    }
+    /* Error under option groups */
+    .cc-opt-error { font-size: 12px; color: var(--error); font-weight: 500; margin-top: 8px; display: none; }
+    .cc-opt-error.visible { display: block; }
+
+    /* ── Continue / Back / Submit buttons ── */
+    .cc-form-actions {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding-top: 8px;
+    }
+    .cc-continue-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: var(--control-h); padding: 0 32px;
+      background: var(--sf-primary-cta); color: var(--white);
+      border: none; border-radius: var(--radius-sm);
+      font-size: 15px; font-weight: 700; font-family: var(--font);
+      cursor: pointer; transition: background var(--transition);
+    }
+    .cc-continue-btn:hover { background: var(--sf-primary-dark); }
+    .cc-continue-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
+    .cc-continue-btn:disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
+    .cc-back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 15px; font-weight: 700; color: var(--sf-primary-cta);
+      background: none; border: none; cursor: pointer; font-family: var(--font);
+      padding: 0; transition: color var(--transition);
+    }
+    .cc-back-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; transition: transform var(--transition); }
+    .cc-back-btn:hover { color: var(--sf-primary-dark); }
+    .cc-back-btn:hover svg.lucide { transform: translateX(-3px); }
+
+    /* ── Sticky summary sidebar ── */
+    .cc-sidebar {
+      position: sticky;
+      top: 16px;           /* fallback — overridden by JS once header height is known */
+      max-height: calc(100vh - 32px); /* shrinks dynamically via JS */
+      overflow-y: auto;
+      align-self: start;
+    }
+    .cc-summary { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-sm); overflow: hidden; }
+    /* cc-summary-head now uses .co-card-head style via HTML class */
+    .cc-summary-body { padding: 8px 20px 16px; }
+    .cc-sum-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--gray-100); }
+    .cc-sum-row:last-of-type { border-bottom: none; }
+    .cc-sum-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(0,141,255,.12);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .cc-sum-icon svg.lucide { width: 20px; height: 20px; color: var(--sf-primary-cta); stroke-width: 2; }
+    .cc-sum-content { flex: 1; min-width: 0; }
+    .cc-sum-key { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 2px; letter-spacing: 0; text-transform: none; }
+    .cc-sum-val { font-size: 15px; font-weight: 400; color: var(--gray-700); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cc-sum-val.is-empty { color: var(--gray-400); font-weight: 400; font-style: italic; }
+
+    .cc-prod-note {
+      display: flex; align-items: flex-start; gap: 8px;
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-sm);
+      padding: 10px 14px; margin-top: 14px;
+      font-size: 12px; color: #92400e; line-height: 1.5;
+    }
+    .cc-prod-note svg.lucide { width: 14px; height: 14px; color: #f59e0b; flex-shrink: 0; margin-top: 1px; }
+
+    .cc-quote-sidebar-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; height: var(--control-h);
+      background: var(--sf-primary-cta); color: var(--white);
+      border: none; border-radius: var(--radius-sm);
+      font-size: 15px; font-weight: 700; font-family: var(--font);
+      cursor: pointer; margin-top: 14px; transition: background var(--transition);
+    }
+    .cc-quote-sidebar-btn:hover { background: var(--sf-primary-dark); }
+    .cc-quote-sidebar-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
+    .cc-quote-sidebar-btn:disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
+
+    /* ── Success confirmation ── */
+    .cc-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .cc-success.visible { display: block; }
+    .cc-success-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #ecfdf5; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 20px;
+    }
+    .cc-success-icon svg.lucide { width: 30px; height: 30px; color: var(--green); stroke-width: 2; }
+    .cc-success h2 { font-size: 22px; font-weight: 700; color: var(--dark); margin: 0 0 10px; }
+    .cc-success p { font-size: 16px; color: var(--gray-500); line-height: 1.6; margin: 0 0 24px; }
+
+    /* ── Image-style tiles (connector photos / swatches) ── */
+    /* Always single row — tiles share available space equally */
+    .cc-img-grid {
+      display: flex; flex-wrap: nowrap; gap: 10px;
+    }
+    .cc-img-tile {
+      display: flex; flex-direction: column; align-items: center;
+      border: 1px solid var(--gray-300); border-radius: var(--radius-sm);
+      background: var(--white); cursor: pointer; padding: 0; overflow: hidden;
+      flex: 1 1 0; min-width: 0;          /* equal share, never fixed width */
+      transition: border-color var(--transition), background var(--transition);
+      -webkit-user-select: none; user-select: none; text-align: center;
+      position: relative;
+    }
+    .cc-img-tile:hover { border-color: var(--sf-primary-cta); background: #f0f8ff; }
+    .cc-img-tile.is-selected { border-color: var(--sf-primary-cta); background: var(--blue-light); }
+    .cc-img-check {
+      position: absolute; top: 6px; right: 6px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--sf-primary-cta); color: var(--white);
+      display: none; align-items: center; justify-content: center;
+      z-index: 1;
+    }
+    .cc-img-tile.is-selected .cc-img-check { display: flex; }
+    .cc-img-check svg.lucide { width: 11px; height: 11px; stroke-width: 3; }
+    .cc-img-tile-visual {
+      width: 100%; height: 120px;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent; overflow: hidden;
+    }
+    .cc-img-tile-visual img {
+      width: 100%; height: 100%;
+      object-fit: contain; image-rendering: auto;
+    }
+    .cc-img-tile-visual.is-swatch img { object-fit: cover; }
+    .cc-img-tile-name {
+      padding: 6px 6px 7px; width: 100%;
+      font-size: 13px; font-weight: 600; color: var(--dark);
+      line-height: 1.3; text-align: center; text-transform: none; letter-spacing: 0;
+    }
+    .cc-img-tile.is-selected .cc-img-tile-name { color: var(--dark); }
+    /* Tablet / large mobile: reduce image height + gap, label unchanged */
+    @media (max-width: 768px) {
+      .cc-img-grid { gap: 8px; }
+      .cc-img-tile-visual { height: 96px; }
+    }
+    /* Small mobile: further reduce image height + gap, label unchanged */
+    @media (max-width: 480px) {
+      .cc-img-grid { gap: 6px; }
+      .cc-img-tile-visual { height: 80px; }
+    }
+
+    /* ── Angle pills — match listing page filter-length-pill style ── */
+    .cc-angle-label {
+      font-size: 15px; font-weight: 700; color: var(--dark);
+      text-transform: none; letter-spacing: 0;
+      margin-top: 18px; margin-bottom: 6px;
+      display: flex; align-items: center;
+    }
+    .cc-angle-row { display: flex; flex-wrap: wrap; gap: 5px; padding: 2px 0; }
+    .cc-angle-row .cc-tile {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 30px; padding: 0 12px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--dark);
+      background: var(--white);
+      font-size: 14px; font-weight: 600; color: var(--dark);
+      cursor: pointer; transition: all var(--transition); white-space: nowrap;
+      gap: 0;
+    }
+    .cc-angle-row .cc-tile .tile-dot { display: none; }
+    .cc-angle-row .cc-tile:hover { border-color: var(--red); color: var(--red); background: var(--white); }
+    .cc-angle-row .cc-tile.is-selected {
+      border-color: var(--sf-shop-category);
+      background: var(--sf-shop-category);
+      color: var(--white);
+    }
+    @media (max-width: 480px) { .cc-angle-row .cc-tile { height: 26px; font-size: 12px; padding: 0 8px; } }
+
+    /* ── End-label wrap: increase top spacing ── */
+
+    /* ── End-label input ── */
+    .cc-end-label-wrap { margin-top: 16px; }
+    .cc-end-label-wrap .co-label { font-size: 15px; font-weight: 600; color: var(--dark); }
+    .cc-end-label-wrap .co-input { height: 36px; font-size: 14px; }
+
+    /* ── Enhanced cable preview ── */
+    .cc-cprev-wrap { margin-top: 20px; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); overflow: hidden; }
+    .cc-cprev-cat {
+      padding: 7px 14px; background: var(--gray-100);
+      font-size: 12px; font-weight: 600; color: var(--gray-500);
+      text-transform: none; letter-spacing: 0;
+    }
+    .cc-cprev-body {
+      display: flex; align-items: center; padding: 14px 16px; gap: 0; background: var(--white); min-height: 90px;
+    }
+    .cc-cprev-end { flex-shrink: 0; text-align: center; width: 80px; }
+    .cc-cprev-end-icon {
+      width: 68px; height: 52px; margin: 0 auto 4px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .cc-cprev-end-icon svg { width: 100%; height: 100%; }
+    .cc-cprev-end-icon.is-empty svg { opacity: .25; }
+    .cc-cprev-end-name { font-size: 12px; font-weight: 700; color: var(--dark); min-height: 15px; }
+    .cc-cprev-end-angle { font-size: 12px; color: var(--gray-500); }
+    .cc-cprev-end-lbl { font-size: 12px; color: var(--gray-500); font-weight: 500; min-height: 15px; max-width: 78px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cc-cprev-cable { flex: 1; min-width: 0; padding: 0 8px; text-align: center; }
+    .cc-cprev-cable-name { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; min-height: 16px; }
+    .cc-cprev-cable-bar { display: flex; align-items: center; height: 16px; }
+    .cc-cprev-cable-plug { width: 8px; height: 16px; background: var(--gray-300); border-radius: 2px; flex-shrink: 0; transition: background var(--transition); }
+    .cc-cprev-cable-plug.is-set { background: var(--gray-500); }
+    .cc-cprev-cable-line { flex: 1; height: 10px; background: var(--gray-100); border-radius: 5px; transition: background var(--transition); }
+    .cc-cprev-cable-len { font-size: 12px; color: var(--gray-500); margin-top: 5px; min-height: 15px; }
+
+    /* ── Visual cable diagram ── */
+    .cc-diagram-section { margin: 24px 0 0; }
+    .cc-diagram-heading {
+      font-size: 13px; font-weight: 600; text-transform: none;
+      letter-spacing: 0; color: var(--gray-500); margin-bottom: 10px;
+    }
+    .cc-diagram {
+      display: flex; align-items: center;
+      background: var(--gray-100); border-radius: var(--radius-sm);
+      padding: 16px 12px; gap: 0; overflow: hidden;
+    }
+    .cc-diag-end {
+      flex-shrink: 0; width: 100px;
+      background: var(--white); border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm); padding: 10px 8px;
+      text-align: center; transition: border-color var(--transition);
+    }
+    .cc-diag-end.is-set { border-color: var(--sf-primary-cta); }
+    .cc-diag-badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      color: var(--white); background: var(--sf-primary-dark);
+      border-radius: 3px; padding: 1px 6px; margin-bottom: 4px;
+    }
+    .cc-diag-conn { font-size: 12px; font-weight: 700; color: var(--dark); min-height: 16px; }
+    .cc-diag-conn.is-empty { color: var(--gray-400); font-style: italic; font-weight: 400; font-size: 12px; }
+    .cc-diag-angle { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+    .cc-diag-lbl {
+      font-size: 12px; color: var(--gray-500); font-weight: 500;
+      margin-top: 3px; max-width: 84px; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap; min-height: 15px;
+    }
+    .cc-diag-cable {
+      flex: 1; min-width: 0; display: flex; flex-direction: column;
+      align-items: center; gap: 3px; padding: 0 2px;
+    }
+    .cc-diag-cable-bar { width: 100%; display: flex; align-items: center; }
+    .cc-diag-plug {
+      width: 6px; height: 16px; background: var(--gray-300);
+      border-radius: 2px; flex-shrink: 0; transition: background var(--transition);
+    }
+    .cc-diag-plug.is-set { background: var(--sf-primary-cta); }
+    .cc-diag-wire {
+      flex: 1; height: 6px; background: var(--gray-200); border-radius: 3px;
+      transition: background var(--transition);
+    }
+    .cc-diag-wire.is-set { background: var(--sf-primary-cta); }
+    .cc-diag-cable-type { font-size: 13px; font-weight: 600; color: var(--dark); text-align: center; }
+    .cc-diag-cable-type.is-empty { color: var(--gray-400); font-style: italic; font-weight: 400; }
+    .cc-diag-cable-len { font-size: 12px; color: var(--gray-500); min-height: 15px; }
+
+    /* ── Sidebar cable preview card ── */
+    .cc-sbar-preview-card { margin-bottom: 16px; }
+    .cc-sbar-preview-card .co-card-head { padding: 10px 16px; }
+    .cc-sbar-preview-card .co-card-body { padding: 14px 16px 16px; }
+    /* ── Sidebar card headers: consistent 16px across all breakpoints ── */
+    .cc-sidebar .co-card-head h2 { font-size: 16px !important; }
+    .cc-sbar-diag { display: flex; align-items: center; gap: 0; }
+    .cc-sbar-end { flex-shrink: 0; width: 72px; text-align: center; }
+    .cc-sbar-end-img { width: 52px; height: 40px; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; }
+    .cc-sbar-end-img img { width: 100%; height: 100%; object-fit: contain; }
+    .cc-sbar-end-name { font-size: 12px; font-weight: 700; color: var(--dark); }
+    .cc-sbar-middle { flex: 1; min-width: 0; padding: 0 6px; text-align: center; }
+    .cc-sbar-line-bar { display: flex; align-items: center; height: 10px; margin-bottom: 4px; }
+    .cc-sbar-plug { width: 5px; height: 12px; background: var(--gray-300); border-radius: 2px; flex-shrink: 0; }
+    .cc-sbar-wire { flex: 1; height: 6px; background: var(--gray-200); border-radius: 3px; transition: background var(--transition); }
+    .cc-sbar-cable-type { font-size: 11px; font-weight: 600; color: var(--dark); }
+
+    /* ── Step 3 review ── */
+    .cc-review-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px; }
+    .cc-review-table tr { border-bottom: 1px solid var(--gray-100); }
+    .cc-review-table tr:last-child { border-bottom: none; }
+    .cc-review-table td { padding: 9px 4px; vertical-align: top; }
+    .cc-review-table td:first-child { font-size: 13px; font-weight: 600; color: var(--gray-500); text-transform: none; letter-spacing: 0; width: 38%; padding-right: 12px; padding-top: 11px; }
+    .cc-review-table td:last-child { color: var(--dark); font-weight: 600; }
+
+    /* ── Design sections (expandable accordion) ── */
+    .cc-design-section { border-bottom: 1px solid var(--gray-200); }
+    .cc-design-section:last-child { border-bottom: none; }
+    .cc-design-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px; background: var(--white);
+      border: none; cursor: pointer; font-family: var(--font);
+      transition: background var(--transition); text-align: left;
+    }
+    .cc-design-btn:hover { background: var(--gray-100); }
+    .cc-design-btn.is-active { background: #f0f8ff; }
+    .cc-design-btn-left { display: flex; align-items: center; gap: 12px; }
+    .cc-design-badge {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--sf-primary-cta); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+    .cc-design-badge svg.lucide { width: 12px; height: 12px; stroke-width: 2.5; }
+    .cc-design-btn-title { font-size: 16px; font-weight: 700; color: var(--dark); letter-spacing: 0; text-transform: none; }
+    .cc-design-btn-sel { font-size: 15px; color: var(--gray-500); margin-top: 2px; transition: color var(--transition); }
+    .cc-design-btn.has-val .cc-design-btn-sel { color: var(--gray-700); font-weight: 500; }
+    .cc-design-chevron {
+      width: 22px !important; height: 22px !important;
+      color: var(--dark); flex-shrink: 0;
+      stroke-width: 2.5 !important;
+      transition: transform var(--transition), color var(--transition);
+    }
+    .cc-design-btn.is-active .cc-design-chevron { transform: rotate(180deg); color: var(--dark); }
+    .cc-design-content { display: none; padding: 14px 16px 16px; border-top: 1px solid var(--gray-100); background: var(--white); }
+    .cc-design-content.is-open { display: block; }
+    .cc-design-extra { padding: 14px 16px 20px; border-top: 1px solid var(--gray-200); }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .cc-layout { grid-template-columns: 1fr; }
+      .cc-sidebar { position: static; }
+      .cc-summary-head h2 { font-size: 15px; }
+      /* Match product-name at ≤900px */
+      .cc-cat-name { font-size: 15px; }
+      .cc-cat-desc { font-size: 12px; }
+    }
+    @media (max-width: 768px) {
+      .cc-step-title { font-size: 15px; }
+      .cc-step-line { width: 40px; }
+    }
+    @media (max-width: 600px) {
+      .cc-body { padding: 14px 0 40px; }
+      .co-card-body { padding: 16px 16px 22px; }
+      /* Keep 2-col full-width grid on mobile */
+      .cc-cat-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .cc-cat-card { padding: 20px 12px 16px; }
+      .cc-stepper { gap: 0; }
+      .cc-step-title { display: none; }
+      .cc-step.is-active .cc-step-title { display: block; font-size: 13px; }
+      .cc-step-line { width: 24px; margin: 0 6px; }
+      .co-form-grid { grid-template-columns: 1fr; }
+      .cc-hint { font-size: 15px; }
+    }
+    @media (max-width: 480px) {
+      .cc-cat-name { font-size: 16px; }
+      .cc-cat-card { padding: 18px 10px 14px; }
+      .cc-cat-icon svg.lucide { width: 32px; height: 32px; }
+      .cc-hint { font-size: 14px; }
+    }
+    /* ── Length hint: drop below label on narrow screens ── */
+    @media (max-width: 420px) {
+      .co-label { flex-wrap: wrap; align-items: baseline; }
+      .co-label .co-field-hint {
+        flex-basis: 100%; order: 3;
+        margin-left: 0 !important; margin-top: 2px;
+        font-size: 12px;
+      }
+    }
+
+    /* ── Redesigned cable preview ── */
+    .cc-cprev-label-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 16px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+      font-size: 13px; font-weight: 700; color: var(--dark);
+    }
+    .cc-cprev-center-lbl {
+      flex: 1; text-align: center; color: var(--gray-700); font-weight: 600; padding: 0 8px;
+    }
+    .cc-cprev-img-area {
+      padding: 10px 16px 12px; background: var(--white);
+      display: flex; align-items: center; justify-content: center; min-height: 80px;
+    }
+    .cc-cprev-full-img { max-width: 100%; max-height: 88px; object-fit: contain; }
+    .cc-cprev-bar-wrap { display: flex; align-items: center; width: 220px; }
+    .cc-cprev-len-note { font-size: 12px; color: var(--gray-500); text-align: center; padding: 3px 16px 9px; min-height: 24px; }
+
+    /* ── Special Note outside card ── */
+    .cc-special-note-wrap { margin-top: 16px; }
+    .cc-prod-time-txt { font-size: 16px; color: var(--gray-700); line-height: 1.6; margin: 0; }
+
+    /* ── Integrated cable preview inside Your Configuration ── */
+    .cc-sbar-preview {
+      padding: 14px 20px 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .cc-sbar-prev-header {
+      font-size: 12px; font-weight: 400; color: var(--gray-500);
+      text-align: center; letter-spacing: 0;
+      margin-bottom: 8px;
+    }
+    .cc-sbar-prev-labels {
+      display: flex; align-items: flex-start; margin-top: 5px;
+    }
+    .cc-sbar-prev-end-lbl {
+      font-size: 12px; font-weight: 400; color: var(--gray-500);
+      width: 60px; flex-shrink: 0; text-align: center;
+    }
+    .cc-sbar-prev-mid-lbl {
+      flex: 1; text-align: center; padding: 0 4px;
+      font-size: 12px; font-weight: 400; color: var(--gray-500);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .cc-sbar-prev-vis {
+      display: flex; align-items: center; position: relative;
+    }
+    .cc-sbar-prev-conn-img {
+      width: 64px; height: 48px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative; z-index: 1;
+    }
+    .cc-sbar-prev-conn-img img { width: 100%; height: 100%; object-fit: contain; }
+    .cc-sbar-prev-conn-img--flip img { transform: scaleX(-1); }
+    /* Wire sits behind connector images; negative margin pulls it flush under both ends */
+    .cc-sbar-prev-wire-wrap {
+      flex: 1; display: flex; align-items: center;
+      margin: 0 -15px; position: relative; z-index: 0;
+    }
+    .cc-sbar-prev-wire {
+      flex: 1; height: 10px; background: var(--gray-200);
+      border-radius: 0; transition: background var(--transition);
+    }
+    /* placeholder dashes when nothing selected */
+    .cc-sbar-prev-end-lbl.is-empty,
+    .cc-sbar-prev-mid-lbl.is-empty { color: var(--gray-400); font-style: italic; font-weight: 400; }
+
+    /* ── Sign-in prompt bar ── */
+    .cc-signin-bar {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--blue-light); border: 1px solid rgba(0,141,255,.2);
+      border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 24px;
+    }
+    .cc-signin-bar svg.lucide { width: 18px; height: 18px; color: var(--sf-primary-cta); flex-shrink: 0; stroke-width: 2; }
+    .cc-signin-bar-text { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; color: var(--dark); }
+    .cc-signin-bar-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+      padding: 4px 14px; line-height: 1.3;
+      background: var(--sf-primary-cta); color: var(--white);
+      border: none; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 700; font-family: var(--font);
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+      flex-shrink: 0; transition: background var(--transition);
+    }
+    .cc-signin-bar-btn:hover { background: var(--sf-primary-dark); color: var(--white); }
+    .cc-signin-bar-btn svg.lucide { width: 14px; height: 14px; stroke-width: 2; color: var(--white); }
+    @media (max-width: 480px) {
+      .cc-signin-bar { flex-wrap: wrap; }
+      .cc-signin-bar-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sticky-top-wrap">
+
+  <!-- ============================================================
+       ROW 1 — UTILITY BAR
+  ============================================================ -->
+  <div class="top-bar" role="complementary" aria-label="Trust and utility links">
+    <div class="container">
+      <div class="top-bar-promo">
+        <button class="promo-arrow promo-prev" aria-label="Previous promotion"><i data-lucide="chevron-left"></i></button>
+        <div class="promo-track">
+          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;10% Off — Code: <strong>MEMORIAL10</strong></span>
+          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping over $75</span>
+          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on Cables</span>
+          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping Available</span>
+        </div>
+        <button class="promo-arrow promo-next" aria-label="Next promotion"><i data-lucide="chevron-right"></i></button>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item"><i data-lucide="phone"></i><a href="tel:18882758755">1-888-275-8755</a></span>
+        <div class="top-bar-separator"></div>
+        <a href="/chat" class="top-bar-item" style="color:#ffffff; text-decoration:none;"><i data-lucide="message-circle"></i> Chat With Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ROW 2 — MIDDLE HEADER
+  ============================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <div class="header-mid">
+
+        <a href="/" class="logo" aria-label="SF Cable – Home">
+          <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="160" height="48" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="logo-fallback" style="display:none;"><span style="color:var(--red)">SF</span><span>Cable</span></div>
+        </a>
+
+        <div class="header-search-wrap" id="search-wrap">
+          <form class="header-search" role="search" action="/search" method="get" autocomplete="off">
+            <input class="search-input" id="search-input" type="search" name="q" placeholder="Search by SKU, product type, connector, cable standard, or use case" aria-label="Search products" autocomplete="off" />
+            <button class="search-btn" type="submit" aria-label="Search"><i data-lucide="search"></i></button>
+          </form>
+          <div class="search-dropdown" id="search-dropdown" role="listbox"></div>
+        </div>
+
+        <div class="header-help-wrap" id="helpMenuWrap">
+          <button class="header-help" id="helpMenuTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="helpMenuDropdown">
+            <i data-lucide="help-circle"></i> Help <i data-lucide="chevron-down" class="help-caret"></i>
+          </button>
+          <div class="header-help-dropdown" id="helpMenuDropdown" role="menu" aria-label="Help menu">
+            <a href="/get-quote" role="menuitem"><i data-lucide="file-text"></i> Get Quote</a>
+            <a href="/order-tracking" role="menuitem"><i data-lucide="package"></i> Order Tracking</a>
+            <a href="/change-cancel-order" role="menuitem"><i data-lucide="x-circle"></i> Change / Cancel Order</a>
+            <a href="/shipping-information" role="menuitem"><i data-lucide="truck"></i> Shipping Information</a>
+            <a href="/schools-government" role="menuitem"><i data-lucide="building-2"></i> Schools &amp; Government</a>
+            <a href="/payment-terms" role="menuitem"><i data-lucide="credit-card"></i> Payment Terms</a>
+            <a href="/returns-refunds" role="menuitem"><i data-lucide="rotate-ccw"></i> Returns / Refunds</a>
+            <a href="/warranty-claims" role="menuitem"><i data-lucide="shield-check"></i> Warranty / Claims</a>
+            <a href="/will-call" role="menuitem"><i data-lucide="map-pin"></i> Will Call</a>
+            <a href="/contact-us" role="menuitem"><i data-lucide="mail"></i> Contact Us</a>
+          </div>
+        </div>
+
+        <div class="mobile-contact-btns">
+          <a href="tel:+18882758755" class="mobile-contact-btn mobile-contact-phone" aria-label="Call us"><i data-lucide="phone"></i></a>
+          <a href="/live-chat" class="mobile-contact-btn mobile-contact-chat" aria-label="Live chat"><i data-lucide="message-circle"></i></a>
+        </div>
+
+        <div class="mobile-header-actions">
+          <a href="/help" class="mobile-header-btn" aria-label="Help"><i data-lucide="help-circle"></i></a>
+          <a href="/account" class="mobile-header-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+          <a href="/cart" class="mobile-header-btn" aria-label="Cart">
+            <i data-lucide="shopping-cart"></i>
+            <span class="cart-count" aria-live="polite">0</span>
+          </a>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mobile-shop-bar" id="mobile-shop-bar">
+      <div class="container">
+        <div class="mobile-shop-bar-inner">
+          <button class="mobile-shop-trigger" id="mobile-shop-toggle" aria-label="Toggle shop menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+            <span class="mobile-shop-label">Shop</span>
+          </button>
+          <div class="mobile-shop-icons">
+            <button class="mobile-shop-icon-btn" id="mobile-help-toggle" aria-label="Help" aria-expanded="false"><i data-lucide="help-circle"></i></button>
+            <a href="/account" class="mobile-shop-icon-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+            <a href="/cart" class="mobile-shop-icon-btn" aria-label="Cart">
+              <i data-lucide="shopping-cart"></i>
+              <span class="mobile-shop-cart-count" aria-live="polite">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 — BOTTOM NAV -->
+    <div class="nav-bar" id="nav-bar">
+      <div class="container">
+        <div class="nav-bar-inner">
+
+          <button class="all-cats-trigger" id="allCatsTrigger" aria-expanded="false" aria-controls="megaMenuWrap">
+            <i data-lucide="menu"></i> Shop by Category <i data-lucide="chevron-down" class="nav-caret"></i>
+          </button>
+
+          <div class="nav-actions">
+            <a href="/quick-order.html" class="nav-action-link">
+              <i data-lucide="file-text"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Fast</span>
+                <span class="nav-action-value">Quick Order</span>
+              </span>
+            </a>
+            <a href="/account" class="nav-action-link">
+              <i data-lucide="user"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Sign In</span>
+                <span class="nav-action-value">My Account</span>
+              </span>
+            </a>
+            <div class="nav-actions-sep"></div>
+            <a href="/cart" class="nav-action-link nav-action-cart">
+              <span class="nav-action-icon-wrap">
+                <i data-lucide="shopping-cart"></i>
+                <span class="nav-cart-count" id="nav-cart-count" aria-live="polite">2</span>
+              </span>
+              <span class="nav-action-text">
+                <span class="nav-action-value nav-cart-price">$99.00</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Mega Menu -->
+          <div class="mega-menu-wrap" id="megaMenuWrap" aria-hidden="true">
+      <div class="mega-menu">
+        <div class="mega-rail">
+          <button class="mega-rail-item active" data-panel="panel-accessories">Accessories <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-adapters">Adapters &amp; Connectors <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-audiovideo">Audio Video <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-cables">Cables <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-network">Network Cables &amp; Fiber Optics <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-networking">Networking <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-power">Power Cords &amp; Adapters <i data-lucide="chevron-right"></i></button>
+        </div>
+        <div class="mega-panel active" id="panel-accessories">
+          <div class="mega-panel-header"><h3 class="mega-panel-title">Accessories</h3><a href="/accessories.html" class="mega-panel-seeall">See All Accessories <i data-lucide="arrow-right"></i></a></div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">Cable Ties</a>
+            <a href="#">Plain Ties</a><a href="#">Releasable Cable Ties</a><a href="#">Hook and Loop Ties</a><a href="#">Wall Mountable Ties</a><a href="#">Spiral Zip Wrap</a>
+            <a href="#" class="mega-col-head">Power Supplies / Batteries</a>
+            <a href="#">AC/DC Adapters</a><a href="#">Car Charger</a><a href="#">USB / Mobile Chargers</a>
+            <a href="#" class="mega-col-head">Security Camera</a>
+            <a href="#">CCTV Camera</a><a href="#">Camera Cables/Adapters</a><a href="#">Camera Mounts / Housing Brackets</a>
+            <a href="#" class="mega-col-head">Home/Office Accessories</a>
+            <a href="#">Flat TV Mounts</a><a href="#">KVM Switches</a><a href="#">Tools &amp; Testers</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-adapters">
+          <div class="mega-panel-header"><h3 class="mega-panel-title">Adapters &amp; Connectors</h3><a href="/adapters-connectors.html" class="mega-panel-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a></div>
+          <div class="mega-col-flow">
+            <a href="#">BNC Connectors</a><a href="#">DisplayPort and Mini DP Adapters</a><a href="#">DVI/Displayport Adapters</a>
+            <a href="#">F Type Connectors</a><a href="#">RCA Connectors/Adapters</a><a href="#">D-Sub Connectors</a>
+            <a href="#">USB Couplers / Adapters</a><a href="#">USB Keystone Jacks</a><a href="#">Toslink Adapters</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-audiovideo">
+          <div class="mega-panel-header"><h3 class="mega-panel-title">Audio Video</h3><a href="/audio-video.html" class="mega-panel-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a></div>
+          <div class="mega-col-flow">
+            <a href="#">XLR / XLR Cables</a><a href="#">RCA Cables</a><a href="#">Speaker Wires</a>
+            <a href="#">Component Video Cables</a><a href="#">Switches &amp; Splitters</a><a href="#">Wall Plates</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-cables">
+          <div class="mega-panel-header"><h3 class="mega-panel-title">Cables</h3><a href="/cables.html" class="mega-panel-seeall">See All Cables <i data-lucide="arrow-right"></i></a></div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">HDMI</a>
+            <a href="#">HDMI Cables</a><a href="#">HDMI Adapters</a><a href="#">HDMI Extension Cables</a>
+            <a href="#" class="mega-col-head">USB</a>
+            <a href="#">USB Cables</a><a href="#">USB Hubs</a><a href="#">USB Extenders</a>
+            <a href="#" class="mega-col-head">Bulk Wire &amp; Cables</a>
+            <a href="#">RG59 / RG6 Coaxial Bulk Cable</a><a href="#">Speaker Bulk Wire</a><a href="#">THHN Building Wire</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-network">
+          <div class="mega-panel-header"><h3 class="mega-panel-title">Network Cables &amp; Fiber Optics</h3><a href="/network-cables.html" class="mega-panel-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a></div>
+          <div class="mega-col-flow">
+            <a href="#">Cat 5E Cables</a><a href="#">Cat 6 Cables</a><a href="#">Cat 6A Cables</a><a href="#">Cat 8 Shielded Booted Cables</a>
+            <a href="#" class="mega-col-head">Fiber Optic Products</a>
+            <a href="#">OM3 Multimode Duplex</a><a href="#">OM4 Multimode Duplex</a><a href="#">Singlemode</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-networking">
+          <div class="mega-panel-header"><h3 class="mega-panel-title">Networking</h3><a href="/networking.html" class="mega-panel-seeall">See All Networking <i data-lucide="arrow-right"></i></a></div>
+          <div class="mega-col-flow">
+            <a href="#">Patch Panels</a><a href="#">Keystone Jacks</a><a href="#">Cable Management</a><a href="#">Media Converter</a>
+            <a href="#" class="mega-col-head">Networking Racks</a>
+            <a href="#">Floorstand Racks</a><a href="#">Wallmount Racks</a>
+          </div>
+        </div>
+        <div class="mega-panel" id="panel-power">
+          <div class="mega-panel-header"><h3 class="mega-panel-title">Power Cords &amp; Adapters</h3><a href="/power-cords-adapters.html" class="mega-panel-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a></div>
+          <div class="mega-col-flow">
+            <a href="#">Extension Power Cords</a><a href="#">Multi-Outlet Extension Cords</a><a href="#">Right Angle Power Cords</a>
+            <a href="#" class="mega-col-head">NEMA Power Cords</a>
+            <a href="#">NEMA 5-15 to IEC 320 C13</a><a href="#">NEMA 5-20</a><a href="#">NEMA L5-20 Locking</a>
+            <a href="#" class="mega-col-head">Power Strips</a>
+            <a href="#">Power Strip</a><a href="#">PDU</a>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <div class="mob-nav-panel" id="mob-tab-shop">
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Accessories <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/accessories.html" class="mob-cat-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Cable Ties</a><a href="#">Power Supplies</a><a href="#">Security Camera</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Adapters &amp; Connectors <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/adapters-connectors.html" class="mob-cat-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">BNC Connectors</a><a href="#">DisplayPort Adapters</a><a href="#">USB Couplers</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Audio Video <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/audio-video.html" class="mob-cat-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">XLR Cables</a><a href="#">Speaker Wires</a><a href="#">Wall Plates</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Cables <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/cables.html" class="mob-cat-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">HDMI Cables</a><a href="#">USB Cables</a><a href="#">Bulk Wire</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Network Cables &amp; Fiber <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/network-cables.html" class="mob-cat-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Cat 5E Cables</a><a href="#">Cat 6 Cables</a><a href="#">Cat 8 Cables</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Networking <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/networking.html" class="mob-cat-seeall">See All Networking <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Patch Panels</a><a href="#">Networking Racks</a><a href="#">Telephone</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Power Cords &amp; Adapters <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/power-cords-adapters.html" class="mob-cat-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Extension Cords</a><a href="#">NEMA Power Cords</a><a href="#">Power Strips</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="mob-nav-panel" id="mob-tab-account" style="display:none">
+        <div class="mob-help-header">
+          <span class="mob-help-title"><i data-lucide="help-circle"></i> Help</span>
+          <button class="mob-help-close" id="mob-help-close" aria-label="Close Help menu"><i data-lucide="x"></i></button>
+        </div>
+        <a href="/quick-order.html" class="mobile-nav-link"><i data-lucide="zap"></i> <span>Quick Order</span></a>
+        <a href="/custom-cable.html" class="mobile-nav-link"><i data-lucide="settings-2"></i> <span>Custom Cable</span></a>
+        <a href="/get-quote" class="mobile-nav-link"><i data-lucide="file-text"></i> <span>Get Quote</span></a>
+        <a href="/order-tracking" class="mobile-nav-link"><i data-lucide="package"></i> <span>Order Tracking</span></a>
+        <a href="/returns-refunds" class="mobile-nav-link"><i data-lucide="rotate-ccw"></i> <span>Returns / Refunds</span></a>
+        <a href="/warranty-claims" class="mobile-nav-link"><i data-lucide="shield-check"></i> <span>Warranty / Claims</span></a>
+        <a href="/contact-us" class="mobile-nav-link"><i data-lucide="mail"></i> <span>Contact Us</span></a>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  </div><!-- /sticky-top-wrap -->
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         BREADCRUMB
+    ============================================================ -->
+    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Custom Cable</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         PAGE TITLE + DESCRIPTION
+    ============================================================ -->
+    <section class="section--page-title" aria-labelledby="cc-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-row">
+            <h1 class="section-title listing-page-heading" id="cc-heading">Custom Cable</h1>
+          </div>
+        </div>
+        <div class="cc-page-desc">
+          <p style="margin:0;" class="cc-prod-time-txt">All Custom Cable production time is 7–10 business days</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CUSTOM CABLE BUILDER
+    ============================================================ -->
+    <section class="cc-body" aria-label="Custom Cable Builder">
+      <div class="container">
+        <div class="cc-layout">
+
+          <!-- ── LEFT: Builder ── -->
+          <div class="cc-main" id="cc-main">
+
+            <!-- Step progress indicator -->
+            <div class="cc-stepper" role="list" aria-label="Builder steps">
+              <div class="cc-step is-active" id="cc-step1-ind" role="listitem">
+                <div class="cc-step-num">1</div>
+                <span class="cc-step-title">Select Category</span>
+              </div>
+              <div class="cc-step-line" id="cc-step-line-1"></div>
+              <div class="cc-step" id="cc-step2-ind" role="listitem">
+                <div class="cc-step-num">2</div>
+                <span class="cc-step-title">Design Cable</span>
+              </div>
+            </div>
+
+            <!-- ══════════════════════════════════
+                 STEP 1 — Select Category
+            ══════════════════════════════════ -->
+            <div class="cc-step-panel is-active" id="cc-panel-1">
+
+              <!-- Category selection card -->
+              <div class="co-card">
+                <div class="co-card-head"><h2>Select Category</h2></div>
+                <div class="co-card-body">
+                  <p class="cc-hint">Select the cable category to begin designing your custom cable.</p>
+                  <div class="cc-cat-grid" id="cc-cat-grid" role="radiogroup" aria-label="Cable category selection">
+
+                    <div class="cc-cat-card" data-cat="fiber" data-cat-name="Fiber Optics"
+                         role="radio" aria-checked="false" tabindex="0">
+                      <div class="cc-cat-check" aria-hidden="true"><i data-lucide="check"></i></div>
+                      <div class="cc-cat-img">
+                        <img src="images/cable/fiber_optics.png" alt="Fiber Optics" />
+                      </div>
+                      <span class="cc-cat-name">Fiber Optics</span>
+                      <span class="cc-cat-desc">LC, SC, ST<br>Multimode &amp; Singlemode</span>
+                    </div>
+
+                    <div class="cc-cat-card" data-cat="ethernet" data-cat-name="Ethernet Cable (RJ45 Cat5e. Cat6)"
+                         role="radio" aria-checked="false" tabindex="0">
+                      <div class="cc-cat-check" aria-hidden="true"><i data-lucide="check"></i></div>
+                      <div class="cc-cat-img">
+                        <img src="images/cable/ethernet-cable-_rj45-cat5e.-cat6__2.png" alt="Ethernet Cable" />
+                      </div>
+                      <span class="cc-cat-name">Ethernet Cable (RJ45 Cat5e. Cat6)</span>
+                      <span class="cc-cat-desc">RJ45 with Boot, Non-Boot, Shielded<br>CAT5E, CAT6, CAT6A</span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /panel-1 -->
+
+            <!-- ══════════════════════════════════
+                 STEP 2 — Design Cable
+            ══════════════════════════════════ -->
+            <div class="cc-step-panel" id="cc-panel-2">
+
+              <!-- Selected category bar -->
+              <div class="cc-cat-bar" id="cc-cat-bar">
+                <i data-lucide="tag"></i>
+                <span class="cc-cat-bar-text" id="cc-cat-bar-label">Category: —</span>
+                <button type="button" class="cc-cat-change-btn" id="cc-change-cat">Change</button>
+              </div>
+
+              <div class="co-card">
+                <div class="co-card-head"><h2>Design Cable</h2></div>
+                <div class="co-card-body" style="padding:0;">
+
+                  <!-- ══ CONNECTOR A section ══ -->
+                  <div class="cc-design-section" id="cc-ds-connA">
+                    <button class="cc-design-btn" type="button" id="cc-ds-btn-connA">
+                      <div class="cc-design-btn-left">
+                        <div class="cc-design-badge">A</div>
+                        <div>
+                          <div class="cc-design-btn-title">Connector A</div>
+                          <div class="cc-design-btn-sel" id="cc-ds-sel-connA">Click to select connector</div>
+                        </div>
+                      </div>
+                      <i data-lucide="chevron-down" class="cc-design-chevron"></i>
+                    </button>
+                    <div class="cc-design-content" id="cc-ds-content-connA">
+                      <div class="cc-img-grid" id="cc-conn-a-grid" role="radiogroup" aria-label="Connector A"></div>
+                      <p class="cc-opt-error" id="cc-err-conn-a">Please select Connector A.</p>
+                      <p class="cc-angle-label" id="cc-angle-a-label">Orientation / Angle</p>
+                      <div class="cc-angle-row" id="cc-angle-a-grid" role="radiogroup" aria-label="Connector A angle"></div>
+                      <div class="cc-end-label-wrap">
+                        <div class="co-field">
+                          <label class="co-label" for="cc-label-a">End A Label <span class="co-field-hint" style="margin:0 0 0 6px;">(optional)</span></label>
+                          <input class="co-input" type="text" id="cc-label-a" name="label_a" placeholder="e.g. Server Room A" maxlength="40" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ══ CABLE TYPE section ══ -->
+                  <div class="cc-design-section" id="cc-ds-cable">
+                    <button class="cc-design-btn" type="button" id="cc-ds-btn-cable">
+                      <div class="cc-design-btn-left">
+                        <div class="cc-design-badge"><i data-lucide="minus"></i></div>
+                        <div>
+                          <div class="cc-design-btn-title">Cable Type</div>
+                          <div class="cc-design-btn-sel" id="cc-ds-sel-cable">Click to select cable type</div>
+                        </div>
+                      </div>
+                      <i data-lucide="chevron-down" class="cc-design-chevron"></i>
+                    </button>
+                    <div class="cc-design-content" id="cc-ds-content-cable">
+                      <div class="cc-img-grid" id="cc-cable-grid" role="radiogroup" aria-label="Cable type"></div>
+                      <p class="cc-opt-error" id="cc-err-cable">Please select a cable type.</p>
+
+                      <div class="co-section-sep" style="margin:16px 0 14px;"></div>
+
+                      <!-- Length, Qty, Color fields -->
+                      <div class="co-field co-field-full" style="margin-bottom:14px;">
+                        <label class="co-label">Length <span class="co-required">*</span> <span class="co-field-hint" style="font-weight:400;margin-left:4px;">(measurement of cable without Connectors)</span></label>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;">
+                          <div class="co-field" id="field-length-ft" style="margin:0;">
+                            <label class="co-label" for="cc-length-ft" style="font-size:13px;font-weight:500;color:var(--gray-600);">ft</label>
+                            <input class="co-input" type="number" id="cc-length-ft" name="length_ft" placeholder="0" min="0" />
+                          </div>
+                          <div class="co-field" style="margin:0;">
+                            <label class="co-label" for="cc-length-in" style="font-size:13px;font-weight:500;color:var(--gray-600);">in</label>
+                            <input class="co-input" type="number" id="cc-length-in" name="length_in" placeholder="0" min="0" max="11" />
+                          </div>
+                        </div>
+                        <p class="cc-opt-error" id="cc-err-length" style="margin-top:6px;">Please enter a cable length in feet.</p>
+                      </div>
+                      <div class="co-form-grid">
+                        <div class="co-field" id="field-step2-qty">
+                          <label class="co-label" for="cc-qty">Qty <span class="co-required">*</span></label>
+                          <input class="co-input" type="number" id="cc-qty" name="qty" placeholder="e.g. 10" min="1" />
+                          <p class="cc-opt-error" id="cc-err-qty">Please enter a quantity.</p>
+                        </div>
+                        <div class="co-field" id="field-color">
+                          <label class="co-label" for="cc-color">Color <span class="co-required">*</span></label>
+                          <input class="co-input" type="text" id="cc-color" name="color" placeholder="e.g. Blue, Black" />
+                          <p class="cc-opt-error" id="cc-err-color">Please enter a color.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ══ CONNECTOR B section ══ -->
+                  <div class="cc-design-section" id="cc-ds-connB">
+                    <button class="cc-design-btn" type="button" id="cc-ds-btn-connB">
+                      <div class="cc-design-btn-left">
+                        <div class="cc-design-badge">B</div>
+                        <div>
+                          <div class="cc-design-btn-title">Connector B</div>
+                          <div class="cc-design-btn-sel" id="cc-ds-sel-connB">Click to select connector</div>
+                        </div>
+                      </div>
+                      <i data-lucide="chevron-down" class="cc-design-chevron"></i>
+                    </button>
+                    <div class="cc-design-content" id="cc-ds-content-connB">
+                      <div class="cc-img-grid" id="cc-conn-b-grid" role="radiogroup" aria-label="Connector B"></div>
+                      <p class="cc-opt-error" id="cc-err-conn-b">Please select Connector B.</p>
+                      <p class="cc-angle-label" id="cc-angle-b-label">Orientation / Angle</p>
+                      <div class="cc-angle-row" id="cc-angle-b-grid" role="radiogroup" aria-label="Connector B angle"></div>
+                      <div class="cc-end-label-wrap">
+                        <div class="co-field">
+                          <label class="co-label" for="cc-label-b">End B Label <span class="co-field-hint" style="margin:0 0 0 6px;">(optional)</span></label>
+                          <input class="co-input" type="text" id="cc-label-b" name="label_b" placeholder="e.g. Patch Panel Port 12" maxlength="40" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hidden compat elements for JS -->
+                  <span id="diag-conn-a" style="display:none;"></span>
+                  <span id="diag-cable-type" style="display:none;"></span>
+                  <span id="diag-conn-b" style="display:none;"></span>
+                  <span id="diag-angle-a" style="display:none;"></span>
+                  <span id="diag-lbl-a" style="display:none;"></span>
+                  <span id="diag-angle-b" style="display:none;"></span>
+                  <span id="diag-lbl-b" style="display:none;"></span>
+                  <div id="diag-cable-len" style="display:none;"></div>
+                  <div id="diag-plug-l" style="display:none;"></div>
+                  <div id="diag-wire" style="display:none;"></div>
+                  <div id="diag-plug-r" style="display:none;"></div>
+                  <img id="diag-cable-full-img" src="" alt="" style="display:none;">
+                  <div id="diag-icon-a" style="display:none;"></div>
+                  <div id="diag-icon-b" style="display:none;"></div>
+                  <div id="diag-cat-label" style="display:none;"></div>
+
+                </div>
+              </div><!-- /co-card -->
+
+              <!-- Special Note — outside design card -->
+              <div class="cc-special-note-wrap">
+                <div class="co-field">
+                  <label class="co-label" for="cc-notes">Special Note <span class="co-field-hint" style="margin:0 0 0 6px;">(optional)</span></label>
+                  <textarea class="co-textarea" id="cc-notes" name="notes" rows="3"
+                    placeholder="Jacket color, boot style, plenum-rated, polarity, IP rating, bend radius, rush production, etc."></textarea>
+                </div>
+              </div>
+
+              <!-- Step 2 actions -->
+              <div class="cc-form-actions">
+                <button type="button" class="cc-back-btn" id="cc-to-step1">
+                  <i data-lucide="arrow-left"></i> Back
+                </button>
+                <button type="button" class="cc-continue-btn" id="cc-to-step3">
+                  Next <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+
+            </div><!-- /panel-2 -->
+
+
+            <!-- ── Success state ── -->
+            <div class="cc-success co-card" id="cc-success">
+              <div class="cc-success-icon"><i data-lucide="check-circle-2"></i></div>
+              <h2>Quote Request Submitted</h2>
+              <p>Thank you — your custom cable request has been received. Our team will review your configuration and reach out within <strong>1 business day</strong> with a quote and lead time confirmation.</p>
+              <a href="/" class="cc-continue-btn" style="display:inline-flex; text-decoration:none; margin: 0 auto;">
+                <i data-lucide="home"></i> Return to Home
+              </a>
+            </div>
+
+          </div><!-- /cc-main -->
+
+          <!-- ── RIGHT: Sticky Configuration Summary ── -->
+          <aside class="cc-sidebar" aria-label="Configuration summary">
+
+            <!-- Your Configuration summary (with cable preview at top) -->
+            <div class="cc-summary" id="sbar-preview-card">
+              <div class="co-card-head">
+                <h2 id="cc-config-heading">Your Configuration</h2>
+              </div>
+
+              <!-- Integrated cable preview -->
+              <div class="cc-sbar-preview">
+                <div class="cc-sbar-prev-header">Cable Preview</div>
+                <!-- Visual row: connector image | wire | connector image -->
+                <div class="cc-sbar-prev-vis">
+                  <div class="cc-sbar-prev-conn-img" id="sbar-icon-a"></div>
+                  <div class="cc-sbar-prev-wire-wrap">
+                    <div class="cc-sbar-prev-wire" id="sbar-wire"></div>
+                  </div>
+                  <div class="cc-sbar-prev-conn-img cc-sbar-prev-conn-img--flip" id="sbar-icon-b"></div>
+                </div>
+                <!-- Labels row below: ConnA | Cable type | ConnB -->
+                <div class="cc-sbar-prev-labels">
+                  <span class="cc-sbar-prev-end-lbl is-empty" id="sbar-conn-a">—</span>
+                  <span class="cc-sbar-prev-mid-lbl is-empty" id="sbar-type">—</span>
+                  <span class="cc-sbar-prev-end-lbl is-empty" id="sbar-conn-b">—</span>
+                </div>
+              </div>
+              <div class="cc-summary-body">
+                <div class="cc-sum-row">
+                  <div class="cc-sum-icon"><i data-lucide="layers"></i></div>
+                  <div class="cc-sum-content">
+                    <div class="cc-sum-key">Category</div>
+                    <div class="cc-sum-val is-empty" id="sum-cat">Not selected</div>
+                  </div>
+                </div>
+                <div class="cc-sum-row">
+                  <div class="cc-sum-icon"><i data-lucide="plug"></i></div>
+                  <div class="cc-sum-content">
+                    <div class="cc-sum-key">Connector A</div>
+                    <div class="cc-sum-val is-empty" id="sum-conn-a">—</div>
+                  </div>
+                </div>
+                <div class="cc-sum-row">
+                  <div class="cc-sum-icon"><i data-lucide="zap"></i></div>
+                  <div class="cc-sum-content">
+                    <div class="cc-sum-key">Cable Type</div>
+                    <div class="cc-sum-val is-empty" id="sum-cable">—</div>
+                  </div>
+                </div>
+                <div class="cc-sum-row">
+                  <div class="cc-sum-icon"><i data-lucide="plug"></i></div>
+                  <div class="cc-sum-content">
+                    <div class="cc-sum-key">Connector B</div>
+                    <div class="cc-sum-val is-empty" id="sum-conn-b">—</div>
+                  </div>
+                </div>
+                <div class="cc-sum-row">
+                  <div class="cc-sum-icon"><i data-lucide="ruler"></i></div>
+                  <div class="cc-sum-content">
+                    <div class="cc-sum-key">Length</div>
+                    <div class="cc-sum-val is-empty" id="sum-length">—</div>
+                  </div>
+                </div>
+                <div class="cc-sum-row">
+                  <div class="cc-sum-icon"><i data-lucide="hash"></i></div>
+                  <div class="cc-sum-content">
+                    <div class="cc-sum-key">Quantity</div>
+                    <div class="cc-sum-val is-empty" id="sum-qty">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </aside>
+
+        </div><!-- /cc-layout -->
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER TRUST BAR
+    ============================================================ -->
+    <section class="footer-trust-bar" aria-label="Trust and credentials">
+      <div class="container">
+        <div class="footer-trust-slider-wrap">
+          <button class="footer-trust-prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <div class="footer-trust-inner">
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="history"></i></div>
+              <div class="footer-trust-text"><strong>20+ Years of Industry</strong><span>Expertise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="award"></i></div>
+              <div class="footer-trust-text"><strong>Lifetime Warranty</strong><span>on Cables</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="package-open"></i></div>
+              <div class="footer-trust-text"><strong>No Minimum Order</strong><span>or Fees</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="truck"></i></div>
+              <div class="footer-trust-text"><strong>Same-Day Shipping</strong><span>on Stock Items</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="rotate-ccw"></i></div>
+              <div class="footer-trust-text"><strong>60-Day Money-Back</strong><span>Promise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="headphones"></i></div>
+              <div class="footer-trust-text"><strong>Free Lifetime</strong><span>Technical Support</span></div>
+            </div>
+          </div>
+          <button class="footer-trust-next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" aria-label="SF Cable – Home">
+            <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="140" height="42" loading="lazy" onerror="this.style.display='none'" />
+          </a>
+          <p>Your trusted source for cables, connectors &amp; AV gear since 1996. Over 40,000 products in stock &amp; shipped fast.</p>
+          <form class="footer-brand-form newsletter-form" aria-label="Newsletter signup">
+            <div class="newsletter-inline">
+              <input class="newsletter-input" type="email" placeholder="Work email address" aria-label="Email address" required />
+              <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+            </div>
+            <p class="newsletter-note">No spam. <a href="/privacy-policy">Privacy Policy</a>.</p>
+          </form>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="X / Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.263 5.633 5.901-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col open">
+          <h4>Information<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/about">About SF Cable</a></li>
+            <li><a href="/shipping-information">Shipping Info</a></li>
+            <li><a href="/returns-refunds">Returns &amp; Refunds</a></li>
+            <li><a href="/warranty-claims">Warranty</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/order-tracking">Track My Order</a></li>
+            <li><a href="/quick-order.html">Quick Order</a></li>
+            <li><a href="/custom-cable.html">Custom Cable</a></li>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/clearance">Clearance</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Shop<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/hdmi-cables.html">HDMI Cables</a></li>
+            <li><a href="/usb-cables.html">USB Cables</a></li>
+            <li><a href="/network-cables.html">Ethernet Cables</a></li>
+            <li><a href="/fiber-optics.html">Fiber Optics</a></li>
+            <li><a href="/power-cords.html">Power Cords</a></li>
+            <li><a href="/adapters-connectors.html">Adapters &amp; Connectors</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <div class="footer-contact">
+            <a href="tel:18882758755"><i data-lucide="phone"></i> 1-888-275-8755</a>
+            <a href="mailto:sales@sfcable.com"><i data-lucide="mail"></i> sales@sfcable.com</a>
+            <a href="/contact"><i data-lucide="map-pin"></i> Fremont, CA — Mon–Fri 8AM–5PM PST</a>
+            <a href="/chat"><i data-lucide="message-circle"></i> Live Chat</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-badges">
+        <div class="footer-badge-group" aria-label="Accreditations and certifications">
+          <a href="#" class="footer-badge" aria-label="CMAS — California Multiple Award Schedule"><img src="images/CMAS.png" alt="CMAS — California Multiple Award Schedule" /></a>
+          <a href="#" class="footer-badge" aria-label="GSA Contract Holder"><img src="images/GSA.jpg" alt="GSA Contract Holder" /></a>
+          <a href="#" class="footer-badge" aria-label="BBB Accredited Business"><img src="images/blue.png" alt="BBB Accredited Business" /></a>
+        </div>
+        <a href="#" class="footer-reviews" aria-label="7,786 Certified Reviews, powered by YOTPO">
+          <img src="images/yotpo-badge.png" alt="7,786 Certified Reviews – Powered by YOTPO" class="footer-yotpo-img" />
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SF Cable, Inc. All rights reserved. Fremont, CA 94538</p>
+        <div class="footer-payments">
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Visa"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Mastercard"><rect width="50" height="32" rx="3.5" fill="#1a1a1a"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="American Express"><rect width="50" height="32" rx="3.5" fill="#007BC1"/><text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Discover"><rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/><circle cx="49" cy="16" r="13" fill="#F76F20"/><text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text></svg></span>
+          <span class="payment-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="PayPal"><rect width="50" height="32" rx="3.5" fill="#003087"/><text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text></svg></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-trust-strip">
+      <p>SSL Secured Checkout · RoHS Compliant · TAA Compliant Products Available · GSA Schedule · <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-conditions">Terms</a></p>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top"><i data-lucide="chevron-up"></i></a>
+
+  <script>
+    /* ══════════════════════════════════════════════════════════
+       CABLE CONFIGURATION DATA
+    ══════════════════════════════════════════════════════════ */
+    /* ── Local product images from images/cable/ ── */
+    var IMG = 'images/cable/';
+    var CONN_IMGS = {
+      'lc':           IMG + 'lc_a__1_2.png',
+      'sc':           IMG + 'sc_a__1_2.png',
+      'st':           IMG + 'st_a__1_2.png',
+      'rj45-boot':    IMG + 'rj45-with-boot-3_a__2.png',
+      'rj45-nonboot': IMG + 'rj45-non-boot-2_a__1_2.png',
+      'rj45-shielded':IMG + 'shielded-rj45-2_a__2.png'
+    };
+
+    var CABLE_DATA = {
+      fiber: {
+        name: 'Fiber Optics',
+        connectors: [
+          { id: 'lc', label: 'LC' },
+          { id: 'sc', label: 'SC' },
+          { id: 'st', label: 'ST' }
+        ],
+        cables: [
+          { id: 'mm-10gb', label: '10GB 50/125 Aqua',          img: IMG + 'fiber-aqua_3_2.png',        lineColor: '#26A69A' },
+          { id: 'mm-50',   label: '50/125 Duplex Multimode',   img: IMG + 'fiber-multimode_4_2.png',   lineColor: '#C84B3A' },
+          { id: 'mm-625',  label: '62.5/125 Duplex Multimode', img: IMG + 'fiber-multimode_5_1.png',   lineColor: '#E8673A' },
+          { id: 'sm-9',    label: '9/125 Duplex Single Mode',  img: IMG + 'fiber-single-mode_3_2.png', lineColor: '#F5C518' }
+        ]
+      },
+      ethernet: {
+        name: 'Ethernet Cable (RJ45 Cat5e. Cat6)',
+        connectors: [
+          { id: 'rj45-boot',     label: 'RJ45 with Boot' },
+          { id: 'rj45-nonboot',  label: 'RJ45-Non-boot' },
+          { id: 'rj45-shielded', label: 'Shielded RJ45' }
+        ],
+        cables: [
+          { id: 'cat5e', label: 'CAT5E', img: IMG + 'cat5e-ethernet_3_3.png', lineColor: '#5B8DD9' },
+          { id: 'cat6',  label: 'CAT6',  img: IMG + 'cat5e-ethernet_4_3.png', lineColor: '#3A7BD5' },
+          { id: 'cat6a', label: 'CAT6A', img: IMG + 'cat5e-ethernet_5_3.png', lineColor: '#1A5CC8' }
+        ]
+      }
+    };
+
+    var ANGLE_OPTIONS = [
+      { id: 'straight', label: 'Straight' },
+      { id: '90deg',    label: '90° Right Angle' }
+    ];
+
+    /* ── State ── */
+    var state = {
+      cat: null,
+      connA: null, angleA: 'straight', labelA: '',
+      cable: null,
+      connB: null, angleB: 'straight', labelB: ''
+    };
+
+    /* ── DOM refs ── */
+    var step1Ind     = document.getElementById('cc-step1-ind');
+    var step2Ind     = document.getElementById('cc-step2-ind');
+    var step3Ind     = document.getElementById('cc-step3-ind');
+    var stepLine1    = document.getElementById('cc-step-line-1');
+    var stepLine2    = document.getElementById('cc-step-line-2');
+    var panel1       = document.getElementById('cc-panel-1');
+    var panel2       = document.getElementById('cc-panel-2');
+    var panel3       = document.getElementById('cc-panel-3');
+    var success      = document.getElementById('cc-success');
+    var catGrid      = document.getElementById('cc-cat-grid');
+    var catBarLabel  = document.getElementById('cc-cat-bar-label');
+    var toStep3Btn   = document.getElementById('cc-to-step3');
+    var toStep2bBtn  = document.getElementById('cc-to-step2-b');
+    var toStep1Btn   = document.getElementById('cc-to-step1');
+    var changeCatBtn = document.getElementById('cc-change-cat');
+    var editDesignBtn= document.getElementById('cc-edit-design');
+    var submitBtn    = document.getElementById('cc-submit');
+    var sidebarBtn   = document.getElementById('cc-quote-sidebar');
+    var connAGrid    = document.getElementById('cc-conn-a-grid');
+    var angleAGrid   = document.getElementById('cc-angle-a-grid');
+    var connBGrid    = document.getElementById('cc-conn-b-grid');
+    var angleBGrid   = document.getElementById('cc-angle-b-grid');
+    var cableGrid    = document.getElementById('cc-cable-grid');
+    var errConnA     = document.getElementById('cc-err-conn-a');
+    var errCable     = document.getElementById('cc-err-cable');
+    var errConnB     = document.getElementById('cc-err-conn-b');
+    var errLength    = document.getElementById('cc-err-length');
+    var lenFtInput   = document.getElementById('cc-length-ft');
+    var lenInInput   = document.getElementById('cc-length-in');
+    var labelAInput  = document.getElementById('cc-label-a');
+    var labelBInput  = document.getElementById('cc-label-b');
+    var nameInput    = document.getElementById('cc-name');
+    var emailInput   = document.getElementById('cc-email');
+    var qtyInput     = document.getElementById('cc-qty');
+    var colorInput   = document.getElementById('cc-color');
+
+    /* ── Diagram elements (step 2 live) ── */
+    var diagEndA      = document.getElementById('diag-end-a');
+    var diagConnA     = document.getElementById('diag-conn-a');
+    var diagAngleA    = document.getElementById('diag-angle-a');
+    var diagLblA      = document.getElementById('diag-lbl-a');
+    var diagPlugL     = document.getElementById('diag-plug-l');
+    var diagWire      = document.getElementById('diag-wire');
+    var diagPlugR     = document.getElementById('diag-plug-r');
+    var diagCableType = document.getElementById('diag-cable-type');
+    var diagCableLen  = document.getElementById('diag-cable-len');
+    var diagEndB      = document.getElementById('diag-end-b');
+    var diagConnB     = document.getElementById('diag-conn-b');
+    var diagAngleB    = document.getElementById('diag-angle-b');
+    var diagLblB      = document.getElementById('diag-lbl-b');
+
+    /* ── Review diagram (step 3) ── */
+    var revConnA  = document.getElementById('rev-conn-a');
+    var revAngleA = document.getElementById('rev-angle-a');
+    var revLblA   = document.getElementById('rev-lbl-a');
+    var revEndA   = document.getElementById('rev-end-a');
+    var revCableType = document.getElementById('rev-cable-type');
+    var revCableLen  = document.getElementById('rev-cable-len');
+    var revConnB  = document.getElementById('rev-conn-b');
+    var revAngleB = document.getElementById('rev-angle-b');
+    var revLblB   = document.getElementById('rev-lbl-b');
+    var revEndB   = document.getElementById('rev-end-b');
+
+    /* ── Summary sidebar refs ── */
+    var sumCat    = document.getElementById('sum-cat');
+    var sumConnA  = document.getElementById('sum-conn-a');
+    var sumCable  = document.getElementById('sum-cable');
+    var sumConnB  = document.getElementById('sum-conn-b');
+    var sumLength = document.getElementById('sum-length');
+    var sumQty    = document.getElementById('sum-qty');
+
+    /* ══════════════════════════════════════════════════════════
+       HELPERS
+    ══════════════════════════════════════════════════════════ */
+    function setSumVal(el, val) {
+      el.textContent = val || '—';
+      el.classList.toggle('is-empty', !val);
+    }
+
+    /* Build image-card tiles — connectors use real sfcable.com product photos */
+    function buildImgTiles(container, items, groupKey) {
+      container.innerHTML = '';
+      items.forEach(function(item) {
+        var tile = document.createElement('button');
+        tile.type = 'button';
+        tile.className = 'cc-img-tile';
+        tile.setAttribute('data-id', item.id);
+        tile.setAttribute('role', 'radio');
+        tile.setAttribute('aria-checked', 'false');
+
+        var visual = document.createElement('div');
+        visual.className = 'cc-img-tile-visual';
+        var imgUrl = CONN_IMGS[item.id];
+        if (imgUrl) {
+          var img = document.createElement('img');
+          img.src = imgUrl;
+          img.alt = item.label;
+          img.style.cssText = 'width:100%;height:100%;object-fit:contain;display:block;';
+          visual.appendChild(img);
+        } else {
+          visual.style.cssText = 'font-size:20px;font-weight:800;color:#008dff;';
+          visual.textContent = item.label.substring(0, 2);
+        }
+
+        var lbl = document.createElement('div');
+        lbl.className = 'cc-img-tile-name';
+        lbl.textContent = item.label;
+
+        var chk = document.createElement('div');
+        chk.className = 'cc-img-check';
+        chk.setAttribute('aria-hidden', 'true');
+        chk.innerHTML = '<i data-lucide="check"></i>';
+
+        tile.appendChild(chk);
+        tile.appendChild(visual);
+        tile.appendChild(lbl);
+        tile.addEventListener('click', function() { selectImgTile(container, tile, groupKey, item.id, item.label); });
+        container.appendChild(tile);
+      });
+      lucide.createIcons({ attrs: { 'stroke-width': '3' } });
+    }
+
+    /* Build cable type tiles — real sfcable.com cable swatch photos */
+    function buildSwatchTiles(container, items, groupKey) {
+      container.innerHTML = '';
+      items.forEach(function(item) {
+        var tile = document.createElement('button');
+        tile.type = 'button';
+        tile.className = 'cc-img-tile';
+        tile.setAttribute('data-id', item.id);
+        tile.setAttribute('role', 'radio');
+        tile.setAttribute('aria-checked', 'false');
+
+        var visual = document.createElement('div');
+        visual.className = 'cc-img-tile-visual is-swatch';
+        if (item.img) {
+          var img = document.createElement('img');
+          img.src = item.img;
+          img.alt = item.label;
+          img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+          visual.appendChild(img);
+        }
+
+        var lbl = document.createElement('div');
+        lbl.className = 'cc-img-tile-name';
+        lbl.textContent = item.label;
+
+        var chk = document.createElement('div');
+        chk.className = 'cc-img-check';
+        chk.setAttribute('aria-hidden', 'true');
+        chk.innerHTML = '<i data-lucide="check"></i>';
+
+        tile.appendChild(chk);
+        tile.appendChild(visual);
+        tile.appendChild(lbl);
+        tile.addEventListener('click', function() { selectImgTile(container, tile, groupKey, item.id, item.label); });
+        container.appendChild(tile);
+      });
+      lucide.createIcons({ attrs: { 'stroke-width': '3' } });
+    }
+
+    function selectImgTile(container, tile, groupKey, id, label) {
+      container.querySelectorAll('.cc-img-tile').forEach(function(t) {
+        t.classList.remove('is-selected');
+        t.setAttribute('aria-checked', 'false');
+      });
+      tile.classList.add('is-selected');
+      tile.setAttribute('aria-checked', 'true');
+      state[groupKey] = label;
+      state[groupKey + '_id'] = id;
+
+      if (groupKey === 'connA') {
+        setSumVal(sumConnA, label); errConnA.classList.remove('visible'); setSectionVal('connA', label);
+        /* keep ConnA open, open Cable section */
+        openSection('cable');
+      }
+      if (groupKey === 'cable') {
+        setSumVal(sumCable, label); errCable.classList.remove('visible'); setSectionVal('cable', label);
+        /* keep Cable section open so user can fill length/qty/color, open ConnB */
+        openSection('connB');
+      }
+      if (groupKey === 'connB') {
+        setSumVal(sumConnB, label); errConnB.classList.remove('visible'); setSectionVal('connB', label);
+        /* keep ConnB open */
+      }
+
+      updateDiagram();
+      updateSidebarBtn();
+    }
+
+    /* Keep legacy buildTiles for angle tiles (still uses cc-tile style) */
+    function buildTiles(container, items, groupKey, hasSwatch) {
+      container.innerHTML = '';
+      items.forEach(function(item) {
+        var tile = document.createElement('button');
+        tile.type = 'button';
+        tile.className = 'cc-tile';
+        tile.setAttribute('data-id', item.id);
+        tile.setAttribute('role', 'radio');
+        tile.setAttribute('aria-checked', 'false');
+        var dot = document.createElement('span');
+        dot.className = 'tile-dot';
+        tile.appendChild(dot);
+        tile.appendChild(document.createTextNode(item.label));
+        tile.addEventListener('click', function() { selectTile(container, tile, groupKey, item.id, item.label); });
+        container.appendChild(tile);
+      });
+      lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+    }
+
+    function selectTile(container, tile, groupKey, id, label) {
+      container.querySelectorAll('.cc-tile').forEach(function(t) {
+        t.classList.remove('is-selected');
+        t.setAttribute('aria-checked', 'false');
+      });
+      tile.classList.add('is-selected');
+      tile.setAttribute('aria-checked', 'true');
+      state[groupKey] = label;
+
+      if (groupKey === 'connA') {
+        setSumVal(sumConnA, label); errConnA.classList.remove('visible');
+        setSectionVal('connA', label);
+      }
+      if (groupKey === 'cable') {
+        setSumVal(sumCable, label); errCable.classList.remove('visible');
+        setSectionVal('cable', label);
+      }
+      if (groupKey === 'connB') {
+        setSumVal(sumConnB, label); errConnB.classList.remove('visible');
+        setSectionVal('connB', label);
+      }
+
+      updateDiagram();
+      updateSidebarBtn();
+    }
+
+    function buildAngleTiles(container, stateKey) {
+      container.innerHTML = '';
+      ANGLE_OPTIONS.forEach(function(opt) {
+        var tile = document.createElement('button');
+        tile.type = 'button';
+        tile.className = 'cc-tile' + (state[stateKey] === opt.id ? ' is-selected' : '');
+        tile.setAttribute('data-id', opt.id);
+        tile.setAttribute('role', 'radio');
+        tile.setAttribute('aria-checked', state[stateKey] === opt.id ? 'true' : 'false');
+        var dot = document.createElement('span');
+        dot.className = 'tile-dot';
+        tile.appendChild(dot);
+        tile.appendChild(document.createTextNode(opt.label));
+        tile.addEventListener('click', function() {
+          container.querySelectorAll('.cc-tile').forEach(function(t) {
+            t.classList.remove('is-selected'); t.setAttribute('aria-checked', 'false');
+          });
+          tile.classList.add('is-selected'); tile.setAttribute('aria-checked', 'true');
+          state[stateKey] = opt.id;
+          updateDiagram();
+        });
+        container.appendChild(tile);
+      });
+    }
+
+    /* ── Helpers ── */
+    function angleLabelFor(id) {
+      var opt = ANGLE_OPTIONS.find(function(o) { return o.id === id; });
+      return opt ? opt.label : '';
+    }
+
+    function getCableData(catKey, cableId) {
+      var cat = CABLE_DATA[catKey];
+      if (!cat) return null;
+      return cat.cables.find(function(c) { return c.id === cableId; }) || null;
+    }
+
+    function setConnectorPreviewImg(iconEl, connId) {
+      iconEl.innerHTML = '';
+      iconEl.classList.toggle('is-empty', !connId);
+      if (connId && CONN_IMGS[connId]) {
+        var img = document.createElement('img');
+        img.src = CONN_IMGS[connId];
+        img.alt = connId;
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+        iconEl.appendChild(img);
+      }
+    }
+
+    /* ── Live cable preview updater ── */
+    function updateDiagram() {
+      var hasA = !!state.connA;
+      var hasC = !!state.cable;
+      var hasB = !!state.connB;
+      var ft  = parseInt(lenFtInput.value, 10) || 0;
+      var ins = parseInt(lenInInput.value, 10)  || 0;
+      var lenTxt = (ft || ins) ? (ft ? ft + ' ft' : '') + (ins ? (ft ? ' ' : '') + ins + ' in' : '') : '';
+
+      /* Category label */
+      var catName = (CABLE_DATA[state.cat] || {}).name || '—';
+      document.getElementById('diag-cat-label').textContent = 'Category: ' + (state.cat ? catName : '—');
+
+      /* End A — real product image */
+      setConnectorPreviewImg(document.getElementById('diag-icon-a'), state.connA_id);
+      diagConnA.textContent = hasA ? state.connA : '—';
+      diagAngleA.textContent = hasA ? angleLabelFor(state.angleA) : '';
+      diagLblA.textContent = labelAInput.value;
+
+      /* Cable line — real line color from cable data */
+      var cableEntry = hasC ? getCableData(state.cat, state.cable_id) : null;
+      var lineColor = cableEntry ? cableEntry.lineColor : null;
+      diagCableType.textContent = hasC ? state.cable : '—';
+      var wire = document.getElementById('diag-wire');
+      if (wire) wire.style.background = lineColor || 'var(--gray-100)';
+      var plugL = document.getElementById('diag-plug-l');
+      var plugR = document.getElementById('diag-plug-r');
+      if (plugL) plugL.classList.toggle('is-set', hasC);
+      if (plugR) plugR.classList.toggle('is-set', hasC);
+      diagCableLen.textContent = lenTxt;
+
+      /* Cable product image — keep permanently hidden (raw image has no size constraint) */
+      var cableImg = document.getElementById('diag-cable-full-img');
+      if (cableImg) { cableImg.style.display = 'none'; }
+
+      /* End B — real product image */
+      setConnectorPreviewImg(document.getElementById('diag-icon-b'), state.connB_id);
+      diagConnB.textContent = hasB ? state.connB : '—';
+      diagAngleB.textContent = hasB ? angleLabelFor(state.angleB) : '';
+      diagLblB.textContent = labelBInput.value;
+
+      /* ── Sidebar preview card (live update) ── */
+      var sbarCard = document.getElementById('sbar-preview-card');
+      var sbarConnA = document.getElementById('sbar-conn-a');
+      var sbarConnB = document.getElementById('sbar-conn-b');
+      var sbarWire  = document.getElementById('sbar-wire');
+      var sbarType  = document.getElementById('sbar-type');
+      var sbarIconA = document.getElementById('sbar-icon-a');
+      var sbarIconB = document.getElementById('sbar-icon-b');
+
+      if (sbarCard) {
+
+        /* Connector A label + image */
+        if (sbarConnA) { sbarConnA.textContent = hasA ? state.connA : '—'; sbarConnA.classList.toggle('is-empty', !hasA); }
+        if (sbarIconA) { sbarIconA.innerHTML = ''; if (hasA && CONN_IMGS[state.connA_id]) { var ia = document.createElement('img'); ia.src = CONN_IMGS[state.connA_id]; ia.alt = state.connA; ia.style.cssText = 'width:100%;height:100%;object-fit:contain;'; sbarIconA.appendChild(ia); } }
+
+        /* Cable wire + type label */
+        var cd = hasC ? getCableData(state.cat, state.cable_id) : null;
+        if (sbarWire) sbarWire.style.background = cd ? cd.lineColor : 'var(--gray-200)';
+        if (sbarType) { sbarType.textContent = hasC ? state.cable : '—'; sbarType.classList.toggle('is-empty', !hasC); }
+
+        /* Connector B label + image */
+        if (sbarConnB) { sbarConnB.textContent = hasB ? state.connB : '—'; sbarConnB.classList.toggle('is-empty', !hasB); }
+        if (sbarIconB) { sbarIconB.innerHTML = ''; if (hasB && CONN_IMGS[state.connB_id]) { var ib = document.createElement('img'); ib.src = CONN_IMGS[state.connB_id]; ib.alt = state.connB; ib.style.cssText = 'width:100%;height:100%;object-fit:contain;'; sbarIconB.appendChild(ib); } }
+      }
+    }
+
+    function populateReview() {
+      var ft  = parseInt(lenFtInput.value, 10) || 0;
+      var ins = parseInt(lenInInput.value, 10)  || 0;
+      var lenTxt = (ft || ins) ? (ft ? ft + ' ft' : '') + (ins ? (ft ? ' ' : '') + ins + ' in' : '') : '—';
+      var noteTxt = document.getElementById('cc-notes').value.trim() || '—';
+
+      /* Review diagram */
+      revConnA.textContent = state.connA || '—'; revConnA.classList.toggle('is-empty', !state.connA);
+      revAngleA.textContent = angleLabelFor(state.angleA);
+      revLblA.textContent = state.labelA || '';
+      revEndA.classList.add('is-set');
+      revCableType.textContent = state.cable || '—';
+      revCableLen.textContent = lenTxt;
+      revConnB.textContent = state.connB || '—'; revConnB.classList.toggle('is-empty', !state.connB);
+      revAngleB.textContent = angleLabelFor(state.angleB);
+      revLblB.textContent = state.labelB || '';
+      revEndB.classList.add('is-set');
+
+      /* Review table */
+      var catName = (CABLE_DATA[state.cat] || {}).name || '—';
+      document.getElementById('rev-cat').textContent       = catName;
+      document.getElementById('rev-connA-txt').textContent = state.connA || '—';
+      document.getElementById('rev-angleA-txt').textContent= angleLabelFor(state.angleA);
+      document.getElementById('rev-labelA-txt').textContent= state.labelA || '—';
+      document.getElementById('rev-cable-txt').textContent = state.cable || '—';
+      document.getElementById('rev-connB-txt').textContent = state.connB || '—';
+      document.getElementById('rev-angleB-txt').textContent= angleLabelFor(state.angleB);
+      document.getElementById('rev-labelB-txt').textContent= state.labelB || '—';
+      document.getElementById('rev-length-txt').textContent= lenTxt;
+      document.getElementById('rev-qty-txt').textContent   = (qtyInput && qtyInput.value) ? qtyInput.value : '—';
+      document.getElementById('rev-color-txt').textContent = (colorInput && colorInput.value.trim()) ? colorInput.value.trim() : '—';
+      document.getElementById('rev-notes-txt').textContent = noteTxt;
+    }
+
+    function updateSidebarBtn() { /* sidebar btn removed */ }
+
+    /* ── Section accordion toggle ── */
+    function toggleSection(key) {
+      var content = document.getElementById('cc-ds-content-' + key);
+      var btn     = document.getElementById('cc-ds-btn-' + key);
+      var isOpen  = content.classList.contains('is-open');
+      content.classList.toggle('is-open', !isOpen);
+      btn.classList.toggle('is-active', !isOpen);
+      lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+    }
+
+    function openSection(key) {
+      var content = document.getElementById('cc-ds-content-' + key);
+      var btn     = document.getElementById('cc-ds-btn-' + key);
+      if (!content.classList.contains('is-open')) {
+        content.classList.add('is-open');
+        btn.classList.add('is-active');
+        lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+        setTimeout(function() { content.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+      }
+    }
+
+    function closeSection(key) {
+      var content = document.getElementById('cc-ds-content-' + key);
+      var btn     = document.getElementById('cc-ds-btn-' + key);
+      content.classList.remove('is-open');
+      btn.classList.remove('is-active');
+    }
+
+    function setSectionVal(key, label) {
+      var selEl = document.getElementById('cc-ds-sel-' + key);
+      var btn   = document.getElementById('cc-ds-btn-' + key);
+      if (label) {
+        selEl.textContent = label;
+        btn.classList.add('has-val');
+      } else {
+        selEl.textContent = key === 'cable' ? 'Click to select cable type' : 'Click to select connector';
+        btn.classList.remove('has-val');
+      }
+    }
+
+    function populateStep2() {
+      var data = CABLE_DATA[state.cat];
+      if (!data) return;
+
+      state.connA = null; state.cable = null; state.connB = null;
+      state.angleA = 'straight'; state.angleB = 'straight';
+      if (qtyInput) qtyInput.value = '';
+      if (colorInput) colorInput.value = '';
+      setSumVal(sumConnA, null); setSumVal(sumCable, null); setSumVal(sumConnB, null);
+      setSectionVal('connA', null); setSectionVal('cable', null); setSectionVal('connB', null);
+      errConnA.classList.remove('visible');
+      errCable.classList.remove('visible');
+      errConnB.classList.remove('visible');
+      errLength.classList.remove('visible');
+
+      /* Reset all sections to closed */
+      ['connA', 'cable', 'connB'].forEach(function(k) {
+        var c = document.getElementById('cc-ds-content-' + k);
+        var b = document.getElementById('cc-ds-btn-' + k);
+        c.classList.remove('is-open');
+        b.classList.remove('is-active');
+      });
+
+      updateSidebarBtn();
+      updateDiagram();
+
+      state.connA_id = null; state.cable_id = null; state.connB_id = null;
+      buildImgTiles(connAGrid,   data.connectors, 'connA');
+      buildAngleTiles(angleAGrid, 'angleA');
+      buildSwatchTiles(cableGrid, data.cables,    'cable');
+      buildImgTiles(connBGrid,   data.connectors, 'connB');
+      buildAngleTiles(angleBGrid, 'angleB');
+
+      /* Orientation / Angle only visible for Ethernet */
+      var showAngle = state.cat === 'ethernet';
+      var aLbl = document.getElementById('cc-angle-a-label');
+      var bLbl = document.getElementById('cc-angle-b-label');
+      if (aLbl) aLbl.style.display = showAngle ? '' : 'none';
+      if (angleAGrid) angleAGrid.style.display = showAngle ? '' : 'none';
+      if (bLbl) bLbl.style.display = showAngle ? '' : 'none';
+      if (angleBGrid) angleBGrid.style.display = showAngle ? '' : 'none';
+      if (!showAngle) { state.angleA = 'straight'; state.angleB = 'straight'; }
+
+      /* Open Connector A first */
+      openSection('connA');
+    }
+
+    function showStep(n) {
+      panel1.classList.toggle('is-active', n === 1);
+      panel2.classList.toggle('is-active', n === 2);
+      success.classList.remove('visible');
+
+      step1Ind.classList.toggle('is-active', n === 1);
+      step1Ind.classList.toggle('is-done',   n > 1);
+      step2Ind.classList.toggle('is-active', n === 2);
+      step2Ind.classList.toggle('is-done',   n > 2);
+      stepLine1.classList.toggle('is-done',  n > 1);
+
+      lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+      document.getElementById('cc-main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       EVENT LISTENERS
+    ══════════════════════════════════════════════════════════ */
+
+    /* ── Category card selection — auto-advances to Step 2 ── */
+    catGrid.querySelectorAll('.cc-cat-card').forEach(function(card) {
+      function pickCat() {
+        catGrid.querySelectorAll('.cc-cat-card').forEach(function(c) {
+          c.classList.remove('is-selected'); c.setAttribute('aria-checked', 'false');
+        });
+        card.classList.add('is-selected'); card.setAttribute('aria-checked', 'true');
+        state.cat = card.getAttribute('data-cat');
+        var catName = card.getAttribute('data-cat-name');
+        setSumVal(sumCat, catName);
+        catBarLabel.textContent = 'Category: ' + catName;
+        var configHeading = document.getElementById('cc-config-heading');
+        if (configHeading) configHeading.textContent = catName.split('(')[0].trim() + ' Configuration';
+        lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+        populateStep2();
+        showStep(2);
+      }
+      card.addEventListener('click', pickCat);
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickCat(); }
+      });
+    });
+
+    /* ── Design section accordion buttons ── */
+    document.getElementById('cc-ds-btn-connA').addEventListener('click', function() { toggleSection('connA'); });
+    document.getElementById('cc-ds-btn-cable').addEventListener('click',  function() { toggleSection('cable');  });
+    document.getElementById('cc-ds-btn-connB').addEventListener('click', function() { toggleSection('connB'); });
+
+    /* ── Length → diagram + summary ── */
+    function onLengthChange() {
+      var ft = parseInt(lenFtInput.value, 10) || 0;
+      var ins = parseInt(lenInInput.value, 10)  || 0;
+      if (ft || ins) {
+        var parts = [];
+        if (ft)  parts.push(ft + ' ft');
+        if (ins) parts.push(ins + ' in');
+        setSumVal(sumLength, parts.join(' '));
+        errLength.classList.remove('visible');
+      } else {
+        setSumVal(sumLength, null);
+      }
+      updateDiagram();
+    }
+    lenFtInput.addEventListener('input', onLengthChange);
+    lenInInput.addEventListener('input', onLengthChange);
+
+    /* ── Label inputs → diagram ── */
+    labelAInput.addEventListener('input', function() { state.labelA = labelAInput.value; updateDiagram(); });
+    labelBInput.addEventListener('input', function() { state.labelB = labelBInput.value; updateDiagram(); });
+
+    /* ── Qty → summary ── */
+    qtyInput.addEventListener('input', function() {
+      var v = qtyInput.value.trim();
+      setSumVal(sumQty, v ? v + (parseInt(v, 10) === 1 ? ' unit' : ' units') : null);
+    });
+
+    /* ── Step 2 → Step 1 ── */
+    toStep1Btn.addEventListener('click', function() { showStep(1); });
+    changeCatBtn.addEventListener('click', function() { showStep(1); });
+
+    /* ── Step 2 → Step 3 (validate design) ── */
+    toStep3Btn.addEventListener('click', function() {
+      var valid = true;
+      if (!state.connA) { errConnA.classList.add('visible'); valid = false; }
+      if (!state.cable) { errCable.classList.add('visible'); valid = false; }
+      if (!state.connB) { errConnB.classList.add('visible'); valid = false; }
+      var ft = parseInt(lenFtInput.value, 10);
+      if (!ft || ft < 1) { errLength.classList.add('visible'); valid = false; }
+      var errQtyEl = document.getElementById('cc-err-qty');
+      if (!qtyInput || !qtyInput.value || parseInt(qtyInput.value, 10) < 1) {
+        if (errQtyEl) errQtyEl.classList.add('visible'); valid = false;
+      } else { if (errQtyEl) errQtyEl.classList.remove('visible'); }
+      var errColorEl = document.getElementById('cc-err-color');
+      if (!colorInput || !colorInput.value.trim()) {
+        if (errColorEl) errColorEl.classList.add('visible'); valid = false;
+      } else { if (errColorEl) errColorEl.classList.remove('visible'); }
+      if (!valid) return;
+      doSubmit();
+    });
+
+    /* ── Submit directly from Step 2 ── */
+    function doSubmit() {
+      var payload = {
+        qty:      qtyInput ? qtyInput.value : '',
+        color:    colorInput ? colorInput.value.trim() : '',
+        cat:      state.cat,
+        connA:    state.connA,  angleA: state.angleA, labelA: state.labelA,
+        cable:    state.cable,
+        connB:    state.connB,  angleB: state.angleB, labelB: state.labelB,
+        lengthFt: lenFtInput.value,
+        lengthIn: lenInInput.value,
+        notes:    document.getElementById('cc-notes').value.trim()
+      };
+      console.log('Custom Cable Quote Request:', JSON.stringify(payload, null, 2));
+
+      panel2.classList.remove('is-active');
+      success.classList.add('visible');
+      step2Ind.classList.remove('is-active');
+      step2Ind.classList.add('is-done');
+      lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+      document.getElementById('cc-main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SITE-WIDE SCRIPTS
+    ═══════════════════════════════════════════════════════════ */
+
+    /* ── Sidebar sticky: align top below sticky header ── */
+    (function() {
+      var sidebar = document.querySelector('.cc-sidebar');
+      var stickyWrap = document.querySelector('.sticky-top-wrap');
+      function setSidebarSticky() {
+        if (!sidebar || !stickyWrap) return;
+        var gap = 16;
+        var headerH = stickyWrap.offsetHeight;
+        var topVal = headerH + gap;
+        sidebar.style.top = topVal + 'px';
+        sidebar.style.maxHeight = (window.innerHeight - topVal - gap) + 'px';
+      }
+      setSidebarSticky();
+      window.addEventListener('resize', setSidebarSticky, { passive: true });
+    })();
+
+    /* ── Scroll: header shadow + back-to-top ── */
+    var header    = document.getElementById('site-header');
+    var backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function() {
+      var y = window.scrollY;
+      header.classList.toggle('scrolled', y > 10);
+      backToTop.classList.toggle('visible', y > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ── Footer accordion ── */
+    (function () {
+      var mqAll  = window.matchMedia('(max-width: 900px)');
+      var mq2col = window.matchMedia('(min-width: 481px) and (max-width: 900px)');
+      var cols   = Array.from(document.querySelectorAll('.footer-grid .footer-col'));
+      function setInitialState() {
+        cols.forEach(function(col, i) {
+          if (!mqAll.matches) { col.classList.remove('open'); return; }
+          col.classList.toggle('open', mq2col.matches ? i < 2 : i === 0);
+        });
+      }
+      cols.forEach(function(col) {
+        var h = col.querySelector('h4');
+        if (!h) return;
+        h.addEventListener('click', function() { if (mqAll.matches) col.classList.toggle('open'); });
+      });
+      setInitialState();
+      mqAll.addEventListener('change', setInitialState);
+      mq2col.addEventListener('change', setInitialState);
+    })();
+
+    /* ── Mobile nav ── */
+    (function () {
+      var mobileNav  = document.getElementById('mobile-nav');
+      var shopPanel  = document.getElementById('mob-tab-shop');
+      var helpPanel  = document.getElementById('mob-tab-account');
+      var shopToggle = document.getElementById('mobile-shop-toggle');
+      var helpToggle = document.getElementById('mobile-help-toggle');
+      var tabToggle  = document.getElementById('mobile-menu-toggle');
+      if (!mobileNav) return;
+      function showPanel(p) {
+        if (shopPanel) shopPanel.style.display = 'none';
+        if (helpPanel) helpPanel.style.display = 'none';
+        if (p) p.style.display = 'block';
+      }
+      function openNav(p) { mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false'); showPanel(p); }
+      function closeNav() {
+        mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true');
+        [shopToggle, tabToggle].forEach(function(t) { if (t) { t.setAttribute('aria-expanded','false'); t.classList.remove('is-open'); } });
+        if (helpToggle) { helpToggle.setAttribute('aria-expanded','false'); helpToggle.classList.remove('mobile-help-active'); }
+      }
+      function isOpen() { return mobileNav.classList.contains('open'); }
+      if (shopToggle) shopToggle.addEventListener('click', function() {
+        if (isOpen() && shopPanel && shopPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(shopPanel); shopToggle.setAttribute('aria-expanded','true'); shopToggle.classList.add('is-open'); if (tabToggle) { tabToggle.classList.add('is-open'); tabToggle.setAttribute('aria-expanded','true'); } if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded','false'); } }
+      });
+      if (helpToggle) helpToggle.addEventListener('click', function() {
+        if (isOpen() && helpPanel && helpPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(helpPanel); helpToggle.setAttribute('aria-expanded','true'); helpToggle.classList.add('mobile-help-active'); if (shopToggle) { shopToggle.classList.remove('is-open'); shopToggle.setAttribute('aria-expanded','false'); } if (tabToggle) { tabToggle.classList.remove('is-open'); tabToggle.setAttribute('aria-expanded','false'); } }
+      });
+      if (tabToggle) tabToggle.addEventListener('click', function() {
+        if (isOpen() && shopPanel && shopPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(shopPanel); tabToggle.setAttribute('aria-expanded','true'); tabToggle.classList.add('is-open'); if (shopToggle) { shopToggle.classList.add('is-open'); shopToggle.setAttribute('aria-expanded','true'); } if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded','false'); } }
+      });
+    })();
+
+    /* ── Help panel close ── */
+    (function () {
+      var closeBtn = document.getElementById('mob-help-close');
+      if (!closeBtn) return;
+      closeBtn.addEventListener('click', function() {
+        var nav = document.getElementById('mobile-nav');
+        var ht  = document.getElementById('mobile-help-toggle');
+        var st  = document.getElementById('mobile-shop-toggle');
+        if (nav) { nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); }
+        if (ht)  { ht.classList.remove('mobile-help-active'); ht.setAttribute('aria-expanded','false'); }
+        if (st)  { st.classList.remove('is-open'); st.setAttribute('aria-expanded','false'); }
+      });
+    })();
+
+    /* ── Mobile nav: category accordion ── */
+    document.querySelectorAll('.mob-cat-trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var item   = trigger.closest('.mob-cat-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.mob-cat-item.open').forEach(function(i) {
+          i.classList.remove('open'); i.querySelector('.mob-cat-trigger').setAttribute('aria-expanded','false');
+        });
+        if (!isOpen) { item.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
+      });
+    });
+
+    /* ── Desktop Help dropdown ── */
+    (function () {
+      var trigger  = document.getElementById('helpMenuTrigger');
+      var dropdown = document.getElementById('helpMenuDropdown');
+      if (!trigger || !dropdown) return;
+      var hoverTimer;
+      function openHelp()  { clearTimeout(hoverTimer); dropdown.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
+      function closeHelp() { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); }
+      function closeDelayed() { hoverTimer = setTimeout(closeHelp, 150); }
+      function toggle(e)   { e.stopPropagation(); dropdown.classList.contains('open') ? closeHelp() : openHelp(); }
+      trigger.addEventListener('click', toggle);
+      trigger.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); } if (e.key === 'Escape') closeHelp(); });
+      var wrap = document.getElementById('helpMenuWrap');
+      wrap.addEventListener('mouseenter', openHelp);
+      wrap.addEventListener('mouseleave', closeDelayed);
+      document.addEventListener('click', function(e) { if (!wrap.contains(e.target)) closeHelp(); });
+    })();
+
+    /* ── Mega menu ── */
+    (function () {
+      var trigger  = document.getElementById('allCatsTrigger');
+      var wrap     = document.getElementById('megaMenuWrap');
+      if (!trigger || !wrap) return;
+      var railItems = wrap.querySelectorAll('.mega-rail-item');
+      var panels    = wrap.querySelectorAll('.mega-panel');
+      var closeTimer, hoverTimer;
+      function openMenu()  { clearTimeout(closeTimer); wrap.classList.add('open'); trigger.classList.add('open'); trigger.setAttribute('aria-expanded','true'); wrap.setAttribute('aria-hidden','false'); }
+      function closeMenu() { wrap.classList.remove('open'); trigger.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); wrap.setAttribute('aria-hidden','true'); }
+      function scheduleClose() { clearTimeout(closeTimer); closeTimer = setTimeout(closeMenu, 200); }
+      function switchPanel(item) {
+        railItems.forEach(function(r) { r.classList.remove('active'); });
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        item.classList.add('active');
+        var p = document.getElementById(item.dataset.panel);
+        if (p) p.classList.add('active');
+      }
+      trigger.addEventListener('mouseenter', openMenu);
+      trigger.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+      wrap.addEventListener('mouseleave', scheduleClose);
+      trigger.addEventListener('click', function(e) { e.stopPropagation(); wrap.classList.contains('open') ? closeMenu() : openMenu(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && wrap.classList.contains('open')) closeMenu(); });
+      document.addEventListener('click', function(e) { if (wrap.classList.contains('open') && !wrap.contains(e.target) && !trigger.contains(e.target)) closeMenu(); });
+      railItems.forEach(function(item) {
+        item.addEventListener('mouseenter', function() { clearTimeout(hoverTimer); hoverTimer = setTimeout(function() { switchPanel(item); }, 60); });
+        item.addEventListener('click', function() { clearTimeout(hoverTimer); switchPanel(item); });
+      });
+    })();
+
+    /* ── Promo bar carousel ── */
+    (function () {
+      var slides = document.querySelectorAll('.promo-slide'), current = 0, timer;
+      if (!slides.length) return;
+      function show(idx) { slides[current].classList.remove('active'); current = (idx + slides.length) % slides.length; slides[current].classList.add('active'); }
+      function startAuto() { timer = setInterval(function() { show(current + 1); }, 5000); }
+      function resetAuto() { clearInterval(timer); startAuto(); }
+      document.querySelector('.promo-prev').addEventListener('click', function() { show(current - 1); resetAuto(); });
+      document.querySelector('.promo-next').addEventListener('click', function() { show(current + 1); resetAuto(); });
+      startAuto();
+    })();
+
+    /* ── Initialise Lucide icons ── */
+    lucide.createIcons({
+      attrs: { 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+    });
+  </script>
+
+</body>
+</html>

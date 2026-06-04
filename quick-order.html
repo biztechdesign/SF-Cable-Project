@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quick Order at SF Cable — Enter SKU numbers and quantities to add multiple products to your cart at once. Fast, easy bulk ordering with no minimum order." />
+  <meta name="keywords" content="quick order, bulk order, SKU order, fast order, SF Cable quick order" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Quick Order — SF Cable" />
+  <meta property="og:description" content="Enter part numbers and quantities to add multiple products to your cart at once. Upload a CSV for bulk entry." />
+  <meta property="og:type" content="website" />
+  <title>Quick Order — SF Cable | Cables, Adapters &amp; Connectors</title>
+  <link rel="canonical" href="https://www.sfcable.com/quick-order" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Shared site styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .section-header { margin-bottom: 0; }
+
+    .qo-page-desc { color: var(--gray-700); font-size: 16px; line-height: 1.6; }
+    .qo-page-desc a { color: var(--sf-primary-cta); text-decoration: none; transition: color var(--transition); }
+    .qo-page-desc a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
+
+    /* ── Page body ── */
+    .qo-body { background: var(--white); padding: 20px 0 56px; }
+
+    /* ── Card (checkout style) ── */
+    .co-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .co-card-head {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--gray-300);
+      background: var(--gray-100);
+    }
+    .co-card-head h2 { margin: 0; font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.35; }
+    .co-card-body { padding: 20px 20px 28px; }
+
+    /* ── Inputs (checkout style) ── */
+    .co-input {
+      width: 100%;
+      height: var(--control-h);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      padding: 0 14px;
+      font-size: 15px;
+      color: var(--dark);
+      font-family: var(--font);
+      background: var(--white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+    }
+    .co-input::placeholder { color: var(--gray-500); }
+    .co-input:hover { border-color: var(--gray-500); }
+    .co-input:focus { outline: none; border-color: var(--sf-primary-cta); }
+    .co-input[type="number"] { text-align: center; padding: 0 8px; -moz-appearance: textfield; }
+    .co-input[type="number"]::-webkit-inner-spin-button,
+    .co-input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+    /* ── Textarea ── */
+    .co-textarea {
+      width: 100%;
+      min-height: 110px;
+      resize: vertical;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 15px;
+      color: var(--dark);
+      font-family: var(--font);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .co-textarea:hover { border-color: var(--gray-500); }
+    .co-textarea:focus { border-color: var(--red); }
+
+    /* ── Label ── */
+    .co-label { font-size: 15px; font-weight: 600; color: var(--dark); display: block; }
+
+    /* ── Section separator ── */
+    .co-section-sep { height: 1px; background: var(--gray-200); margin: 20px 0; }
+
+    /* ══════════════════════════════════════════════════════════
+       QUICK ORDER LAYOUT — 50 / 50
+    ══════════════════════════════════════════════════════════ */
+    .qo-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── Left: SKU entry ── */
+    .qo-entry-labels {
+      display: grid;
+      grid-template-columns: 1fr 80px 40px;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+    .qo-entry-labels .co-label { font-size: 14px; }
+    .qo-entry-labels .qo-lbl-qty { text-align: center; }
+
+    .qo-entry-row {
+      display: grid;
+      grid-template-columns: 1fr 80px 40px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* Added items list */
+    .qo-added-list { margin-bottom: 2px; }
+    .qo-added-item {
+      display: grid;
+      grid-template-columns: 1fr 80px 40px;
+      gap: 8px;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .qo-added-sku {
+      font-size: 14px; font-weight: 600; color: var(--dark);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      padding: 0 2px; line-height: var(--control-h);
+    }
+    .qo-added-qty {
+      font-size: 14px; color: var(--gray-600);
+      text-align: center; line-height: var(--control-h);
+    }
+
+    /* ── Delete button — matches cart page .cart-remove-btn ── */
+    .qo-delete-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: var(--control-h);
+      border: none;
+      border-radius: var(--radius-sm);
+      background: none;
+      color: var(--dark);
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      transition: color var(--transition), background var(--transition);
+    }
+    .qo-delete-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
+    .qo-delete-btn:hover { color: var(--error); background: rgba(239, 68, 68, .08); }
+
+    .qo-add-new-wrap { margin-top: 14px; }
+
+    /* ── Buttons with icons ── */
+    .btn { display: inline-flex; align-items: center; gap: 7px; }
+    .btn svg.lucide { display: block; flex-shrink: 0; }
+    button.btn:disabled,
+    button.btn[disabled] {
+      opacity: .45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* ── Right: Bulk SKUs ── */
+    .qo-bulk-hint {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin: 6px 0 14px;
+      line-height: 1.4;
+    }
+    .qo-add-list-wrap { margin-bottom: 0; }
+
+    .qo-file-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 0 0 5px;
+      display: block;
+    }
+    .qo-file-hint {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin: 0 0 14px;
+      line-height: 1.5;
+    }
+    .qo-file-hint a {
+      color: var(--sf-primary-cta);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .qo-file-hint a:hover { color: var(--sf-primary-dark); text-decoration: underline; }
+
+    /* ── File upload dropzone ── */
+    .qo-dropzone {
+      border: 2px dashed var(--gray-300);
+      border-radius: var(--radius-sm);
+      padding: 30px 20px 24px;
+      text-align: center;
+      background: var(--gray-50);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .qo-dropzone:hover,
+    .qo-dropzone.drag-over {
+      border-color: var(--sf-primary-dark);
+      background: rgba(0, 38, 72, 0.06);
+    }
+    .qo-dropzone > svg.lucide {
+      width: 38px;
+      height: 38px;
+      color: var(--gray-400);
+      margin: 0 auto 12px;
+      display: block;
+    }
+    .qo-dropzone-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 0 0 5px;
+    }
+    .qo-dropzone-hint {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin: 0 0 18px;
+      line-height: 1.4;
+    }
+    .qo-browse-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: var(--control-h);
+      padding: 0 22px;
+      border: 1.5px solid var(--gray-400);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      color: var(--gray-700);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      line-height: 1;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .qo-browse-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; display: block; flex-shrink: 0; vertical-align: middle; }
+    .qo-browse-btn:hover { border-color: var(--sf-primary-dark); background: var(--sf-primary-dark); color: var(--white); }
+    .qo-file-hidden { display: none; }
+
+    /* File selected info card */
+    .qo-file-selected {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-top: 10px;
+    }
+    .qo-file-selected.visible { display: flex; }
+    .qo-file-selected svg.lucide { width: 28px; height: 28px; color: var(--sf-primary-cta); flex-shrink: 0; }
+    .qo-file-details { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .qo-file-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .qo-file-size { font-size: 12px; color: var(--gray-500); }
+    .qo-file-remove-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--gray-300);
+      background: var(--white);
+      color: var(--gray-400);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color var(--transition), color var(--transition);
+      padding: 0;
+    }
+    .qo-file-remove-btn:hover { border-color: var(--error); color: var(--error); }
+    .qo-file-remove-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; }
+
+    .qo-download-sample {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--sf-primary-cta);
+      text-decoration: none;
+      margin-top: 10px;
+      transition: color var(--transition);
+    }
+    .qo-download-sample:hover { color: var(--sf-primary-dark); text-decoration: underline; }
+    .qo-download-sample svg.lucide { width: 20px; height: 20px; stroke-width: 2; display: block; flex-shrink: 0; }
+
+    /* ── Form footer ── */
+    .qo-form-footer {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 12px;
+    }
+    .qo-cart-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: var(--control-h);
+      padding: 0 28px;
+      background: var(--sf-primary-cta);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .qo-cart-btn svg.lucide { width: 20px; height: 20px; stroke-width: 2; display: block; flex-shrink: 0; }
+    .qo-cart-btn:hover { background: var(--sf-primary-dark); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .qo-layout { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .qo-body { padding: 14px 0 40px; }
+      .co-card-body { padding: 16px 16px 22px; }
+      .qo-form-footer { justify-content: stretch; }
+      .qo-cart-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sticky-top-wrap">
+
+  <!-- ============================================================
+       ROW 1 — UTILITY BAR
+  ============================================================ -->
+  <div class="top-bar" role="complementary" aria-label="Trust and utility links">
+    <div class="container">
+      <div class="top-bar-promo">
+        <button class="promo-arrow promo-prev" aria-label="Previous promotion">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="promo-track">
+          <span class="promo-slide active"><i data-lucide="tag"></i>&nbsp;10% Off — Code: <strong>MEMORIAL10</strong></span>
+          <span class="promo-slide"><i data-lucide="truck"></i>&nbsp;Free Shipping over $75</span>
+          <span class="promo-slide"><i data-lucide="shield-check"></i>&nbsp;Lifetime Warranty on Cables</span>
+          <span class="promo-slide"><i data-lucide="zap"></i>&nbsp;Same-Day Shipping Available</span>
+        </div>
+        <button class="promo-arrow promo-next" aria-label="Next promotion">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:18882758755">1-888-275-8755</a>
+        </span>
+        <div class="top-bar-separator"></div>
+        <a href="/chat" class="top-bar-item" style="color:#ffffff; text-decoration:none;">
+          <i data-lucide="message-circle"></i> Chat With Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ROW 2 — MIDDLE HEADER
+  ============================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <div class="header-mid">
+
+        <a href="/" class="logo" aria-label="SF Cable – Home">
+          <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="160" height="48" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="logo-fallback" style="display:none;"><span style="color:var(--red)">SF</span><span>Cable</span></div>
+        </a>
+
+        <div class="header-search-wrap" id="search-wrap">
+          <form class="header-search" role="search" action="/search" method="get" autocomplete="off">
+            <input class="search-input" id="search-input" type="search" name="q" placeholder="Search by SKU, product type, connector, cable standard, or use case" aria-label="Search products" autocomplete="off" />
+            <button class="search-btn" type="submit" aria-label="Search"><i data-lucide="search"></i></button>
+          </form>
+          <div class="search-dropdown" id="search-dropdown" role="listbox"></div>
+        </div>
+
+        <div class="header-help-wrap" id="helpMenuWrap">
+          <button class="header-help" id="helpMenuTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="helpMenuDropdown">
+            <i data-lucide="help-circle"></i> Help <i data-lucide="chevron-down" class="help-caret"></i>
+          </button>
+          <div class="header-help-dropdown" id="helpMenuDropdown" role="menu" aria-label="Help menu">
+            <a href="/get-quote" role="menuitem"><i data-lucide="file-text"></i> Get Quote</a>
+            <a href="/order-tracking" role="menuitem"><i data-lucide="package"></i> Order Tracking</a>
+            <a href="/change-cancel-order" role="menuitem"><i data-lucide="x-circle"></i> Change / Cancel Order</a>
+            <a href="/shipping-information" role="menuitem"><i data-lucide="truck"></i> Shipping Information</a>
+            <a href="/schools-government" role="menuitem"><i data-lucide="building-2"></i> Schools &amp; Government</a>
+            <a href="/payment-terms" role="menuitem"><i data-lucide="credit-card"></i> Payment Terms</a>
+            <a href="/returns-refunds" role="menuitem"><i data-lucide="rotate-ccw"></i> Returns / Refunds</a>
+            <a href="/warranty-claims" role="menuitem"><i data-lucide="shield-check"></i> Warranty / Claims</a>
+            <a href="/will-call" role="menuitem"><i data-lucide="map-pin"></i> Will Call</a>
+            <a href="/contact-us" role="menuitem"><i data-lucide="mail"></i> Contact Us</a>
+          </div>
+        </div>
+
+        <div class="mobile-contact-btns">
+          <a href="tel:+18882758755" class="mobile-contact-btn mobile-contact-phone" aria-label="Call us">
+            <i data-lucide="phone"></i>
+          </a>
+          <a href="/live-chat" class="mobile-contact-btn mobile-contact-chat" aria-label="Live chat">
+            <i data-lucide="message-circle"></i>
+          </a>
+        </div>
+
+        <div class="mobile-header-actions">
+          <a href="/help" class="mobile-header-btn" aria-label="Help"><i data-lucide="help-circle"></i></a>
+          <a href="/account" class="mobile-header-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+          <a href="/cart" class="mobile-header-btn" aria-label="Cart">
+            <i data-lucide="shopping-cart"></i>
+            <span class="cart-count" aria-live="polite">0</span>
+          </a>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mobile-shop-bar" id="mobile-shop-bar">
+      <div class="container">
+        <div class="mobile-shop-bar-inner">
+          <button class="mobile-shop-trigger" id="mobile-shop-toggle" aria-label="Toggle shop menu" aria-expanded="false">
+            <i data-lucide="menu" class="icon-menu"></i>
+            <i data-lucide="x" class="icon-close"></i>
+            <span class="mobile-shop-label">Shop</span>
+          </button>
+          <div class="mobile-shop-icons">
+            <button class="mobile-shop-icon-btn" id="mobile-help-toggle" aria-label="Help" aria-expanded="false"><i data-lucide="help-circle"></i></button>
+            <a href="/account" class="mobile-shop-icon-btn" aria-label="My Account"><i data-lucide="user"></i></a>
+            <a href="/cart" class="mobile-shop-icon-btn" aria-label="Cart">
+              <i data-lucide="shopping-cart"></i>
+              <span class="mobile-shop-cart-count" aria-live="polite">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 — BOTTOM NAV -->
+    <div class="nav-bar" id="nav-bar">
+      <div class="container">
+        <div class="nav-bar-inner">
+
+          <button class="all-cats-trigger" id="allCatsTrigger" aria-expanded="false" aria-controls="megaMenuWrap">
+            <i data-lucide="menu"></i> Shop by Category <i data-lucide="chevron-down" class="nav-caret"></i>
+          </button>
+
+          <div class="nav-actions">
+            <a href="/quick-order.html" class="nav-action-link" aria-current="page">
+              <i data-lucide="file-text"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Fast</span>
+                <span class="nav-action-value">Quick Order</span>
+              </span>
+            </a>
+            <a href="/account" class="nav-action-link">
+              <i data-lucide="user"></i>
+              <span class="nav-action-text">
+                <span class="nav-action-label">Sign In</span>
+                <span class="nav-action-value">My Account</span>
+              </span>
+            </a>
+            <div class="nav-actions-sep"></div>
+            <a href="/cart" class="nav-action-link nav-action-cart">
+              <span class="nav-action-icon-wrap">
+                <i data-lucide="shopping-cart"></i>
+                <span class="nav-cart-count" id="nav-cart-count" aria-live="polite">2</span>
+              </span>
+              <span class="nav-action-text">
+                <span class="nav-action-value nav-cart-price">$99.00</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Mega Menu -->
+          <div class="mega-menu-wrap" id="megaMenuWrap" aria-hidden="true">
+      <div class="mega-menu">
+        <div class="mega-rail">
+          <button class="mega-rail-item active" data-panel="panel-accessories">Accessories <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-adapters">Adapters &amp; Connectors <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-audiovideo">Audio Video <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-cables">Cables <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-network">Network Cables &amp; Fiber Optics <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-networking">Networking <i data-lucide="chevron-right"></i></button>
+          <button class="mega-rail-item" data-panel="panel-power">Power Cords &amp; Adapters <i data-lucide="chevron-right"></i></button>
+        </div>
+
+        <div class="mega-panel active" id="panel-accessories">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Accessories</h3>
+            <a href="/accessories.html" class="mega-panel-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">Cables Ties</a>
+            <a href="#">Plain Ties</a><a href="#">Releasable Cable Ties</a><a href="#">Hook and Loop Ties</a><a href="#">Wall Mountable Ties</a><a href="#">Spiral Zip Wrap</a>
+            <a href="#" class="mega-col-head">Power Supplies / Batteries</a>
+            <a href="#">AC/DC Adapters</a><a href="#">Car Charger</a><a href="#">USB / Mobile Chargers</a>
+            <a href="#" class="mega-col-head">Security Camera</a>
+            <a href="#">CCTV Camera</a><a href="#">Camera Cables/Adapters</a><a href="#">Camera Mounts / Housing Brackets</a>
+            <a href="#" class="mega-col-head">Home/Office Accessories</a>
+            <a href="#">Flat TV Mounts</a><a href="#">KVM Switches</a><a href="#">Tools &amp; Testers</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-adapters">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Adapters &amp; Connectors</h3>
+            <a href="/adapters-connectors.html" class="mega-panel-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">BNC Connectors</a><a href="#">DisplayPort and Mini DP Adapters</a><a href="#">DVI/Displayport Adapters</a>
+            <a href="#">F Type Connectors</a><a href="#">RCA Connectors/Adapters</a><a href="#">D-Sub Connectors</a>
+            <a href="#">USB Couplers / Adapters</a><a href="#">USB Keystone Jacks</a><a href="#">Toslink Adapters</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-audiovideo">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Audio Video</h3>
+            <a href="/audio-video.html" class="mega-panel-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">XLR / XLR Cables</a><a href="#">RCA Cables</a><a href="#">Speaker Wires</a>
+            <a href="#">Component Video Cables</a><a href="#">Switches &amp; Splitters</a><a href="#">Wall Plates</a>
+            <a href="#">Wireless Presentation Systems</a><a href="#">HDMI / IR Extenders</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-cables">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Cables</h3>
+            <a href="/cables.html" class="mega-panel-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#" class="mega-col-head">HDMI</a>
+            <a href="#">HDMI Cables</a><a href="#">HDMI Adapters</a><a href="#">HDMI Extension Cables</a>
+            <a href="#" class="mega-col-head">USB</a>
+            <a href="#">USB Cables</a><a href="#">USB Hubs</a><a href="#">USB Extenders</a>
+            <a href="#" class="mega-col-head">Bulk Wire &amp; Cables</a>
+            <a href="#">RG59 / RG6 Coaxial Bulk Cable</a><a href="#">Speaker Bulk Wire</a><a href="#">THHN Building Wire</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-network">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Network Cables &amp; Fiber Optics</h3>
+            <a href="/network-cables.html" class="mega-panel-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Cat 5E Cables</a><a href="#">Cat 6 Cables</a><a href="#">Cat 6A Cables</a><a href="#">Cat 8 Shielded Booted Cables</a>
+            <a href="#" class="mega-col-head">Fiber Optic Products</a>
+            <a href="#">OM3 Multimode Duplex</a><a href="#">OM4 Multimode Duplex</a><a href="#">Singlemode</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-networking">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Networking</h3>
+            <a href="/networking.html" class="mega-panel-seeall">See All Networking <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Patch Panels</a><a href="#">Keystone Jacks</a><a href="#">Cable Management</a><a href="#">Media Converter</a>
+            <a href="#" class="mega-col-head">Networking Racks</a>
+            <a href="#">Floorstand Racks</a><a href="#">Wallmount Racks</a>
+            <a href="#" class="mega-col-head">Telephone</a>
+            <a href="#">Modular Cords</a><a href="#">Telephone Headset</a>
+          </div>
+        </div>
+
+        <div class="mega-panel" id="panel-power">
+          <div class="mega-panel-header">
+            <h3 class="mega-panel-title">Power Cords &amp; Adapters</h3>
+            <a href="/power-cords-adapters.html" class="mega-panel-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="mega-col-flow">
+            <a href="#">Extension Power Cords</a><a href="#">Multi-Outlet Extension Cords</a><a href="#">Right Angle Power Cords</a>
+            <a href="#" class="mega-col-head">NEMA Power Cords</a>
+            <a href="#">NEMA 5-15 to IEC 320 C13</a><a href="#">NEMA 5-20</a><a href="#">NEMA L5-20 Locking</a>
+            <a href="#" class="mega-col-head">Power Strips</a>
+            <a href="#">Power Strip</a><a href="#">PDU</a>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+
+      <div class="mob-nav-panel" id="mob-tab-shop">
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Accessories <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/accessories.html" class="mob-cat-seeall">See All Accessories <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Cable Ties</a><a href="#">Power Supplies</a><a href="#">Security Camera</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Adapters &amp; Connectors <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/adapters-connectors.html" class="mob-cat-seeall">See All Adapters &amp; Connectors <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">BNC Connectors</a><a href="#">DisplayPort Adapters</a><a href="#">USB Couplers</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Audio Video <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/audio-video.html" class="mob-cat-seeall">See All Audio Video <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">XLR Cables</a><a href="#">Speaker Wires</a><a href="#">Wall Plates</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Cables <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/cables.html" class="mob-cat-seeall">See All Cables <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">HDMI Cables</a><a href="#">USB Cables</a><a href="#">Bulk Wire</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Network Cables &amp; Fiber <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/network-cables.html" class="mob-cat-seeall">See All Network Cables &amp; Fiber <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Cat 5E Cables</a><a href="#">Cat 6 Cables</a><a href="#">Cat 8 Cables</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Networking <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/networking.html" class="mob-cat-seeall">See All Networking <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Patch Panels</a><a href="#">Networking Racks</a><a href="#">Telephone</a></div>
+          </div>
+        </div>
+        <div class="mob-cat-item">
+          <button class="mob-cat-trigger" aria-expanded="false">Power Cords &amp; Adapters <span class="mob-cat-chevron"><i data-lucide="chevron-right"></i></span></button>
+          <div class="mob-cat-panel">
+            <a href="/power-cords-adapters.html" class="mob-cat-seeall">See All Power Cords &amp; Adapters <i data-lucide="arrow-right"></i></a>
+            <div class="mob-flat-links"><a href="#">Extension Cords</a><a href="#">NEMA Power Cords</a><a href="#">Power Strips</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mob-nav-panel" id="mob-tab-account" style="display:none">
+        <div class="mob-help-header">
+          <span class="mob-help-title"><i data-lucide="help-circle"></i> Help</span>
+          <button class="mob-help-close" id="mob-help-close" aria-label="Close Help menu"><i data-lucide="x"></i></button>
+        </div>
+        <a href="/quick-order.html" class="mobile-nav-link"><i data-lucide="zap"></i> <span>Quick Order</span></a>
+        <a href="/get-quote" class="mobile-nav-link"><i data-lucide="file-text"></i> <span>Get Quote</span></a>
+        <a href="/order-tracking" class="mobile-nav-link"><i data-lucide="package"></i> <span>Order Tracking</span></a>
+        <a href="/change-cancel-order" class="mobile-nav-link"><i data-lucide="x-circle"></i> <span>Change / Cancel Order</span></a>
+        <a href="/shipping-information" class="mobile-nav-link"><i data-lucide="truck"></i> <span>Shipping Information</span></a>
+        <a href="/schools-government" class="mobile-nav-link"><i data-lucide="building-2"></i> <span>Schools &amp; Government</span></a>
+        <a href="/payment-terms" class="mobile-nav-link"><i data-lucide="credit-card"></i> <span>Payment Terms</span></a>
+        <a href="/returns-refunds" class="mobile-nav-link"><i data-lucide="rotate-ccw"></i> <span>Returns / Refunds</span></a>
+        <a href="/warranty-claims" class="mobile-nav-link"><i data-lucide="shield-check"></i> <span>Warranty / Claims</span></a>
+        <a href="/will-call" class="mobile-nav-link"><i data-lucide="map-pin"></i> <span>Will Call</span></a>
+        <a href="/contact-us" class="mobile-nav-link"><i data-lucide="mail"></i> <span>Contact Us</span></a>
+      </div>
+
+    </div>
+    </div>
+  </header>
+
+  </div><!-- /sticky-top-wrap -->
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         BREADCRUMB
+    ============================================================ -->
+    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-sep" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Quick Order</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         PAGE TITLE + DESCRIPTION
+    ============================================================ -->
+    <section class="section--page-title" aria-labelledby="qo-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-row">
+            <h1 class="section-title listing-page-heading" id="qo-heading">Quick Order</h1>
+          </div>
+        </div>
+        <div class="qo-page-desc">
+          <p style="margin:0 0 8px;">Save time on repeat or bulk orders by entering part numbers and quantities directly — no browsing required. Enter up to 100 line items at once, or upload a CSV file with your SKU list. All items are added to your cart for review before checkout.</p>
+          <p style="margin:0;">If you know your SF Cable part numbers, this is the fastest way to order. Need help finding a SKU? Use the search bar above or <a href="/contact-us">contact our team</a> — we're happy to assist.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         QUICK ORDER FORM
+    ============================================================ -->
+    <section class="qo-body" aria-label="Quick Order form">
+      <div class="container">
+
+        <form id="qo-form" novalidate>
+          <div class="qo-layout">
+
+            <!-- ── LEFT: Enter SKU ── -->
+            <div class="qo-main">
+              <div class="co-card">
+                <div class="co-card-body">
+
+                  <!-- Column labels -->
+                  <div class="qo-entry-labels" aria-hidden="true">
+                    <span class="co-label">Enter SKU or search by Product Name</span>
+                    <span class="co-label qo-lbl-qty">Qty</span>
+                    <span></span>
+                  </div>
+
+                  <!-- Added items list (filled by JS) -->
+                  <div class="qo-added-list" id="qo-added-list"></div>
+
+                  <!-- Active entry row -->
+                  <div class="qo-entry-row">
+                    <input class="co-input" type="text" id="qo-sku-input" name="sku"
+                           autocomplete="off"
+                           aria-label="Enter SKU or search by Product Name" />
+                    <input class="co-input" type="number" id="qo-qty-input" name="qty"
+                           value="1" min="1" max="9999"
+                           aria-label="Quantity" />
+                    <button type="button" class="qo-delete-btn" id="qo-clear-row" aria-label="Clear entry">
+                      <i data-lucide="trash-2"></i>
+                    </button>
+                  </div>
+
+                  <!-- Add New button -->
+                  <div class="qo-add-new-wrap">
+                    <button type="button" class="btn btn-primary" id="qo-add-new">
+                      <i data-lucide="plus"></i> Add New
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- ── RIGHT: Multiple SKUs + File ── -->
+            <div class="qo-sidebar">
+              <div class="co-card">
+                <div class="co-card-body">
+
+                  <!-- Bulk SKU textarea -->
+                  <label class="co-label" for="qo-bulk-skus" style="margin-bottom:7px;">Enter Multiple SKUs</label>
+                  <textarea class="co-textarea" id="qo-bulk-skus" name="bulk_skus" rows="5"
+                            aria-label="Enter multiple SKUs separated by commas or new lines"></textarea>
+                  <p class="qo-bulk-hint">Use commas or paragraph to separate SKUs.</p>
+
+                  <div class="qo-add-list-wrap">
+                    <button type="button" class="btn btn-primary" id="qo-add-list" disabled>
+                      <i data-lucide="list-plus"></i> Add to List
+                    </button>
+                  </div>
+
+                  <div class="co-section-sep"></div>
+
+                  <!-- File upload -->
+                  <span class="qo-file-label">Add from File</span>
+                  <p class="qo-file-hint">
+                    File must be in .csv format and include "SKU" and "QTY" columns.
+                    <a href="/media/sample-quick-order.csv" download>Download Sample</a>
+                  </p>
+
+                  <!-- Dropzone -->
+                  <div class="qo-dropzone" id="qo-dropzone"
+                       role="button" tabindex="0"
+                       aria-label="Upload CSV — click or drag and drop">
+                    <i data-lucide="cloud-upload"></i>
+                    <p class="qo-dropzone-title">Choose a file or drag &amp; drop it here</p>
+                    <p class="qo-dropzone-hint">.csv format · include "SKU" and "QTY" columns</p>
+                    <label for="qo-file-input" class="qo-browse-btn">
+                      <i data-lucide="folder-open"></i> Browse File
+                    </label>
+                    <input type="file" id="qo-file-input" name="csv_file" accept=".csv"
+                           class="qo-file-hidden" aria-label="Upload CSV file" />
+                  </div>
+
+                  <!-- Selected file info -->
+                  <div class="qo-file-selected" id="qo-file-selected" aria-live="polite">
+                    <i data-lucide="file-spreadsheet"></i>
+                    <div class="qo-file-details">
+                      <span class="qo-file-name" id="qo-file-name">file.csv</span>
+                      <span class="qo-file-size" id="qo-file-size"></span>
+                    </div>
+                    <button type="button" class="qo-file-remove-btn" id="qo-file-remove" aria-label="Remove file">
+                      <i data-lucide="x"></i>
+                    </button>
+                  </div>
+
+                  <!-- Download sample link -->
+                  <a href="/media/sample-quick-order.csv" download class="qo-download-sample">
+                    <i data-lucide="download"></i> Download sample CSV template
+                  </a>
+
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /qo-layout -->
+
+          <!-- Add to Cart — right-aligned -->
+          <div class="qo-form-footer">
+            <button type="submit" class="qo-cart-btn" id="qo-submit">
+              <i data-lucide="shopping-cart"></i> Add to Cart
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER TRUST BAR (USP)
+    ============================================================ -->
+    <section class="footer-trust-bar" aria-label="Trust and credentials">
+      <div class="container">
+        <div class="footer-trust-slider-wrap">
+          <button class="footer-trust-prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <div class="footer-trust-inner">
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="history"></i></div>
+              <div class="footer-trust-text"><strong>20+ Years of Industry</strong><span>Expertise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="award"></i></div>
+              <div class="footer-trust-text"><strong>Lifetime Warranty</strong><span>on Cables</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="package-open"></i></div>
+              <div class="footer-trust-text"><strong>No Minimum Order</strong><span>or Fees</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="truck"></i></div>
+              <div class="footer-trust-text"><strong>Same-Day Shipping</strong><span>on Stock Items</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="rotate-ccw"></i></div>
+              <div class="footer-trust-text"><strong>60-Day Money-Back</strong><span>Promise</span></div>
+            </div>
+            <div class="footer-trust-item">
+              <div class="footer-trust-icon"><i data-lucide="headphones"></i></div>
+              <div class="footer-trust-text"><strong>Free Lifetime</strong><span>Technical Support</span></div>
+            </div>
+          </div>
+          <button class="footer-trust-next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" aria-label="SF Cable – Home">
+            <img src="https://www.sfcable.com/media/logo/stores/1/SF-Cable-official-logo.png" alt="SF Cable Logo" width="140" height="42" loading="lazy" onerror="this.style.display='none'" />
+          </a>
+          <p>Your trusted source for cables, connectors &amp; AV gear since 1996. Over 40,000 products in stock &amp; shipped fast.</p>
+          <form class="footer-brand-form newsletter-form" aria-label="Newsletter signup">
+            <div class="newsletter-inline">
+              <input class="newsletter-input" type="email" placeholder="Work email address" aria-label="Email address" required />
+              <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+            </div>
+            <p class="newsletter-note">No spam. <a href="/privacy-policy">Privacy Policy</a>.</p>
+          </form>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="X / Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.263 5.633 5.901-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col open">
+          <h4>Information<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/about">About SF Cable</a></li>
+            <li><a href="/shipping-information">Shipping Info</a></li>
+            <li><a href="/returns-refunds">Returns &amp; Refunds</a></li>
+            <li><a href="/warranty-claims">Warranty</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/order-tracking">Track My Order</a></li>
+            <li><a href="/quick-order.html">Quick Order</a></li>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/clearance">Clearance</a></li>
+            <li><a href="/rewards">SF Cable Rewards</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Shop<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <ul class="footer-links">
+            <li><a href="/hdmi-cables.html">HDMI Cables</a></li>
+            <li><a href="/usb-cables.html">USB Cables</a></li>
+            <li><a href="/network-cables.html">Ethernet Cables</a></li>
+            <li><a href="/fiber-optics.html">Fiber Optics</a></li>
+            <li><a href="/power-cords.html">Power Cords</a></li>
+            <li><a href="/adapters-connectors.html">Adapters &amp; Connectors</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us<i data-lucide="chevron-down" class="footer-acc-icon" aria-hidden="true"></i></h4>
+          <div class="footer-contact">
+            <a href="tel:18882758755"><i data-lucide="phone"></i> 1-888-275-8755</a>
+            <a href="mailto:sales@sfcable.com"><i data-lucide="mail"></i> sales@sfcable.com</a>
+            <a href="/contact"><i data-lucide="map-pin"></i> Fremont, CA — Mon–Fri 8AM–5PM PST</a>
+            <a href="/chat"><i data-lucide="message-circle"></i> Live Chat</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-badges">
+        <div class="footer-badge-group" aria-label="Accreditations and certifications">
+          <a href="#" class="footer-badge" aria-label="CMAS — California Multiple Award Schedule">
+            <img src="images/CMAS.png" alt="CMAS — California Multiple Award Schedule" />
+          </a>
+          <a href="#" class="footer-badge" aria-label="GSA Contract Holder">
+            <img src="images/GSA.jpg" alt="GSA Contract Holder" />
+          </a>
+          <a href="#" class="footer-badge" aria-label="BBB Accredited Business">
+            <img src="images/blue.png" alt="BBB Accredited Business" />
+          </a>
+        </div>
+        <a href="#" class="footer-reviews" aria-label="7,786 Certified Reviews, powered by YOTPO">
+          <img src="images/yotpo-badge.png" alt="7,786 Certified Reviews – Powered by YOTPO" class="footer-yotpo-img" />
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SF Cable, Inc. All rights reserved. Fremont, CA 94538</p>
+        <div class="footer-payments">
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Visa">
+              <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+              <text x="25" y="23" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1a1f71" text-anchor="middle">VISA</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Mastercard">
+              <rect width="50" height="32" rx="3.5" fill="#1a1a1a"/>
+              <circle cx="19" cy="16" r="10" fill="#EB001B"/>
+              <circle cx="31" cy="16" r="10" fill="#F79E1B" opacity="0.9"/>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="American Express">
+              <rect width="50" height="32" rx="3.5" fill="#007BC1"/>
+              <text x="25" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AMEX</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="Discover">
+              <rect width="50" height="32" rx="3.5" fill="#fff" stroke="#d0d0d0" stroke-width="0.6"/>
+              <circle cx="49" cy="16" r="13" fill="#F76F20"/>
+              <text x="4" y="20" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#231f20" letter-spacing="0.3">DISCOVER</text>
+            </svg>
+          </span>
+          <span class="payment-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32" width="50" height="32" role="img" aria-label="PayPal">
+              <rect width="50" height="32" rx="3.5" fill="#003087"/>
+              <text font-family="Arial,sans-serif" font-size="13" font-weight="700" y="22"><tspan x="4" fill="#009cde">Pay</tspan><tspan fill="#fff">Pal</tspan></text>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-trust-strip">
+      <p>SSL Secured Checkout · RoHS Compliant · TAA Compliant Products Available · GSA Schedule · <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-conditions">Terms</a></p>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top"><i data-lucide="chevron-up"></i></a>
+
+  <script>
+    /* ── Scroll: header shadow + back-to-top ── */
+    const header    = document.getElementById('site-header');
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      header.classList.toggle('scrolled', y > 10);
+      backToTop.classList.toggle('visible', y > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ── Footer accordion ── */
+    (function () {
+      const mqAll  = window.matchMedia('(max-width: 900px)');
+      const mq2col = window.matchMedia('(min-width: 481px) and (max-width: 900px)');
+      const cols   = Array.from(document.querySelectorAll('.footer-grid .footer-col'));
+      function setInitialState() {
+        cols.forEach((col, i) => {
+          if (!mqAll.matches) { col.classList.remove('open'); return; }
+          col.classList.toggle('open', mq2col.matches ? i < 2 : i === 0);
+        });
+      }
+      cols.forEach(col => {
+        const h = col.querySelector('h4');
+        if (!h) return;
+        h.addEventListener('click', () => { if (mqAll.matches) col.classList.toggle('open'); });
+      });
+      setInitialState();
+      mqAll.addEventListener('change', setInitialState);
+      mq2col.addEventListener('change', setInitialState);
+    })();
+
+    /* ── Mobile nav ── */
+    (function () {
+      var mobileNav  = document.getElementById('mobile-nav');
+      var shopPanel  = document.getElementById('mob-tab-shop');
+      var helpPanel  = document.getElementById('mob-tab-account');
+      var shopToggle = document.getElementById('mobile-shop-toggle');
+      var helpToggle = document.getElementById('mobile-help-toggle');
+      var tabToggle  = document.getElementById('mobile-menu-toggle');
+      if (!mobileNav) return;
+      function showPanel(p) {
+        if (shopPanel) shopPanel.style.display = 'none';
+        if (helpPanel) helpPanel.style.display = 'none';
+        if (p) p.style.display = 'block';
+      }
+      function openNav(p) { mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false'); showPanel(p); }
+      function closeNav() {
+        mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true');
+        [shopToggle, tabToggle].forEach(function(t) { if (t) { t.setAttribute('aria-expanded','false'); t.classList.remove('is-open'); } });
+        if (helpToggle) { helpToggle.setAttribute('aria-expanded','false'); helpToggle.classList.remove('mobile-help-active'); }
+      }
+      function isOpen() { return mobileNav.classList.contains('open'); }
+      if (shopToggle) shopToggle.addEventListener('click', function() {
+        if (isOpen() && shopPanel && shopPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(shopPanel); shopToggle.setAttribute('aria-expanded','true'); shopToggle.classList.add('is-open'); if (tabToggle) { tabToggle.classList.add('is-open'); tabToggle.setAttribute('aria-expanded','true'); } if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded','false'); } }
+      });
+      if (helpToggle) helpToggle.addEventListener('click', function() {
+        if (isOpen() && helpPanel && helpPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(helpPanel); helpToggle.setAttribute('aria-expanded','true'); helpToggle.classList.add('mobile-help-active'); if (shopToggle) { shopToggle.classList.remove('is-open'); shopToggle.setAttribute('aria-expanded','false'); } if (tabToggle) { tabToggle.classList.remove('is-open'); tabToggle.setAttribute('aria-expanded','false'); } }
+      });
+      if (tabToggle) tabToggle.addEventListener('click', function() {
+        if (isOpen() && shopPanel && shopPanel.style.display !== 'none') { closeNav(); }
+        else { openNav(shopPanel); tabToggle.setAttribute('aria-expanded','true'); tabToggle.classList.add('is-open'); if (shopToggle) { shopToggle.classList.add('is-open'); shopToggle.setAttribute('aria-expanded','true'); } if (helpToggle) { helpToggle.classList.remove('mobile-help-active'); helpToggle.setAttribute('aria-expanded','false'); } }
+      });
+    })();
+
+    /* ── Help panel close ── */
+    (function () {
+      var closeBtn = document.getElementById('mob-help-close');
+      if (!closeBtn) return;
+      closeBtn.addEventListener('click', function() {
+        var nav = document.getElementById('mobile-nav');
+        var ht  = document.getElementById('mobile-help-toggle');
+        var st  = document.getElementById('mobile-shop-toggle');
+        if (nav) { nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); }
+        if (ht)  { ht.classList.remove('mobile-help-active'); ht.setAttribute('aria-expanded','false'); }
+        if (st)  { st.classList.remove('is-open'); st.setAttribute('aria-expanded','false'); }
+      });
+    })();
+
+    /* ── Mobile nav: category accordion ── */
+    document.querySelectorAll('.mob-cat-trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var item   = trigger.closest('.mob-cat-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.mob-cat-item.open').forEach(function(i) {
+          i.classList.remove('open'); i.querySelector('.mob-cat-trigger').setAttribute('aria-expanded','false');
+        });
+        if (!isOpen) { item.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
+      });
+    });
+
+    /* ── Desktop Help dropdown ── */
+    (function () {
+      var trigger  = document.getElementById('helpMenuTrigger');
+      var dropdown = document.getElementById('helpMenuDropdown');
+      if (!trigger || !dropdown) return;
+      var hoverTimer;
+      function openHelp()  { clearTimeout(hoverTimer); dropdown.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
+      function closeHelp() { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); }
+      function closeDelayed() { hoverTimer = setTimeout(closeHelp, 150); }
+      function toggle(e)   { e.stopPropagation(); dropdown.classList.contains('open') ? closeHelp() : openHelp(); }
+      trigger.addEventListener('click', toggle);
+      trigger.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); } if (e.key === 'Escape') closeHelp(); });
+      var wrap = document.getElementById('helpMenuWrap');
+      wrap.addEventListener('mouseenter', openHelp);
+      wrap.addEventListener('mouseleave', closeDelayed);
+      document.addEventListener('click', function(e) { if (!wrap.contains(e.target)) closeHelp(); });
+    })();
+
+    /* ── Mega menu ── */
+    (() => {
+      const trigger  = document.getElementById('allCatsTrigger');
+      const wrap     = document.getElementById('megaMenuWrap');
+      if (!trigger || !wrap) return;
+      const railItems = wrap.querySelectorAll('.mega-rail-item');
+      const panels    = wrap.querySelectorAll('.mega-panel');
+      let closeTimer, hoverTimer;
+      function openMenu()  { clearTimeout(closeTimer); wrap.classList.add('open'); trigger.classList.add('open'); trigger.setAttribute('aria-expanded','true'); wrap.setAttribute('aria-hidden','false'); }
+      function closeMenu() { wrap.classList.remove('open'); trigger.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); wrap.setAttribute('aria-hidden','true'); }
+      function scheduleClose() { clearTimeout(closeTimer); closeTimer = setTimeout(closeMenu, 200); }
+      function switchPanel(item) {
+        railItems.forEach(r => r.classList.remove('active')); panels.forEach(p => p.classList.remove('active'));
+        item.classList.add('active'); const p = document.getElementById(item.dataset.panel); if (p) p.classList.add('active');
+      }
+      trigger.addEventListener('mouseenter', openMenu);
+      trigger.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+      wrap.addEventListener('mouseleave', scheduleClose);
+      trigger.addEventListener('click', e => { e.stopPropagation(); wrap.classList.contains('open') ? closeMenu() : openMenu(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && wrap.classList.contains('open')) closeMenu(); });
+      document.addEventListener('click', e => { if (wrap.classList.contains('open') && !wrap.contains(e.target) && !trigger.contains(e.target)) closeMenu(); });
+      railItems.forEach(item => {
+        item.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); hoverTimer = setTimeout(() => switchPanel(item), 60); });
+        item.addEventListener('click', () => { clearTimeout(hoverTimer); switchPanel(item); });
+      });
+    })();
+
+    /* ── Promo bar carousel ── */
+    (function () {
+      var slides = document.querySelectorAll('.promo-slide'), current = 0, timer;
+      if (!slides.length) return;
+      function show(idx) { slides[current].classList.remove('active'); current = (idx + slides.length) % slides.length; slides[current].classList.add('active'); }
+      function startAuto() { timer = setInterval(function() { show(current + 1); }, 5000); }
+      function resetAuto() { clearInterval(timer); startAuto(); }
+      document.querySelector('.promo-prev').addEventListener('click', function() { show(current - 1); resetAuto(); });
+      document.querySelector('.promo-next').addEventListener('click', function() { show(current + 1); resetAuto(); });
+      startAuto();
+    })();
+
+    /* ══════════════════════════════════════════════════════════
+       QUICK ORDER — Add New (left column)
+    ══════════════════════════════════════════════════════════ */
+    (function () {
+      var addedList  = document.getElementById('qo-added-list');
+      var skuInput   = document.getElementById('qo-sku-input');
+      var qtyInput   = document.getElementById('qo-qty-input');
+      var clearBtn   = document.getElementById('qo-clear-row');
+      var addNewBtn  = document.getElementById('qo-add-new');
+      var items      = []; /* { sku, qty } */
+
+      function renderList() {
+        addedList.innerHTML = '';
+        items.forEach(function(item, i) {
+          var row = document.createElement('div');
+          row.className = 'qo-added-item';
+          row.innerHTML =
+            '<span class="qo-added-sku" title="' + item.sku + '">' + item.sku + '</span>' +
+            '<span class="qo-added-qty">' + item.qty + '</span>' +
+            '<button type="button" class="qo-delete-btn" data-index="' + i + '" aria-label="Remove ' + item.sku + '">' +
+              '<i data-lucide="trash-2"></i>' +
+            '</button>';
+          addedList.appendChild(row);
+        });
+        lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+      }
+
+      function addItem() {
+        var sku = skuInput.value.trim();
+        var qty = parseInt(qtyInput.value, 10) || 1;
+        if (!sku) { skuInput.focus(); return; }
+        items.push({ sku: sku, qty: qty });
+        skuInput.value = '';
+        qtyInput.value = '1';
+        skuInput.focus();
+        renderList();
+      }
+
+      addNewBtn.addEventListener('click', addItem);
+      skuInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); addItem(); }
+      });
+
+      clearBtn.addEventListener('click', function() {
+        skuInput.value = ''; qtyInput.value = '1'; skuInput.focus();
+      });
+
+      addedList.addEventListener('click', function(e) {
+        var btn = e.target.closest('.qo-delete-btn');
+        if (!btn) return;
+        var idx = parseInt(btn.dataset.index, 10);
+        items.splice(idx, 1);
+        renderList();
+      });
+
+      /* ── Add to List (right column — bulk textarea) ── */
+      var bulkArea   = document.getElementById('qo-bulk-skus');
+      var addListBtn = document.getElementById('qo-add-list');
+      if (bulkArea && addListBtn) {
+        /* Enable/disable based on textarea content */
+        bulkArea.addEventListener('input', function() {
+          addListBtn.disabled = !bulkArea.value.trim();
+        });
+
+        addListBtn.addEventListener('click', function() {
+          var raw = bulkArea.value.trim();
+          if (!raw) return;
+          raw.split(/[\n,]+/).forEach(function(line) {
+            var sku = line.trim();
+            if (sku) items.push({ sku: sku, qty: 1 });
+          });
+          bulkArea.value = '';
+          addListBtn.disabled = true;
+          renderList();
+        });
+      }
+
+      /* ── Dropzone / file upload ── */
+      (function () {
+        var dropzone   = document.getElementById('qo-dropzone');
+        var fileInput  = document.getElementById('qo-file-input');
+        var fileInfo   = document.getElementById('qo-file-selected');
+        var fileName   = document.getElementById('qo-file-name');
+        var fileSize   = document.getElementById('qo-file-size');
+        var removeBtn  = document.getElementById('qo-file-remove');
+        if (!dropzone || !fileInput) return;
+
+        function formatSize(bytes) {
+          if (bytes < 1024) return bytes + ' B';
+          if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+          return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+        function showFile(file) {
+          fileName.textContent = file.name;
+          fileSize.textContent = formatSize(file.size);
+          fileInfo.classList.add('visible');
+          dropzone.style.display = 'none';
+          lucide.createIcons({ attrs: { 'stroke-width': '2' } });
+        }
+        function clearFile() {
+          fileInput.value = '';
+          fileInfo.classList.remove('visible');
+          dropzone.style.display = '';
+        }
+
+        fileInput.addEventListener('change', function() {
+          if (fileInput.files && fileInput.files[0]) showFile(fileInput.files[0]);
+        });
+        removeBtn.addEventListener('click', clearFile);
+
+        dropzone.addEventListener('click', function(e) {
+          if (!e.target.closest('label')) fileInput.click();
+        });
+        dropzone.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+        });
+        ['dragenter', 'dragover'].forEach(function(ev) {
+          dropzone.addEventListener(ev, function(e) { e.preventDefault(); dropzone.classList.add('drag-over'); });
+        });
+        ['dragleave', 'drop'].forEach(function(ev) {
+          dropzone.addEventListener(ev, function(e) { e.preventDefault(); dropzone.classList.remove('drag-over'); });
+        });
+        dropzone.addEventListener('drop', function(e) {
+          var f = e.dataTransfer.files[0];
+          if (f) { showFile(f); }
+        });
+      })();
+
+      /* ── Form submit ── */
+      var form = document.getElementById('qo-form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var skuVal = skuInput.value.trim();
+          if (items.length === 0 && !skuVal) {
+            alert('Please enter at least one SKU before adding to cart.');
+            skuInput.focus();
+            return;
+          }
+          /* If there's a pending entry in the input, include it */
+          if (skuVal) items.push({ sku: skuVal, qty: parseInt(qtyInput.value, 10) || 1 });
+          /* Backend integration point */
+          console.log('Quick Order cart payload:', JSON.stringify(items));
+          window.location.href = '/cart';
+        });
+      }
+    })();
+
+    /* ── Initialise Lucide icons ── */
+    lucide.createIcons({
+      attrs: { 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
+    });
+  </script>
+
+</body>
+</html>

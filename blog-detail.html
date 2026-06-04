@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -82,7 +82,10 @@
 }
 .blog-body p { margin: 0 0 16px; }
 .blog-body p:last-child { margin-bottom: 0; }
-.blog-body ul, .blog-body ol { margin: 0 0 16px 20px; padding: 0; }
+.blog-body ul { margin: 0 0 16px; padding: 0 0 0 24px; list-style: disc; }
+.blog-body ol { margin: 0 0 16px; padding: 0 0 0 24px; list-style: decimal; }
+.blog-body ul ul { list-style: circle; margin-bottom: 6px; }
+.blog-body ol ol { list-style: lower-alpha; margin-bottom: 6px; }
 .blog-body li { margin-bottom: 6px; }
 .blog-body a { color: var(--sf-primary-cta); text-decoration: none; }
 .blog-body a:hover { color: var(--sf-secondary-dark); text-decoration: underline; }
@@ -122,10 +125,8 @@
 
 /* FAQ */
 .blog-faq-item {
-  border-bottom: 1px solid var(--gray-200);
   padding: 14px 0;
 }
-.blog-faq-item:last-child { border-bottom: none; }
 .blog-faq-q { font-size: 16px; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
 .blog-faq-a { font-size: 16px; color: var(--gray-700); margin: 0; line-height: 1.7; }
 
@@ -171,6 +172,7 @@
   font-family: var(--font);
 }
 .blog-share-btn svg.lucide { width: 15px; height: 15px; }
+.blog-share-btn svg { display: block; flex-shrink: 0; }
 .blog-share-btn--facebook { background: #1877f2; color: #fff; border-color: #1877f2; }
 .blog-share-btn--facebook:hover { background: #1463cc; border-color: #1463cc; }
 .blog-share-btn--x { background: #000; color: #fff; border-color: #000; }
@@ -210,7 +212,8 @@
   letter-spacing: .5px;
 }
 .blog-post-nav-link--next .blog-post-nav-label { justify-content: flex-end; }
-.blog-post-nav-label svg.lucide { width: 13px; height: 13px; }
+.blog-post-nav-label svg.lucide { width: 17px; height: 17px; stroke-width: 2.5; color: var(--dark); }
+.blog-post-nav-link:hover .blog-post-nav-label svg.lucide { color: var(--sf-primary-cta); }
 .blog-post-nav-title { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.4; }
 .blog-post-nav-link:hover .blog-post-nav-title { color: var(--sf-primary-cta); }
 
@@ -269,20 +272,21 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .blog-layout { flex-direction: column; gap: 24px; padding: 28px 0; }
+  .blog-layout { flex-direction: column; gap: 24px; padding: 0 0 28px; }
   .blog-sidebar-col { order: 2; width: 100%; position: static; }
   .blog-article { order: 1; }
 }
 @media (max-width: 768px) {
-  .blog-layout { padding: 28px 0; }
+  .blog-layout { padding: 0 0 28px; }
   .blog-body h2 { font-size: 22px; margin-bottom: 14px; }
   .blog-body h3 { font-size: 15px; }
+  .blog-comments-hd { margin-bottom: 14px; }
 }
 @media (max-width: 600px) {
   .blog-body h3 { font-size: 16px; }
 }
 @media (max-width: 480px) {
-  .blog-layout { padding: 22px 0; }
+  .blog-layout { padding: 0 0 22px; }
   .blog-body h2 { font-size: 20px; }
   .blog-body h3 { font-size: 16px; }
   .blog-featured-img { border-radius: var(--radius-sm); }
@@ -1538,16 +1542,6 @@
                 <li><strong>Cat6</strong> — steps ahead for gaming, 4K streaming, business networks, and high-demand environments</li>
               </ul>
 
-              <!-- CTA Box -->
-              <div class="blog-cta-box">
-                <p>Explore SF Cable's full range of Cat5e and Cat6 Ethernet cables — built for reliable performance at competitive prices.</p>
-                <p>
-                  <a href="/network-cables/cat5e-cables.html" class="btn btn-primary">Shop Cat5e Cables</a>
-                  &nbsp;&nbsp;
-                  <a href="/network-cables/cat6-cables.html" class="btn btn-secondary">Shop Cat6 Cables</a>
-                </p>
-              </div>
-
               <h2>Frequently Asked Questions (FAQs)</h2>
 
               <div class="blog-faq-item">
@@ -2253,5 +2247,6 @@
     });
   </script>
 
+  <script src="minicart.js?v=2"></script>
 </body>
 </html>

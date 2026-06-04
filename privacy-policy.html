@@ -64,7 +64,8 @@
     .cms-nav-link--hidden { display: none !important; }
     .cms-nav-more { display: none; flex-shrink: 0; }
     .cms-nav-more.visible { display: block; }
-    .cms-nav-more .plp-dropdown-trigger { border-left: 1px solid var(--gray-200); border-radius: 0; border-top: none; border-right: none; border-bottom: none; height: 42px; padding: 0 12px; }
+    .cms-nav-more .plp-dropdown-trigger { border: none; border-radius: 0; background: transparent; height: 42px; padding: 0 10px; box-shadow: none; }
+    .cms-nav-more .plp-dropdown-trigger:hover { background: transparent; border: none; }
 
     /* ═══════════════════════════════════════════════════════════
        PRIVACY POLICY PAGE — BODY
@@ -128,11 +129,18 @@
     .privacy-content p:last-child { margin-bottom: 0; }
 
     /* ── Lists ── */
-    .privacy-content ul,
+    .privacy-content ul {
+      margin: 0 0 14px;
+      padding-left: 22px;
+      list-style: disc;
+    }
     .privacy-content ol {
       margin: 0 0 14px;
       padding-left: 22px;
+      list-style: decimal;
     }
+    .privacy-content ul ul { list-style: circle; margin-bottom: 6px; }
+    .privacy-content ol ol { list-style: lower-alpha; margin-bottom: 6px; }
     .privacy-content li {
       font-size: 16px;
       color: var(--gray-700);
@@ -194,13 +202,9 @@
     }
     .ship-table tbody td:first-child { font-weight: 600; }
 
-    @media (max-width: 640px) {
-      .ship-table thead th { padding: 10px 12px; }
+    @media (max-width: 600px) {
+      .ship-table thead th { padding: 10px 12px; font-size: 15px; }
       .ship-table tbody td { padding: 10px 12px; font-size: 13px; }
-    }
-    @media (max-width: 480px) {
-      .ship-table thead th { padding: 8px 10px; }
-      .ship-table tbody td { padding: 8px 10px; font-size: 12px; }
     }
 
     /* ── Responsive ── */
@@ -1019,5 +1023,6 @@
     });
   </script>
 
+  <script src="minicart.js?v=2"></script>
 </body>
 </html>
