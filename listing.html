@@ -676,6 +676,7 @@
               <h3><i data-lucide="sliders-horizontal"></i> Filters</h3>
               <button class="filter-clear-all" id="filterClearAll">Clear All</button>
             </div>
+            <div class="filter-sections-wrap" id="filterSectionsWrap">
             <div class="filter-section filter-applied-section open" id="filterAppliedSection">
               <div class="filter-section-hd" role="button" tabindex="0" aria-expanded="true">
                 <div class="filter-hd-left"><h4>Filter</h4></div>
@@ -769,6 +770,14 @@
                 <button class="filter-chip" data-filter="connector" data-value="snagless">Snagless Boot <span class="filter-chip-count">6</span></button>
                 <button class="filter-chip" data-filter="connector" data-value="booted">Booted <span class="filter-chip-count">2</span></button>
               </div>
+            </div>
+            </div><!-- /filter-sections-wrap -->
+            <!-- Scroll hint — hidden once user scrolls to bottom -->
+            <div class="filter-scroll-hint" id="filterScrollHint">
+              <button class="filter-scroll-btn" id="filterScrollBtn" aria-label="Scroll for more filters">
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <span class="filter-scroll-hint-text">More filters below</span>
             </div>
           </div><!-- /filter-panel -->
 
@@ -1865,6 +1874,25 @@
         }
       });
     });
+
+    /* Filter scroll hint — hide once user reaches the bottom; button clicks scroll the list */
+    (function initFilterScrollHint() {
+      const wrap = document.getElementById('filterSectionsWrap');
+      const hint = document.getElementById('filterScrollHint');
+      const btn  = document.getElementById('filterScrollBtn');
+      if (!wrap || !hint) return;
+      function updateHint() {
+        const atBottom = wrap.scrollHeight - wrap.scrollTop <= wrap.clientHeight + 4;
+        hint.classList.toggle('is-hidden', atBottom || wrap.scrollHeight <= wrap.clientHeight);
+      }
+      /* Clicking the arrow scrolls the filter list down */
+      if (btn) btn.addEventListener('click', function() {
+        wrap.scrollBy({ top: 160, behavior: 'smooth' });
+      });
+      wrap.addEventListener('scroll', updateHint, { passive: true });
+      setTimeout(updateHint, 100);
+      window.addEventListener('resize', updateHint, { passive: true });
+    })();
 
     /* Init all Lucide icons */
     lucide.createIcons({ strokeWidth: 2 });

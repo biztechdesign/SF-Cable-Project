@@ -193,22 +193,26 @@
       background: var(--white);
       border: 1px solid var(--gray-300);
       border-radius: var(--radius-lg);
+      max-width: 680px;
     }
     .ship-table-wrap { overflow-x: auto; }
     .ship-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 15px;
+      table-layout: fixed;
     }
+    .ship-table colgroup col:first-child { width: 260px; }
+    .ship-table colgroup col:last-child  { width: auto; }
     .ship-table thead tr {
       background: var(--gray-100);
       border-bottom: 1px solid var(--gray-300);
     }
     .ship-table thead th {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--dark);
-      padding: 12px 16px;
+      padding: 11px 20px;
       text-align: left;
       white-space: nowrap;
       vertical-align: middle;
@@ -217,7 +221,7 @@
     .ship-table tbody tr { border-bottom: 1px solid var(--gray-200); }
     .ship-table tbody tr:last-child { border-bottom: none; }
     .ship-table tbody td {
-      padding: 11px 16px;
+      padding: 10px 20px;
       color: var(--dark);
       font-size: 15px;
       font-weight: 400;
@@ -693,6 +697,10 @@
           <div class="ship-card" style="padding:0; overflow:hidden;">
             <div class="ship-table-wrap">
               <table class="ship-table">
+                <colgroup>
+                  <col style="width:260px">
+                  <col>
+                </colgroup>
                 <thead>
                   <tr><th>Certificate Type</th><th>Value</th></tr>
                 </thead>

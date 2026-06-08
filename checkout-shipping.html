@@ -15,6 +15,8 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <!-- Shared site styles -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Checkout mobile bar + drawer -->
+  <link rel="stylesheet" href="checkout-mobile.css">
 
   <style>
     /* ═══════════════════════════════════════════════════════════
@@ -33,10 +35,12 @@
       height: 66px;
     }
     .checkout-header .logo img {
-      height: 32px;
+      height: 34px;
       width: auto;
       filter: brightness(0) invert(1);
     }
+    @media (max-width: 900px)  { .checkout-header .logo img { height: 32px; } }
+    @media (max-width: 480px)  { .checkout-header .logo img { height: 24px; } }
     .checkout-header .logo-fallback {
       font-size: 22px;
       font-weight: 800;
@@ -398,6 +402,57 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
+    .co-ship-carrier {
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .co-ship-carrier:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+    .co-ship-carrier-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--dark);
+      margin: 0 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .co-ship-carrier-name .help-icon {
+      width: 15px;
+      height: 15px;
+      color: var(--red);
+      flex-shrink: 0;
+      cursor: default;
+      stroke-width: 2;
+    }
+    .co-ship-options { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .co-ship-option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 4px 0;
+    }
+    .co-ship-option input[type="radio"] {
+      margin: 0;
+      cursor: pointer;
+      accent-color: var(--red);
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+    .co-ship-option label {
+      cursor: pointer;
+      color: var(--dark);
+      font-size: 14px;
+      font-weight: 400;
+      font-family: var(--font);
+      transition: color var(--transition);
+    }
+    .co-ship-option input[type="radio"]:checked + label { color: var(--red); }
 
     /* ─── Form actions ─── */
     .co-form-actions {
@@ -668,11 +723,11 @@
       .checkout-layout { grid-template-columns: 1fr 360px; gap: 22px; }
     }
 
-    /* 900px — stack layout */
+    /* 900px — single-column; sidebar collapses into mobile drawer */
     @media (max-width: 900px) {
       .checkout-layout { grid-template-columns: 1fr; }
-      .co-sidebar { position: static; top: auto; order: -1; }
-      .checkout-body { padding: 24px 0 48px; }
+      .co-sidebar { display: none; }
+      .checkout-body { padding: 20px 0 48px; }
     }
 
     /* 768px */
@@ -797,6 +852,28 @@
   ══════════════════════════════════════════════════════════ -->
   <main id="main-content" class="checkout-body">
     <div class="container">
+
+      <!-- ══ MOBILE ESTIMATED TOTAL BAR (≤900px only) ══════════════
+           Clicking opens the order summary drawer.
+      ══════════════════════════════════════════════════════════════ -->
+      <button class="co-mobile-summary-bar" id="co-mobile-summary-bar"
+              type="button"
+              aria-expanded="false"
+              aria-controls="co-summary-drawer"
+              aria-haspopup="dialog">
+        <div class="co-mobile-est-wrap">
+          <span class="co-mobile-est-label">Estimated Total</span>
+          <span class="co-mobile-est-total" id="co-mobile-total">$9.69</span>
+        </div>
+        <div class="co-mobile-cart-wrap" aria-hidden="true">
+          <span class="co-mobile-cart-icon-wrap">
+            <i data-lucide="shopping-cart"></i>
+            <span class="co-mobile-cart-badge">1</span>
+          </span>
+          <span class="co-mobile-chevron"><i data-lucide="chevron-right"></i></span>
+        </div>
+      </button>
+
       <div class="checkout-layout">
 
         <!-- ── LEFT: CHECKOUT FORM ── -->
@@ -1039,16 +1116,6 @@
 
                 </div><!-- /co-form-grid -->
 
-                <!-- Form actions -->
-                <div class="co-form-actions" style="margin-top: 24px;">
-                  <a href="/cart" class="co-back-link">
-                    <i data-lucide="arrow-left"></i> Back to Cart
-                  </a>
-                  <button type="submit" class="co-next-btn" id="co-shipping-next">
-                    Next <i data-lucide="arrow-right"></i>
-                  </button>
-                </div>
-
               </form>
             </div>
           </div><!-- /co-shipping -->
@@ -1084,12 +1151,57 @@
               <h2 class="section-subtitle">Shipping Methods</h2>
             </div>
             <div class="co-card-body">
-              <div class="co-ship-empty" role="status" aria-live="polite">
-                <i data-lucide="alert-circle"></i>
-                <p>Sorry, no quotes are available for this order at this time.</p>
+
+              <!-- United States Postal Service -->
+              <div class="co-ship-carrier">
+                <p class="co-ship-carrier-name">United States Postal Service <i data-lucide="circle-help" class="help-icon" title="Shipping info"></i></p>
+                <ul class="co-ship-options">
+                  <li class="co-ship-option">
+                    <input type="radio" name="shipping_method" id="ship-usps-ground" value="usps_ground">
+                    <label for="ship-usps-ground">USPS Ground Advantage $7.63</label>
+                  </li>
+                  <li class="co-ship-option">
+                    <input type="radio" name="shipping_method" id="ship-usps-priority" value="usps_priority">
+                    <label for="ship-usps-priority">Priority Mail $15.72</label>
+                  </li>
+                </ul>
               </div>
+
+              <!-- United Parcel Service -->
+              <div class="co-ship-carrier">
+                <p class="co-ship-carrier-name">United Parcel Service <i data-lucide="circle-help" class="help-icon" title="Shipping info"></i></p>
+                <ul class="co-ship-options">
+                  <li class="co-ship-option">
+                    <input type="radio" name="shipping_method" id="ship-ups-ground" value="ups_ground">
+                    <label for="ship-ups-ground">UPS Ground $16.96</label>
+                  </li>
+                  <li class="co-ship-option">
+                    <input type="radio" name="shipping_method" id="ship-ups-3day" value="ups_3day" checked>
+                    <label for="ship-ups-3day">UPS Three-Day Select $52.45</label>
+                  </li>
+                  <li class="co-ship-option">
+                    <input type="radio" name="shipping_method" id="ship-ups-2day" value="ups_2day">
+                    <label for="ship-ups-2day">UPS Second Day Air $62.61</label>
+                  </li>
+                  <li class="co-ship-option">
+                    <input type="radio" name="shipping_method" id="ship-ups-nextday" value="ups_nextday">
+                    <label for="ship-ups-nextday">UPS Next Day Air $139.00</label>
+                  </li>
+                </ul>
+              </div>
+
             </div>
           </div><!-- /co-shipping-methods -->
+
+          <!-- ─── FORM ACTIONS — after all sections ─── -->
+          <div class="co-form-actions" style="margin-top: 8px; padding-top: 4px;">
+            <a href="/cart" class="co-back-link">
+              <i data-lucide="arrow-left"></i> Back to Cart
+            </a>
+            <button type="button" class="co-next-btn" id="co-shipping-next">
+              Next <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
 
         </div><!-- /checkout-main -->
 
@@ -1260,18 +1372,24 @@
         el.classList.toggle('has-error', !valid);
       }
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var allValid = true;
-        form.querySelectorAll('.co-input[required], .co-select[required]').forEach(function (el) {
-          validateField(el);
-          if (el.classList.contains('has-error')) allValid = false;
+      /* Next button validates form then proceeds to step 2 */
+      var nextBtn = document.getElementById('co-shipping-next');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function () {
+          var allValid = true;
+          form.querySelectorAll('.co-input[required], .co-select[required]').forEach(function (el) {
+            validateField(el);
+            if (el.classList.contains('has-error')) allValid = false;
+          });
+          if (allValid) {
+            /* Replace with Magento AJAX submit */
+            window.location.href = 'checkout-review.html';
+          } else {
+            var firstError = form.querySelector('.co-field.has-error');
+            if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
         });
-        if (allValid) {
-          /* Proceed to step 2 — replace with Magento AJAX submit */
-          window.location.href = '/checkout/review';
-        }
-      });
+      }
     })();
 
     /* ─── Discount code apply ─── */
@@ -1300,5 +1418,6 @@
   </script>
 
   <script src="minicart.js?v=2"></script>
+  <script src="checkout-drawer.js"></script>
 </body>
 </html>

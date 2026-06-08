@@ -192,15 +192,22 @@
       margin-bottom: 4px;
     }
     .cart-item-name:hover { color: var(--red); }
-    .cart-item-variant {
-      font-size: 15px;
-      color: var(--gray-500);
-      margin-bottom: 3px;
-    }
     .cart-item-sku {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--gray-500);
       font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .cart-item-attr {
+      font-size: 15px;
+      color: var(--gray-700);
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .cart-attr-label {
+      font-weight: 600;
+      color: var(--dark);
     }
 
     /* Price cell */
@@ -210,7 +217,7 @@
       font-weight: 800;
       color: var(--dark);
     }
-    @media (max-width: 768px) { .cart-item-price { font-size: 16px; } }
+    @media (max-width: 767px) { .cart-item-price { font-size: 16px; } }
     @media (max-width: 480px) { .cart-item-price { font-size: 14px; } }
     @media (max-width: 360px) { .cart-item-price { font-size: 14px; } }
     @media (max-width: 320px) { .cart-item-price { font-size: 13px; } }
@@ -647,14 +654,28 @@
        RESPONSIVE
     ═══════════════════════════════════════════════════════════ */
 
-    /* 1024px — single column, order summary above cart items */
-    @media (max-width: 1024px) {
+    /* 1023px — single column, order summary above cart items */
+    @media (max-width: 1023px) {
       .cart-layout { grid-template-columns: 1fr; gap: 20px; }
       .cart-sidebar { position: static; top: auto; order: -1; }
     }
 
-    /* 768px — clean card: row 1 = image + title, row 2 = inline Price · Qty · Subtotal · actions */
-    @media (max-width: 768px) {
+    /* ── 1200px–768px: compact table, actions stay right at full size ── */
+    @media (min-width: 768px) and (max-width: 1200px) {
+      .cart-table tbody td        { padding: 12px 8px; }
+      .cart-table thead th        { padding: 9px 8px; }
+      .cart-item-img-wrap         { width: 68px; height: 68px; }
+      .cart-item-inner            { gap: 10px; }
+      .cart-item-name             { font-size: 15px; }
+      .cart-item-price,
+      .cart-item-subtotal         { font-size: 16px; }
+      .cart-qty-wrap .qty-control { width: 96px; }
+      /* Action icons — keep full size, stay in rightmost column */
+      .cart-actions-wrap          { gap: 4px; }
+    }
+
+    /* 767px — clean card: row 1 = image + title, row 2 = inline Price · Qty · Subtotal · actions */
+    @media (max-width: 767px) {
       .cart-table thead { display: none; }
       .cart-table,
       .cart-table tbody { display: block; }
@@ -717,10 +738,11 @@
       .cart-table tbody tr.cart-item-row:last-child { border-bottom: 1px solid var(--gray-300); }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       .cart-section { padding: 0 0 28px; }
       .cart-bestsellers { padding: 0 0 28px; }
       .section-header:has(#bestsellers-heading) { margin-bottom: 14px; }
+      .cart-sidebar { order: 1; }
     }
     @media (max-width: 480px) {
       .cart-footer-row { flex-direction: column; align-items: stretch; }
@@ -1113,8 +1135,9 @@
                           <a href="/cat5e-utp-ethernet-cable.html" class="cart-item-name">
                             Cat5e UnShielded (UTP) Ethernet Network Cable
                           </a>
-                          <div class="cart-item-variant">10 ft — Blue</div>
                           <div class="cart-item-sku">SKU: NTS-14104</div>
+                          <div class="cart-item-attr"><span class="cart-attr-label">Length:</span> 10 ft</div>
+                          <div class="cart-item-attr"><span class="cart-attr-label">Color:</span> Blue</div>
                         </div>
                       </div>
                     </td>
@@ -1159,8 +1182,9 @@
                           <a href="/hdmi-2-0-cable.html" class="cart-item-name">
                             HDMI 2.0 High Speed Cable 4K@60Hz
                           </a>
-                          <div class="cart-item-variant">6 ft — Black</div>
                           <div class="cart-item-sku">SKU: HV2-20606</div>
+                          <div class="cart-item-attr"><span class="cart-attr-label">Length:</span> 6 ft</div>
+                          <div class="cart-item-attr"><span class="cart-attr-label">Color:</span> Black</div>
                         </div>
                       </div>
                     </td>
@@ -1205,8 +1229,9 @@
                           <a href="/cat6-ethernet-cable.html" class="cart-item-name">
                             Cat6 Ethernet Patch Cable, Snagless
                           </a>
-                          <div class="cart-item-variant">10 ft — Gray</div>
                           <div class="cart-item-sku">SKU: NTS-16010</div>
+                          <div class="cart-item-attr"><span class="cart-attr-label">Length:</span> 10 ft</div>
+                          <div class="cart-item-attr"><span class="cart-attr-label">Color:</span> Gray</div>
                         </div>
                       </div>
                     </td>

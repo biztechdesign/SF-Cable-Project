@@ -2251,6 +2251,8 @@
       startAuto();
     })();
 
+    /* Swatch overflow is handled by the dedicated script at the bottom of this page */
+
     /* Initialise all Lucide icons */
     lucide.createIcons({
       attrs: { 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }
@@ -2261,6 +2263,109 @@
   </script>
 
   <script src="minicart.js?v=2"></script>
+
+  <script>
+    /* =============================================================
+       PRODUCT CARD — Color swatch overflow
+       Phase 1 · init()   — runs ONCE: creates exactly one badge
+                            per wrap, marks it with data-sf-init.
+       Phase 2 · update() — runs on every load/resize: shows/hides
+                            swatches and updates the badge text.
+                            Never creates DOM nodes.
+       A badge can NEVER be duplicated because:
+         · init() is guarded by data-sf-init (skips already-done wraps)
+         · update() only reads & mutates the badge created in init()
+    ============================================================= */
+    (function () {
+      'use strict';
+
+      /* Swatch/badge pixel sizes — kept in sync with CSS breakpoints */
+      function dims() {
+        var vp = window.innerWidth;
+        return { sw: vp <= 480 ? 38 : 55, gap: vp <= 480 ? 5 : 6, bw: vp <= 480 ? 32 : 40 };
+      }
+
+      /* ── Phase 1: one-time setup ── */
+      function init() {
+        var wraps = document.querySelectorAll('.product-card .product-swatches');
+        for (var i = 0; i < wraps.length; i++) {
+          var wrap = wraps[i];
+          if (wrap.getAttribute('data-sf-init')) continue; /* already initialised */
+          wrap.setAttribute('data-sf-init', '1');
+          var badge = document.createElement('span');
+          badge.className = 'swatch-overflow-badge';
+          badge.setAttribute('aria-hidden', 'true');
+          badge.style.display = 'none';   /* hidden until overflow is detected */
+          wrap.appendChild(badge);         /* appended ONCE, never removed */
+        }
+      }
+
+      /* ── Phase 2: layout recalculation ── */
+      function update() {
+        var d = dims();
+        /* Only process wraps that have been through init() */
+        var wraps = document.querySelectorAll('.product-card .product-swatches[data-sf-init]');
+
+        for (var i = 0; i < wraps.length; i++) {
+          var wrap     = wraps[i];
+          var swatches = Array.prototype.slice.call(wrap.querySelectorAll('.product-swatch'));
+          var badge    = wrap.querySelector('.swatch-overflow-badge');
+          var total    = swatches.length;
+
+          /* Purge any legacy .swatch-overflow badges from old script */
+          var legacy = wrap.querySelectorAll('.swatch-overflow');
+          for (var l = 0; l < legacy.length; l++) legacy[l].parentNode.removeChild(legacy[l]);
+
+          /* Reset: show all swatches, remove swatch-hidden class, hide current badge */
+          for (var j = 0; j < swatches.length; j++) {
+            swatches[j].style.display = '';
+            swatches[j].classList.remove('swatch-hidden');
+          }
+          if (badge) badge.style.display = 'none';
+
+          if (total <= 1) continue;
+
+          var cw = wrap.offsetWidth;   /* actual container width after CSS is applied */
+
+          /* All swatches fit — nothing to collapse */
+          if (total * d.sw + (total - 1) * d.gap <= cw) continue;
+
+          /* Find max visible count (1–3) that fits alongside the badge */
+          var maxVis = 1;
+          for (var n = Math.min(total - 1, 3); n >= 1; n--) {
+            if (n * d.sw + n * d.gap + d.bw <= cw) { maxVis = n; break; }
+          }
+
+          /* Hide excess swatches */
+          for (var k = maxVis; k < swatches.length; k++) swatches[k].style.display = 'none';
+
+          /* Show the (single, permanent) badge with correct count */
+          if (badge) {
+            var hidden = total - maxVis;
+            badge.textContent = '+' + hidden;
+            badge.title       = hidden + ' more colour' + (hidden > 1 ? 's' : '');
+            badge.style.display = '';
+          }
+        }
+      }
+
+      /* ── Bootstrap ── */
+      function start() { init(); update(); }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();   /* DOM already ready (script at bottom of body) */
+      }
+
+      /* Re-run layout pass only on resize — init() is already done */
+      var _rt;
+      window.addEventListener('resize', function () {
+        clearTimeout(_rt);
+        _rt = setTimeout(update, 150);
+      });
+    })();
+  </script>
 </body>
 </html>
 

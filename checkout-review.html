@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <!-- Checkout mobile bar + drawer -->
+  <link rel="stylesheet" href="checkout-mobile.css">
 
   <style>
     /* ═══════════════════════════════════════════════════════════
@@ -30,10 +32,12 @@
       height: 66px;
     }
     .checkout-header .logo img {
-      height: 32px;
+      height: 34px;
       width: auto;
       filter: brightness(0) invert(1);
     }
+    @media (max-width: 900px)  { .checkout-header .logo img { height: 32px; } }
+    @media (max-width: 480px)  { .checkout-header .logo img { height: 24px; } }
     .checkout-header .logo-fallback {
       font-size: 22px;
       font-weight: 800;
@@ -95,8 +99,8 @@
     }
     .checkout-step.is-active .checkout-step-circle { border-color: var(--red); background: var(--red); color: var(--white); }
     .checkout-step.is-active .checkout-step-label  { color: var(--dark); font-weight: 700; }
-    .checkout-step.is-done .checkout-step-circle   { border-color: var(--red); background: var(--red); color: var(--white); }
-    .checkout-step.is-done .checkout-step-label    { color: var(--red); font-weight: 600; }
+    .checkout-step.is-done .checkout-step-circle   { border-color: var(--gray-300); background: var(--gray-100); color: var(--gray-500); }
+    .checkout-step.is-done .checkout-step-label    { color: var(--gray-500); font-weight: 500; }
     .checkout-step-connector {
       width: 80px;
       height: 2px;
@@ -104,7 +108,7 @@
       margin: 0 10px;
       flex-shrink: 0;
     }
-    .checkout-step-connector.is-done { background: var(--red); }
+    .checkout-step-connector.is-done { background: var(--gray-300); }
 
     /* ═══════════════════════════════════════════════════════════
        CHECKOUT BODY
@@ -221,6 +225,18 @@
     .co-input::placeholder { color: var(--gray-500); }
     .co-input:hover  { border-color: var(--gray-500); }
     .co-input:focus  { outline: none; border-color: var(--red); }
+    .co-textarea {
+      height: auto;
+      min-height: 100px;
+      padding: 12px 14px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+    .co-order-comments-wrap {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--gray-300);
+    }
 
     /* ─── Form actions ─── */
     .co-form-actions {
@@ -568,8 +584,8 @@
     }
     @media (max-width: 900px) {
       .checkout-layout { grid-template-columns: 1fr; }
-      .co-sidebar { position: static; top: auto; order: -1; }
-      .checkout-body { padding: 24px 0 48px; }
+      .co-sidebar { display: none; }
+      .checkout-body { padding: 20px 0 48px; }
     }
     @media (max-width: 768px) {
       .checkout-stepper { padding: 14px 0; }
@@ -612,13 +628,16 @@
       .checkout-body { padding: 16px 0 40px; }
       .co-signin-prompt { flex-direction: column; align-items: flex-start; gap: 10px; }
       .co-signin-btn { width: 100%; justify-content: center; }
-      .co-form-actions { flex-direction: column-reverse; align-items: stretch; }
-      .co-next-btn { width: 100%; justify-content: center; }
+      .co-form-actions { flex-direction: column-reverse; align-items: stretch; gap: 12px; margin-top: 20px; }
+      .co-next-btn { width: 100%; justify-content: center; min-height: 48px; font-size: 16px; }
       .co-back-link { justify-content: center; }
       .checkout-step-connector { width: 20px; }
       .checkout-step-label { display: none; }
       .checkout-step.is-active .checkout-step-label { display: block; font-size: 13px; }
       .checkout-step.is-done .checkout-step-label  { display: none; }
+      .co-order-comments-wrap { margin-top: 20px; padding-top: 18px; }
+      .co-textarea { min-height: 90px; }
+      .co-pay-option-hd { padding: 12px 12px; gap: 8px; }
     }
     @media (max-width: 380px) {
       .co-card-body { padding: 14px; }
@@ -701,6 +720,28 @@
   ══════════════════════════════════════════════════════════ -->
   <main id="main-content" class="checkout-body">
     <div class="container">
+
+      <!-- ══ MOBILE ESTIMATED TOTAL BAR (≤900px only) ══════════════
+           Clicking opens the order summary drawer.
+      ══════════════════════════════════════════════════════════════ -->
+      <button class="co-mobile-summary-bar" id="co-mobile-summary-bar"
+              type="button"
+              aria-expanded="false"
+              aria-controls="co-summary-drawer"
+              aria-haspopup="dialog">
+        <div class="co-mobile-est-wrap">
+          <span class="co-mobile-est-label">Estimated Total</span>
+          <span class="co-mobile-est-total" id="co-mobile-total">$63.57</span>
+        </div>
+        <div class="co-mobile-cart-wrap" aria-hidden="true">
+          <span class="co-mobile-cart-icon-wrap">
+            <i data-lucide="shopping-cart"></i>
+            <span class="co-mobile-cart-badge">1</span>
+          </span>
+          <span class="co-mobile-chevron"><i data-lucide="chevron-right"></i></span>
+        </div>
+      </button>
+
       <div class="checkout-layout">
 
         <!-- ── LEFT: PAYMENT FORM ── -->
@@ -843,6 +884,21 @@
                 </div><!-- /pay-paypal-option -->
 
               </div><!-- /co-pay-methods -->
+
+              <!-- Order Comments -->
+              <div class="co-order-comments-wrap">
+                <div class="co-field">
+                  <label class="co-label" for="co-order-comments">
+                    Do you have any comments regarding the order?
+                  </label>
+                  <textarea class="co-input co-textarea"
+                            id="co-order-comments"
+                            name="customer_note"
+                            placeholder="Enter any special instructions or notes for your order..."
+                            rows="4"
+                            aria-label="Order comments"></textarea>
+                </div>
+              </div>
 
               <!-- Form actions -->
               <div class="co-form-actions" style="margin-top: 28px;">
@@ -1081,5 +1137,6 @@
   </script>
 
   <script src="minicart.js?v=2"></script>
+  <script src="checkout-drawer.js"></script>
 </body>
 </html>
