@@ -5792,32 +5792,22 @@ body.minicart-body-lock { overflow: hidden; }
 
 /* ── 5. Filter sidebar scrollable body ── */
 .filter-sections-wrap {
-  max-height: calc(100vh - 230px);
-  min-height: 120px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: visible;
   position: relative;
-  scroll-behavior: smooth;
 }
-/* Scrollbar — wider, darker, clearly interactive */
-.filter-sections-wrap::-webkit-scrollbar,
-.filter-drawer .filter-panel::-webkit-scrollbar { width: 12px; }
-
-.filter-sections-wrap::-webkit-scrollbar-track,
+/* Scrollbar — mobile drawer only */
+.filter-drawer .filter-panel::-webkit-scrollbar { width: 8px; }
 .filter-drawer .filter-panel::-webkit-scrollbar-track {
-  background: var(--gray-300); border-radius: 6px; margin: 4px 0;
+  background: var(--gray-200); border-radius: 4px; margin: 4px 0;
 }
-.filter-sections-wrap::-webkit-scrollbar-thumb,
 .filter-drawer .filter-panel::-webkit-scrollbar-thumb {
-  background: var(--dark); border-radius: 6px;
-  min-height: 44px; border: 2px solid var(--gray-300);
+  background: #8fa8bc; border-radius: 4px;
+  min-height: 44px;
 }
-.filter-sections-wrap::-webkit-scrollbar-thumb:hover,
 .filter-drawer .filter-panel::-webkit-scrollbar-thumb:hover { background: var(--sf-primary-cta); }
 
-/* Firefox */
-.filter-sections-wrap,
-.filter-drawer .filter-panel { scrollbar-width: auto; scrollbar-color: var(--dark) var(--gray-300); }
+/* Firefox — mobile drawer only */
+.filter-drawer .filter-panel { scrollbar-width: auto; scrollbar-color: #8fa8bc var(--gray-200); }
 
 /* ── Scroll-hint: gradient fade + prominent arrow button ── */
 .filter-scroll-hint {
@@ -5864,9 +5854,8 @@ body.minicart-body-lock { overflow: hidden; }
 }
 .filter-scroll-hint.is-hidden { display: none; }
 
-/* Mobile drawer — let it scroll freely; hint not needed */
+/* Scroll hint not needed on mobile */
 @media (max-width: 1024px) {
-  .filter-sections-wrap { max-height: none; overflow-y: visible; }
   .filter-scroll-hint { display: none !important; }
 }
 
