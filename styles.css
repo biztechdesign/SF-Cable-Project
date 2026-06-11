@@ -4071,7 +4071,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .plp-row:hover .plp-row-img img { transform: none; }
 .plp-row-img .product-badges {
-  position: absolute; top: 10px; left: 10px;
+  position: absolute; top: 16px; left: 16px;
   flex-direction: column; gap: 4px;
 }
 
@@ -4302,7 +4302,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .plp-row-img            { width: 300px; }
 .plp-row-img img        { height: 214px; object-fit: contain; }
-.plp-row-actions        { width: 316px; padding: 16px 24px; }
+.plp-row-actions        { width: 316px; padding: 16px 24px; justify-content: flex-start; }
 
 .plp-row-actions .add-to-cart {
   width: 100%; flex: none; padding: 0 16px; height: var(--control-h);
@@ -4405,6 +4405,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .plp-row-actions .qty-input { font-size: 16px; }
 
 .plp-row-body             { padding: 16px 18px; gap: 14px; }
+.plp-row-body .product-name { margin-top: -0.2em; }
+.plp-row-actions .plp-tier-hd { margin-top: -0.3em; }
 .plp-row-sku              { font-size: 14px; margin-top: -8px; }
 .plp-option-row           { flex-direction: column; gap: 5px; }
 .plp-option-label         { font-size: 15px; font-weight: 700; padding-top: 0; min-width: unset; }
@@ -4434,7 +4436,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .plp-row-img { width: 250px; } .plp-row-img img { height: 176px; } .plp-row-actions { width: 272px; }
 }
 @media (max-width: 1100px) {
-  .plp-row-img { width: 216px; } .plp-row-img img { height: 158px; } .plp-row-actions { width: 248px; padding: 14px 16px; }
+  .plp-row-img { width: 216px; } .plp-row-img img { height: 158px; } .plp-row-actions { width: 248px; padding: 16px 16px 14px; }
 }
 @media (max-width: 768px) {
   .plp-row-img { width: 124px; } .plp-row-img img { height: 104px; } .plp-row-actions { width: 100%; padding: 10px 12px; }
@@ -4997,6 +4999,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pdp-desc-subhd             { font-size: 16px; font-weight: 800; color: var(--dark); margin-top: 20px; margin-bottom: 10px; }
 .pdp-subsection-title       { font-size: 16px; font-weight: 800; color: var(--dark); margin: 28px 0 4px; padding-top: 20px; border-top: 1px solid var(--gray-300); }
 .pdp-subsection-desc        { font-size: 16px; font-weight: 400; color: var(--gray-700); margin-bottom: 4px; }
+
+.pdp-spec-img-wrap          { overflow-x: auto; }
+.pdp-spec-img               { width: auto; height: auto; max-width: 100%; display: block; }
+
+.pdp-desc-drawing           { margin-top: 24px; padding: 0; background: none; border: none; align-items: flex-start; }
 .pdp-warranty-text          { font-size: 16px; font-weight: 400; color: var(--gray-700); line-height: 1.7; margin: 0; }
 .pdp-warranty-blurb         { display: flex; gap: 16px; align-items: flex-start; }
 .pdp-warranty-blurb-icon    { color: var(--red); flex-shrink: 0; }
