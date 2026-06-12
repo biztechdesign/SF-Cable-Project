@@ -3823,13 +3823,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .breadcrumb-nav {
   background: var(--gray-100);
   border-bottom: 1px solid var(--gray-300);
-  height: 43px;
-  display: flex;
-  align-items: center;
 }
 .breadcrumb {
-  display: flex; align-items: center; flex-wrap: wrap;
+  display: flex; align-items: center; flex-wrap: nowrap;
   gap: 2px; list-style: none;
+  height: 42px; overflow: hidden;
 }
 .breadcrumb-item a {
   font-size: 15px; font-weight: 500; color: var(--gray-500);
