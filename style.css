@@ -5988,5 +5988,6 @@ body.minicart-body-lock { overflow: hidden; }
 #products-grid .product-card .swatch-overflow-badge { display: none !important; }
 
 #products-grid .product-card .add-to-cart { display: none !important; }
+#products-grid .product-card .product-footer { display: none !important; }
 
 
