@@ -5983,6 +5983,8 @@ body.minicart-body-lock { overflow: hidden; }
   }
 }
 
-#products-grid .product-swatches { display: none; }
+#products-grid .product-card .product-swatches,
+#products-grid .product-card .product-swatch,
+#products-grid .product-card .swatch-overflow-badge { display: none !important; }
 
 
