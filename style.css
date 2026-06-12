@@ -3823,7 +3823,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .breadcrumb-nav {
   background: var(--gray-100);
   border-bottom: 1px solid var(--gray-300);
-  padding: 10px 0;
+  height: 42px;
+  display: flex;
+  align-items: center;
 }
 .breadcrumb {
   display: flex; align-items: center; flex-wrap: wrap;
