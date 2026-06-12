@@ -5927,18 +5927,18 @@ body.minicart-body-lock { overflow: hidden; }
 
 @media (min-width: 900px) and (max-width: 1099px) {
     html {
-        zoom: 0.92;
+        zoom: 0.90;
     }
 }
 
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
-@supports not (zoom: 0.92) {
+@supports not (zoom: 0.90) {
     @media (min-width: 900px) and (max-width: 1099px) {
         html {
-            transform: scale(0.92);
+            transform: scale(0.90);
             transform-origin: top left;
             /* Expand layout width so the scaled content still fills the viewport */
-            width: calc(100% / 0.92);
+            width: calc(100% / 0.90);
             overflow-x: hidden;
         }
     }
@@ -5966,21 +5966,21 @@ body.minicart-body-lock { overflow: hidden; }
 
 @media (min-width: 1200px) and (max-width: 1299px) {
     html {
-        zoom: 0.85;
+        zoom: 0.82;
     }
 }
 
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
-@supports not (zoom: 0.85) {
-  @media (min-width: 1200px) and (max-width: 1299px) {
-    html {
-        transform: scale(0.85);
-        transform-origin: top left;
-        /* Expand layout width so the scaled content still fills the viewport */
-        width: calc(100% / 0.85);
-        overflow-x: hidden;
+@supports not (zoom: 0.82) {
+    @media (min-width: 1200px) and (max-width: 1299px) {
+        html {
+            transform: scale(0.82);
+            transform-origin: top left;
+            /* Expand layout width so the scaled content still fills the viewport */
+            width: calc(100% / 0.82);
+            overflow-x: hidden;
+        }
     }
-  }
 }
 
 #products-grid .product-card .product-swatches,
