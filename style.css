@@ -5926,7 +5926,7 @@ body.minicart-body-lock { overflow: hidden; }
 
 
 @media (min-width: 900px) and (max-width: 1099px) {
-    html {
+    #main-content, footer {
         zoom: 0.90;
     }
 }
@@ -5934,7 +5934,7 @@ body.minicart-body-lock { overflow: hidden; }
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
 @supports not (zoom: 0.90) {
     @media (min-width: 900px) and (max-width: 1099px) {
-        html {
+        #main-content, footer {
             transform: scale(0.90);
             transform-origin: top left;
             /* Expand layout width so the scaled content still fills the viewport */
@@ -5946,7 +5946,7 @@ body.minicart-body-lock { overflow: hidden; }
 
 
 @media (min-width: 1100px) and (max-width: 1199px) {
-    html {
+    #main-content, footer {
         zoom: 0.88;
     }
 }
@@ -5954,7 +5954,7 @@ body.minicart-body-lock { overflow: hidden; }
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
 @supports not (zoom: 0.88) {
     @media (min-width: 1100px) and (max-width: 1199px) {
-        html {
+        #main-content, footer {
             transform: scale(0.88);
             transform-origin: top left;
             /* Expand layout width so the scaled content still fills the viewport */
@@ -5965,19 +5965,19 @@ body.minicart-body-lock { overflow: hidden; }
 }
 
 @media (min-width: 1200px) and (max-width: 1299px) {
-    html {
-        zoom: 0.82;
+    #main-content, footer {
+        zoom: 0.88;
     }
 }
 
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
-@supports not (zoom: 0.82) {
+@supports not (zoom: 0.88) {
     @media (min-width: 1200px) and (max-width: 1299px) {
-        html {
-            transform: scale(0.82);
+        #main-content, footer {
+            transform: scale(0.88);
             transform-origin: top left;
             /* Expand layout width so the scaled content still fills the viewport */
-            width: calc(100% / 0.82);
+            width: calc(100% / 0.88);
             overflow-x: hidden;
         }
     }
