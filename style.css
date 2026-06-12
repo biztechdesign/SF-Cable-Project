@@ -5926,19 +5926,19 @@ body.minicart-body-lock { overflow: hidden; }
 
 
 @media (min-width: 900px) and (max-width: 1099px) {
-  html {
-    zoom: 0.80;
-  }
+    html {
+        zoom: 0.92;
+    }
 }
 
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
-@supports not (zoom: 0.80) {
+@supports not (zoom: 0.92) {
     @media (min-width: 900px) and (max-width: 1099px) {
         html {
-            transform: scale(0.80);
+            transform: scale(0.92);
             transform-origin: top left;
             /* Expand layout width so the scaled content still fills the viewport */
-            width: calc(100% / 0.80);
+            width: calc(100% / 0.92);
             overflow-x: hidden;
         }
     }
@@ -5947,18 +5947,18 @@ body.minicart-body-lock { overflow: hidden; }
 
 @media (min-width: 1100px) and (max-width: 1199px) {
     html {
-        zoom: 0.78;
+        zoom: 0.88;
     }
 }
 
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
-@supports not (zoom: 0.78) {
+@supports not (zoom: 0.88) {
     @media (min-width: 1100px) and (max-width: 1199px) {
         html {
-            transform: scale(0.78);
+            transform: scale(0.88);
             transform-origin: top left;
             /* Expand layout width so the scaled content still fills the viewport */
-            width: calc(100% / 0.78);
+            width: calc(100% / 0.88);
             overflow-x: hidden;
         }
     }
@@ -5966,18 +5966,18 @@ body.minicart-body-lock { overflow: hidden; }
 
 @media (min-width: 1200px) and (max-width: 1299px) {
     html {
-        zoom: 0.75;
+        zoom: 0.85;
     }
 }
 
 /* Firefox pre-126 fallback: zoom not supported, use transform instead */
-@supports not (zoom: 0.75) {
+@supports not (zoom: 0.85) {
   @media (min-width: 1200px) and (max-width: 1299px) {
     html {
-        transform: scale(0.75);
+        transform: scale(0.85);
         transform-origin: top left;
         /* Expand layout width so the scaled content still fills the viewport */
-        width: calc(100% / 0.75);
+        width: calc(100% / 0.85);
         overflow-x: hidden;
     }
   }
@@ -5986,5 +5986,7 @@ body.minicart-body-lock { overflow: hidden; }
 #products-grid .product-card .product-swatches,
 #products-grid .product-card .product-swatch,
 #products-grid .product-card .swatch-overflow-badge { display: none !important; }
+
+#products-grid .product-card .add-to-cart { display: none !important; }
 
 
