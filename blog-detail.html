@@ -2186,27 +2186,21 @@
         links.forEach(function(l) { l.classList.remove('cms-nav-link--hidden'); });
         moreWrap.classList.remove('visible');
         panel.innerHTML = '';
-
+        var available = inner.parentElement.offsetWidth;
+        var widths = links.map(function(l) { return l.offsetWidth; });
+        var total = widths.reduce(function(s, w) { return s + w; }, 0);
+        if (total <= available) return;
         moreWrap.style.visibility = 'hidden';
         moreWrap.style.display    = 'block';
-        var moreW = moreWrap.offsetWidth + 8;
+        var moreW = moreWrap.offsetWidth;
         moreWrap.style.visibility = '';
         moreWrap.style.display    = '';
-
-        var available = inner.offsetWidth;
         var used = 0;
         var overflowFrom = -1;
-
         for (var i = 0; i < links.length; i++) {
-          var lw = links[i].offsetWidth;
-          var needed = used + lw + (i < links.length - 1 ? moreW : 0);
-          if (needed > available) {
-            overflowFrom = i;
-            break;
-          }
-          used += lw;
+          if (used + widths[i] + moreW > available) { overflowFrom = i; break; }
+          used += widths[i];
         }
-
         if (overflowFrom === -1) return;
 
         for (var j = overflowFrom; j < links.length; j++) {
@@ -2235,7 +2229,7 @@
 
       buildNav();
       if (window.ResizeObserver) {
-        new ResizeObserver(buildNav).observe(inner);
+        new ResizeObserver(buildNav).observe(inner.parentElement);
       } else {
         window.addEventListener('resize', buildNav);
       }
